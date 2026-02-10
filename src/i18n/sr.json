@@ -112,19 +112,19 @@
       "items": [
         {
           "title": "Barbershops i saloni",
-          "description": "Zakazivanje termina, podsećanje 24h pre, promocije"
+          "description": "Klijenti zakazuju termine preko Telegrama 24/7, dobijaju automatska podsećanja i vaše najnovije promocije — bez telefonskih poziva."
         },
         {
           "title": "Stomatološke ordinacije",
-          "description": "Automatski termini, podsetnici, zdravstvena dokumentacija"
+          "description": "Pacijenti zakazuju termine automatski, dobijaju podsetnike pre posete, a vi vodite digitalnu zdravstvenu dokumentaciju — sve u skladu sa GDPR-om."
         },
         {
           "title": "Auto-servisi",
-          "description": "Zakazivanje servisa, status popravke, fakture"
+          "description": "Mušterije zakazuju servis, dobijaju ažuriranja popravke u realnom vremenu i fakture odmah preko bota — bez telefonskog ping-ponga."
         },
         {
           "title": "Hemijske čistionice",
-          "description": "Prijem odeće, notifikacije, gotova odeća"
+          "description": "Automatizovan prijem odeće sa foto potvrdom, instant obaveštenja kada je gotovo i lako zakazivanje preuzimanja — klijenti vole pogodnost."
         }
       ]
     },
@@ -133,19 +133,19 @@
       "items": [
         {
           "title": "Manje propuštenih poziva",
-          "description": "Klijenti zakazuju 24/7 preko bota"
+          "description": "Vaši klijenti zakazuju termine 24/7 preko bota — čak i dok spavate ili radite sa drugim klijentima."
         },
         {
           "title": "Automatska podsećanja",
-          "description": "Smanjuje no-show za 70%"
+          "description": "Bot šalje podsetnike 24 sata pre termina, smanjujući no-show za 70% — to znači manje praznih termina i više prihoda."
         },
         {
           "title": "Lojalnost klijenata",
-          "description": "Rođendanske poruke, popusti, promocije"
+          "description": "Automatski šaljite personalizovane rođendanske čestitke, ekskluzivne popuste i specijalne promocije — zadržite klijente da se vraćaju."
         },
         {
           "title": "Ušteda vremena",
-          "description": "2-3h dnevno manje administracije"
+          "description": "Uštedite 2-3 sata dnevno na telefonskim pozivima, zakazivanju i podsetnicima — provedite to vreme na vašem stvarnom poslu umesto toga."
         }
       ]
     },

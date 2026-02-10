@@ -112,19 +112,19 @@
       "items": [
         {
           "title": "Barbershops & salons",
-          "description": "Appointment booking, 24h reminders, promotions"
+          "description": "Clients book appointments via Telegram 24/7, get automatic reminders, and receive your latest promotions — no phone calls needed."
         },
         {
           "title": "Dental clinics",
-          "description": "Automatic appointments, reminders, health records"
+          "description": "Patients schedule appointments automatically, receive reminders before visits, and you maintain digital health records — all GDPR-compliant."
         },
         {
           "title": "Auto services",
-          "description": "Service booking, repair status, invoices"
+          "description": "Customers book service appointments, receive real-time repair updates, and get invoices instantly via bot — no phone tag."
         },
         {
           "title": "Dry cleaners",
-          "description": "Clothes intake, notifications, ready for pickup"
+          "description": "Automated clothes intake with photo confirmation, instant notifications when ready, and easy pickup scheduling — customers love the convenience."
         }
       ]
     },
@@ -133,19 +133,19 @@
       "items": [
         {
           "title": "Fewer missed calls",
-          "description": "Clients book 24/7 via bot"
+          "description": "Your clients book appointments 24/7 through the bot — even when you're asleep or with other customers."
         },
         {
           "title": "Automatic reminders",
-          "description": "Reduces no-shows by 70%"
+          "description": "Bot sends reminders 24 hours before appointments, reducing no-shows by 70% — that's fewer empty slots and more revenue."
         },
         {
           "title": "Client loyalty",
-          "description": "Birthday messages, discounts, promotions"
+          "description": "Automatically send personalized birthday greetings, exclusive discounts, and special promotions — keep customers coming back."
         },
         {
           "title": "Time savings",
-          "description": "2-3h less admin work daily"
+          "description": "Save 2-3 hours daily on phone calls, scheduling, and reminders — spend that time on your actual work instead."
         }
       ]
     },
