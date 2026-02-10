@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { t, tObject, getLocalizedPath } from '../../i18n/utils';
+
+const locale = 'en';
+
+const serviceItems = tObject<Array<{title: string, description: string}>>(locale, 'smallBusiness.services.items');
+const benefitItems = tObject<Array<{title: string, description: string}>>(locale, 'smallBusiness.benefits.items');
+---
+<BaseLayout
+  title={t(locale, 'seo.smallBusiness.title')}
+  description={t(locale, 'seo.smallBusiness.description')}
+  locale={locale}
+>
+  {/* Hero */}
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-accent/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text">
+          {t(locale, 'smallBusiness.hero.title')}
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-text-light max-w-2xl mx-auto">
+          {t(locale, 'smallBusiness.hero.subtitle')}
+        </p>
+        <div class="mt-10">
+          <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+            {t(locale, 'smallBusiness.hero.cta')}
+          </CTA>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+    </div>
+  </section>
+
+  {/* Services — Who is this for? */}
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'smallBusiness.services.title')}</SectionHeading>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Barbershops */}
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121A3 3 0 1 0 9.88 9.88m4.242 4.242L9.88 9.88m4.242 4.242L6.343 17.657m3.536-7.778L6.343 6.343" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{serviceItems[0].title}</h3>
+          <p class="text-text-light">{serviceItems[0].description}</p>
+        </div>
+
+        {/* Dental */}
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C9.5 2 7 4 7 7c0 2 .5 4 1 6 .5 2.5 1 5 1.5 7 .2.8 1.3.8 1.5 0 .3-1 .7-2.5 1-4 .3 1.5.7 3 1 4 .2.8 1.3.8 1.5 0 .5-2 1-4.5 1.5-7 .5-2 1-4 1-6 0-3-2.5-5-5-5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{serviceItems[1].title}</h3>
+          <p class="text-text-light">{serviceItems[1].description}</p>
+        </div>
+
+        {/* Auto services */}
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{serviceItems[2].title}</h3>
+          <p class="text-text-light">{serviceItems[2].description}</p>
+        </div>
+
+        {/* Dry cleaners */}
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 2h12l-1.5 3H7.5L6 2zm0 0v0M7.5 5H5a1 1 0 0 0-1 1v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a1 1 0 0 0-1-1h-2.5M9 10a3 3 0 1 0 6 0" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{serviceItems[3].title}</h3>
+          <p class="text-text-light">{serviceItems[3].description}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Benefits — What do you get? */}
+  <section class="py-20 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'smallBusiness.benefits.title')}</SectionHeading>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {benefitItems.map((item) => (
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-1">{item.title}</h3>
+              <p class="text-text-light">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Bottom CTA */}
+  <section class="py-16 bg-primary">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-white mb-8">
+        {t(locale, 'smallBusiness.cta.text')}
+      </h2>
+      <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+        {t(locale, 'home.hero.cta')}
+      </CTA>
+    </div>
+  </section>
+</BaseLayout>

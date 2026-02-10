@@ -1,0 +1,83 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLocalizedPath, getAlternateLocale, getPathWithoutLocale, type Locale } from '../i18n/utils';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  noindex?: boolean;
+}
+
+const { title, description, locale, noindex = false } = Astro.props;
+const altLocale = getAlternateLocale(locale);
+const currentPath = getPathWithoutLocale(Astro.url.pathname);
+const canonicalUrl = new URL(getLocalizedPath(currentPath, locale), Astro.site);
+const alternateUrl = new URL(getLocalizedPath(currentPath, altLocale), Astro.site);
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {/* Canonical & hreflang */}
+    <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="alternate" hreflang={locale} href={canonicalUrl.href} />
+    <link rel="alternate" hreflang={altLocale} href={alternateUrl.href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, 'sr'), Astro.site).href} />
+
+    {/* Open Graph */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:site_name" content="Lako Services" />
+    <meta property="og:locale" content={locale === 'sr' ? 'sr_RS' : 'en_US'} />
+    <meta property="og:type" content="website" />
+
+    {/* Favicon */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {/* Geist Font */}
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css" />
+
+    {/* Cloudflare Web Analytics - placeholder */}
+    {/* <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script> */}
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header locale={locale} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+
+    {/* LocalBusiness structured data */}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Lako Services",
+      "description": description,
+      "url": "https://lako.services",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Novi Sad",
+        "addressCountry": "RS"
+      },
+      "email": "info@lako.services",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Serbia"
+      }
+    })} />
+  </body>
+</html>

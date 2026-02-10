@@ -1,0 +1,79 @@
+---
+import Logo from './Logo.astro';
+import { t, getLocalizedPath, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+
+const navItems = [
+  { key: 'nav.logistics', path: '/logistics' },
+  { key: 'nav.smallBusiness', path: '/small-business' },
+  { key: 'nav.about', path: '/about' },
+  { key: 'nav.contact', path: '/contact' },
+] as const;
+---
+<footer class="bg-text text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Column 1: Company info */}
+      <div>
+        <Logo class="!text-white" />
+        <p class="mt-4 text-gray-400 text-sm">
+          {t(locale, 'footer.location')}
+        </p>
+        <p class="mt-1 text-gray-400 text-sm">
+          {t(locale, 'about.contact.phone')}
+        </p>
+        <p class="mt-1 text-gray-400 text-sm">
+          {t(locale, 'about.contact.email')}
+        </p>
+      </div>
+
+      {/* Column 2: Navigation */}
+      <div>
+        <h3 class="font-semibold mb-4">{t(locale, 'nav.home')}</h3>
+        <ul class="space-y-2">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={getLocalizedPath(item.path, locale)}
+                class="text-gray-400 hover:text-white transition-colors text-sm"
+              >
+                {t(locale, item.key)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Column 3: Social / Contact */}
+      <div>
+        <h3 class="font-semibold mb-4">
+          {locale === 'sr' ? 'Kontaktirajte nas' : 'Get in touch'}
+        </h3>
+        <div class="flex flex-col gap-3">
+          <a href="https://t.me/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Telegram
+          </a>
+          <a href="mailto:info@lako.services" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            info@lako.services
+          </a>
+          <a href="viber://chat?number=" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.523 6.77.413 9.98.303 13.19.09 19.065 5.7 20.615h.003l-.004 2.47s-.037.997.62 1.2c.793.245 1.26-.51 2.019-1.327.416-.449.99-1.109 1.424-1.615 3.924.33 6.94-.424 7.283-.536.792-.258 5.27-.832 6-6.827.753-6.189-.357-10.1-2.324-11.874C19.24.812 15.862-.048 11.398.002zm.467 1.863c3.838-.043 6.658.616 8.04 1.87 1.576 1.424 2.546 4.727 1.9 9.978-.59 4.81-3.879 5.357-4.546 5.574-.286.092-2.876.742-6.177.53 0 0-2.444 2.949-3.21 3.727-.12.121-.268.168-.364.146-.135-.031-.172-.18-.17-.398l.027-4.054c-4.522-1.291-4.267-6.224-4.17-8.873.094-2.648.715-4.829 2.122-6.218C6.81 2.713 8.903 1.922 11.865 1.865zM8.682 5.56a.718.718 0 0 0-.513.142c-.211.17-.427.38-.583.596a2.26 2.26 0 0 0-.389.96.755.755 0 0 0-.012.1c-.001.064.006.129.02.195.063.342.203.694.39 1.098.37.792.972 1.725 1.785 2.635a11.88 11.88 0 0 0 3.268 2.76c.52.27 1.025.482 1.513.61.43.112.844.138 1.193.01a2.203 2.203 0 0 0 .859-.604c.176-.205.33-.446.395-.693.064-.247.038-.468-.066-.625a.85.85 0 0 0-.152-.167l-1.636-1.224a.983.983 0 0 0-.52-.202.683.683 0 0 0-.434.148c-.165.13-.28.27-.467.42l-.188.155c-.097.078-.16.088-.272.038a6.467 6.467 0 0 1-1.648-1.153c-.465-.426-.862-.9-1.188-1.404-.064-.099-.071-.156.022-.264l.16-.19c.142-.174.295-.292.416-.457a.693.693 0 0 0 .131-.468.968.968 0 0 0-.176-.486l-1.147-1.675a.892.892 0 0 0-.245-.254.604.604 0 0 0-.293-.098.65.65 0 0 0-.072-.002zm3.42.413a.243.243 0 0 0-.053.006.244.244 0 0 0-.183.291c.11.478.407.894.793 1.178a.244.244 0 0 0 .338-.06.243.243 0 0 0-.06-.338 1.574 1.574 0 0 1-.642-.955.244.244 0 0 0-.237-.12h-.003.047zm1.016-.191a.244.244 0 0 0-.06.008.244.244 0 0 0-.17.3 3.18 3.18 0 0 1-.046 1.75 3.175 3.175 0 0 1-1.017 1.443.244.244 0 0 0 .299.386 3.665 3.665 0 0 0 1.174-1.666 3.663 3.663 0 0 0 .054-2.02.244.244 0 0 0-.234-.2zm1.055-.37a.243.243 0 1 0-.096.477 4.339 4.339 0 0 1 2.142 1.17 4.344 4.344 0 0 1 1.087 2.18.244.244 0 0 0 .481-.079 4.823 4.823 0 0 0-1.209-2.42 4.82 4.82 0 0 0-2.38-1.302.244.244 0 0 0-.025-.027z"/></svg>
+            Viber
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
+      &copy; {year} {t(locale, 'footer.company')}. {t(locale, 'footer.rights')}.
+    </div>
+  </div>
+</footer>

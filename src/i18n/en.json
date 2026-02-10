@@ -1,0 +1,229 @@
+{
+  "site": {
+    "name": "Lako Services",
+    "tagline": "Automation made easy"
+  },
+  "nav": {
+    "home": "Home",
+    "logistics": "Logistics",
+    "smallBusiness": "Small Business",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Automation made easy",
+      "subtitle": "Telegram and Viber bots for your business. Save time and money with smart automation.",
+      "cta": "Schedule a free consultation",
+      "ctaSecondary": "How it works?"
+    },
+    "value": {
+      "title": "Why Lako Services?",
+      "fast": {
+        "title": "Quick launch",
+        "description": "Bot ready in 7 days"
+      },
+      "local": {
+        "title": "Local support",
+        "description": "Team in Novi Sad, tech support in Serbian"
+      },
+      "proven": {
+        "title": "Proven system",
+        "description": "Integration with PANTHEON ERP, SEF, e-invoices"
+      }
+    },
+    "segments": {
+      "title": "Who uses Lako Services?",
+      "logistics": {
+        "title": "Logistics companies",
+        "description": "EXPO 2027, dispatcher automation, vehicle tracking"
+      },
+      "smallBusiness": {
+        "title": "Small business",
+        "description": "Barbers, dentists, auto services, dry cleaners — booking, reminders, client communication"
+      }
+    }
+  },
+  "logistics": {
+    "hero": {
+      "title": "Get ready for EXPO 2027 with smart logistics",
+      "subtitle": "Over 6 million visitors are coming to Novi Sad. Is your logistics company ready?",
+      "cta": "Find out how"
+    },
+    "problems": {
+      "title": "Problems we solve",
+      "items": [
+        {
+          "title": "Dispatchers waste time",
+          "description": "on phone calls and manual data entry"
+        },
+        {
+          "title": "No vehicle tracking",
+          "description": "in real time"
+        },
+        {
+          "title": "Paper documentation",
+          "description": "data loss, errors"
+        },
+        {
+          "title": "Hard to scale",
+          "description": "how to increase fleet without growing the team?"
+        }
+      ]
+    },
+    "solution": {
+      "title": "Our solution — Telegram/Viber bot + PANTHEON integration",
+      "features": [
+        {
+          "title": "Automatic driver scheduling",
+          "description": "Bot sends tasks to drivers via Telegram/Viber"
+        },
+        {
+          "title": "Real-time tracking",
+          "description": "GPS vehicle position, delivery status"
+        },
+        {
+          "title": "PANTHEON ERP sync",
+          "description": "All orders automatically in the system"
+        },
+        {
+          "title": "E-invoices (SEF)",
+          "description": "Automatic invoice generation"
+        },
+        {
+          "title": "Reports",
+          "description": "Daily/weekly delivery reports"
+        }
+      ]
+    },
+    "expo": {
+      "text": "EXPO 2027 starts in less than a year. Companies that digitalize now will get the biggest share of business. Don't wait.",
+      "cta": "Let's start now — free consultation"
+    }
+  },
+  "smallBusiness": {
+    "hero": {
+      "title": "Automation for your salon, clinic or service",
+      "subtitle": "Booking, client reminders, automated messages — all via Telegram and Viber bot.",
+      "cta": "See how it works"
+    },
+    "services": {
+      "title": "Who is this for?",
+      "items": [
+        {
+          "title": "Barbershops & salons",
+          "description": "Appointment booking, 24h reminders, promotions"
+        },
+        {
+          "title": "Dental clinics",
+          "description": "Automatic appointments, reminders, health records"
+        },
+        {
+          "title": "Auto services",
+          "description": "Service booking, repair status, invoices"
+        },
+        {
+          "title": "Dry cleaners",
+          "description": "Clothes intake, notifications, ready for pickup"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "What do you get?",
+      "items": [
+        {
+          "title": "Fewer missed calls",
+          "description": "Clients book 24/7 via bot"
+        },
+        {
+          "title": "Automatic reminders",
+          "description": "Reduces no-shows by 70%"
+        },
+        {
+          "title": "Client loyalty",
+          "description": "Birthday messages, discounts, promotions"
+        },
+        {
+          "title": "Time savings",
+          "description": "2-3h less admin work daily"
+        }
+      ]
+    },
+    "cta": {
+      "text": "Schedule a demo for your business"
+    }
+  },
+  "about": {
+    "title": "About us",
+    "mission": "Lako Services is a Serbian company bringing automation to all businesses. We believe technology should be accessible, simple and efficient — without complicated systems and expensive solutions.",
+    "whyUs": {
+      "title": "Why us?",
+      "text": "A local team in Novi Sad means we understand Serbian business, work with the PANTHEON system, SEF e-invoices, and provide support in your language."
+    },
+    "contact": {
+      "office": "Novi Sad, Serbia",
+      "phone": "+381 XX XXX XXXX",
+      "email": "info@lako.services",
+      "telegram": "+381 XX XXX XXXX"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a question? Get in touch and we'll respond as soon as possible.",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "businessType": "Business type",
+      "businessTypes": {
+        "logistics": "Logistics",
+        "salon": "Salon",
+        "dental": "Dental",
+        "auto": "Auto service",
+        "other": "Other"
+      },
+      "message": "Message",
+      "submit": "Send message",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    },
+    "channels": {
+      "email": "info@lako.services",
+      "telegram": "+381 XX XXX XXXX",
+      "viber": "+381 XX XXX XXXX",
+      "address": "Novi Sad, Serbia"
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you're looking for doesn't exist.",
+    "cta": "Back to home"
+  },
+  "footer": {
+    "company": "Lako Services",
+    "location": "Novi Sad, Serbia",
+    "rights": "All rights reserved"
+  },
+  "seo": {
+    "home": {
+      "title": "Lako Services — Telegram & Viber bots for business automation | Novi Sad",
+      "description": "Automate your logistics, salon or service with Telegram and Viber bots. PANTHEON integration, EXPO 2027 ready. Local support in Novi Sad."
+    },
+    "logistics": {
+      "title": "Logistics — EXPO 2027 automation | Lako Services",
+      "description": "Get ready for EXPO 2027 with Telegram/Viber bots for logistics. Auto driver scheduling, PANTHEON ERP, e-invoices."
+    },
+    "smallBusiness": {
+      "title": "Small Business — Salon & service automation | Lako Services",
+      "description": "Telegram and Viber bot for barbers, dentists, auto services. Booking, reminders, client communication."
+    },
+    "about": {
+      "title": "About — Lako Services | Novi Sad",
+      "description": "Serbian business automation company. Local team in Novi Sad, PANTHEON integration, support in Serbian."
+    },
+    "contact": {
+      "title": "Contact — Lako Services | Novi Sad",
+      "description": "Schedule a free consultation. Telegram, Viber, email — reach us the way that works for you."
+    }
+  }
+}

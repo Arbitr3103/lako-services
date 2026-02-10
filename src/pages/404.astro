@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { t } from '../i18n/utils';
+
+const locale = 'sr';
+---
+<BaseLayout
+  title={t(locale, 'notFound.title')}
+  description={t(locale, 'notFound.description')}
+  locale={locale}
+  noindex={true}
+>
+  <section class="py-32 md:py-40">
+    <div class="max-w-xl mx-auto px-4 text-center">
+      <p class="text-6xl font-bold text-primary mb-6">404</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-text mb-4">
+        {t(locale, 'notFound.title')}
+      </h1>
+      <p class="text-lg text-text-light mb-10">
+        {t(locale, 'notFound.description')}
+      </p>
+      <CTA href="/" variant="accent" size="lg">
+        {t(locale, 'notFound.cta')}
+      </CTA>
+    </div>
+  </section>
+</BaseLayout>

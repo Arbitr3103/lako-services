@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { t, tObject, getLocalizedPath } from '../i18n/utils';
+
+const locale = 'sr';
+
+const problems = tObject<Array<{title: string, description: string}>>(locale, 'logistics.problems.items');
+const features = tObject<Array<{title: string, description: string}>>(locale, 'logistics.solution.features');
+---
+<BaseLayout
+  title={t(locale, 'seo.logistics.title')}
+  description={t(locale, 'seo.logistics.description')}
+  locale={locale}
+>
+  {/* Hero */}
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-accent/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text">
+          {t(locale, 'logistics.hero.title')}
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-text-light max-w-2xl mx-auto">
+          {t(locale, 'logistics.hero.subtitle')}
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+            {t(locale, 'logistics.hero.cta')}
+          </CTA>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+    </div>
+  </section>
+
+  {/* Problems */}
+  <section class="py-20 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'logistics.problems.title')}</SectionHeading>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {problems.map((item, i) => {
+          const icons = [
+            /* clock */
+            `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+            /* map-pin */
+            `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+            /* document */
+            `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+            /* trending-up */
+            `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+          ];
+          return (
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <Fragment set:html={icons[i]} />
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+              <p class="text-text-light">{item.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* Solution */}
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'logistics.solution.title')}</SectionHeading>
+
+      <div class="max-w-3xl mx-auto space-y-6">
+        {features.map((feature) => (
+          <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
+              <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-text">{feature.title}</h3>
+              <p class="text-text-light mt-1">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* EXPO 2027 CTA */}
+  <section class="py-16 bg-primary">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">EXPO 2027</h2>
+      <p class="text-blue-100 mb-8 text-lg">
+        {t(locale, 'logistics.expo.text')}
+      </p>
+      <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+        {t(locale, 'logistics.expo.cta')}
+      </CTA>
+    </div>
+  </section>
+</BaseLayout>

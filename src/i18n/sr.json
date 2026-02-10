@@ -1,0 +1,229 @@
+{
+  "site": {
+    "name": "Lako Services",
+    "tagline": "Automatizacija lako i brzo"
+  },
+  "nav": {
+    "home": "Početna",
+    "logistics": "Logistika",
+    "smallBusiness": "Mali biznis",
+    "about": "O nama",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "hero": {
+      "title": "Automatizacija — lako i brzo",
+      "subtitle": "Telegram i Viber botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
+      "cta": "Zakažite besplatnu konsultaciju",
+      "ctaSecondary": "Kako to radi?"
+    },
+    "value": {
+      "title": "Zašto Lako Services?",
+      "fast": {
+        "title": "Brzo pokretanje",
+        "description": "Bot spreman za 7 dana"
+      },
+      "local": {
+        "title": "Lokalna podrška",
+        "description": "Tim u Novom Sadu, tehnička podrška na srpskom"
+      },
+      "proven": {
+        "title": "Proveren sistem",
+        "description": "Integracija sa PANTHEON ERP, SEF, e-fakture"
+      }
+    },
+    "segments": {
+      "title": "Ko koristi Lako Services?",
+      "logistics": {
+        "title": "Logističke kompanije",
+        "description": "EXPO 2027, automatizacija dispečera, praćenje vozila"
+      },
+      "smallBusiness": {
+        "title": "Mali biznis",
+        "description": "Barberi, stomatolozi, auto-servisi, hemijske čistionice — zakazivanje, podsećanja, komunikacija sa klijentima"
+      }
+    }
+  },
+  "logistics": {
+    "hero": {
+      "title": "Pripremite se za EXPO 2027 sa pametnom logistikom",
+      "subtitle": "Preko 6 miliona posetilaca dolazi u Novi Sad. Da li je vaša logistička kompanija spremna?",
+      "cta": "Saznajte kako"
+    },
+    "problems": {
+      "title": "Problemi koje rešavamo",
+      "items": [
+        {
+          "title": "Dispečeri gube vreme",
+          "description": "na telefonske pozive i ručno unošenje podataka"
+        },
+        {
+          "title": "Nema praćenja vozila",
+          "description": "u realnom vremenu"
+        },
+        {
+          "title": "Papirna dokumentacija",
+          "description": "gubitak podataka, greške"
+        },
+        {
+          "title": "Teško skaliranje",
+          "description": "kako povećati broj vozila bez povećanja tima?"
+        }
+      ]
+    },
+    "solution": {
+      "title": "Naše rešenje — Telegram/Viber bot + PANTHEON integracija",
+      "features": [
+        {
+          "title": "Automatski raspored vozača",
+          "description": "Bot šalje zadatke vozačima u Telegram/Viber"
+        },
+        {
+          "title": "Real-time tracking",
+          "description": "GPS pozicija vozila, status isporuke"
+        },
+        {
+          "title": "PANTHEON ERP sinhronizacija",
+          "description": "Sve narudžbine automatski u sistemu"
+        },
+        {
+          "title": "E-fakture (SEF)",
+          "description": "Automatsko generisanje faktura"
+        },
+        {
+          "title": "Izveštaji",
+          "description": "Dnevni/nedeljni izveštaji o isporukama"
+        }
+      ]
+    },
+    "expo": {
+      "text": "EXPO 2027 počinje za manje od godinu dana. Kompanije koje se digitalizuju sada dobiće najveći deo posla. Ne čekajte.",
+      "cta": "Počnimo odmah — besplatna konsultacija"
+    }
+  },
+  "smallBusiness": {
+    "hero": {
+      "title": "Automatizacija za vaš salon, ordinaciju ili servis",
+      "subtitle": "Zakazivanje, podsećanje klijenata, automatske poruke — sve preko Telegram i Viber bota.",
+      "cta": "Pogledajte kako radi"
+    },
+    "services": {
+      "title": "Za koga je ovo?",
+      "items": [
+        {
+          "title": "Barbershops i saloni",
+          "description": "Zakazivanje termina, podsećanje 24h pre, promocije"
+        },
+        {
+          "title": "Stomatološke ordinacije",
+          "description": "Automatski termini, podsetnici, zdravstvena dokumentacija"
+        },
+        {
+          "title": "Auto-servisi",
+          "description": "Zakazivanje servisa, status popravke, fakture"
+        },
+        {
+          "title": "Hemijske čistionice",
+          "description": "Prijem odeće, notifikacije, gotova odeća"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Šta dobijate?",
+      "items": [
+        {
+          "title": "Manje propuštenih poziva",
+          "description": "Klijenti zakazuju 24/7 preko bota"
+        },
+        {
+          "title": "Automatska podsećanja",
+          "description": "Smanjuje no-show za 70%"
+        },
+        {
+          "title": "Lojalnost klijenata",
+          "description": "Rođendanske poruke, popusti, promocije"
+        },
+        {
+          "title": "Ušteda vremena",
+          "description": "2-3h dnevno manje administracije"
+        }
+      ]
+    },
+    "cta": {
+      "text": "Zakažite demo za vaš biznis"
+    }
+  },
+  "about": {
+    "title": "O nama",
+    "mission": "Lako Services je srpska kompanija koja donosi automatizaciju svim biznisima. Verujemo da tehnologija treba da bude pristupačna, jednostavna i efikasna — bez komplikovanih sistema i skupih rešenja.",
+    "whyUs": {
+      "title": "Zašto mi?",
+      "text": "Lokalni tim u Novom Sadu znači da razumemo srpski biznis, radimo sa PANTHEON sistemom, SEF e-fakturama, i pružamo podršku na vašem jeziku."
+    },
+    "contact": {
+      "office": "Novi Sad, Srbija",
+      "phone": "+381 XX XXX XXXX",
+      "email": "info@lako.services",
+      "telegram": "+381 XX XXX XXXX"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Imate pitanje? Javite nam se i odgovorićemo vam u najkraćem roku.",
+    "form": {
+      "name": "Ime i prezime",
+      "email": "Email",
+      "phone": "Telefon (opcionalno)",
+      "businessType": "Tip biznisa",
+      "businessTypes": {
+        "logistics": "Logistika",
+        "salon": "Salon",
+        "dental": "Stomatologija",
+        "auto": "Auto-servis",
+        "other": "Drugo"
+      },
+      "message": "Poruka",
+      "submit": "Pošaljite poruku",
+      "success": "Poruka je uspešno poslata! Odgovorićemo vam uskoro.",
+      "error": "Došlo je do greške. Pokušajte ponovo."
+    },
+    "channels": {
+      "email": "info@lako.services",
+      "telegram": "+381 XX XXX XXXX",
+      "viber": "+381 XX XXX XXXX",
+      "address": "Novi Sad, Srbija"
+    }
+  },
+  "notFound": {
+    "title": "Stranica nije pronađena",
+    "description": "Izvinite, stranica koju tražite ne postoji.",
+    "cta": "Nazad na početnu"
+  },
+  "footer": {
+    "company": "Lako Services",
+    "location": "Novi Sad, Srbija",
+    "rights": "Sva prava zadržana"
+  },
+  "seo": {
+    "home": {
+      "title": "Lako Services — Telegram i Viber botovi za automatizaciju biznisa | Novi Sad",
+      "description": "Automatizujte logistiku, salon ili servis sa Telegram i Viber botovima. PANTHEON integracija, EXPO 2027 spremnost. Lokalna podrška u Novom Sadu."
+    },
+    "logistics": {
+      "title": "Logistika — EXPO 2027 automatizacija | Lako Services",
+      "description": "Pripremite se za EXPO 2027 sa Telegram/Viber botovima za logistiku. Automatski raspored vozača, PANTHEON ERP, e-fakture."
+    },
+    "smallBusiness": {
+      "title": "Mali biznis — Automatizacija salona i servisa | Lako Services",
+      "description": "Telegram i Viber bot za barbere, stomatologe, auto-servise. Zakazivanje, podsećanja, komunikacija sa klijentima."
+    },
+    "about": {
+      "title": "O nama — Lako Services | Novi Sad",
+      "description": "Srpska kompanija za automatizaciju biznisa. Lokalni tim u Novom Sadu, PANTHEON integracija, podrška na srpskom."
+    },
+    "contact": {
+      "title": "Kontakt — Lako Services | Novi Sad",
+      "description": "Zakažite besplatnu konsultaciju. Telegram, Viber, email — javite nam se na način koji vam odgovara."
+    }
+  }
+}

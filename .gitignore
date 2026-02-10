@@ -6,8 +6,7 @@ node_modules/
 # Build
 dist/
 build/
-.next/
-out/
+.astro/
 
 # Environment
 .env
@@ -32,3 +31,6 @@ npm-debug.log*
 # Cache
 .cache/
 .turbo/
+
+# Cloudflare
+.wrangler/

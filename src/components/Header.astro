@@ -1,0 +1,89 @@
+---
+import Logo from './Logo.astro';
+import { t, getLocalizedPath, getAlternateLocale, getPathWithoutLocale, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const altLocale = getAlternateLocale(locale);
+const currentPath = getPathWithoutLocale(Astro.url.pathname);
+
+const navItems = [
+  { key: 'nav.logistics', path: '/logistics' },
+  { key: 'nav.smallBusiness', path: '/small-business' },
+  { key: 'nav.about', path: '/about' },
+  { key: 'nav.contact', path: '/contact' },
+] as const;
+---
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <Logo />
+
+      {/* Desktop nav */}
+      <div class="hidden md:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a
+            href={getLocalizedPath(item.path, locale)}
+            class:list={[
+              "text-sm font-medium transition-colors hover:text-primary",
+              currentPath === item.path ? "text-primary" : "text-text-light"
+            ]}
+          >
+            {t(locale, item.key)}
+          </a>
+        ))}
+      </div>
+
+      <div class="flex items-center gap-4">
+        {/* Language switcher */}
+        <a
+          href={getLocalizedPath(currentPath, altLocale)}
+          class="text-sm font-medium text-text-light hover:text-primary transition-colors px-2 py-1 rounded border border-gray-200 hover:border-primary"
+        >
+          {altLocale === 'en' ? 'EN' : 'SR'}
+        </a>
+
+        {/* Mobile menu button */}
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          aria-label="Menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile nav */}
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-2">
+        {navItems.map((item) => (
+          <a
+            href={getLocalizedPath(item.path, locale)}
+            class:list={[
+              "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+              currentPath === item.path
+                ? "bg-primary/10 text-primary"
+                : "text-text-light hover:bg-gray-50 hover:text-primary"
+            ]}
+          >
+            {t(locale, item.key)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>
