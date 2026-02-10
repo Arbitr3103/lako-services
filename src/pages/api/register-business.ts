@@ -12,6 +12,27 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    // Register in lako-bot database
+    const LAKO_BOT_API_URL = import.meta.env.LAKO_BOT_API_URL;
+    const REGISTRATION_SECRET = import.meta.env.REGISTRATION_SECRET;
+    if (LAKO_BOT_API_URL && REGISTRATION_SECRET) {
+      try {
+        const res = await fetch(`${LAKO_BOT_API_URL}/api/external/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${REGISTRATION_SECRET}`,
+          },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) {
+          console.error('lako-bot register error:', res.status, await res.text());
+        }
+      } catch (e) {
+        console.error('lako-bot register error:', e);
+      }
+    }
+
     // Email via Resend
     const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
     if (RESEND_API_KEY) {
