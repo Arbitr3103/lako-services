@@ -151,6 +151,56 @@
     },
     "cta": {
       "text": "Zakažite demo za vaš biznis"
+    },
+    "bots": {
+      "title": "Probajte naše botove",
+      "catalog": {
+        "title": "Lako Katalog",
+        "description": "Pretražite salone i servise u vašem gradu. Besplatno, bez registracije.",
+        "cta": "Otvori u Telegramu"
+      },
+      "admin": {
+        "title": "Lako Admin",
+        "description": "Bot za vlasnike biznisa — upravljajte terminima, klijentima i uslugama.",
+        "cta": "Otvori u Telegramu"
+      }
+    },
+    "register": {
+      "title": "Dodajte svoj biznis u katalog",
+      "subtitle": "Besplatno. Bez obaveza. Klijenti vas pronalaze preko bota.",
+      "cta": "Dodaj svoj biznis"
+    }
+  },
+  "registerBusiness": {
+    "title": "Dodaj svoj biznis",
+    "subtitle": "Popunite formu i vaš biznis će biti dodat u katalog u roku od 24 sata.",
+    "form": {
+      "businessName": "Naziv biznisa",
+      "category": "Kategorija",
+      "categories": {
+        "salon": "Salon / Frizerski",
+        "nails": "Nokti",
+        "dental": "Stomatologija",
+        "auto": "Auto-servis",
+        "dryclean": "Hemijsko čišćenje",
+        "massage": "Masaža",
+        "other": "Drugo"
+      },
+      "city": "Grad",
+      "cities": {
+        "belgrade": "Beograd",
+        "noviSad": "Novi Sad",
+        "other": "Drugi grad"
+      },
+      "address": "Adresa",
+      "phone": "Telefon",
+      "instagram": "Instagram (opcionalno)",
+      "website": "Web sajt (opcionalno)",
+      "contactName": "Kontakt osoba",
+      "email": "Email",
+      "submit": "Pošalji zahtev",
+      "success": "Zahtev je uspešno poslat! Dodaćemo vaš biznis u katalog u roku od 24 sata.",
+      "error": "Došlo je do greške. Pokušajte ponovo."
     }
   },
   "about": {
@@ -224,6 +274,10 @@
     "contact": {
       "title": "Kontakt — Lako Services | Novi Sad",
       "description": "Zakažite besplatnu konsultaciju. Telegram, Viber, email — javite nam se na način koji vam odgovara."
+    },
+    "registerBusiness": {
+      "title": "Dodaj svoj biznis u katalog | Lako Services",
+      "description": "Dodajte svoj salon, ordinaciju ili servis u Lako katalog besplatno. Klijenti vas pronalaze preko Telegram bota."
     }
   }
 }

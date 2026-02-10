@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RegisterForm from '../components/react/RegisterForm';
+import { t, getLocalizedPath } from '../i18n/utils';
+
+const locale = 'sr';
+---
+<BaseLayout
+  title={t(locale, 'seo.registerBusiness.title')}
+  description={t(locale, 'seo.registerBusiness.description')}
+  locale={locale}
+>
+  {/* Hero */}
+  <section class="bg-gradient-to-br from-primary/5 via-bg to-accent/5 py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-text">
+        {t(locale, 'registerBusiness.title')}
+      </h1>
+      <p class="mt-4 text-lg md:text-xl text-text-light max-w-2xl mx-auto">
+        {t(locale, 'registerBusiness.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  {/* Form */}
+  <section class="py-16 md:py-20 bg-bg">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <RegisterForm client:load locale={locale} />
+
+      <div class="mt-12 text-center text-text-light">
+        <p>
+          {locale === 'sr' ? 'Imate pitanja?' : 'Have questions?'}
+          <a href={getLocalizedPath('/contact', locale)} class="text-primary hover:underline ml-1">
+            {t(locale, 'nav.contact')}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

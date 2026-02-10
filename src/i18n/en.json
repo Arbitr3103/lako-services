@@ -151,6 +151,56 @@
     },
     "cta": {
       "text": "Schedule a demo for your business"
+    },
+    "bots": {
+      "title": "Try our bots",
+      "catalog": {
+        "title": "Lako Catalog",
+        "description": "Search salons and services in your city. Free, no registration needed.",
+        "cta": "Open in Telegram"
+      },
+      "admin": {
+        "title": "Lako Admin",
+        "description": "Bot for business owners — manage appointments, clients, and services.",
+        "cta": "Open in Telegram"
+      }
+    },
+    "register": {
+      "title": "Add your business to the catalog",
+      "subtitle": "Free. No obligations. Clients find you through the bot.",
+      "cta": "Add your business"
+    }
+  },
+  "registerBusiness": {
+    "title": "Add your business",
+    "subtitle": "Fill in the form and your business will be added to the catalog within 24 hours.",
+    "form": {
+      "businessName": "Business name",
+      "category": "Category",
+      "categories": {
+        "salon": "Salon / Barbershop",
+        "nails": "Nails",
+        "dental": "Dental clinic",
+        "auto": "Auto service",
+        "dryclean": "Dry cleaning",
+        "massage": "Massage",
+        "other": "Other"
+      },
+      "city": "City",
+      "cities": {
+        "belgrade": "Belgrade",
+        "noviSad": "Novi Sad",
+        "other": "Other city"
+      },
+      "address": "Address",
+      "phone": "Phone",
+      "instagram": "Instagram (optional)",
+      "website": "Website (optional)",
+      "contactName": "Contact person",
+      "email": "Email",
+      "submit": "Submit request",
+      "success": "Request sent successfully! We'll add your business to the catalog within 24 hours.",
+      "error": "Something went wrong. Please try again."
     }
   },
   "about": {
@@ -224,6 +274,10 @@
     "contact": {
       "title": "Contact — Lako Services | Novi Sad",
       "description": "Schedule a free consultation. Telegram, Viber, email — reach us the way that works for you."
+    },
+    "registerBusiness": {
+      "title": "Add your business to catalog | Lako Services",
+      "description": "Add your salon, clinic or service to Lako catalog for free. Clients find you through the Telegram bot."
     }
   }
 }
