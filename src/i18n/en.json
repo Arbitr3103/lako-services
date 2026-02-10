@@ -54,20 +54,20 @@
       "title": "Problems we solve",
       "items": [
         {
-          "title": "Dispatchers waste time",
-          "description": "on phone calls and manual data entry"
+          "title": "Dispatchers waste time on calls",
+          "description": "Manual phone scheduling and data entry eat up hours every day"
         },
         {
-          "title": "No vehicle tracking",
-          "description": "in real time"
+          "title": "No real-time vehicle tracking",
+          "description": "You don't know where your vehicles are or their delivery status"
         },
         {
-          "title": "Paper documentation",
-          "description": "data loss, errors"
+          "title": "Paper causes data loss",
+          "description": "Manual documentation leads to errors, lost orders, and delays"
         },
         {
-          "title": "Hard to scale",
-          "description": "how to increase fleet without growing the team?"
+          "title": "Difficult to scale operations",
+          "description": "How to increase fleet without expanding the team?"
         }
       ]
     },
@@ -97,7 +97,7 @@
       ]
     },
     "expo": {
-      "text": "EXPO 2027 starts in less than a year. Companies that digitalize now will get the biggest share of business. Don't wait.",
+      "text": "EXPO 2027 is approaching fast. Companies that digitalize now will capture the biggest market share. Don't wait.",
       "cta": "Let's start now — free consultation"
     }
   },

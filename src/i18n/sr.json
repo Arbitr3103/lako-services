@@ -54,20 +54,20 @@
       "title": "Problemi koje rešavamo",
       "items": [
         {
-          "title": "Dispečeri gube vreme",
-          "description": "na telefonske pozive i ručno unošenje podataka"
+          "title": "Dispečeri gube vreme na pozivima",
+          "description": "Ručno zakazivanje i unos podataka troše sate svakog dana"
         },
         {
-          "title": "Nema praćenja vozila",
-          "description": "u realnom vremenu"
+          "title": "Nema praćenja vozila u realnom vremenu",
+          "description": "Ne znate gde su vaša vozila niti status isporuke"
         },
         {
-          "title": "Papirna dokumentacija",
-          "description": "gubitak podataka, greške"
+          "title": "Papir uzrokuje gubitak podataka",
+          "description": "Ručna dokumentacija dovodi do grešaka, izgubljenih narudžbina i kašnjenja"
         },
         {
-          "title": "Teško skaliranje",
-          "description": "kako povećati broj vozila bez povećanja tima?"
+          "title": "Teško se skalira poslovanje",
+          "description": "Kako povećati broj vozila bez proširenja tima?"
         }
       ]
     },
@@ -97,7 +97,7 @@
       ]
     },
     "expo": {
-      "text": "EXPO 2027 počinje za manje od godinu dana. Kompanije koje se digitalizuju sada dobiće najveći deo posla. Ne čekajte.",
+      "text": "EXPO 2027 se brzo približava. Kompanije koje se digitalizuju sada osvajaju najveći deo tržišta. Ne čekajte.",
       "cta": "Počnimo odmah — besplatna konsultacija"
     }
   },
