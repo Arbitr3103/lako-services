@@ -55,19 +55,19 @@
       "items": [
         {
           "title": "Dispečeri gube vreme na pozivima",
-          "description": "Ručno zakazivanje i unos podataka troše sate svakog dana"
+          "description": "Vaši dispečeri provode 3-4 sata dnevno na telefonskoj koordinaciji i ručnom unosu podataka umesto optimizacije ruta i upravljanja operacijama."
         },
         {
           "title": "Nema praćenja vozila u realnom vremenu",
-          "description": "Ne znate gde su vaša vozila niti status isporuke"
+          "description": "Ne možete videti gde je vaš vozni park upravo sada, što uzrokuje žalbe klijenata, propuštene rokove isporuke i izgubljene poslovne prilike."
         },
         {
           "title": "Papir uzrokuje gubitak podataka",
-          "description": "Ručna dokumentacija dovodi do grešaka, izgubljenih narudžbina i kašnjenja"
+          "description": "Rukom pisane potvrde nestaju, narudžbine se dupliraju ili zaboravljaju, a nemate dokaz kada nastanu sporovi sa klijentima."
         },
         {
           "title": "Teško se skalira poslovanje",
-          "description": "Kako povećati broj vozila bez proširenja tima?"
+          "description": "Dodavanje novih vozila znači zapošljavanje više dispečera, koordinatora i administrativnog osoblja — svaki novi kamion umnožava vaše troškove."
         }
       ]
     },
@@ -76,23 +76,23 @@
       "features": [
         {
           "title": "Automatski raspored vozača",
-          "description": "Bot šalje zadatke vozačima u Telegram/Viber"
+          "description": "Bot dodeljuje rute i zadatke vozačima odmah preko Telegrama/Vibera — bez poziva, bez zabune."
         },
         {
           "title": "Real-time tracking",
-          "description": "GPS pozicija vozila, status isporuke"
+          "description": "GPS praćenje uživo, potvrde isporuke sa fotografijama i trenutna obaveštenja za klijente."
         },
         {
           "title": "PANTHEON ERP sinhronizacija",
-          "description": "Sve narudžbine automatski u sistemu"
+          "description": "Narudžbine iz PANTHEON-a se sinhronizuju vozačima za nekoliko sekundi — bez ručnog unosa, bez neusklađenosti podataka."
         },
         {
           "title": "E-fakture (SEF)",
-          "description": "Automatsko generisanje faktura"
+          "description": "SEF e-fakture se generišu i šalju automatski — potpuna usklađenost sa srpskim poreskim propisima."
         },
         {
           "title": "Izveštaji",
-          "description": "Dnevni/nedeljni izveštaji o isporukama"
+          "description": "Automatski dnevni i nedeljni izveštaji o isporukama stižu na vaš email — vidite performanse na prvi pogled."
         }
       ]
     },

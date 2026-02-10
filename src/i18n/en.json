@@ -55,19 +55,19 @@
       "items": [
         {
           "title": "Dispatchers waste time on calls",
-          "description": "Manual phone scheduling and data entry eat up hours every day"
+          "description": "Your dispatchers spend 3-4 hours daily on phone coordination and manual data entry instead of optimizing routes and managing operations."
         },
         {
           "title": "No real-time vehicle tracking",
-          "description": "You don't know where your vehicles are or their delivery status"
+          "description": "You can't see where your fleet is right now, causing customer complaints, missed delivery windows, and lost business opportunities."
         },
         {
           "title": "Paper causes data loss",
-          "description": "Manual documentation leads to errors, lost orders, and delays"
+          "description": "Handwritten delivery notes disappear, orders get duplicated or forgotten, and you have no proof when disputes arise with clients."
         },
         {
           "title": "Difficult to scale operations",
-          "description": "How to increase fleet without expanding the team?"
+          "description": "Adding more vehicles means hiring more dispatchers, coordinators, and admin staff — each new truck multiplies your overhead costs."
         }
       ]
     },
@@ -76,23 +76,23 @@
       "features": [
         {
           "title": "Automatic driver scheduling",
-          "description": "Bot sends tasks to drivers via Telegram/Viber"
+          "description": "Bot assigns routes and tasks to drivers instantly via Telegram/Viber — no phone calls, no confusion."
         },
         {
           "title": "Real-time tracking",
-          "description": "GPS vehicle position, delivery status"
+          "description": "Live GPS tracking, delivery confirmations with photos, and instant status updates for customers."
         },
         {
           "title": "PANTHEON ERP sync",
-          "description": "All orders automatically in the system"
+          "description": "Orders from PANTHEON sync to drivers in seconds — no manual re-entry, no data mismatches."
         },
         {
           "title": "E-invoices (SEF)",
-          "description": "Automatic invoice generation"
+          "description": "SEF e-invoices generated and submitted automatically — full compliance with Serbian tax regulations."
         },
         {
           "title": "Reports",
-          "description": "Daily/weekly delivery reports"
+          "description": "Automatic daily and weekly delivery reports sent to your email — see performance metrics at a glance."
         }
       ]
     },
