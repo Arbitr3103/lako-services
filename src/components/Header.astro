@@ -17,7 +17,7 @@ const navItems = [
   { key: 'nav.contact', path: '/contact' },
 ] as const;
 ---
-<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<header class="sticky top-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <Logo />
@@ -41,7 +41,7 @@ const navItems = [
         {/* Language switcher */}
         <a
           href={getLocalizedPath(currentPath, altLocale)}
-          class="text-sm font-medium text-text-light hover:text-primary transition-colors px-2 py-1 rounded border border-gray-200 hover:border-primary"
+          class="text-sm font-medium text-text-light hover:text-primary transition-colors px-2 py-1 rounded border border-border-light hover:border-primary"
         >
           {altLocale === 'en' ? 'EN' : 'SR'}
         </a>
@@ -49,7 +49,7 @@ const navItems = [
         {/* Mobile menu button */}
         <button
           id="mobile-menu-btn"
-          class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          class="md:hidden p-2 rounded-lg hover:bg-bg-card transition-colors"
           aria-label="Menu"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@ const navItems = [
               "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
               currentPath === item.path
                 ? "bg-primary/10 text-primary"
-                : "text-text-light hover:bg-gray-50 hover:text-primary"
+                : "text-text-light hover:bg-bg-card hover:text-primary"
             ]}
           >
             {t(locale, item.key)}

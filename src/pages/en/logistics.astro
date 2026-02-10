@@ -15,7 +15,7 @@ const features = tObject<Array<{title: string, description: string}>>(locale, 'l
   locale={locale}
 >
   {/* Hero */}
-  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-accent/5">
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-bg to-accent/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
       <div class="max-w-3xl mx-auto text-center">
         <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text">
@@ -55,7 +55,7 @@ const features = tObject<Array<{title: string, description: string}>>(locale, 'l
             `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
           ];
           return (
-            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary transition-colors">
               <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                 <Fragment set:html={icons[i]} />
               </div>
@@ -69,15 +69,15 @@ const features = tObject<Array<{title: string, description: string}>>(locale, 'l
   </section>
 
   {/* Solution */}
-  <section class="py-20">
+  <section class="py-20 bg-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'logistics.solution.title')}</SectionHeading>
 
       <div class="max-w-3xl mx-auto space-y-6">
         {features.map((feature) => (
-          <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <div class="flex items-start gap-4 bg-bg-card rounded-2xl p-6 border border-border hover:border-primary transition-colors">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-500/10 rounded-full flex items-center justify-center mt-0.5">
+              <svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -92,10 +92,10 @@ const features = tObject<Array<{title: string, description: string}>>(locale, 'l
   </section>
 
   {/* EXPO 2027 CTA */}
-  <section class="py-16 bg-primary">
+  <section class="py-16 bg-gradient-to-r from-primary/20 to-accent/10 border-t border-border">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold text-white mb-4">EXPO 2027</h2>
-      <p class="text-blue-100 mb-8 text-lg">
+      <p class="text-text-light mb-8 text-lg">
         {t(locale, 'logistics.expo.text')}
       </p>
       <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">

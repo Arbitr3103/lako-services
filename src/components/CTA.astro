@@ -8,12 +8,12 @@ interface Props {
 
 const { href, variant = 'accent', size = 'md', class: className = '' } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg';
 
 const variants = {
-  primary: 'bg-primary text-white hover:bg-primary-dark focus:ring-primary',
-  secondary: 'bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white focus:ring-primary',
-  accent: 'bg-accent text-white hover:bg-accent-dark focus:ring-accent',
+  primary: 'bg-primary text-bg hover:bg-primary-dark focus:ring-primary',
+  secondary: 'bg-bg-card text-text border border-border-light hover:bg-bg-card-hover hover:border-primary focus:ring-primary',
+  accent: 'bg-accent text-bg hover:bg-accent-dark focus:ring-accent',
 };
 
 const sizes = {

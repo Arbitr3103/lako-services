@@ -51,7 +51,7 @@ export default function ContactForm({ locale }: Props) {
           id="name"
           name="name"
           required
-          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+          className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function ContactForm({ locale }: Props) {
           id="email"
           name="email"
           required
-          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+          className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         />
       </div>
 
@@ -78,7 +78,7 @@ export default function ContactForm({ locale }: Props) {
           type="tel"
           id="phone"
           name="phone"
-          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+          className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         />
       </div>
 
@@ -91,7 +91,7 @@ export default function ContactForm({ locale }: Props) {
           id="businessType"
           name="businessType"
           required
-          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow bg-white"
+          className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         >
           <option value="">{locale === 'sr' ? 'Izaberite...' : 'Select...'}</option>
           <option value="logistics">{businessTypes.logistics}</option>
@@ -112,7 +112,7 @@ export default function ContactForm({ locale }: Props) {
           name="message"
           required
           rows={5}
-          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow resize-y"
+          className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow resize-y"
         />
       </div>
 
@@ -129,14 +129,14 @@ export default function ContactForm({ locale }: Props) {
 
       {/* Success message */}
       {status === 'success' && (
-        <div className="rounded-lg bg-green-50 border border-green-200 text-green-800 p-4 text-sm">
+        <div className="rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 p-4 text-sm">
           {form.success}
         </div>
       )}
 
       {/* Error message */}
       {status === 'error' && (
-        <div className="rounded-lg bg-red-50 border border-red-200 text-red-800 p-4 text-sm">
+        <div className="rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 p-4 text-sm">
           {form.error}
         </div>
       )}
