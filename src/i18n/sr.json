@@ -21,26 +21,26 @@
       "title": "Zašto Lako Services?",
       "fast": {
         "title": "Brzo pokretanje",
-        "description": "Bot spreman za 7 dana"
+        "description": "Vaš prilagođeni bot je spreman i radi za samo 7 dana — bez dugih razvojnih ciklusa."
       },
       "local": {
         "title": "Lokalna podrška",
-        "description": "Tim u Novom Sadu, tehnička podrška na srpskom"
+        "description": "Naš tim je u Novom Sadu sa kompletnom tehničkom podrškom na srpskom — bez jezičkih barijera."
       },
       "proven": {
         "title": "Proveren sistem",
-        "description": "Integracija sa PANTHEON ERP, SEF, e-fakture"
+        "description": "Besprekorna integracija sa PANTHEON ERP, automatske SEF e-fakture i izveštaji kojima možete verovati."
       }
     },
     "segments": {
       "title": "Ko koristi Lako Services?",
       "logistics": {
         "title": "Logističke kompanije",
-        "description": "EXPO 2027, automatizacija dispečera, praćenje vozila"
+        "description": "Pripremite se za EXPO 2027 sa automatizovanim dispečingom, praćenjem vozila u realnom vremenu i koordinacijom vozača preko Telegrama."
       },
       "smallBusiness": {
         "title": "Mali biznis",
-        "description": "Barberi, stomatolozi, auto-servisi, hemijske čistionice — zakazivanje, podsećanja, komunikacija sa klijentima"
+        "description": "Savršeno za barbere, stomatologe, auto-servise i hemijske čistionice — automatsko zakazivanje, podsećanja na termine i trenutne poruke klijentima."
       }
     }
   },

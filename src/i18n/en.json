@@ -21,26 +21,26 @@
       "title": "Why Lako Services?",
       "fast": {
         "title": "Quick launch",
-        "description": "Bot ready in 7 days"
+        "description": "Your custom bot is ready and running in just 7 days — no long development cycles."
       },
       "local": {
         "title": "Local support",
-        "description": "Team in Novi Sad, tech support in Serbian"
+        "description": "Our team is based in Novi Sad with full tech support in Serbian — no language barriers."
       },
       "proven": {
         "title": "Proven system",
-        "description": "Integration with PANTHEON ERP, SEF, e-invoices"
+        "description": "Seamless integration with PANTHEON ERP, automatic SEF e-invoices, and reporting you can trust."
       }
     },
     "segments": {
       "title": "Who uses Lako Services?",
       "logistics": {
         "title": "Logistics companies",
-        "description": "EXPO 2027, dispatcher automation, vehicle tracking"
+        "description": "Get ready for EXPO 2027 with automated dispatching, real-time vehicle tracking, and driver coordination via Telegram."
       },
       "smallBusiness": {
         "title": "Small business",
-        "description": "Barbers, dentists, auto services, dry cleaners — booking, reminders, client communication"
+        "description": "Perfect for barbers, dentists, auto services, and dry cleaners — automated booking, appointment reminders, and instant client updates."
       }
     }
   },
