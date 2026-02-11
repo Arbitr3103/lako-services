@@ -17,6 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Register in lako-bot database
+    let _botResult: any = { skipped: true };
     if (LAKO_BOT_API_URL && REGISTRATION_SECRET) {
       try {
         const res = await fetch(`${LAKO_BOT_API_URL}/api/external/register`, {
@@ -27,11 +28,10 @@ export const POST: APIRoute = async ({ request }) => {
           },
           body: JSON.stringify(data),
         });
-        if (!res.ok) {
-          console.error('lako-bot register error:', res.status, await res.text());
-        }
-      } catch (e) {
-        console.error('lako-bot register error:', e);
+        const text = await res.text();
+        _botResult = { status: res.status, body: text };
+      } catch (e: any) {
+        _botResult = { error: e.message || String(e) };
       }
     }
 
@@ -99,7 +99,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true, _debug: { hasSecret: !!REGISTRATION_SECRET, url: LAKO_BOT_API_URL } }),
+      JSON.stringify({ success: true, _debug: { hasSecret: !!REGISTRATION_SECRET, url: LAKO_BOT_API_URL, bot: _botResult } }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch {
