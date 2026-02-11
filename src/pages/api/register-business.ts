@@ -99,7 +99,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, _debug: { hasSecret: !!REGISTRATION_SECRET, url: LAKO_BOT_API_URL } }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch {
