@@ -1,0 +1,6 @@
+name = "lako-services"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+LAKO_BOT_API_URL = "https://bot.lako.services"

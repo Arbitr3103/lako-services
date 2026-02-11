@@ -1,9 +1,12 @@
 import type { APIRoute } from 'astro';
-import { LAKO_BOT_API_URL, REGISTRATION_SECRET, RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } from 'astro:env/server';
+import { RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, getSecret } from 'astro:env/server';
+
+const LAKO_BOT_API_URL = 'https://bot.lako.services';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
+    const REGISTRATION_SECRET = await getSecret('REGISTRATION_SECRET');
     const { businessName, category, city, address, phone, instagram, website, contactName, email } = data;
 
     if (!businessName || !category || !city || !address || !phone || !contactName || !email) {
