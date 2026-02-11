@@ -9,5 +9,6 @@ const { align = 'center', class: className = '' } = Astro.props;
   <h2 class="text-3xl md:text-4xl font-bold text-text mb-4">
     <slot />
   </h2>
+  {align === 'center' && <div class="w-12 h-1 bg-accent rounded-full mx-auto mt-4"></div>}
   <slot name="subtitle" />
 </div>

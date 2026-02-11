@@ -8,7 +8,7 @@ interface Props {
 
 const { href, variant = 'accent', size = 'md', class: className = '' } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg';
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 hover:scale-[1.03] shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg';
 
 const variants = {
   primary: 'bg-primary text-bg hover:bg-primary-dark focus:ring-primary',

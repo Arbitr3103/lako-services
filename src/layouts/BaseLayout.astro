@@ -62,6 +62,19 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     </main>
     <Footer locale={locale} />
 
+    {/* Scroll reveal observer */}
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
     {/* LocalBusiness structured data */}
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
