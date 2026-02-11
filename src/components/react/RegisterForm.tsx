@@ -2,13 +2,14 @@ import { useState, type FormEvent } from 'react';
 
 import sr from '../../i18n/sr.json';
 import en from '../../i18n/en.json';
+import ru from '../../i18n/ru.json';
 
 interface Props {
-  locale: 'sr' | 'en';
+  locale: 'sr' | 'en' | 'ru';
 }
 
 export default function RegisterForm({ locale }: Props) {
-  const translations = locale === 'sr' ? sr : en;
+  const translations = { sr, en, ru }[locale];
   const form = translations.registerBusiness.form;
   const categories = form.categories;
   const cities = form.cities;
@@ -58,7 +59,7 @@ export default function RegisterForm({ locale }: Props) {
           {form.category} *
         </label>
         <select id="category" name="category" required className={inputClass}>
-          <option value="">{locale === 'sr' ? 'Izaberite...' : 'Select...'}</option>
+          <option value="">{form.selectPlaceholder}</option>
           <option value="salon">{categories.salon}</option>
           <option value="nails">{categories.nails}</option>
           <option value="dental">{categories.dental}</option>
@@ -75,7 +76,7 @@ export default function RegisterForm({ locale }: Props) {
           {form.city} *
         </label>
         <select id="city" name="city" required className={inputClass}>
-          <option value="">{locale === 'sr' ? 'Izaberite...' : 'Select...'}</option>
+          <option value="">{form.selectPlaceholder}</option>
           <option value="belgrade">{cities.belgrade}</option>
           <option value="noviSad">{cities.noviSad}</option>
           <option value="other">{cities.other}</option>
@@ -136,9 +137,7 @@ export default function RegisterForm({ locale }: Props) {
         disabled={status === 'loading'}
         className="w-full bg-accent text-white font-semibold rounded-lg px-6 py-3 hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {status === 'loading'
-          ? (locale === 'sr' ? 'Slanje...' : 'Sending...')
-          : form.submit}
+        {status === 'loading' ? form.loading : form.submit}
       </button>
 
       {status === 'success' && (

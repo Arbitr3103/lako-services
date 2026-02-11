@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLocalizedPath, getAlternateLocale, getPathWithoutLocale, type Locale } from '../i18n/utils';
+import { getLocalizedPath, getPathWithoutLocale, ALL_LOCALES, type Locale } from '../i18n/utils';
 import '../styles/global.css';
 
 interface Props {
@@ -12,10 +12,10 @@ interface Props {
 }
 
 const { title, description, locale, noindex = false } = Astro.props;
-const altLocale = getAlternateLocale(locale);
 const currentPath = getPathWithoutLocale(Astro.url.pathname);
 const canonicalUrl = new URL(getLocalizedPath(currentPath, locale), Astro.site);
-const alternateUrl = new URL(getLocalizedPath(currentPath, altLocale), Astro.site);
+
+const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_RU' };
 ---
 <!doctype html>
 <html lang={locale}>
@@ -31,8 +31,9 @@ const alternateUrl = new URL(getLocalizedPath(currentPath, altLocale), Astro.sit
 
     {/* Canonical & hreflang */}
     <link rel="canonical" href={canonicalUrl.href} />
-    <link rel="alternate" hreflang={locale} href={canonicalUrl.href} />
-    <link rel="alternate" hreflang={altLocale} href={alternateUrl.href} />
+    {ALL_LOCALES.map(loc => (
+      <link rel="alternate" hreflang={loc} href={new URL(getLocalizedPath(currentPath, loc), Astro.site).href} />
+    ))}
     <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, 'sr'), Astro.site).href} />
 
     {/* Open Graph */}
@@ -40,7 +41,7 @@ const alternateUrl = new URL(getLocalizedPath(currentPath, altLocale), Astro.sit
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl.href} />
     <meta property="og:site_name" content="Lako Services" />
-    <meta property="og:locale" content={locale === 'sr' ? 'sr_RS' : 'en_US'} />
+    <meta property="og:locale" content={ogLocaleMap[locale]} />
     <meta property="og:type" content="website" />
 
     {/* Favicon */}

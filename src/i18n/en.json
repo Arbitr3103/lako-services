@@ -272,7 +272,9 @@
       "email": "Email",
       "submit": "Submit request",
       "success": "Request sent successfully! We'll add your business to the catalog within 24 hours.",
-      "error": "Something went wrong. Please try again."
+      "error": "Something went wrong. Please try again.",
+      "loading": "Sending...",
+      "selectPlaceholder": "Select..."
     }
   },
   "about": {
@@ -307,7 +309,9 @@
       "message": "Message",
       "submit": "Send message",
       "success": "Message sent successfully! We'll get back to you soon.",
-      "error": "Something went wrong. Please try again."
+      "error": "Something went wrong. Please try again.",
+      "loading": "Sending...",
+      "selectPlaceholder": "Select..."
     },
     "channels": {
       "email": "info@lako.services",
@@ -324,7 +328,8 @@
   "footer": {
     "company": "Lako Services",
     "location": "Novi Sad, Serbia",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "contactUs": "Get in touch"
   },
   "seo": {
     "home": {

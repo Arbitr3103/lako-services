@@ -1,9 +1,13 @@
 import sr from './sr.json';
 import en from './en.json';
+import ru from './ru.json';
 
-export type Locale = 'sr' | 'en';
+export type Locale = 'sr' | 'en' | 'ru';
 
-const translations = { sr, en } as const;
+export const ALL_LOCALES: Locale[] = ['sr', 'en', 'ru'];
+export const LOCALE_LABELS: Record<Locale, string> = { sr: 'SR', en: 'EN', ru: 'RU' };
+
+const translations = { sr, en, ru } as const;
 
 type NestedKeyOf<T> = T extends object
   ? { [K in keyof T & string]: T[K] extends object
@@ -37,21 +41,25 @@ export function tObject<T = unknown>(locale: Locale, key: string): T {
 export function getLocaleFromUrl(url: URL): Locale {
   const [, lang] = url.pathname.split('/');
   if (lang === 'en') return 'en';
+  if (lang === 'ru') return 'ru';
   return 'sr';
 }
 
 export function getLocalizedPath(path: string, locale: Locale): string {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   if (locale === 'sr') return cleanPath;
-  return `/en${cleanPath}`;
+  if (locale === 'en') return `/en${cleanPath}`;
+  return `/ru${cleanPath}`;
 }
 
-export function getAlternateLocale(locale: Locale): Locale {
-  return locale === 'sr' ? 'en' : 'sr';
+export function getOtherLocales(locale: Locale): Locale[] {
+  return ALL_LOCALES.filter(l => l !== locale);
 }
 
 export function getPathWithoutLocale(pathname: string): string {
   if (pathname.startsWith('/en/')) return pathname.slice(3);
   if (pathname === '/en') return '/';
+  if (pathname.startsWith('/ru/')) return pathname.slice(3);
+  if (pathname === '/ru') return '/';
   return pathname;
 }

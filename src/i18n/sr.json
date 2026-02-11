@@ -272,7 +272,9 @@
       "email": "Email",
       "submit": "Pošalji zahtev",
       "success": "Zahtev je uspešno poslat! Dodaćemo vaš biznis u katalog u roku od 24 sata.",
-      "error": "Došlo je do greške. Pokušajte ponovo."
+      "error": "Došlo je do greške. Pokušajte ponovo.",
+      "loading": "Slanje...",
+      "selectPlaceholder": "Izaberite..."
     }
   },
   "about": {
@@ -307,7 +309,9 @@
       "message": "Poruka",
       "submit": "Pošaljite poruku",
       "success": "Poruka je uspešno poslata! Odgovorićemo vam uskoro.",
-      "error": "Došlo je do greške. Pokušajte ponovo."
+      "error": "Došlo je do greške. Pokušajte ponovo.",
+      "loading": "Slanje...",
+      "selectPlaceholder": "Izaberite..."
     },
     "channels": {
       "email": "info@lako.services",
@@ -324,7 +328,8 @@
   "footer": {
     "company": "Lako Services",
     "location": "Novi Sad, Srbija",
-    "rights": "Sva prava zadržana"
+    "rights": "Sva prava zadržana",
+    "contactUs": "Kontaktirajte nas"
   },
   "seo": {
     "home": {

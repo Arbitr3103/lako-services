@@ -1,13 +1,13 @@
 ---
 import Logo from './Logo.astro';
-import { t, getLocalizedPath, getAlternateLocale, getPathWithoutLocale, type Locale } from '../i18n/utils';
+import { t, getLocalizedPath, getOtherLocales, getPathWithoutLocale, LOCALE_LABELS, type Locale } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
-const altLocale = getAlternateLocale(locale);
+const otherLocales = getOtherLocales(locale);
 const currentPath = getPathWithoutLocale(Astro.url.pathname);
 
 const navItems = [
@@ -39,12 +39,16 @@ const navItems = [
 
       <div class="flex items-center gap-4">
         {/* Language switcher */}
-        <a
-          href={getLocalizedPath(currentPath, altLocale)}
-          class="text-sm font-medium text-text-light hover:text-primary transition-colors px-2 py-1 rounded border border-border-light hover:border-primary"
-        >
-          {altLocale === 'en' ? 'EN' : 'SR'}
-        </a>
+        <div class="flex items-center gap-1">
+          {otherLocales.map(loc => (
+            <a
+              href={getLocalizedPath(currentPath, loc)}
+              class="text-sm font-medium text-text-light hover:text-primary transition-colors px-2 py-1 rounded border border-border-light hover:border-primary"
+            >
+              {LOCALE_LABELS[loc]}
+            </a>
+          ))}
+        </div>
 
         {/* Mobile menu button */}
         <button
