@@ -15,6 +15,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Register in lako-bot database
     const LAKO_BOT_API_URL = import.meta.env.LAKO_BOT_API_URL;
     const REGISTRATION_SECRET = import.meta.env.REGISTRATION_SECRET;
+    console.log('[register-business] LAKO_BOT_API_URL defined:', !!LAKO_BOT_API_URL, 'REGISTRATION_SECRET defined:', !!REGISTRATION_SECRET);
     if (LAKO_BOT_API_URL && REGISTRATION_SECRET) {
       try {
         const res = await fetch(`${LAKO_BOT_API_URL}/api/external/register`, {
