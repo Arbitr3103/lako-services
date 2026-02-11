@@ -37,6 +37,8 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Contact form**: React island → POST `/api/contact` → Resend email + Telegram Bot notification.
 
+**Registration form**: `/dodaj-biznis` → POST `/api/register-business` → lako-bot API (creates tenant with pending status) + Resend email + Telegram notification. Admin approves in @LakoAdminBot.
+
 ## Environment Variables
 
 ```
@@ -44,6 +46,8 @@ RESEND_API_KEY=re_xxxxx        # Resend transactional email
 TELEGRAM_BOT_TOKEN=xxxxx       # Telegram Bot API notifications
 TELEGRAM_CHAT_ID=xxxxx         # Telegram chat for notifications
 PUBLIC_SITE_URL=https://lako.services
+LAKO_BOT_API_URL=https://bot.lako.services  # lako-bot API for self-registration
+REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 ```
 
 ## Deployment
