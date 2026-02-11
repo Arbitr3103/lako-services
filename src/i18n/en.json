@@ -104,8 +104,29 @@
   "smallBusiness": {
     "hero": {
       "title": "Automation for your salon, clinic or service",
-      "subtitle": "Booking, client reminders, automated messages — all via Telegram and Viber bot.",
+      "subtitle": "Two Telegram bots working together: clients find you and book appointments through Lako Catalog, while you manage everything through Lako Admin.",
       "cta": "See how it works"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "steps": [
+        {
+          "title": "Client finds you",
+          "description": "Your business appears in @lako_services_notify_bot. A client searches \"barber Novi Sad\" and sees you instantly."
+        },
+        {
+          "title": "Client books an appointment",
+          "description": "They choose a service, date, and time — right in Telegram. No calls, no waiting."
+        },
+        {
+          "title": "Automation does the work",
+          "description": "Bot sends reminders to clients 24h before the appointment. You get notified about every new booking."
+        },
+        {
+          "title": "You manage via Lako Admin",
+          "description": "Through @lako_admin_bot you see all appointments, change schedules, and send promotions."
+        }
+      ]
     },
     "services": {
       "title": "Who is this for?",
@@ -153,21 +174,67 @@
       "text": "Schedule a demo for your business"
     },
     "bots": {
-      "title": "Try our bots",
+      "title": "Two bots — one system",
+      "subtitle": "Lako uses two Telegram bots that work together: one for your clients, one for you as the business owner.",
       "catalog": {
         "title": "Lako Catalog",
-        "description": "Search salons and services in your city. Free, no registration needed.",
+        "badge": "For your clients",
+        "description": "Your clients use this bot to find your business, browse services, book appointments, and get automatic reminders. You don't have to do anything — the bot works for you.",
         "cta": "Open in Telegram"
       },
       "admin": {
         "title": "Lako Admin",
-        "description": "Bot for business owners — manage appointments, clients, and services.",
+        "badge": "For you — the owner",
+        "description": "You use this bot to see all booked appointments, manage your schedule, view your client base, and send promotions. Your control center.",
         "cta": "Open in Telegram"
-      }
+      },
+      "comparison": {
+        "title": "Feature comparison",
+        "features": "Feature",
+        "rows": [
+          { "label": "Business search", "catalog": true, "admin": false },
+          { "label": "Appointment booking", "catalog": true, "admin": false },
+          { "label": "Client reminders", "catalog": true, "admin": false },
+          { "label": "Schedule management", "catalog": false, "admin": true },
+          { "label": "Client database", "catalog": false, "admin": true },
+          { "label": "Send promotions", "catalog": false, "admin": true },
+          { "label": "New booking notifications", "catalog": false, "admin": true }
+        ]
+      },
+      "screenshotPlaceholder": "Interface preview"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "question": "Do I need both bots?",
+          "answer": "Yes, but you only use Lako Admin. Your clients use Lako Catalog to search and book appointments."
+        },
+        {
+          "question": "How much does it cost?",
+          "answer": "Contact us for pricing details. Catalog registration is free."
+        },
+        {
+          "question": "How long does it take to get started?",
+          "answer": "Your business is in the catalog within 24 hours of registration."
+        },
+        {
+          "question": "Can clients book without Telegram?",
+          "answer": "Currently, booking is only available through Telegram. We're working on Viber support."
+        },
+        {
+          "question": "Is my client data safe?",
+          "answer": "Yes, we are fully GDPR-compliant. Your data is protected and never shared with third parties."
+        },
+        {
+          "question": "What if I need a custom feature?",
+          "answer": "Contact us — we build custom solutions for your specific business needs."
+        }
+      ]
     },
     "register": {
       "title": "Add your business to the catalog",
-      "subtitle": "Free. No obligations. Clients find you through the bot.",
+      "subtitle": "Free. Registration takes 2 minutes. Your business is in the catalog within 24 hours.",
       "cta": "Add your business"
     }
   },

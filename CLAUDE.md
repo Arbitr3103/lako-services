@@ -35,6 +35,8 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Colors**: Primary `#2563EB` (blue), Accent `#D97706` (orange CTA), Text `#1F2937`.
 
+**Cloudflare Pages env vars**: `import.meta.env` НЕ работает для server-side переменных на Cloudflare Pages runtime. Используй `astro:env/server`: определи schema в `astro.config.mjs` → `envField.string({ context: 'server', access: 'secret' })`, импортируй через `import { VAR } from 'astro:env/server'` или `getSecret('VAR')`.
+
 **Contact form**: React island → POST `/api/contact` → Resend email + Telegram Bot notification.
 
 **Registration form**: `/dodaj-biznis` → POST `/api/register-business` → lako-bot API (creates tenant with pending status) + Resend email + Telegram notification. Admin approves in @LakoAdminBot.

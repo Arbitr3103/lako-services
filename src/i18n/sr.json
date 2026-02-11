@@ -104,8 +104,29 @@
   "smallBusiness": {
     "hero": {
       "title": "Automatizacija za vaš salon, ordinaciju ili servis",
-      "subtitle": "Zakazivanje, podsećanje klijenata, automatske poruke — sve preko Telegram i Viber bota.",
+      "subtitle": "Dva Telegram bota koja rade zajedno: klijenti vas pronalaze i zakazuju termine kroz Lako Katalog, a vi upravljate svime kroz Lako Admin.",
       "cta": "Pogledajte kako radi"
+    },
+    "howItWorks": {
+      "title": "Kako to radi?",
+      "steps": [
+        {
+          "title": "Klijent vas pronalazi",
+          "description": "Vaš biznis se pojavljuje u @lako_services_notify_bot. Klijent traži \"frizer Novi Sad\" i odmah vas vidi."
+        },
+        {
+          "title": "Klijent se zakazuje",
+          "description": "Bira uslugu, datum i vreme — direktno u Telegramu. Bez poziva, bez čekanja."
+        },
+        {
+          "title": "Automatika radi umesto vas",
+          "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje o novom zakazivanju."
+        },
+        {
+          "title": "Vi upravljate kroz Lako Admin",
+          "description": "Kroz @lako_admin_bot vidite sve termine, menjate raspored i šaljete promocije."
+        }
+      ]
     },
     "services": {
       "title": "Za koga je ovo?",
@@ -153,21 +174,67 @@
       "text": "Zakažite demo za vaš biznis"
     },
     "bots": {
-      "title": "Probajte naše botove",
+      "title": "Dva bota — jedan sistem",
+      "subtitle": "Lako koristi dva Telegram bota koji rade zajedno: jedan za vaše klijente, drugi za vas kao vlasnika biznisa.",
       "catalog": {
         "title": "Lako Katalog",
-        "description": "Pretražite salone i servise u vašem gradu. Besplatno, bez registracije.",
+        "badge": "Za vaše klijente",
+        "description": "Vaši klijenti koriste ovaj bot da pronađu vaš biznis, pregledaju usluge, zakažu termin i dobiju automatske podsetnike. Vi ne morate ništa da radite — bot radi umesto vas.",
         "cta": "Otvori u Telegramu"
       },
       "admin": {
         "title": "Lako Admin",
-        "description": "Bot za vlasnike biznisa — upravljajte terminima, klijentima i uslugama.",
+        "badge": "Za vas — vlasnika",
+        "description": "Vi koristite ovaj bot da vidite sve zakazane termine, upravljate rasporedom, pregledate bazu klijenata i šaljete promocije. Vaš kontrolni centar.",
         "cta": "Otvori u Telegramu"
-      }
+      },
+      "comparison": {
+        "title": "Uporedni pregled",
+        "features": "Funkcija",
+        "rows": [
+          { "label": "Pretraga biznisa", "catalog": true, "admin": false },
+          { "label": "Zakazivanje termina", "catalog": true, "admin": false },
+          { "label": "Podsećanja klijentima", "catalog": true, "admin": false },
+          { "label": "Upravljanje rasporedom", "catalog": false, "admin": true },
+          { "label": "Baza klijenata", "catalog": false, "admin": true },
+          { "label": "Slanje promocija", "catalog": false, "admin": true },
+          { "label": "Obaveštenja o novim terminima", "catalog": false, "admin": true }
+        ]
+      },
+      "screenshotPlaceholder": "Primer interfejsa"
+    },
+    "faq": {
+      "title": "Najčešća pitanja",
+      "items": [
+        {
+          "question": "Da li mi trebaju oba bota?",
+          "answer": "Da, ali vi koristite samo Lako Admin. Lako Katalog koriste vaši klijenti za pretragu i zakazivanje."
+        },
+        {
+          "question": "Koliko to košta?",
+          "answer": "Kontaktirajte nas za detalje o cenama. Registracija u katalogu je besplatna."
+        },
+        {
+          "question": "Koliko vremena treba za pokretanje?",
+          "answer": "Vaš biznis je u katalogu u roku od 24 sata posle registracije."
+        },
+        {
+          "question": "Mogu li klijenti da zakazuju bez Telegrama?",
+          "answer": "Trenutno je zakazivanje dostupno samo kroz Telegram. Radimo na Viber podršci."
+        },
+        {
+          "question": "Da li su podaci mojih klijenata bezbedni?",
+          "answer": "Da, potpuno poštujemo GDPR. Vaši podaci su zaštićeni i nikada se ne dele sa trećim stranama."
+        },
+        {
+          "question": "Šta ako mi treba posebna funkcija?",
+          "answer": "Kontaktirajte nas — pravimo prilagođena rešenja za specifične potrebe vašeg biznisa."
+        }
+      ]
     },
     "register": {
       "title": "Dodajte svoj biznis u katalog",
-      "subtitle": "Besplatno. Bez obaveza. Klijenti vas pronalaze preko bota.",
+      "subtitle": "Besplatno. Registracija traje 2 minuta. Vaš biznis je u katalogu u roku od 24 sata.",
       "cta": "Dodaj svoj biznis"
     }
   },
