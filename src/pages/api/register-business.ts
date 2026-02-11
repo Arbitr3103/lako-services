@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, getSecret } from 'astro:env/server';
 
-const LAKO_BOT_API_URL = 'http://178.72.130.60:3100';
+const LAKO_BOT_API_URL = 'https://bot.lako.services';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
