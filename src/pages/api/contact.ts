@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } from 'astro:env/server';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -14,7 +15,6 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Email via Resend
-    const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
     if (RESEND_API_KEY) {
       try {
         await fetch('https://api.resend.com/emails', {
@@ -44,8 +44,6 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Telegram notification
-    const TELEGRAM_BOT_TOKEN = import.meta.env.TELEGRAM_BOT_TOKEN;
-    const TELEGRAM_CHAT_ID = import.meta.env.TELEGRAM_CHAT_ID;
     if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
       try {
         const text = [

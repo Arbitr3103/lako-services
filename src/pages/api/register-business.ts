@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
+import { LAKO_BOT_API_URL, REGISTRATION_SECRET, RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } from 'astro:env/server';
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const runtimeEnv = (locals as any).runtime?.env || {};
     const { businessName, category, city, address, phone, instagram, website, contactName, email } = data;
 
     if (!businessName || !category || !city || !address || !phone || !contactName || !email) {
@@ -14,9 +14,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     // Register in lako-bot database
-    const LAKO_BOT_API_URL = import.meta.env.LAKO_BOT_API_URL || runtimeEnv.LAKO_BOT_API_URL;
-    const REGISTRATION_SECRET = import.meta.env.REGISTRATION_SECRET || runtimeEnv.REGISTRATION_SECRET;
-    console.log('[register-business] LAKO_BOT_API_URL defined:', !!LAKO_BOT_API_URL, 'REGISTRATION_SECRET defined:', !!REGISTRATION_SECRET);
     if (LAKO_BOT_API_URL && REGISTRATION_SECRET) {
       try {
         const res = await fetch(`${LAKO_BOT_API_URL}/api/external/register`, {
@@ -36,7 +33,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     // Email via Resend
-    const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
     if (RESEND_API_KEY) {
       try {
         await fetch('https://api.resend.com/emails', {
@@ -69,8 +65,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     // Telegram notification
-    const TELEGRAM_BOT_TOKEN = import.meta.env.TELEGRAM_BOT_TOKEN;
-    const TELEGRAM_CHAT_ID = import.meta.env.TELEGRAM_CHAT_ID;
     if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
       try {
         const text = [
