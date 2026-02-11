@@ -120,7 +120,7 @@
         },
         {
           "title": "Automatika radi umesto vas",
-          "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje o novom zakazivanju."
+          "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje u @lako_admin_bot o svakom novom zakazivanju."
         },
         {
           "title": "Vi upravljate kroz Lako Admin",
@@ -201,7 +201,8 @@
           { "label": "Obaveštenja o novim terminima", "catalog": false, "admin": true }
         ]
       },
-      "screenshotPlaceholder": "Primer interfejsa"
+      "screenshotPlaceholder": "Primer interfejsa",
+      "adminScreenshotPlaceholder": "Registracija biznisa"
     },
     "faq": {
       "title": "Najčešća pitanja",
@@ -212,7 +213,7 @@
         },
         {
           "question": "Koliko to košta?",
-          "answer": "Kontaktirajte nas za detalje o cenama. Registracija u katalogu je besplatna."
+          "answer": "Registracija i osnovno korišćenje su besplatni. Za napredne funkcije (detaljna analitika, integracije, prioritetna podrška) cene počinju od 100€ mesečno."
         },
         {
           "question": "Koliko vremena treba za pokretanje?",
@@ -229,12 +230,16 @@
         {
           "question": "Šta ako mi treba posebna funkcija?",
           "answer": "Kontaktirajte nas — pravimo prilagođena rešenja za specifične potrebe vašeg biznisa."
+        },
+        {
+          "question": "Da li se može integrisati sa mojim postojećim sistemom?",
+          "answer": "Trenutno Lako radi kao samostalan sistem. Za prilagođene integracije kontaktirajte nas — možemo razviti povezivanje po vašim potrebama."
         }
       ]
     },
     "register": {
       "title": "Dodajte svoj biznis u katalog",
-      "subtitle": "Besplatno. Registracija traje 2 minuta. Vaš biznis je u katalogu u roku od 24 sata.",
+      "subtitle": "Besplatno. Registracija traje 2 minuta. Već 150+ biznisa koristi Lako Services. Vaš biznis je u katalogu u roku od 24 sata.",
       "cta": "Dodaj svoj biznis"
     }
   },

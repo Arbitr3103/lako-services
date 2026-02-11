@@ -120,7 +120,7 @@
         },
         {
           "title": "Automation does the work",
-          "description": "Bot sends reminders to clients 24h before the appointment. You get notified about every new booking."
+          "description": "Bot sends reminders to clients 24h before the appointment. You get notified in @lako_admin_bot about every new booking."
         },
         {
           "title": "You manage via Lako Admin",
@@ -201,7 +201,8 @@
           { "label": "New booking notifications", "catalog": false, "admin": true }
         ]
       },
-      "screenshotPlaceholder": "Interface preview"
+      "screenshotPlaceholder": "Interface preview",
+      "adminScreenshotPlaceholder": "Business registration"
     },
     "faq": {
       "title": "Frequently asked questions",
@@ -212,7 +213,7 @@
         },
         {
           "question": "How much does it cost?",
-          "answer": "Contact us for pricing details. Catalog registration is free."
+          "answer": "Registration and basic usage are free. For advanced features (detailed analytics, integrations, priority support) pricing starts from €100/month."
         },
         {
           "question": "How long does it take to get started?",
@@ -229,12 +230,16 @@
         {
           "question": "What if I need a custom feature?",
           "answer": "Contact us — we build custom solutions for your specific business needs."
+        },
+        {
+          "question": "Can it integrate with my existing system?",
+          "answer": "Currently Lako works as a standalone system. For custom integrations, contact us — we can build connections tailored to your needs."
         }
       ]
     },
     "register": {
       "title": "Add your business to the catalog",
-      "subtitle": "Free. Registration takes 2 minutes. Your business is in the catalog within 24 hours.",
+      "subtitle": "Free. Registration takes 2 minutes. Already 150+ businesses use Lako Services. Your business is in the catalog within 24 hours.",
       "cta": "Add your business"
     }
   },
