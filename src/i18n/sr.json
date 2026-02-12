@@ -46,59 +46,155 @@
   },
   "logistics": {
     "hero": {
-      "title": "Pripremite se za EXPO 2027 sa pametnom logistikom",
-      "subtitle": "Preko 6 miliona posetilaca dolazi u Novi Sad. Da li je vaša logistička kompanija spremna?",
-      "cta": "Saznajte kako"
+      "title": "EXPO 2027: digitalna logistika koja vas čeka",
+      "subtitle": "6 miliona posetilaca. Jedna prilika. Je li vaš sistem spreman?",
+      "cta": "Zakažite analizu vaše logistike"
+    },
+    "countdown": {
+      "title": "EXPO 2027 se ubrzano približava",
+      "subtitle": "Logističke kompanije bez digitalnih sistema neće moći da ispune narudžbine.",
+      "date": "2027-05-15",
+      "stats": [
+        { "value": "6M+", "label": "očekivanih posetilaca" },
+        { "value": "300%", "label": "rast logističkog saobraćaja" },
+        { "value": "18", "label": "meseci do početka" }
+      ],
+      "days": "dana",
+      "hours": "sati",
+      "minutes": "minuta",
+      "seconds": "sekundi"
     },
     "problems": {
-      "title": "Problemi koje rešavamo",
+      "title": "Zašto vaš trenutni sistem neće izdržati",
       "items": [
         {
-          "title": "Dispečeri gube vreme na pozivima",
-          "description": "Vaši dispečeri provode 3-4 sata dnevno na telefonskoj koordinaciji i ručnom unosu podataka umesto optimizacije ruta i upravljanja operacijama."
+          "number": "#1",
+          "title": "Dispečeri gube 3-4 sata dnevno",
+          "description": "Vaši dispečeri provode 3-4 sata dnevno na telefonskoj koordinaciji umesto optimizacije ruta. To je 15-20 izgubljenih sati nedeljno."
         },
         {
-          "title": "Nema praćenja vozila u realnom vremenu",
-          "description": "Ne možete videti gde je vaš vozni park upravo sada, što uzrokuje žalbe klijenata, propuštene rokove isporuke i izgubljene poslovne prilike."
+          "number": "#2",
+          "title": "70% kašnjenja bez real-time praćenja",
+          "description": "Bez GPS praćenja uživo ne znate gde su vaša vozila. Klijent pita — vi ne znate odgovor. Rezultat: žalbe i izgubljeni ugovori."
         },
         {
-          "title": "Papir uzrokuje gubitak podataka",
-          "description": "Rukom pisane potvrde nestaju, narudžbine se dupliraju ili zaboravljaju, a nemate dokaz kada nastanu sporovi sa klijentima."
+          "number": "#3",
+          "title": "Papir = izgubljeni dokazi",
+          "description": "Rukom pisane potvrde nestaju, narudžbine se dupliraju. Kada nastane spor s klijentom — nemate dokaz."
         },
         {
-          "title": "Teško se skalira poslovanje",
-          "description": "Dodavanje novih vozila znači zapošljavanje više dispečera, koordinatora i administrativnog osoblja — svaki novi kamion umnožava vaše troškove."
+          "number": "#4",
+          "title": "Svaki novi kamion = novi troškovi",
+          "description": "Dodajete vozilo — zapošljavate dispečera. Vaši administrativni troškovi rastu brže od prihoda."
         }
       ]
+    },
+    "costOfInaction": {
+      "title": "Koliko vas košta da ne menjate ništa?",
+      "items": [
+        { "value": "15-20h", "label": "izgubljeno nedeljno na koordinaciji" },
+        { "value": "30%", "label": "kašnjenja u isporukama" },
+        { "value": "40%", "label": "viši administrativni troškovi" }
+      ],
+      "text": "Dok čekate, vaša konkurencija se digitalizuje. EXPO 2027 donosi 6 miliona posetilaca — ko prvi stigne, taj pobeđuje."
     },
     "solution": {
-      "title": "Naše rešenje — Telegram/Viber bot + PANTHEON integracija",
+      "title": "Kako vam Lako pomaže",
       "features": [
         {
-          "title": "Automatski raspored vozača",
-          "description": "Bot dodeljuje rute i zadatke vozačima odmah preko Telegrama/Vibera — bez poziva, bez zabune."
+          "title": "Raspored za 30 sekundi",
+          "description": "Vaši vozači dobijaju maršrute za 30 sekundi — bez čekanja, bez grešaka, bez poziva dispečeru.",
+          "icon": "route"
         },
         {
-          "title": "Real-time tracking",
-          "description": "GPS praćenje uživo, potvrde isporuke sa fotografijama i trenutna obaveštenja za klijente."
+          "title": "Odgovor klijentu za 10 sekundi",
+          "description": "Vidite gde je svako vozilo u svakom trenutku. Klijent pita — odgovarate za 10 sekundi.",
+          "icon": "gps"
         },
         {
-          "title": "PANTHEON ERP sinhronizacija",
-          "description": "Narudžbine iz PANTHEON-a se sinhronizuju vozačima za nekoliko sekundi — bez ručnog unosa, bez neusklađenosti podataka."
+          "title": "PANTHEON → vozač = automatski",
+          "description": "Potvrdili ste narudžbinu u PANTHEON-u — vozač je vidi na telefonu trenutno. Bez ručnog unosa.",
+          "icon": "sync"
         },
         {
-          "title": "E-fakture (SEF)",
-          "description": "SEF e-fakture se generišu i šalju automatski — potpuna usklađenost sa srpskim poreskim propisima."
+          "title": "E-fakture bez glavobolje",
+          "description": "SEF e-fakture se šalju automatski. Puna usklađenost sa poreskim propisima — vi ne morate ništa da radite.",
+          "icon": "invoice"
         },
         {
-          "title": "Izveštaji",
-          "description": "Automatski dnevni i nedeljni izveštaji o isporukama stižu na vaš email — vidite performanse na prvi pogled."
+          "title": "Izveštaj svakog jutra",
+          "description": "Svako jutro dobijate pregled performansi — bez pravljenja Excel tabela. 95% isporuka na vreme.",
+          "icon": "chart"
         }
+      ],
+      "roi": {
+        "title": "Vaš povrat investicije",
+        "items": [
+          "Ušteda 15-20 sati nedeljno na koordinaciji",
+          "Smanjenje administrativnih troškova za 40%",
+          "Više narudžbina bez zapošljavanja novih dispečera"
+        ]
+      }
+    },
+    "comparison": {
+      "title": "Sa Lako i bez Lako",
+      "headers": { "feature": "Parametar", "without": "Bez Lako", "with": "Sa Lako" },
+      "rows": [
+        { "feature": "Vreme dispečera na koordinaciju", "without": "3-4 sata/dan", "with": "30 min/dan" },
+        { "feature": "Vidljivost maršruta", "without": "Nema", "with": "Real-time" },
+        { "feature": "Dokumentacija", "without": "Papir", "with": "Digitalna" },
+        { "feature": "Vreme odgovora klijentu", "without": "10-30 min", "with": "10 sekundi" },
+        { "feature": "E-fakture", "without": "Ručno", "with": "Automatski" },
+        { "feature": "Izveštaji", "without": "Excel ručno", "with": "Automatski svako jutro" }
       ]
     },
-    "expo": {
-      "text": "EXPO 2027 se brzo približava. Kompanije koje se digitalizuju sada osvajaju najveći deo tržišta. Ne čekajte.",
-      "cta": "Počnimo odmah — besplatna konsultacija"
+    "howItWorks": {
+      "title": "Kako početi?",
+      "steps": [
+        { "title": "Konsultacija", "description": "Zakažete 30 minuta — analiziramo vaše potrebe", "duration": "Dan 1" },
+        { "title": "Analiza procesa", "description": "Mapiramo vaše operacije i pravimo plan", "duration": "Dan 2-3" },
+        { "title": "Podešavanje sistema", "description": "Konfigurišemo bota, integrišemo PANTHEON", "duration": "Dan 4-10" },
+        { "title": "Obuka tima", "description": "Obučavamo dispečere i vozače za rad sa sistemom", "duration": "Dan 11" },
+        { "title": "Pokretanje", "description": "Sistem radi — vi upravljate iz fotelje", "duration": "Dan 12" }
+      ]
+    },
+    "guarantees": {
+      "title": "Zašto je lako početi",
+      "items": [
+        { "icon": "shield", "text": "Bez obavezujućeg ugovora" },
+        { "icon": "calendar", "text": "30 dana probnog perioda" },
+        { "icon": "tools", "text": "Besplatno uvođenje" },
+        { "icon": "chat", "text": "Lokalna podrška na srpskom" },
+        { "icon": "link", "text": "PANTHEON integracija bez dodatnih troškova" }
+      ]
+    },
+    "calculator": {
+      "title": "Izračunajte vašu uštedu",
+      "vehicles": "Broj vozila",
+      "dispatchers": "Broj dispečera",
+      "calculate": "Izračunaj",
+      "results": {
+        "title": "Vaša ušteda sa Lako",
+        "hoursWeek": "sati nedeljno na koordinaciji",
+        "costReduction": "smanjenje admin. troškova",
+        "capacityIncrease": "više narudžbina bez novih zaposlenih"
+      }
+    },
+    "faq": {
+      "title": "Najčešća pitanja",
+      "items": [
+        { "question": "Koliko vremena treba za uvođenje?", "answer": "Od prve konsultacije do punog rada — oko 12 dana. Obuka traje 1 dan." },
+        { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom ili Viberom. Većina vozača već ima telefon." },
+        { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako radi i samostalno. PANTHEON integracija je opcija, ne uslov." },
+        { "question": "Koliko košta?", "answer": "Od 99€ mesečno za 5 vozila. Kontaktirajte nas za ponudu prilagođenu vašem voznom parku." },
+        { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
+        { "question": "Šta se dešava sa mojim postojećim podacima?", "answer": "Migriramo vaše podatke iz PANTHEON-a automatski. Papirnu dokumentaciju digitalizujemo tokom uvođenja." }
+      ]
+    },
+    "finalCta": {
+      "title": "Budite među prvima koji su spremni za EXPO 2027",
+      "subtitle": "Zakažite besplatnu 30-minutnu analizu vaše logistike",
+      "cta": "Zakažite analizu"
     }
   },
   "smallBusiness": {
@@ -337,8 +433,8 @@
       "description": "Automatizujte logistiku, salon ili servis sa Telegram i Viber botovima. PANTHEON integracija, EXPO 2027 spremnost. Lokalna podrška u Novom Sadu."
     },
     "logistics": {
-      "title": "Logistika — EXPO 2027 automatizacija | Lako Services",
-      "description": "Pripremite se za EXPO 2027 sa Telegram/Viber botovima za logistiku. Automatski raspored vozača, PANTHEON ERP, e-fakture."
+      "title": "Logistika za EXPO 2027 — automatizacija i GPS praćenje | Lako Services",
+      "description": "Pripremite logističku kompaniju za EXPO 2027. Automatski raspored, GPS tracking uživo, PANTHEON integracija. Besplatna analiza."
     },
     "smallBusiness": {
       "title": "Mali biznis — Automatizacija salona i servisa | Lako Services",

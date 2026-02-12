@@ -46,59 +46,155 @@
   },
   "logistics": {
     "hero": {
-      "title": "Get ready for EXPO 2027 with smart logistics",
-      "subtitle": "Over 6 million visitors are coming to Novi Sad. Is your logistics company ready?",
-      "cta": "Find out how"
+      "title": "EXPO 2027: digital logistics awaiting you",
+      "subtitle": "6 million visitors. One opportunity. Is your system ready?",
+      "cta": "Schedule your logistics analysis"
+    },
+    "countdown": {
+      "title": "EXPO 2027 is approaching fast",
+      "subtitle": "Logistics companies without digital systems won't be able to fulfill orders.",
+      "date": "2027-05-15",
+      "stats": [
+        { "value": "6M+", "label": "expected visitors" },
+        { "value": "300%", "label": "logistics traffic growth" },
+        { "value": "18", "label": "months until start" }
+      ],
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
     },
     "problems": {
-      "title": "Problems we solve",
+      "title": "Why your current system won't survive",
       "items": [
         {
-          "title": "Dispatchers waste time on calls",
-          "description": "Your dispatchers spend 3-4 hours daily on phone coordination and manual data entry instead of optimizing routes and managing operations."
+          "number": "#1",
+          "title": "Dispatchers lose 3-4 hours daily",
+          "description": "Your dispatchers spend 3-4 hours daily on phone coordination instead of route optimization. That's 15-20 lost hours per week."
         },
         {
-          "title": "No real-time vehicle tracking",
-          "description": "You can't see where your fleet is right now, causing customer complaints, missed delivery windows, and lost business opportunities."
+          "number": "#2",
+          "title": "70% delays without real-time tracking",
+          "description": "Without live GPS tracking you don't know where your vehicles are. Client asks — you don't have an answer. Result: complaints and lost contracts."
         },
         {
-          "title": "Paper causes data loss",
-          "description": "Handwritten delivery notes disappear, orders get duplicated or forgotten, and you have no proof when disputes arise with clients."
+          "number": "#3",
+          "title": "Paper = lost evidence",
+          "description": "Handwritten confirmations disappear, orders get duplicated. When a dispute arises — you have no proof."
         },
         {
-          "title": "Difficult to scale operations",
-          "description": "Adding more vehicles means hiring more dispatchers, coordinators, and admin staff — each new truck multiplies your overhead costs."
+          "number": "#4",
+          "title": "Every new truck = new costs",
+          "description": "Add a vehicle — hire a dispatcher. Your administrative costs grow faster than revenue."
         }
       ]
+    },
+    "costOfInaction": {
+      "title": "How much does it cost you to change nothing?",
+      "items": [
+        { "value": "15-20h", "label": "lost weekly on coordination" },
+        { "value": "30%", "label": "delivery delays" },
+        { "value": "40%", "label": "higher administrative costs" }
+      ],
+      "text": "While you wait, your competition is digitalizing. EXPO 2027 brings 6 million visitors — whoever gets there first, wins."
     },
     "solution": {
-      "title": "Our solution — Telegram/Viber bot + PANTHEON integration",
+      "title": "How Lako helps you",
       "features": [
         {
-          "title": "Automatic driver scheduling",
-          "description": "Bot assigns routes and tasks to drivers instantly via Telegram/Viber — no phone calls, no confusion."
+          "title": "Schedule in 30 seconds",
+          "description": "Your drivers get routes in 30 seconds — no waiting, no mistakes, no calling the dispatcher.",
+          "icon": "route"
         },
         {
-          "title": "Real-time tracking",
-          "description": "Live GPS tracking, delivery confirmations with photos, and instant status updates for customers."
+          "title": "Client response in 10 seconds",
+          "description": "See where every vehicle is at every moment. Client asks — you answer in 10 seconds.",
+          "icon": "gps"
         },
         {
-          "title": "PANTHEON ERP sync",
-          "description": "Orders from PANTHEON sync to drivers in seconds — no manual re-entry, no data mismatches."
+          "title": "PANTHEON → driver = automatic",
+          "description": "You confirmed an order in PANTHEON — the driver sees it on their phone instantly. No manual entry.",
+          "icon": "sync"
         },
         {
-          "title": "E-invoices (SEF)",
-          "description": "SEF e-invoices generated and submitted automatically — full compliance with Serbian tax regulations."
+          "title": "E-invoices without headaches",
+          "description": "SEF e-invoices are sent automatically. Full tax compliance — you don't have to do anything.",
+          "icon": "invoice"
         },
         {
-          "title": "Reports",
-          "description": "Automatic daily and weekly delivery reports sent to your email — see performance metrics at a glance."
+          "title": "Report every morning",
+          "description": "Every morning you get a performance overview — no building Excel spreadsheets. 95% on-time deliveries.",
+          "icon": "chart"
         }
+      ],
+      "roi": {
+        "title": "Your return on investment",
+        "items": [
+          "Save 15-20 hours weekly on coordination",
+          "Reduce administrative costs by 40%",
+          "More orders without hiring new dispatchers"
+        ]
+      }
+    },
+    "comparison": {
+      "title": "With Lako and without Lako",
+      "headers": { "feature": "Parameter", "without": "Without Lako", "with": "With Lako" },
+      "rows": [
+        { "feature": "Dispatcher coordination time", "without": "3-4 hours/day", "with": "30 min/day" },
+        { "feature": "Route visibility", "without": "None", "with": "Real-time" },
+        { "feature": "Documentation", "without": "Paper", "with": "Digital" },
+        { "feature": "Client response time", "without": "10-30 min", "with": "10 seconds" },
+        { "feature": "E-invoices", "without": "Manual", "with": "Automatic" },
+        { "feature": "Reports", "without": "Manual Excel", "with": "Automatic every morning" }
       ]
     },
-    "expo": {
-      "text": "EXPO 2027 is approaching fast. Companies that digitalize now will capture the biggest market share. Don't wait.",
-      "cta": "Let's start now — free consultation"
+    "howItWorks": {
+      "title": "How to get started?",
+      "steps": [
+        { "title": "Consultation", "description": "Schedule 30 minutes — we analyze your needs", "duration": "Day 1" },
+        { "title": "Process analysis", "description": "We map your operations and create a plan", "duration": "Day 2-3" },
+        { "title": "System setup", "description": "We configure the bot, integrate PANTHEON", "duration": "Day 4-10" },
+        { "title": "Team training", "description": "We train dispatchers and drivers to use the system", "duration": "Day 11" },
+        { "title": "Launch", "description": "System is running — you manage from your armchair", "duration": "Day 12" }
+      ]
+    },
+    "guarantees": {
+      "title": "Why it's easy to start",
+      "items": [
+        { "icon": "shield", "text": "No binding contract" },
+        { "icon": "calendar", "text": "30-day trial period" },
+        { "icon": "tools", "text": "Free onboarding" },
+        { "icon": "chat", "text": "Local support in Serbian" },
+        { "icon": "link", "text": "PANTHEON integration at no extra cost" }
+      ]
+    },
+    "calculator": {
+      "title": "Calculate your savings",
+      "vehicles": "Number of vehicles",
+      "dispatchers": "Number of dispatchers",
+      "calculate": "Calculate",
+      "results": {
+        "title": "Your savings with Lako",
+        "hoursWeek": "hours weekly on coordination",
+        "costReduction": "admin cost reduction",
+        "capacityIncrease": "more orders without new hires"
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        { "question": "How long does onboarding take?", "answer": "From first consultation to full operation — about 12 days. Training takes 1 day." },
+        { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram or Viber. Most drivers already have a phone." },
+        { "question": "What if we're not on PANTHEON?", "answer": "Lako works standalone too. PANTHEON integration is an option, not a requirement." },
+        { "question": "How much does it cost?", "answer": "From €99/month for 5 vehicles. Contact us for a quote tailored to your fleet." },
+        { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
+        { "question": "What happens to my existing data?", "answer": "We migrate your data from PANTHEON automatically. Paper documentation is digitized during onboarding." }
+      ]
+    },
+    "finalCta": {
+      "title": "Be among the first ready for EXPO 2027",
+      "subtitle": "Schedule a free 30-minute logistics analysis",
+      "cta": "Schedule analysis"
     }
   },
   "smallBusiness": {
@@ -337,8 +433,8 @@
       "description": "Automate your logistics, salon or service with Telegram and Viber bots. PANTHEON integration, EXPO 2027 ready. Local support in Novi Sad."
     },
     "logistics": {
-      "title": "Logistics — EXPO 2027 automation | Lako Services",
-      "description": "Get ready for EXPO 2027 with Telegram/Viber bots for logistics. Auto driver scheduling, PANTHEON ERP, e-invoices."
+      "title": "Logistics for EXPO 2027 — automation and GPS tracking | Lako Services",
+      "description": "Prepare your logistics company for EXPO 2027. Automatic scheduling, live GPS tracking, PANTHEON integration. Free analysis."
     },
     "smallBusiness": {
       "title": "Small Business — Salon & service automation | Lako Services",
