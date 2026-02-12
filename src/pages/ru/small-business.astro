@@ -35,7 +35,7 @@ const stepIcons = [
           {t(locale, 'smallBusiness.hero.subtitle')}
         </p>
         <div class="mt-10">
-          <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+          <CTA href="#how-it-works" variant="accent" size="lg">
             {t(locale, 'smallBusiness.hero.cta')}
           </CTA>
         </div>
@@ -48,7 +48,7 @@ const stepIcons = [
   </section>
 
   {/* How it works — 4-step flow */}
-  <section class="reveal py-24 bg-bg-alt">
+  <section id="how-it-works" class="reveal py-24 bg-bg-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'smallBusiness.howItWorks.title')}</SectionHeading>
 
@@ -182,7 +182,7 @@ const stepIcons = [
           </div>
           <h3 class="text-xl font-semibold mb-2">{t(locale, 'smallBusiness.bots.catalog.title')}</h3>
           <p class="text-text-light mb-6">{t(locale, 'smallBusiness.bots.catalog.description')}</p>
-          <a href="https://t.me/lako_services_notify_bot" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+          <a href="https://t.me/LakoBot" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
             {t(locale, 'smallBusiness.bots.catalog.cta')}
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
           </a>
@@ -200,7 +200,7 @@ const stepIcons = [
           </div>
           <h3 class="text-xl font-semibold mb-2">{t(locale, 'smallBusiness.bots.admin.title')}</h3>
           <p class="text-text-light mb-6">{t(locale, 'smallBusiness.bots.admin.description')}</p>
-          <a href="https://t.me/lako_admin_bot" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-medium hover:underline">
+          <a href="https://t.me/LakoAdminBot" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-medium hover:underline">
             {t(locale, 'smallBusiness.bots.admin.cta')}
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
           </a>

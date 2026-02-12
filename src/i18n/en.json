@@ -208,7 +208,7 @@
       "steps": [
         {
           "title": "Client finds you",
-          "description": "Your business appears in @lako_services_notify_bot. A client searches \"barber Novi Sad\" and sees you instantly."
+          "description": "Your business appears in @LakoBot. A client searches \"barber Novi Sad\" and sees you instantly."
         },
         {
           "title": "Client books an appointment",
@@ -216,11 +216,11 @@
         },
         {
           "title": "Automation does the work",
-          "description": "Bot sends reminders to clients 24h before the appointment. You get notified in @lako_admin_bot about every new booking."
+          "description": "Bot sends reminders to clients 24h before the appointment. You get notified in @LakoAdminBot about every new booking."
         },
         {
           "title": "You manage via Lako Admin",
-          "description": "Through @lako_admin_bot you see all appointments, change schedules, and send promotions."
+          "description": "Through @LakoAdminBot you see all appointments, change schedules, and send promotions."
         }
       ]
     },

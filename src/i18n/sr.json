@@ -208,7 +208,7 @@
       "steps": [
         {
           "title": "Klijent vas pronalazi",
-          "description": "Vaš biznis se pojavljuje u @lako_services_notify_bot. Klijent traži \"frizer Novi Sad\" i odmah vas vidi."
+          "description": "Vaš biznis se pojavljuje u @LakoBot. Klijent traži \"frizer Novi Sad\" i odmah vas vidi."
         },
         {
           "title": "Klijent se zakazuje",
@@ -216,11 +216,11 @@
         },
         {
           "title": "Automatika radi umesto vas",
-          "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje u @lako_admin_bot o svakom novom zakazivanju."
+          "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje u @LakoAdminBot o svakom novom zakazivanju."
         },
         {
           "title": "Vi upravljate kroz Lako Admin",
-          "description": "Kroz @lako_admin_bot vidite sve termine, menjate raspored i šaljete promocije."
+          "description": "Kroz @LakoAdminBot vidite sve termine, menjate raspored i šaljete promocije."
         }
       ]
     },
