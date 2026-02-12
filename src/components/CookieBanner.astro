@@ -12,6 +12,53 @@ const { locale } = Astro.props;
   class="fixed bottom-0 left-0 right-0 z-50 translate-y-full transition-transform duration-500 ease-out"
 >
   <div class="bg-bg-card border-t border-border shadow-lg">
+    <!-- Settings panel -->
+    <div
+      id="cookie-settings-panel"
+      class="hidden border-b border-border"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <h3 class="text-sm font-semibold text-text mb-4">{t(locale, 'cookieBanner.settingsTitle')}</h3>
+
+        <!-- Essential cookies -->
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex-1 mr-4">
+            <p class="text-sm font-medium text-text">{t(locale, 'cookieBanner.essential')}</p>
+            <p class="text-xs text-text-muted">{t(locale, 'cookieBanner.essentialDesc')}</p>
+          </div>
+          <span class="text-xs text-text-muted px-2 py-1 bg-bg-alt rounded shrink-0">{t(locale, 'cookieBanner.alwaysActive')}</span>
+        </div>
+
+        <!-- Analytics cookies -->
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex-1 mr-4">
+            <p class="text-sm font-medium text-text">{t(locale, 'cookieBanner.analytics')}</p>
+            <p class="text-xs text-text-muted">{t(locale, 'cookieBanner.analyticsDesc')}</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input type="checkbox" id="cookie-analytics-toggle" class="sr-only peer" />
+            <div class="w-9 h-5 bg-border-light rounded-full peer peer-checked:bg-primary transition-colors after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
+          </label>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            id="cookie-save-settings"
+            class="px-4 py-2 text-sm border border-border-light rounded-lg text-text hover:bg-bg-alt transition-colors"
+          >
+            {t(locale, 'cookieBanner.saveSettings')}
+          </button>
+          <button
+            id="cookie-accept-from-settings"
+            class="px-4 py-2 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            {t(locale, 'cookieBanner.acceptAll')}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main banner -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-text-muted text-center sm:text-left">
         {t(locale, 'cookieBanner.text')}{' '}
@@ -23,6 +70,12 @@ const { locale } = Astro.props;
         </a>
       </p>
       <div class="flex gap-3 shrink-0">
+        <button
+          id="cookie-settings-btn"
+          class="px-4 py-2 text-sm border border-border-light rounded-lg text-text hover:bg-bg-alt transition-colors"
+        >
+          {t(locale, 'cookieBanner.settings')}
+        </button>
         <button
           id="cookie-reject"
           class="px-4 py-2 text-sm border border-border-light rounded-lg text-text hover:bg-bg-alt transition-colors"
@@ -44,6 +97,11 @@ const { locale } = Astro.props;
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-accept');
   const rejectBtn = document.getElementById('cookie-reject');
+  const settingsBtn = document.getElementById('cookie-settings-btn');
+  const settingsPanel = document.getElementById('cookie-settings-panel');
+  const analyticsToggle = document.getElementById('cookie-analytics-toggle') as HTMLInputElement | null;
+  const saveSettingsBtn = document.getElementById('cookie-save-settings');
+  const acceptFromSettingsBtn = document.getElementById('cookie-accept-from-settings');
 
   if (!localStorage.getItem('cookie-consent') && banner) {
     requestAnimationFrame(() => {
@@ -52,14 +110,28 @@ const { locale } = Astro.props;
     });
   }
 
-  function hideBanner(value: string) {
-    localStorage.setItem('cookie-consent', value);
+  function hideBanner(consent: string, analytics?: boolean) {
+    localStorage.setItem('cookie-consent', consent);
+    if (analytics !== undefined) {
+      localStorage.setItem('cookie-analytics', String(analytics));
+    }
     if (banner) {
       banner.classList.remove('translate-y-0');
       banner.classList.add('translate-y-full');
     }
   }
 
-  acceptBtn?.addEventListener('click', () => hideBanner('accepted'));
-  rejectBtn?.addEventListener('click', () => hideBanner('rejected'));
+  acceptBtn?.addEventListener('click', () => hideBanner('accepted', true));
+  rejectBtn?.addEventListener('click', () => hideBanner('rejected', false));
+
+  settingsBtn?.addEventListener('click', () => {
+    settingsPanel?.classList.toggle('hidden');
+  });
+
+  saveSettingsBtn?.addEventListener('click', () => {
+    const analyticsEnabled = analyticsToggle?.checked ?? false;
+    hideBanner('custom', analyticsEnabled);
+  });
+
+  acceptFromSettingsBtn?.addEventListener('click', () => hideBanner('accepted', true));
 </script>

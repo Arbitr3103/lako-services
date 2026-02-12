@@ -435,7 +435,14 @@
     "text": "We use cookies to improve your experience on our website.",
     "acceptAll": "Accept all",
     "rejectAll": "Reject all",
-    "settings": "Settings"
+    "settings": "Settings",
+    "settingsTitle": "Cookie settings",
+    "essential": "Essential cookies",
+    "essentialDesc": "Required for the website to function. Cannot be disabled.",
+    "analytics": "Analytics cookies",
+    "analyticsDesc": "Help us understand how you use the website.",
+    "alwaysActive": "Always active",
+    "saveSettings": "Save settings"
   },
   "consent": {
     "text": "I agree to the",
@@ -454,6 +461,14 @@
         "dataWeCollect": {
           "title": "Data We Collect",
           "content": "We collect the following data when you use our website:\n- Full name\n- Email address\n- Phone number (optional)\n- Business name and category\n- Business address\n- Website usage data (cookies)"
+        },
+        "botData": {
+          "title": "Data Collected Through Bots",
+          "content": "When you use our Telegram or Viber bots, we collect:\n- Your platform username\n- Phone number (if you share it)\n- Messages you send to the bot\n- Booking and appointment data\n- Interaction history with the bot\n\nThis data is stored on secure servers and used exclusively for:\n- Processing your bookings and appointments\n- Sending confirmations and reminders\n- Improving service quality"
+        },
+        "gpsTracking": {
+          "title": "GPS Tracking",
+          "content": "For logistics solutions, we use GPS tracking that includes:\n- Real-time driver location\n- Route history\n- Estimated arrival time\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer. GPS data is only processed during working hours.\n\nDrivers have the right to:\n- Be informed about tracking\n- Access their location data\n- Request deletion of historical location data"
         },
         "purposeOfProcessing": {
           "title": "Purpose of Processing",
@@ -474,6 +489,10 @@
         "yourRights": {
           "title": "Your Rights",
           "content": "You have the right to:\n- Access your data\n- Rectify inaccurate data\n- Erase your data (\"right to be forgotten\")\n- Restrict processing\n- Data portability\n- Object to processing\nTo exercise these rights, contact us at info@lako.services."
+        },
+        "dataRequestProcedure": {
+          "title": "Data Request Procedure",
+          "content": "To submit a request regarding your personal data:\n\n1. Send an email to info@lako.services with the subject \"GDPR Request\"\n2. In the email, please include:\n   - Your full name\n   - Email address associated with your account\n   - Type of request (access, rectification, deletion, etc.)\n   - Description of the data your request concerns\n3. We will respond to your request within 30 days\n4. The first request is free; for repeated requests we may charge an administrative fee"
         },
         "dataSecurity": {
           "title": "Data Security",
@@ -518,7 +537,20 @@
           "title": "Managing Cookies",
           "content": "You can manage cookies through the banner on our website or your browser settings. Please note that blocking some cookies may affect website functionality."
         }
-      }
+      },
+      "tableHeaders": {
+        "name": "Name",
+        "purpose": "Purpose",
+        "duration": "Duration"
+      },
+      "essentialTitle": "Strictly necessary cookies (no consent required)",
+      "analyticsTitle": "Analytics cookies (consent required)",
+      "essentialNote": "These cookies are essential for the website to function and cannot be disabled.",
+      "cookies": [
+        { "name": "cookie-consent", "purpose": "Stores your cookie preference", "duration": "1 year" },
+        { "name": "cf_clearance", "purpose": "Cloudflare security check", "duration": "Session" },
+        { "name": "Cloudflare Web Analytics", "purpose": "Anonymous visit tracking, no personal data", "duration": "Session" }
+      ]
     },
     "terms": {
       "title": "Terms of Service",

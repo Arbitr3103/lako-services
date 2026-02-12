@@ -435,7 +435,14 @@
     "text": "Koristimo kolačiće za poboljšanje vašeg iskustva na sajtu.",
     "acceptAll": "Prihvati sve",
     "rejectAll": "Odbij sve",
-    "settings": "Podešavanja"
+    "settings": "Podešavanja",
+    "settingsTitle": "Podešavanja kolačića",
+    "essential": "Neophodni kolačići",
+    "essentialDesc": "Potrebni za rad sajta. Ne mogu se isključiti.",
+    "analytics": "Analitički kolačići",
+    "analyticsDesc": "Pomažu nam da razumemo kako koristite sajt.",
+    "alwaysActive": "Uvek aktivni",
+    "saveSettings": "Sačuvaj podešavanja"
   },
   "consent": {
     "text": "Saglasan/na sam sa",
@@ -454,6 +461,14 @@
         "dataWeCollect": {
           "title": "Podaci koje prikupljamo",
           "content": "Prikupljamo sledeće podatke kada koristite naš sajt:\n- Ime i prezime\n- Email adresa\n- Broj telefona (opciono)\n- Naziv biznisa i kategorija\n- Adresa biznisa\n- Podaci o korišćenju sajta (kolačići)"
+        },
+        "botData": {
+          "title": "Podaci prikupljeni putem botova",
+          "content": "Kada koristite naše Telegram ili Viber botove, prikupljamo:\n- Korisničko ime (username) na platformi\n- Broj telefona (ako ga podelite)\n- Poruke koje šaljete botu\n- Podatke o rezervacijama i zakazivanjima\n- Istoriju interakcije sa botom\n\nOvi podaci se čuvaju na zaštićenim serverima i koriste se isključivo za:\n- Obradu vaših rezervacija i zakazivanja\n- Slanje potvrda i podsećanja\n- Poboljšanje kvaliteta usluge"
+        },
+        "gpsTracking": {
+          "title": "GPS praćenje",
+          "content": "Za logistička rešenja koristimo GPS praćenje koje uključuje:\n- Lokaciju vozača u realnom vremenu\n- Istoriju maršruta\n- Procenjeno vreme dolaska\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača. GPS podaci se obrađuju samo tokom radnog vremena.\n\nVozači imaju pravo da:\n- Budu informisani o praćenju\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
         },
         "purposeOfProcessing": {
           "title": "Svrha obrade",
@@ -474,6 +489,10 @@
         "yourRights": {
           "title": "Vaša prava",
           "content": "Imate pravo na:\n- Pristup vašim podacima\n- Ispravku netačnih podataka\n- Brisanje podataka (\"pravo na zaborav\")\n- Ograničenje obrade\n- Prenosivost podataka\n- Prigovor na obradu\nZa ostvarivanje ovih prava kontaktirajte nas na info@lako.services."
+        },
+        "dataRequestProcedure": {
+          "title": "Procedura zahteva za podatke",
+          "content": "Da biste podneli zahtev u vezi sa vašim ličnim podacima:\n\n1. Pošaljite email na info@lako.services sa temom \"GDPR Zahtev\"\n2. U emailu navedite:\n   - Vaše puno ime\n   - Email adresu povezanu sa vašim nalogom\n   - Vrstu zahteva (pristup, ispravka, brisanje, itd.)\n   - Opis podataka na koje se zahtev odnosi\n3. Odgovorićemo na vaš zahtev u roku od 30 dana\n4. Prvi zahtev je besplatan; za ponovljene zahteve možemo naplatiti administrativnu naknadu"
         },
         "dataSecurity": {
           "title": "Bezbednost podataka",
@@ -518,7 +537,20 @@
           "title": "Upravljanje kolačićima",
           "content": "Možete upravljati kolačićima putem banera na sajtu ili podešavanjima vašeg pretraživača. Napominjemo da blokiranje nekih kolačića može uticati na funkcionalnost sajta."
         }
-      }
+      },
+      "tableHeaders": {
+        "name": "Naziv",
+        "purpose": "Svrha",
+        "duration": "Trajanje"
+      },
+      "essentialTitle": "Strogo neophodni kolačići (ne zahtevaju saglasnost)",
+      "analyticsTitle": "Analitički kolačići (zahtevaju saglasnost)",
+      "essentialNote": "Ovi kolačići su neophodni za rad sajta i ne mogu se isključiti.",
+      "cookies": [
+        { "name": "cookie-consent", "purpose": "Čuva vaš izbor kolačića", "duration": "1 godina" },
+        { "name": "cf_clearance", "purpose": "Cloudflare bezbednosna provera", "duration": "Sesija" },
+        { "name": "Cloudflare Web Analytics", "purpose": "Anonimno praćenje poseta, bez ličnih podataka", "duration": "Sesija" }
+      ]
     },
     "terms": {
       "title": "Uslovi korišćenja",

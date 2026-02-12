@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { t } from '../i18n/utils';
+import { t, tObject } from '../i18n/utils';
 
 const locale = 'sr';
 const sectionKeys = ['whatAreCookies', 'cookiesWeUse', 'thirdParty', 'manageCookies'] as const;
+const cookies = tObject<{ name: string; purpose: string; duration: string }[]>(locale, 'legal.cookies.cookies');
 ---
 <BaseLayout
   title={t(locale, 'seo.cookies.title')}
@@ -30,6 +31,54 @@ const sectionKeys = ['whatAreCookies', 'cookiesWeUse', 'thirdParty', 'manageCook
           <p class="text-text-light leading-relaxed whitespace-pre-line">
             {t(locale, `legal.cookies.sections.${key}.content`)}
           </p>
+          {key === 'cookiesWeUse' && (
+            <div class="mt-6">
+              <h3 class="text-lg font-medium text-text mb-2">{t(locale, 'legal.cookies.essentialTitle')}</h3>
+              <p class="text-sm text-text-muted mb-3">{t(locale, 'legal.cookies.essentialNote')}</p>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-border rounded-lg">
+                  <thead>
+                    <tr class="bg-bg-alt">
+                      <th class="text-left px-4 py-2 border-b border-border font-medium text-text">{t(locale, 'legal.cookies.tableHeaders.name')}</th>
+                      <th class="text-left px-4 py-2 border-b border-border font-medium text-text">{t(locale, 'legal.cookies.tableHeaders.purpose')}</th>
+                      <th class="text-left px-4 py-2 border-b border-border font-medium text-text">{t(locale, 'legal.cookies.tableHeaders.duration')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cookies.slice(0, 2).map((c) => (
+                      <tr class="border-b border-border last:border-b-0">
+                        <td class="px-4 py-2 font-mono text-xs text-text">{c.name}</td>
+                        <td class="px-4 py-2 text-text-light">{c.purpose}</td>
+                        <td class="px-4 py-2 text-text-muted">{c.duration}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 class="text-lg font-medium text-text mt-6 mb-2">{t(locale, 'legal.cookies.analyticsTitle')}</h3>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-border rounded-lg">
+                  <thead>
+                    <tr class="bg-bg-alt">
+                      <th class="text-left px-4 py-2 border-b border-border font-medium text-text">{t(locale, 'legal.cookies.tableHeaders.name')}</th>
+                      <th class="text-left px-4 py-2 border-b border-border font-medium text-text">{t(locale, 'legal.cookies.tableHeaders.purpose')}</th>
+                      <th class="text-left px-4 py-2 border-b border-border font-medium text-text">{t(locale, 'legal.cookies.tableHeaders.duration')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cookies.slice(2).map((c) => (
+                      <tr class="border-b border-border last:border-b-0">
+                        <td class="px-4 py-2 font-mono text-xs text-text">{c.name}</td>
+                        <td class="px-4 py-2 text-text-light">{c.purpose}</td>
+                        <td class="px-4 py-2 text-text-muted">{c.duration}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       ))}
     </div>
