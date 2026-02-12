@@ -42,6 +42,10 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Registration form**: `/dodaj-biznis` → POST `/api/register-business` → lako-bot API (creates tenant with pending status) + Resend email + Telegram notification. Admin approves in @LakoAdminBot.
 
+**Telegram bots**: Catalog bot = `@LakoBot` (`t.me/LakoBot`), Admin bot = `@LakoAdminBot` (`t.me/LakoAdminBot`). Links used in small-business pages, i18n texts, and Footer.
+
+**Anchor links**: Small-business hero CTA scrolls to `#how-it-works` section on the same page (not a navigation link).
+
 ## Environment Variables
 
 ```
