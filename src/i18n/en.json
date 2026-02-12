@@ -263,6 +263,14 @@
         {
           "title": "Time savings",
           "description": "Save 2-3 hours daily on phone calls, scheduling, and reminders — spend that time on your actual work instead."
+        },
+        {
+          "title": "Free notifications",
+          "description": "Telegram and Viber notifications instead of expensive SMS — save on client communication without sacrificing service quality."
+        },
+        {
+          "title": "Analytics & insights",
+          "description": "Track how many people view your profile, click your phone number or Instagram — make decisions based on data, not guesswork."
         }
       ]
     },
@@ -309,7 +317,7 @@
         },
         {
           "question": "How much does it cost?",
-          "answer": "Registration and basic usage are free. For advanced features (detailed analytics, integrations, priority support) pricing starts from €100/month."
+          "answer": "Three plans: Free — catalog listing + basic business card (free forever). Pro (€29/mo) — 24/7 online booking, free Telegram/Viber notifications instead of expensive SMS, click analytics. Business (€49/mo) — SEF integration (fiscal receipts), loyalty automation and cashback programs."
         },
         {
           "question": "How long does it take to get started?",

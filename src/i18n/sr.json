@@ -263,6 +263,14 @@
         {
           "title": "Ušteda vremena",
           "description": "Uštedite 2-3 sata dnevno na telefonskim pozivima, zakazivanju i podsetnicima — provedite to vreme na vašem stvarnom poslu umesto toga."
+        },
+        {
+          "title": "Besplatna obaveštenja",
+          "description": "Telegram i Viber obaveštenja umesto skupih SMS poruka — uštedite na komunikaciji sa klijentima bez gubitka kvaliteta usluge."
+        },
+        {
+          "title": "Analitika i uvidi",
+          "description": "Pratite koliko ljudi gleda vaš profil, klikće na telefon ili Instagram — donosite odluke na osnovu podataka, ne nagađanja."
         }
       ]
     },
@@ -309,7 +317,7 @@
         },
         {
           "question": "Koliko to košta?",
-          "answer": "Registracija i osnovno korišćenje su besplatni. Za napredne funkcije (detaljna analitika, integracije, prioritetna podrška) cene počinju od 100€ mesečno."
+          "answer": "Tri plana: Free — katalog + osnovna kartica vašeg biznisa (besplatno zauvek). Pro (29€/mes) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu/Viberu umesto skupih SMS-ova, analitika klikova. Business (49€/mes) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa."
         },
         {
           "question": "Koliko vremena treba za pokretanje?",
