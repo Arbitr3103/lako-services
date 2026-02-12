@@ -425,7 +425,132 @@
     "company": "Lako Services",
     "location": "Novi Sad, Serbia",
     "rights": "All rights reserved",
-    "contactUs": "Get in touch"
+    "contactUs": "Get in touch",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "cookieBanner": {
+    "text": "We use cookies to improve your experience on our website.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "settings": "Settings"
+  },
+  "consent": {
+    "text": "I agree to the",
+    "linkText": "Privacy Policy"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: February 12, 2026.",
+      "intro": "Lako Services d.o.o. (hereinafter \"we\", \"us\" or \"our\") is committed to protecting your personal data in accordance with the Law on Personal Data Protection of the Republic of Serbia and the General Data Protection Regulation (GDPR).",
+      "sections": {
+        "dataController": {
+          "title": "Data Controller",
+          "content": "Lako Services d.o.o.\nNovi Sad, Republic of Serbia\nEmail: info@lako.services"
+        },
+        "dataWeCollect": {
+          "title": "Data We Collect",
+          "content": "We collect the following data when you use our website:\n- Full name\n- Email address\n- Phone number (optional)\n- Business name and category\n- Business address\n- Website usage data (cookies)"
+        },
+        "purposeOfProcessing": {
+          "title": "Purpose of Processing",
+          "content": "We process your data for the following purposes:\n- Responding to your inquiries via the contact form\n- Registering your business in the Lako catalog\n- Sending registration status notifications\n- Improving website functionality"
+        },
+        "legalBasis": {
+          "title": "Legal Basis for Processing",
+          "content": "We process your data based on:\n- Your explicit consent (Article 12 of the Law)\n- Performance of a contract or pre-contractual measures (Article 12 of the Law)\n- Legitimate interest in improving our services"
+        },
+        "dataSharing": {
+          "title": "Data Sharing",
+          "content": "We may share your data with:\n- Resend (sending email notifications)\n- Telegram Bot API (sending notifications)\n- Cloudflare (website hosting and protection)\nWe do not sell your data to third parties."
+        },
+        "dataRetention": {
+          "title": "Data Retention",
+          "content": "We retain your data for as long as necessary to fulfill the purpose for which it was collected. Contact form data is retained for up to 2 years. Registered business data is retained while the account is active."
+        },
+        "yourRights": {
+          "title": "Your Rights",
+          "content": "You have the right to:\n- Access your data\n- Rectify inaccurate data\n- Erase your data (\"right to be forgotten\")\n- Restrict processing\n- Data portability\n- Object to processing\nTo exercise these rights, contact us at info@lako.services."
+        },
+        "dataSecurity": {
+          "title": "Data Security",
+          "content": "We implement appropriate technical and organizational measures to protect your data, including HTTPS encryption, secure hosting on Cloudflare, and restricted data access."
+        },
+        "children": {
+          "title": "Children",
+          "content": "Our services are not intended for persons under 16 years of age. We do not knowingly collect data from minors."
+        },
+        "internationalTransfers": {
+          "title": "International Data Transfers",
+          "content": "Your data may be processed outside Serbia through our service providers (Cloudflare, Resend). We ensure such transfers are protected by appropriate safeguards."
+        },
+        "changes": {
+          "title": "Changes to This Policy",
+          "content": "We reserve the right to update this policy. We will notify you of significant changes through our website."
+        },
+        "contact": {
+          "title": "Contact",
+          "content": "For any questions regarding data protection:\nLako Services d.o.o.\nEmail: info@lako.services\nAddress: Novi Sad, Republic of Serbia"
+        }
+      }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "lastUpdated": "Last updated: February 12, 2026.",
+      "intro": "This policy explains how we use cookies and similar technologies on lako.services.",
+      "sections": {
+        "whatAreCookies": {
+          "title": "What Are Cookies?",
+          "content": "Cookies are small text files stored on your device when you visit a website. They are used to remember your preferences and improve your browsing experience."
+        },
+        "cookiesWeUse": {
+          "title": "Cookies We Use",
+          "content": "We use the following types of cookies:\n- Essential cookies: storing cookie consent preference (cookie-consent)\n- Analytics cookies: Cloudflare Web Analytics for anonymous visit tracking (no personal data)"
+        },
+        "thirdParty": {
+          "title": "Third-Party Cookies",
+          "content": "Cloudflare may use cookies to protect the website from malicious traffic. These cookies are essential for the website to function properly."
+        },
+        "manageCookies": {
+          "title": "Managing Cookies",
+          "content": "You can manage cookies through the banner on our website or your browser settings. Please note that blocking some cookies may affect website functionality."
+        }
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: February 12, 2026.",
+      "intro": "By using lako.services you agree to these terms of service.",
+      "sections": {
+        "serviceDescription": {
+          "title": "Service Description",
+          "content": "Lako Services provides business automation services through Telegram and Viber bots. The website lako.services serves to inform about services, enable contact, and register businesses in the catalog."
+        },
+        "userObligations": {
+          "title": "User Obligations",
+          "content": "By using the website you agree to:\n- Provide accurate information in forms\n- Not misuse the website or services\n- Respect intellectual property"
+        },
+        "intellectualProperty": {
+          "title": "Intellectual Property",
+          "content": "All content on the website (text, design, logos, code) is the property of Lako Services d.o.o. and is protected by law. Unauthorized copying or distribution is prohibited."
+        },
+        "liability": {
+          "title": "Limitation of Liability",
+          "content": "Lako Services d.o.o. strives to ensure the accuracy of information on the website but does not guarantee complete accuracy. We are not liable for damages arising from the use of the website."
+        },
+        "governingLaw": {
+          "title": "Governing Law",
+          "content": "These terms are governed by the laws of the Republic of Serbia. The court in Novi Sad has jurisdiction for dispute resolution."
+        },
+        "changes": {
+          "title": "Changes to Terms",
+          "content": "We reserve the right to modify these terms. Continued use of the website after changes constitutes acceptance of the new terms."
+        }
+      }
+    }
   },
   "seo": {
     "home": {
@@ -451,6 +576,18 @@
     "registerBusiness": {
       "title": "Add your business to catalog | Lako Services",
       "description": "Add your salon, clinic or service to Lako catalog for free. Clients find you through the Telegram bot."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Lako Services",
+      "description": "Privacy policy for lako.services. How we collect, use and protect your personal data."
+    },
+    "cookies": {
+      "title": "Cookie Policy | Lako Services",
+      "description": "Information about cookies we use on lako.services."
+    },
+    "terms": {
+      "title": "Terms of Service | Lako Services",
+      "description": "Terms of service for lako.services and Lako Services."
     }
   }
 }

@@ -425,7 +425,132 @@
     "company": "Lako Services",
     "location": "Novi Sad, Srbija",
     "rights": "Sva prava zadržana",
-    "contactUs": "Kontaktirajte nas"
+    "contactUs": "Kontaktirajte nas",
+    "legal": "Pravne informacije",
+    "privacyPolicy": "Politika privatnosti",
+    "cookiePolicy": "Politika kolačića",
+    "termsOfService": "Uslovi korišćenja"
+  },
+  "cookieBanner": {
+    "text": "Koristimo kolačiće za poboljšanje vašeg iskustva na sajtu.",
+    "acceptAll": "Prihvati sve",
+    "rejectAll": "Odbij sve",
+    "settings": "Podešavanja"
+  },
+  "consent": {
+    "text": "Saglasan/na sam sa",
+    "linkText": "Politikom privatnosti"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Politika privatnosti",
+      "lastUpdated": "Poslednje ažuriranje: 12. februar 2026.",
+      "intro": "Lako Services d.o.o. (u daljem tekstu \"mi\", \"nas\" ili \"naš\") posvećen je zaštiti vaših ličnih podataka u skladu sa Zakonom o zaštiti podataka o ličnosti Republike Srbije i Opštom uredbom o zaštiti podataka (GDPR).",
+      "sections": {
+        "dataController": {
+          "title": "Rukovalac podacima",
+          "content": "Lako Services d.o.o.\nNovi Sad, Republika Srbija\nEmail: info@lako.services"
+        },
+        "dataWeCollect": {
+          "title": "Podaci koje prikupljamo",
+          "content": "Prikupljamo sledeće podatke kada koristite naš sajt:\n- Ime i prezime\n- Email adresa\n- Broj telefona (opciono)\n- Naziv biznisa i kategorija\n- Adresa biznisa\n- Podaci o korišćenju sajta (kolačići)"
+        },
+        "purposeOfProcessing": {
+          "title": "Svrha obrade",
+          "content": "Vaše podatke obrađujemo u sledeće svrhe:\n- Odgovor na vaše upite putem kontakt forme\n- Registracija vašeg biznisa u Lako katalog\n- Slanje obaveštenja o statusu registracije\n- Poboljšanje funkcionalnosti sajta"
+        },
+        "legalBasis": {
+          "title": "Pravni osnov obrade",
+          "content": "Vaše podatke obrađujemo na osnovu:\n- Vašeg izričitog pristanka (član 12 Zakona)\n- Izvršenja ugovora ili predugovornih radnji (član 12 Zakona)\n- Legitimnog interesa za poboljšanje naših usluga"
+        },
+        "dataSharing": {
+          "title": "Deljenje podataka",
+          "content": "Vaše podatke možemo deliti sa:\n- Resend (slanje email obaveštenja)\n- Telegram Bot API (slanje obaveštenja)\n- Cloudflare (hosting i zaštita sajta)\nNe prodajemo vaše podatke trećim licima."
+        },
+        "dataRetention": {
+          "title": "Period čuvanja podataka",
+          "content": "Vaše podatke čuvamo onoliko dugo koliko je potrebno za ispunjenje svrhe za koju su prikupljeni. Podatke iz kontakt forme čuvamo do 2 godine. Podatke o registrovanim biznisima čuvamo dok je nalog aktivan."
+        },
+        "yourRights": {
+          "title": "Vaša prava",
+          "content": "Imate pravo na:\n- Pristup vašim podacima\n- Ispravku netačnih podataka\n- Brisanje podataka (\"pravo na zaborav\")\n- Ograničenje obrade\n- Prenosivost podataka\n- Prigovor na obradu\nZa ostvarivanje ovih prava kontaktirajte nas na info@lako.services."
+        },
+        "dataSecurity": {
+          "title": "Bezbednost podataka",
+          "content": "Primenjujemo odgovarajuće tehničke i organizacione mere za zaštitu vaših podataka, uključujući HTTPS enkripciju, siguran hosting na Cloudflare platformi i ograničen pristup podacima."
+        },
+        "children": {
+          "title": "Deca",
+          "content": "Naše usluge nisu namenjene licima mlađim od 16 godina. Svesno ne prikupljamo podatke maloletnih lica."
+        },
+        "internationalTransfers": {
+          "title": "Međunarodni prenosi podataka",
+          "content": "Vaši podaci mogu biti obrađeni izvan Srbije putem naših pružalaca usluga (Cloudflare, Resend). Obezbeđujemo da takvi prenosi budu zaštićeni odgovarajućim merama."
+        },
+        "changes": {
+          "title": "Izmene politike",
+          "content": "Zadržavamo pravo da ažuriramo ovu politiku. O značajnim izmenama ćemo vas obavestiti putem sajta."
+        },
+        "contact": {
+          "title": "Kontakt",
+          "content": "Za sva pitanja u vezi sa zaštitom podataka:\nLako Services d.o.o.\nEmail: info@lako.services\nAdresa: Novi Sad, Republika Srbija"
+        }
+      }
+    },
+    "cookies": {
+      "title": "Politika kolačića",
+      "lastUpdated": "Poslednje ažuriranje: 12. februar 2026.",
+      "intro": "Ova politika objašnjava kako koristimo kolačiće i slične tehnologije na sajtu lako.services.",
+      "sections": {
+        "whatAreCookies": {
+          "title": "Šta su kolačići?",
+          "content": "Kolačići su mali tekstualni fajlovi koji se čuvaju na vašem uređaju kada posetite sajt. Koriste se za pamćenje vaših podešavanja i poboljšanje korisničkog iskustva."
+        },
+        "cookiesWeUse": {
+          "title": "Kolačići koje koristimo",
+          "content": "Koristimo sledeće vrste kolačića:\n- Neophodni kolačići: čuvanje pristanka na kolačiće (cookie-consent)\n- Analitički kolačići: Cloudflare Web Analytics za anonimno praćenje poseta (bez ličnih podataka)"
+        },
+        "thirdParty": {
+          "title": "Kolačići trećih strana",
+          "content": "Cloudflare može koristiti kolačiće za zaštitu sajta od zlonamernog saobraćaja. Ovi kolačići su neophodni za funkcionisanje sajta."
+        },
+        "manageCookies": {
+          "title": "Upravljanje kolačićima",
+          "content": "Možete upravljati kolačićima putem banera na sajtu ili podešavanjima vašeg pretraživača. Napominjemo da blokiranje nekih kolačića može uticati na funkcionalnost sajta."
+        }
+      }
+    },
+    "terms": {
+      "title": "Uslovi korišćenja",
+      "lastUpdated": "Poslednje ažuriranje: 12. februar 2026.",
+      "intro": "Korišćenjem sajta lako.services prihvatate ove uslove korišćenja.",
+      "sections": {
+        "serviceDescription": {
+          "title": "Opis usluge",
+          "content": "Lako Services pruža usluge automatizacije biznisa putem Telegram i Viber botova. Sajt lako.services služi za informisanje o uslugama, kontaktiranje i registraciju biznisa u katalog."
+        },
+        "userObligations": {
+          "title": "Obaveze korisnika",
+          "content": "Korišćenjem sajta se obavezujete da:\n- Pružate tačne podatke u formama\n- Ne zloupotrebljavate sajt ili usluge\n- Poštujete intelektualnu svojinu"
+        },
+        "intellectualProperty": {
+          "title": "Intelektualna svojina",
+          "content": "Sav sadržaj na sajtu (tekst, dizajn, logotipi, kod) je vlasništvo Lako Services d.o.o. i zaštićen je zakonom. Neovlašćeno kopiranje ili distribucija je zabranjena."
+        },
+        "liability": {
+          "title": "Ograničenje odgovornosti",
+          "content": "Lako Services d.o.o. se trudi da obezbedi tačnost informacija na sajtu, ali ne garantuje potpunu tačnost. Nismo odgovorni za štetu nastalu korišćenjem sajta."
+        },
+        "governingLaw": {
+          "title": "Merodavno pravo",
+          "content": "Na ove uslove primenjuje se pravo Republike Srbije. Za rešavanje sporova nadležan je sud u Novom Sadu."
+        },
+        "changes": {
+          "title": "Izmene uslova",
+          "content": "Zadržavamo pravo da izmenimo ove uslove. Nastavkom korišćenja sajta nakon izmena smatrate da ste prihvatili nove uslove."
+        }
+      }
+    }
   },
   "seo": {
     "home": {
@@ -451,6 +576,18 @@
     "registerBusiness": {
       "title": "Dodaj svoj biznis u katalog | Lako Services",
       "description": "Dodajte svoj salon, ordinaciju ili servis u Lako katalog besplatno. Klijenti vas pronalaze preko Telegram bota."
+    },
+    "privacy": {
+      "title": "Politika privatnosti | Lako Services",
+      "description": "Politika privatnosti sajta lako.services. Kako prikupljamo, koristimo i štitimo vaše lične podatke."
+    },
+    "cookies": {
+      "title": "Politika kolačića | Lako Services",
+      "description": "Informacije o kolačićima koje koristimo na sajtu lako.services."
+    },
+    "terms": {
+      "title": "Uslovi korišćenja | Lako Services",
+      "description": "Uslovi korišćenja sajta lako.services i usluga Lako Services."
     }
   }
 }

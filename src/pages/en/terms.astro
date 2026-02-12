@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t } from '../../i18n/utils';
+
+const locale = 'en';
+const sectionKeys = ['serviceDescription', 'userObligations', 'intellectualProperty', 'liability', 'governingLaw', 'changes'] as const;
+---
+<BaseLayout
+  title={t(locale, 'seo.terms.title')}
+  description={t(locale, 'seo.terms.description')}
+  locale={locale}
+>
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-text mb-2">
+        {t(locale, 'legal.terms.title')}
+      </h1>
+      <p class="text-sm text-text-muted mb-8">
+        {t(locale, 'legal.terms.lastUpdated')}
+      </p>
+      <p class="text-text-light mb-10 leading-relaxed">
+        {t(locale, 'legal.terms.intro')}
+      </p>
+
+      {sectionKeys.map((key) => (
+        <div class="mb-8">
+          <h2 class="text-xl font-semibold text-text mb-3">
+            {t(locale, `legal.terms.sections.${key}.title`)}
+          </h2>
+          <p class="text-text-light leading-relaxed whitespace-pre-line">
+            {t(locale, `legal.terms.sections.${key}.content`)}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

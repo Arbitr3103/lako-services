@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { getLocalizedPath, getPathWithoutLocale, ALL_LOCALES, type Locale } from '../i18n/utils';
 import '../styles/global.css';
 
@@ -61,6 +62,7 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
       <slot />
     </main>
     <Footer locale={locale} />
+    <CookieBanner locale={locale} />
 
     {/* Scroll reveal observer */}
     <script>

@@ -1,0 +1,65 @@
+---
+import { t, getLocalizedPath, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-50 translate-y-full transition-transform duration-500 ease-out"
+>
+  <div class="bg-bg-card border-t border-border shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-text-muted text-center sm:text-left">
+        {t(locale, 'cookieBanner.text')}{' '}
+        <a
+          href={getLocalizedPath('/cookie-policy', locale)}
+          class="text-primary hover:underline"
+        >
+          {t(locale, 'footer.cookiePolicy')}
+        </a>
+      </p>
+      <div class="flex gap-3 shrink-0">
+        <button
+          id="cookie-reject"
+          class="px-4 py-2 text-sm border border-border-light rounded-lg text-text hover:bg-bg-alt transition-colors"
+        >
+          {t(locale, 'cookieBanner.rejectAll')}
+        </button>
+        <button
+          id="cookie-accept"
+          class="px-4 py-2 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+        >
+          {t(locale, 'cookieBanner.acceptAll')}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+
+  if (!localStorage.getItem('cookie-consent') && banner) {
+    requestAnimationFrame(() => {
+      banner.classList.remove('translate-y-full');
+      banner.classList.add('translate-y-0');
+    });
+  }
+
+  function hideBanner(value: string) {
+    localStorage.setItem('cookie-consent', value);
+    if (banner) {
+      banner.classList.remove('translate-y-0');
+      banner.classList.add('translate-y-full');
+    }
+  }
+
+  acceptBtn?.addEventListener('click', () => hideBanner('accepted'));
+  rejectBtn?.addEventListener('click', () => hideBanner('rejected'));
+</script>

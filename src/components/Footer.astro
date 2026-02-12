@@ -18,7 +18,7 @@ const navItems = [
 ---
 <footer class="bg-bg-alt border-t border-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       {/* Column 1: Company info */}
       <div>
         <Logo />
@@ -50,7 +50,38 @@ const navItems = [
         </ul>
       </div>
 
-      {/* Column 3: Social / Contact */}
+      {/* Column 3: Legal */}
+      <div>
+        <h3 class="font-semibold mb-4 text-text">{t(locale, 'footer.legal')}</h3>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href={getLocalizedPath('/privacy-policy', locale)}
+              class="text-text-muted hover:text-primary transition-colors text-sm"
+            >
+              {t(locale, 'footer.privacyPolicy')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getLocalizedPath('/cookie-policy', locale)}
+              class="text-text-muted hover:text-primary transition-colors text-sm"
+            >
+              {t(locale, 'footer.cookiePolicy')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getLocalizedPath('/terms', locale)}
+              class="text-text-muted hover:text-primary transition-colors text-sm"
+            >
+              {t(locale, 'footer.termsOfService')}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Column 4: Social / Contact */}
       <div>
         <h3 class="font-semibold mb-4 text-text">
           {t(locale, 'footer.contactUs')}

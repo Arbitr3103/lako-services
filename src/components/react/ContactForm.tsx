@@ -117,6 +117,28 @@ export default function ContactForm({ locale }: Props) {
         />
       </div>
 
+      {/* Consent */}
+      <div className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="consent"
+          name="consent"
+          required
+          className="mt-1 h-4 w-4 rounded border-border-light text-primary focus:ring-primary"
+        />
+        <label htmlFor="consent" className="text-sm text-text-muted">
+          {translations.consent.text}{' '}
+          <a
+            href={locale === 'sr' ? '/privacy-policy' : `/${locale}/privacy-policy`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            {translations.consent.linkText}
+          </a>
+        </label>
+      </div>
+
       {/* Submit */}
       <button
         type="submit"
