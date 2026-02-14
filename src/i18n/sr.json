@@ -13,7 +13,7 @@
   "home": {
     "hero": {
       "title": "Automatizacija — lako i brzo",
-      "subtitle": "Telegram i Viber botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
+      "subtitle": "Telegram botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
       "cta": "Zakažite besplatnu konsultaciju",
       "ctaSecondary": "Kako to radi?"
     },
@@ -184,7 +184,7 @@
       "title": "Najčešća pitanja",
       "items": [
         { "question": "Koliko vremena treba za uvođenje?", "answer": "Od prve konsultacije do punog rada — oko 12 dana. Obuka traje 1 dan." },
-        { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom ili Viberom. Većina vozača već ima telefon." },
+        { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
         { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako trenutno radi kao samostalan sistem. Integracija sa PANTHEON-om je u pripremi." },
         { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
@@ -323,7 +323,7 @@
         },
         {
           "title": "Besplatna obaveštenja",
-          "description": "Telegram i Viber obaveštenja umesto skupih SMS poruka — uštedite na komunikaciji sa klijentima bez gubitka kvaliteta usluge."
+          "description": "Telegram obaveštenja umesto skupih SMS poruka — uštedite na komunikaciji sa klijentima bez gubitka kvaliteta usluge."
         },
         {
           "title": "Analitika i uvidi",
@@ -374,7 +374,7 @@
         },
         {
           "question": "Koliko to košta?",
-          "answer": "Tri plana: Free — katalog + osnovna kartica vašeg biznisa (besplatno zauvek). Pro (29€/mes) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu/Viberu umesto skupih SMS-ova, analitika klikova. Business (49€/mes) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa."
+          "answer": "Tri plana: Free — katalog + osnovna kartica vašeg biznisa (besplatno zauvek). Pro (29€/mes) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu umesto skupih SMS-ova, analitika klikova. Business (49€/mes) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa."
         },
         {
           "question": "Koliko vremena treba za pokretanje?",
@@ -382,7 +382,7 @@
         },
         {
           "question": "Mogu li klijenti da zakazuju bez Telegrama?",
-          "answer": "Trenutno je zakazivanje dostupno samo kroz Telegram. Radimo na Viber podršci."
+          "answer": "Trenutno je zakazivanje dostupno samo kroz Telegram."
         },
         {
           "question": "Da li su podaci mojih klijenata bezbedni?",
@@ -531,7 +531,7 @@
         },
         "botData": {
           "title": "Podaci prikupljeni putem botova",
-          "content": "Kada koristite naše Telegram ili Viber botove, prikupljamo:\n- Korisničko ime (username) na platformi\n- Broj telefona (ako ga podelite)\n- Poruke koje šaljete botu\n- Podatke o rezervacijama i zakazivanjima\n- Istoriju interakcije sa botom\n\nOvi podaci se čuvaju na zaštićenim serverima i koriste se isključivo za:\n- Obradu vaših rezervacija i zakazivanja\n- Slanje potvrda i podsećanja\n- Poboljšanje kvaliteta usluge"
+          "content": "Kada koristite naše Telegram botove, prikupljamo:\n- Korisničko ime (username) na platformi\n- Broj telefona (ako ga podelite)\n- Poruke koje šaljete botu\n- Podatke o rezervacijama i zakazivanjima\n- Istoriju interakcije sa botom\n\nOvi podaci se čuvaju na zaštićenim serverima i koriste se isključivo za:\n- Obradu vaših rezervacija i zakazivanja\n- Slanje potvrda i podsećanja\n- Poboljšanje kvaliteta usluge"
         },
         "gpsTracking": {
           "title": "GPS praćenje",
@@ -626,7 +626,7 @@
       "sections": {
         "serviceDescription": {
           "title": "Opis usluge",
-          "content": "Lako Services pruža usluge automatizacije biznisa putem Telegram i Viber botova. Sajt lako.services služi za informisanje o uslugama, kontaktiranje i registraciju biznisa u katalog."
+          "content": "Lako Services pruža usluge automatizacije biznisa putem Telegram botova. Sajt lako.services služi za informisanje o uslugama, kontaktiranje i registraciju biznisa u katalog."
         },
         "userObligations": {
           "title": "Obaveze korisnika",
@@ -653,7 +653,7 @@
   },
   "seo": {
     "home": {
-      "title": "Lako Services — Telegram i Viber botovi za automatizaciju biznisa | Novi Sad",
+      "title": "Lako Services — Telegram botovi za automatizaciju biznisa | Novi Sad",
       "description": "Automatizujte logistiku, salon ili servis sa Telegram botovima. CMR, fakture, e-fakture. Lokalna podrška u Novom Sadu."
     },
     "logistics": {
@@ -662,7 +662,7 @@
     },
     "smallBusiness": {
       "title": "Mali biznis — Automatizacija salona i servisa | Lako Services",
-      "description": "Telegram i Viber bot za barbere, stomatologe, auto-servise. Zakazivanje, podsećanja, komunikacija sa klijentima."
+      "description": "Telegram bot za barbere, stomatologe, auto-servise. Zakazivanje, podsećanja, komunikacija sa klijentima."
     },
     "about": {
       "title": "O nama — Lako Services | Novi Sad",
@@ -670,7 +670,7 @@
     },
     "contact": {
       "title": "Kontakt — Lako Services | Novi Sad",
-      "description": "Zakažite besplatnu konsultaciju. Telegram, Viber, email — javite nam se na način koji vam odgovara."
+      "description": "Zakažite besplatnu konsultaciju. Telegram, WhatsApp, email — javite nam se na način koji vam odgovara."
     },
     "registerBusiness": {
       "title": "Dodaj svoj biznis u katalog | Lako Services",

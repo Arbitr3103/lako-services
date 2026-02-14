@@ -13,7 +13,7 @@
   "home": {
     "hero": {
       "title": "Automation made easy",
-      "subtitle": "Telegram and Viber bots for your business. Save time and money with smart automation.",
+      "subtitle": "Telegram bots for your business. Save time and money with smart automation.",
       "cta": "Schedule a free consultation",
       "ctaSecondary": "How it works?"
     },
@@ -184,7 +184,7 @@
       "title": "Frequently asked questions",
       "items": [
         { "question": "How long does onboarding take?", "answer": "From first consultation to full operation — about 12 days. Training takes 1 day." },
-        { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram or Viber. Most drivers already have a phone." },
+        { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
         { "question": "What if we're not on PANTHEON?", "answer": "Lako currently works as a standalone system. PANTHEON integration is in development." },
         { "question": "How much does it cost?", "answer": "For the first 5 companies: 3 months free, then 2,500 RSD/month. For others: 30-day free trial, then 3,500 RSD/month." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
@@ -323,7 +323,7 @@
         },
         {
           "title": "Free notifications",
-          "description": "Telegram and Viber notifications instead of expensive SMS — save on client communication without sacrificing service quality."
+          "description": "Telegram notifications instead of expensive SMS — save on client communication without sacrificing service quality."
         },
         {
           "title": "Analytics & insights",
@@ -374,7 +374,7 @@
         },
         {
           "question": "How much does it cost?",
-          "answer": "Three plans: Free — catalog listing + basic business card (free forever). Pro (€29/mo) — 24/7 online booking, free Telegram/Viber notifications instead of expensive SMS, click analytics. Business (€49/mo) — SEF integration (fiscal receipts), loyalty automation and cashback programs."
+          "answer": "Three plans: Free — catalog listing + basic business card (free forever). Pro (€29/mo) — 24/7 online booking, free Telegram notifications instead of expensive SMS, click analytics. Business (€49/mo) — SEF integration (fiscal receipts), loyalty automation and cashback programs."
         },
         {
           "question": "How long does it take to get started?",
@@ -382,7 +382,7 @@
         },
         {
           "question": "Can clients book without Telegram?",
-          "answer": "Currently, booking is only available through Telegram. We're working on Viber support."
+          "answer": "Currently, booking is only available through Telegram."
         },
         {
           "question": "Is my client data safe?",
@@ -531,7 +531,7 @@
         },
         "botData": {
           "title": "Data Collected Through Bots",
-          "content": "When you use our Telegram or Viber bots, we collect:\n- Your platform username\n- Phone number (if you share it)\n- Messages you send to the bot\n- Booking and appointment data\n- Interaction history with the bot\n\nThis data is stored on secure servers and used exclusively for:\n- Processing your bookings and appointments\n- Sending confirmations and reminders\n- Improving service quality"
+          "content": "When you use our Telegram bots, we collect:\n- Your platform username\n- Phone number (if you share it)\n- Messages you send to the bot\n- Booking and appointment data\n- Interaction history with the bot\n\nThis data is stored on secure servers and used exclusively for:\n- Processing your bookings and appointments\n- Sending confirmations and reminders\n- Improving service quality"
         },
         "gpsTracking": {
           "title": "GPS Tracking",
@@ -626,7 +626,7 @@
       "sections": {
         "serviceDescription": {
           "title": "Service Description",
-          "content": "Lako Services provides business automation services through Telegram and Viber bots. The website lako.services serves to inform about services, enable contact, and register businesses in the catalog."
+          "content": "Lako Services provides business automation services through Telegram bots. The website lako.services serves to inform about services, enable contact, and register businesses in the catalog."
         },
         "userObligations": {
           "title": "User Obligations",
@@ -653,7 +653,7 @@
   },
   "seo": {
     "home": {
-      "title": "Lako Services — Telegram & Viber bots for business automation | Novi Sad",
+      "title": "Lako Services — Telegram bots for business automation | Novi Sad",
       "description": "Automate your logistics, salon or service with Telegram bots. CMR, invoices, e-invoices. Local support in Novi Sad."
     },
     "logistics": {
@@ -662,7 +662,7 @@
     },
     "smallBusiness": {
       "title": "Small Business — Salon & service automation | Lako Services",
-      "description": "Telegram and Viber bot for barbers, dentists, auto services. Booking, reminders, client communication."
+      "description": "Telegram bot for barbers, dentists, auto services. Booking, reminders, client communication."
     },
     "about": {
       "title": "About — Lako Services | Novi Sad",
@@ -670,7 +670,7 @@
     },
     "contact": {
       "title": "Contact — Lako Services | Novi Sad",
-      "description": "Schedule a free consultation. Telegram, Viber, email — reach us the way that works for you."
+      "description": "Schedule a free consultation. Telegram, WhatsApp, email — reach us the way that works for you."
     },
     "registerBusiness": {
       "title": "Add your business to catalog | Lako Services",

@@ -1,6 +1,6 @@
 # lako.services
 
-Business automation website (Telegram/Viber bots) for Lako Services, Novi Sad, Serbia.
+Business automation website (Telegram bots) for Lako Services, Novi Sad, Serbia.
 
 ## Commands
 
@@ -42,7 +42,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Registration form**: `/dodaj-biznis` → POST `/api/register-business` → lako-bot API (creates tenant with pending status) + Resend email + Telegram notification. Admin approves in @LakoAdminBot.
 
-**Telegram bots**: Catalog bot = `@LakoBot` (`t.me/LakoBot`), Admin bot = `@LakoAdminBot` (`t.me/LakoAdminBot`). Links used in small-business pages, i18n texts, and Footer.
+**Telegram bots**: Catalog bot = `@LakoBot` (`t.me/LakoBot`), Admin bot = `@LakoAdminBot` (`t.me/LakoAdminBot`). Used in small-business pages and i18n. Footer contact link = `t.me/Bragin_Arbitr` (personal).
 
 **Anchor links**: Small-business hero CTA scrolls to `#how-it-works` section on the same page (not a navigation link).
 
@@ -68,7 +68,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 
 - **Privacy Policy** (`/privacy-policy`): 15 sections including bot data, GPS tracking, data request procedure
 - **Cookie Policy** (`/cookie-policy`): sections + structured cookie table (essential + analytics)
-- **Terms of Service** (`/terms-of-service`)
+- **Terms of Service** (`/terms`)
 - **Cookie Banner** (`CookieBanner.astro`): Accept/Reject/Settings. Settings panel with analytics toggle. localStorage: `cookie-consent` = `accepted`|`rejected`|`custom`, `cookie-analytics` = `true`|`false`
 
 ## SEO
