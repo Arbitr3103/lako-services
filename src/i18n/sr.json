@@ -107,13 +107,13 @@
           "icon": "route"
         },
         {
-          "title": "Odgovor klijentu za 10 sekundi",
-          "description": "Vidite gde je svako vozilo u svakom trenutku. Klijent pita — odgovarate za 10 sekundi.",
+          "title": "GPS praćenje (uskoro)",
+          "description": "Praćenje vozila u realnom vremenu — u pripremi. Znate gde su vaša vozila u svakom trenutku.",
           "icon": "gps"
         },
         {
-          "title": "PANTHEON → vozač = automatski",
-          "description": "Potvrdili ste narudžbinu u PANTHEON-u — vozač je vidi na telefonu trenutno. Bez ručnog unosa.",
+          "title": "PANTHEON integracija (uskoro)",
+          "description": "Automatska sinhronizacija narudžbina sa PANTHEON ERP sistemom — u pripremi.",
           "icon": "sync"
         },
         {
@@ -122,8 +122,8 @@
           "icon": "invoice"
         },
         {
-          "title": "Izveštaj svakog jutra",
-          "description": "Svako jutro dobijate pregled performansi — bez pravljenja Excel tabela. 95% isporuka na vreme.",
+          "title": "Automatski izveštaji (uskoro)",
+          "description": "Dnevni pregled performansi bez ručnog pravljenja tabela — u pripremi.",
           "icon": "chart"
         }
       ],
@@ -141,7 +141,7 @@
       "headers": { "feature": "Parametar", "without": "Bez Lako", "with": "Sa Lako" },
       "rows": [
         { "feature": "Vreme dispečera na koordinaciju", "without": "3-4 sata/dan", "with": "30 min/dan" },
-        { "feature": "Vidljivost maršruta", "without": "Nema", "with": "Real-time" },
+        { "feature": "Vidljivost maršruta", "without": "Nema", "with": "Uskoro" },
         { "feature": "Dokumentacija", "without": "Papir", "with": "Digitalna" },
         { "feature": "Vreme odgovora klijentu", "without": "10-30 min", "with": "10 sekundi" },
         { "feature": "E-fakture", "without": "Ručno", "with": "Automatski" },
@@ -165,7 +165,7 @@
         { "icon": "calendar", "text": "30 dana probnog perioda" },
         { "icon": "tools", "text": "Besplatno uvođenje" },
         { "icon": "chat", "text": "Lokalna podrška na srpskom" },
-        { "icon": "link", "text": "PANTHEON integracija bez dodatnih troškova" }
+        { "icon": "link", "text": "PANTHEON integracija — u pripremi" }
       ]
     },
     "calculator": {
@@ -185,11 +185,68 @@
       "items": [
         { "question": "Koliko vremena treba za uvođenje?", "answer": "Od prve konsultacije do punog rada — oko 12 dana. Obuka traje 1 dan." },
         { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom ili Viberom. Većina vozača već ima telefon." },
-        { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako radi i samostalno. PANTHEON integracija je opcija, ne uslov." },
-        { "question": "Koliko košta?", "answer": "Od 99€ mesečno za 5 vozila. Kontaktirajte nas za ponudu prilagođenu vašem voznom parku." },
+        { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako trenutno radi kao samostalan sistem. Integracija sa PANTHEON-om je u pripremi." },
+        { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
         { "question": "Šta se dešava sa mojim postojećim podacima?", "answer": "Migriramo vaše podatke iz PANTHEON-a automatski. Papirnu dokumentaciju digitalizujemo tokom uvođenja." }
       ]
+    },
+    "bot": {
+      "title": "Telegram bot za vašu logistiku",
+      "subtitle": "Upravljajte rejs​ovima, dokumentima i vozačima — sve kroz Telegram.",
+      "card": {
+        "badge": "Telegram Bot",
+        "title": "Lako Prevoz",
+        "description": "Vaš dispečerski centar u Telegramu. Kreirajte rejs​ove, generišite CMR i fakture, upravljajte vozačima i vozilima — sve na jednom mestu.",
+        "cta": "Otvori u Telegramu"
+      },
+      "featuresTitle": "Šta bot može",
+      "features": [
+        { "icon": "trip", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
+        { "icon": "cmr", "title": "CMR dokumenti", "description": "Automatsko generisanje CMR u PDF formatu — spreman za štampu." },
+        { "icon": "invoice", "title": "Fakture (Invoice)", "description": "Profesionalne fakture u PDF-u sa svim potrebnim podacima." },
+        { "icon": "efaktura", "title": "E-fakture (XML)", "description": "UBL 2.1 XML e-fakture za SEF — bez ručnog unosa." },
+        { "icon": "driver", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
+        { "icon": "vehicle", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
+        { "icon": "customer", "title": "Baza klijenata", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
+        { "icon": "stats", "title": "Statistika i Excel", "description": "Pregled performansi i eksport podataka u Excel." }
+      ],
+      "video": {
+        "title": "Pogledajte kako radi",
+        "placeholder": "Video prezentacija bota",
+        "comingSoon": "Video se priprema"
+      },
+      "pricing": {
+        "title": "Cene",
+        "plans": [
+          {
+            "name": "Early Adopter",
+            "badge": "Prvih 5 kompanija",
+            "price": "Besplatno",
+            "period": "3 meseca",
+            "description": "Zatim 2.500 RSD/mesečno",
+            "features": [
+              "Svi moduli uključeni",
+              "Neograničen broj rejs​ova",
+              "CMR, fakture, e-fakture",
+              "Prioritetna podrška"
+            ]
+          },
+          {
+            "name": "PRO",
+            "badge": "Za ostale",
+            "price": "3.500 RSD",
+            "period": "mesečno",
+            "description": "30 dana besplatnog probnog perioda",
+            "features": [
+              "Svi moduli uključeni",
+              "Neograničen broj rejs​ova",
+              "CMR, fakture, e-fakture",
+              "Podrška putem Telegrama"
+            ]
+          }
+        ]
+      }
     },
     "finalCta": {
       "title": "Budite među prvima koji su spremni za EXPO 2027",

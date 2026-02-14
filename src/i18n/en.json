@@ -107,13 +107,13 @@
           "icon": "route"
         },
         {
-          "title": "Client response in 10 seconds",
-          "description": "See where every vehicle is at every moment. Client asks — you answer in 10 seconds.",
+          "title": "GPS tracking (coming soon)",
+          "description": "Real-time vehicle tracking — in development. Know where your vehicles are at every moment.",
           "icon": "gps"
         },
         {
-          "title": "PANTHEON → driver = automatic",
-          "description": "You confirmed an order in PANTHEON — the driver sees it on their phone instantly. No manual entry.",
+          "title": "PANTHEON integration (coming soon)",
+          "description": "Automatic order synchronization with PANTHEON ERP system — in development.",
           "icon": "sync"
         },
         {
@@ -122,8 +122,8 @@
           "icon": "invoice"
         },
         {
-          "title": "Report every morning",
-          "description": "Every morning you get a performance overview — no building Excel spreadsheets. 95% on-time deliveries.",
+          "title": "Automatic reports (coming soon)",
+          "description": "Daily performance overview without manual spreadsheet creation — in development.",
           "icon": "chart"
         }
       ],
@@ -141,7 +141,7 @@
       "headers": { "feature": "Parameter", "without": "Without Lako", "with": "With Lako" },
       "rows": [
         { "feature": "Dispatcher coordination time", "without": "3-4 hours/day", "with": "30 min/day" },
-        { "feature": "Route visibility", "without": "None", "with": "Real-time" },
+        { "feature": "Route visibility", "without": "None", "with": "Coming soon" },
         { "feature": "Documentation", "without": "Paper", "with": "Digital" },
         { "feature": "Client response time", "without": "10-30 min", "with": "10 seconds" },
         { "feature": "E-invoices", "without": "Manual", "with": "Automatic" },
@@ -165,7 +165,7 @@
         { "icon": "calendar", "text": "30-day trial period" },
         { "icon": "tools", "text": "Free onboarding" },
         { "icon": "chat", "text": "Local support in Serbian" },
-        { "icon": "link", "text": "PANTHEON integration at no extra cost" }
+        { "icon": "link", "text": "PANTHEON integration — coming soon" }
       ]
     },
     "calculator": {
@@ -185,11 +185,68 @@
       "items": [
         { "question": "How long does onboarding take?", "answer": "From first consultation to full operation — about 12 days. Training takes 1 day." },
         { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram or Viber. Most drivers already have a phone." },
-        { "question": "What if we're not on PANTHEON?", "answer": "Lako works standalone too. PANTHEON integration is an option, not a requirement." },
-        { "question": "How much does it cost?", "answer": "From €99/month for 5 vehicles. Contact us for a quote tailored to your fleet." },
+        { "question": "What if we're not on PANTHEON?", "answer": "Lako currently works as a standalone system. PANTHEON integration is in development." },
+        { "question": "How much does it cost?", "answer": "For the first 5 companies: 3 months free, then 2,500 RSD/month. For others: 30-day free trial, then 3,500 RSD/month." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
         { "question": "What happens to my existing data?", "answer": "We migrate your data from PANTHEON automatically. Paper documentation is digitized during onboarding." }
       ]
+    },
+    "bot": {
+      "title": "Telegram bot for your logistics",
+      "subtitle": "Manage trips, documents and drivers — all through Telegram.",
+      "card": {
+        "badge": "Telegram Bot",
+        "title": "Lako Prevoz",
+        "description": "Your dispatch center in Telegram. Create trips, generate CMR and invoices, manage drivers and vehicles — all in one place.",
+        "cta": "Open in Telegram"
+      },
+      "featuresTitle": "What the bot can do",
+      "features": [
+        { "icon": "trip", "title": "Trip management", "description": "Create, track and complete trips in a few clicks." },
+        { "icon": "cmr", "title": "CMR documents", "description": "Automatic CMR generation in PDF format — ready to print." },
+        { "icon": "invoice", "title": "Invoices", "description": "Professional invoices in PDF with all required details." },
+        { "icon": "efaktura", "title": "E-invoices (XML)", "description": "UBL 2.1 XML e-invoices for SEF — no manual entry." },
+        { "icon": "driver", "title": "Driver records", "description": "Add, edit and search drivers in your database." },
+        { "icon": "vehicle", "title": "Vehicle records", "description": "Manage your fleet — registrations, types, status." },
+        { "icon": "customer", "title": "Client database", "description": "All your clients in one place with collaboration history." },
+        { "icon": "stats", "title": "Statistics & Excel", "description": "Performance overview and data export to Excel." }
+      ],
+      "video": {
+        "title": "See how it works",
+        "placeholder": "Bot video presentation",
+        "comingSoon": "Video coming soon"
+      },
+      "pricing": {
+        "title": "Pricing",
+        "plans": [
+          {
+            "name": "Early Adopter",
+            "badge": "First 5 companies",
+            "price": "Free",
+            "period": "3 months",
+            "description": "Then 2,500 RSD/month",
+            "features": [
+              "All modules included",
+              "Unlimited trips",
+              "CMR, invoices, e-invoices",
+              "Priority support"
+            ]
+          },
+          {
+            "name": "PRO",
+            "badge": "For others",
+            "price": "3,500 RSD",
+            "period": "monthly",
+            "description": "30-day free trial",
+            "features": [
+              "All modules included",
+              "Unlimited trips",
+              "CMR, invoices, e-invoices",
+              "Telegram support"
+            ]
+          }
+        ]
+      }
     },
     "finalCta": {
       "title": "Be among the first ready for EXPO 2027",

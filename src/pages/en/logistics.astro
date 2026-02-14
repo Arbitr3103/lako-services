@@ -17,6 +17,8 @@ const comparisonRows = tObject<Array<{feature: string, without: string, with: st
 const steps = tObject<Array<{title: string, description: string, duration: string}>>(locale, 'logistics.howItWorks.steps');
 const guaranteeItems = tObject<Array<{icon: string, text: string}>>(locale, 'logistics.guarantees.items');
 const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'logistics.faq.items');
+const botFeatures = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.bot.features');
+const botPricingPlans = tObject<Array<{name: string, badge: string, price: string, period: string, description: string, features: string[]}>>(locale, 'logistics.bot.pricing.plans');
 
 const featureIcons: Record<string, string> = {
   route: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>`,
@@ -48,6 +50,17 @@ const stepIcons = [
   `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>`,
   `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /></svg>`,
 ];
+
+const botFeatureIcons: Record<string, string> = {
+  trip: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>`,
+  cmr: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>`,
+  invoice: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>`,
+  efaktura: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>`,
+  driver: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>`,
+  vehicle: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25m-2.25 0V6.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125" /></svg>`,
+  customer: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg>`,
+  stats: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>`,
+};
 ---
 <BaseLayout
   title={t(locale, 'seo.logistics.title')}
@@ -242,16 +255,109 @@ const stepIcons = [
     </div>
   </section>
 
-  {/* 9. Savings Calculator */}
+  {/* 9. Transport Bot */}
   <section class="reveal py-20 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'logistics.bot.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12">
+        {t(locale, 'logistics.bot.subtitle')}
+      </p>
+
+      {/* Bot Card */}
+      <div class="max-w-2xl mx-auto mb-16">
+        <div class="bg-bg-card rounded-2xl p-8 border border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-14 h-14 bg-[#229ED9]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-[#229ED9]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </div>
+            <div>
+              <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary mb-1">
+                {t(locale, 'logistics.bot.card.badge')}
+              </span>
+              <h3 class="text-xl font-bold">{t(locale, 'logistics.bot.card.title')}</h3>
+            </div>
+          </div>
+          <p class="text-text-light mb-6">{t(locale, 'logistics.bot.card.description')}</p>
+          <a href="https://t.me/lakoprevoz_bot" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-[#229ED9] hover:bg-[#1a8abf] text-white font-semibold rounded-xl transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            {t(locale, 'logistics.bot.card.cta')}
+          </a>
+        </div>
+      </div>
+
+      {/* Feature Grid */}
+      <h3 class="text-2xl font-bold text-center mb-8">{t(locale, 'logistics.bot.featuresTitle')}</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16">
+        {botFeatures.map((feature) => (
+          <div class="bg-bg-card rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+              <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
+            </div>
+            <h4 class="text-base font-semibold mb-1">{feature.title}</h4>
+            <p class="text-text-light text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Video Placeholder */}
+      <div class="max-w-3xl mx-auto mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8">{t(locale, 'logistics.bot.video.title')}</h3>
+        <div class="aspect-video bg-bg-card rounded-2xl border border-border flex flex-col items-center justify-center">
+          <svg class="w-16 h-16 text-primary/30 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+          </svg>
+          <p class="text-text-light">{t(locale, 'logistics.bot.video.comingSoon')}</p>
+        </div>
+      </div>
+
+      {/* Pricing */}
+      <h3 class="text-2xl font-bold text-center mb-8">{t(locale, 'logistics.bot.pricing.title')}</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        {botPricingPlans.map((plan, i) => (
+          <div class:list={[
+            "bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1",
+            i === 0 ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5"
+          ]}>
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-xl font-bold">{plan.name}</h4>
+              <span class:list={[
+                "px-3 py-1 text-xs font-semibold rounded-full",
+                i === 0 ? "bg-accent/10 text-accent" : "bg-primary/10 text-primary"
+              ]}>{plan.badge}</span>
+            </div>
+            <div class="mb-2">
+              <span class="text-3xl font-bold">{plan.price}</span>
+              <span class="text-text-light ml-1">/ {plan.period}</span>
+            </div>
+            <p class="text-text-light text-sm mb-6">{plan.description}</p>
+            <ul class="space-y-3">
+              {plan.features.map((feature) => (
+                <li class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-text-light text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 10. Savings Calculator */}
+  <section class="reveal py-20 bg-bg-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'logistics.calculator.title')}</SectionHeading>
       <SavingsCalculator locale={locale} client:load />
     </div>
   </section>
 
-  {/* 10. FAQ */}
-  <section class="reveal py-24 bg-bg-alt">
+  {/* 11. FAQ */}
+  <section class="reveal py-24 bg-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'logistics.faq.title')}</SectionHeading>
 
@@ -275,7 +381,7 @@ const stepIcons = [
     </div>
   </section>
 
-  {/* 11. Final CTA */}
+  {/* 12. Final CTA */}
   <section class="reveal py-20 bg-gradient-to-r from-primary/20 to-accent/10 border-t border-border">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
