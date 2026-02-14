@@ -163,7 +163,8 @@
         { "icon": "calendar", "text": "30 dana probnog perioda" },
         { "icon": "tools", "text": "Besplatno uvođenje" },
         { "icon": "chat", "text": "Lokalna podrška na srpskom" },
-        { "icon": "link", "text": "PANTHEON integracija — u pripremi" }
+        { "icon": "lock", "text": "Vaši podaci — samo vaši. Ne delimo ih ni sa kim" },
+        { "icon": "trash", "text": "Otkazujete se? Izvoz podataka + potpuno brisanje u roku od 30 dana" }
       ]
     },
     "calculator": {
@@ -186,7 +187,7 @@
         { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako trenutno radi kao samostalan sistem. Integracija sa PANTHEON-om je u pripremi." },
         { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
-        { "question": "Šta se dešava sa mojim postojećim podacima?", "answer": "Unosimo vaše postojeće podatke u sistem. Papirnu dokumentaciju digitalizujemo tokom uvođenja." }
+        { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." }
       ]
     },
     "bot": {

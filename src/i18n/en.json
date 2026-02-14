@@ -163,7 +163,8 @@
         { "icon": "calendar", "text": "30-day trial period" },
         { "icon": "tools", "text": "Free onboarding" },
         { "icon": "chat", "text": "Local support in Serbian" },
-        { "icon": "link", "text": "PANTHEON integration — coming soon" }
+        { "icon": "lock", "text": "Your data is yours alone. We never share it" },
+        { "icon": "trash", "text": "Leaving? Data export + full deletion within 30 days" }
       ]
     },
     "calculator": {
@@ -186,7 +187,7 @@
         { "question": "What if we're not on PANTHEON?", "answer": "Lako currently works as a standalone system. PANTHEON integration is in development." },
         { "question": "How much does it cost?", "answer": "For the first 5 companies: 3 months free, then 2,500 RSD/month. For others: 30-day free trial, then 3,500 RSD/month." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
-        { "question": "What happens to my existing data?", "answer": "We import your existing data into the system. Paper documentation is digitized during onboarding." }
+        { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." }
       ]
     },
     "bot": {
