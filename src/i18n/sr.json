@@ -738,14 +738,15 @@
     },
     "contact": {
       "office": "Novi Sad, Srbija",
-      "phone": "+381 62 944 8615",
+      "phone": "",
       "email": "info@lako.services",
-      "telegram": "+381 63 894 1789"
+      "telegram": "@lakoprevoz_support"
     }
   },
   "contact": {
     "title": "Kontakt",
     "subtitle": "Imate pitanje? Javite nam se i odgovorićemo vam u najkraćem roku.",
+    "preferWritten": "Preferiramo pisanu komunikaciju — pišite nam na Telegram, WhatsApp ili email.",
     "form": {
       "name": "Ime i prezime",
       "email": "Email",
@@ -767,10 +768,10 @@
     },
     "channels": {
       "email": "info@lako.services",
-      "telegram": "+381 63 894 1789",
-      "telegramUsername": "@Bragin_Arbitr",
+      "telegram": "@lakoprevoz_support",
+      "telegramUsername": "@lakoprevoz_support",
       "whatsapp": "+381 63 894 1789",
-      "viber": "+7 996 945 3103",
+      "viber": "",
       "address": "Novi Sad, Srbija"
     }
   },
@@ -783,6 +784,7 @@
     "company": "Lako Services",
     "location": "Novi Sad, Srbija",
     "rights": "Sva prava zadržana",
+    "beta": "Servis je u fazi aktivnog razvoja. Cenimo vaše povratne informacije — pomozite nam da postanemo bolji!",
     "contactUs": "Kontaktirajte nas",
     "legal": "Pravne informacije",
     "privacyPolicy": "Politika privatnosti",
@@ -972,6 +974,7 @@
     "contact": {
       "title": "Kontakt — Lako Services | Novi Sad",
       "description": "Zakažite besplatnu konsultaciju. Telegram, WhatsApp, email — javite nam se na način koji vam odgovara."
+
     },
     "registerBusiness": {
       "title": "Dodaj svoj biznis u katalog | Lako Services",

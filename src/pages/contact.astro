@@ -37,6 +37,9 @@ const locale = 'sr';
           <h2 class="text-2xl font-bold text-text">
             {locale === 'sr' ? 'Drugi načini kontakta' : 'Other ways to reach us'}
           </h2>
+          <p class="text-sm text-text-light">
+            {t(locale, 'contact.preferWritten')}
+          </p>
 
           <div class="space-y-6">
             {/* Email */}
@@ -66,8 +69,7 @@ const locale = 'sr';
               </div>
               <div>
                 <p class="font-semibold text-text">Telegram</p>
-                <a href="https://t.me/Bragin_Arbitr" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{t(locale, 'contact.channels.telegramUsername')}</a>
-                <p class="text-text-light mt-0.5">{t(locale, 'contact.channels.telegram')}</p>
+                <a href="https://t.me/lakoprevoz_support" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{t(locale, 'contact.channels.telegramUsername')}</a>
               </div>
             </div>
 

@@ -738,14 +738,15 @@
     },
     "contact": {
       "office": "Novi Sad, Serbia",
-      "phone": "+381 62 944 8615",
+      "phone": "",
       "email": "info@lako.services",
-      "telegram": "+381 63 894 1789"
+      "telegram": "@lakoprevoz_support"
     }
   },
   "contact": {
     "title": "Contact",
     "subtitle": "Have a question? Get in touch and we'll respond as soon as possible.",
+    "preferWritten": "We prefer written communication — message us on Telegram, WhatsApp, or email.",
     "form": {
       "name": "Full name",
       "email": "Email",
@@ -767,10 +768,10 @@
     },
     "channels": {
       "email": "info@lako.services",
-      "telegram": "+381 63 894 1789",
-      "telegramUsername": "@Bragin_Arbitr",
+      "telegram": "@lakoprevoz_support",
+      "telegramUsername": "@lakoprevoz_support",
       "whatsapp": "+381 63 894 1789",
-      "viber": "+7 996 945 3103",
+      "viber": "",
       "address": "Novi Sad, Serbia"
     }
   },
@@ -783,6 +784,7 @@
     "company": "Lako Services",
     "location": "Novi Sad, Serbia",
     "rights": "All rights reserved",
+    "beta": "The service is in active development. We value your feedback — help us get better!",
     "contactUs": "Get in touch",
     "legal": "Legal",
     "privacyPolicy": "Privacy Policy",

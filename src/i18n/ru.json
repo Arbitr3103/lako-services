@@ -738,14 +738,15 @@
     },
     "contact": {
       "office": "Нови-Сад, Сербия",
-      "phone": "+381 62 944 8615",
+      "phone": "",
       "email": "info@lako.services",
-      "telegram": "+381 63 894 1789"
+      "telegram": "@lakoprevoz_support"
     }
   },
   "contact": {
     "title": "Контакт",
     "subtitle": "Есть вопрос? Свяжитесь с нами, и мы ответим в кратчайшие сроки.",
+    "preferWritten": "Мы предпочитаем письменную коммуникацию — пишите нам в Telegram, WhatsApp или email.",
     "form": {
       "name": "Имя и фамилия",
       "email": "Email",
@@ -767,10 +768,10 @@
     },
     "channels": {
       "email": "info@lako.services",
-      "telegram": "+381 63 894 1789",
-      "telegramUsername": "@Bragin_Arbitr",
+      "telegram": "@lakoprevoz_support",
+      "telegramUsername": "@lakoprevoz_support",
       "whatsapp": "+381 63 894 1789",
-      "viber": "+7 996 945 3103",
+      "viber": "",
       "address": "Нови-Сад, Сербия"
     }
   },
@@ -783,6 +784,7 @@
     "company": "Lako Services",
     "location": "Нови-Сад, Сербия",
     "rights": "Все права защищены",
+    "beta": "Сервис в стадии активного развития. Мы ценим вашу обратную связь — помогите нам стать лучше!",
     "contactUs": "Свяжитесь с нами",
     "legal": "Правовая информация",
     "privacyPolicy": "Политика конфиденциальности",
