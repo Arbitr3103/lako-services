@@ -29,7 +29,7 @@
       },
       "proven": {
         "title": "Proven system",
-        "description": "Seamless integration with PANTHEON ERP, automatic SEF e-invoices, and reporting you can trust."
+        "description": "CMR documents, invoices, e-invoices and reports — all in one place, paperless."
       }
     },
     "segments": {
@@ -153,7 +153,7 @@
       "steps": [
         { "title": "Consultation", "description": "Schedule 30 minutes — we analyze your needs", "duration": "Day 1" },
         { "title": "Process analysis", "description": "We map your operations and create a plan", "duration": "Day 2-3" },
-        { "title": "System setup", "description": "We configure the bot, integrate PANTHEON", "duration": "Day 4-10" },
+        { "title": "System setup", "description": "We configure the bot for your operations", "duration": "Day 4-10" },
         { "title": "Team training", "description": "We train dispatchers and drivers to use the system", "duration": "Day 11" },
         { "title": "Launch", "description": "System is running — you manage from your armchair", "duration": "Day 12" }
       ]
@@ -188,7 +188,7 @@
         { "question": "What if we're not on PANTHEON?", "answer": "Lako currently works as a standalone system. PANTHEON integration is in development." },
         { "question": "How much does it cost?", "answer": "For the first 5 companies: 3 months free, then 2,500 RSD/month. For others: 30-day free trial, then 3,500 RSD/month." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
-        { "question": "What happens to my existing data?", "answer": "We migrate your data from PANTHEON automatically. Paper documentation is digitized during onboarding." }
+        { "question": "What happens to my existing data?", "answer": "We import your existing data into the system. Paper documentation is digitized during onboarding." }
       ]
     },
     "bot": {
@@ -443,7 +443,7 @@
     "mission": "Lako Services is a Serbian company bringing automation to all businesses. We believe technology should be accessible, simple and efficient — without complicated systems and expensive solutions.",
     "whyUs": {
       "title": "Why us?",
-      "text": "A local team in Novi Sad means we understand Serbian business, work with the PANTHEON system, SEF e-invoices, and provide support in your language."
+      "text": "A local team in Novi Sad means we understand Serbian business, generate CMR, invoices and e-invoices, and provide support in your language."
     },
     "contact": {
       "office": "Novi Sad, Serbia",
@@ -654,11 +654,11 @@
   "seo": {
     "home": {
       "title": "Lako Services — Telegram & Viber bots for business automation | Novi Sad",
-      "description": "Automate your logistics, salon or service with Telegram and Viber bots. PANTHEON integration, EXPO 2027 ready. Local support in Novi Sad."
+      "description": "Automate your logistics, salon or service with Telegram bots. CMR, invoices, e-invoices. Local support in Novi Sad."
     },
     "logistics": {
       "title": "Logistics for EXPO 2027 — automation and GPS tracking | Lako Services",
-      "description": "Prepare your logistics company for EXPO 2027. Automatic scheduling, live GPS tracking, PANTHEON integration. Free analysis."
+      "description": "Automate your logistics company. Scheduling, CMR documents, invoices and e-invoices from a Telegram bot. Free analysis."
     },
     "smallBusiness": {
       "title": "Small Business — Salon & service automation | Lako Services",
@@ -666,7 +666,7 @@
     },
     "about": {
       "title": "About — Lako Services | Novi Sad",
-      "description": "Serbian business automation company. Local team in Novi Sad, PANTHEON integration, support in Serbian."
+      "description": "Serbian business automation company. Local team in Novi Sad, CMR and e-invoices, support in Serbian."
     },
     "contact": {
       "title": "Contact — Lako Services | Novi Sad",

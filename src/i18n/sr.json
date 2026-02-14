@@ -29,7 +29,7 @@
       },
       "proven": {
         "title": "Proveren sistem",
-        "description": "Besprekorna integracija sa PANTHEON ERP, automatske SEF e-fakture i izveštaji kojima možete verovati."
+        "description": "CMR dokumenta, fakture, e-fakture i izveštaji — sve na jednom mestu, bez papira."
       }
     },
     "segments": {
@@ -153,7 +153,7 @@
       "steps": [
         { "title": "Konsultacija", "description": "Zakažete 30 minuta — analiziramo vaše potrebe", "duration": "Dan 1" },
         { "title": "Analiza procesa", "description": "Mapiramo vaše operacije i pravimo plan", "duration": "Dan 2-3" },
-        { "title": "Podešavanje sistema", "description": "Konfigurišemo bota, integrišemo PANTHEON", "duration": "Dan 4-10" },
+        { "title": "Podešavanje sistema", "description": "Konfigurišemo bota za vaše operacije", "duration": "Dan 4-10" },
         { "title": "Obuka tima", "description": "Obučavamo dispečere i vozače za rad sa sistemom", "duration": "Dan 11" },
         { "title": "Pokretanje", "description": "Sistem radi — vi upravljate iz fotelje", "duration": "Dan 12" }
       ]
@@ -188,7 +188,7 @@
         { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako trenutno radi kao samostalan sistem. Integracija sa PANTHEON-om je u pripremi." },
         { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
-        { "question": "Šta se dešava sa mojim postojećim podacima?", "answer": "Migriramo vaše podatke iz PANTHEON-a automatski. Papirnu dokumentaciju digitalizujemo tokom uvođenja." }
+        { "question": "Šta se dešava sa mojim postojećim podacima?", "answer": "Unosimo vaše postojeće podatke u sistem. Papirnu dokumentaciju digitalizujemo tokom uvođenja." }
       ]
     },
     "bot": {
@@ -443,7 +443,7 @@
     "mission": "Lako Services je srpska kompanija koja donosi automatizaciju svim biznisima. Verujemo da tehnologija treba da bude pristupačna, jednostavna i efikasna — bez komplikovanih sistema i skupih rešenja.",
     "whyUs": {
       "title": "Zašto mi?",
-      "text": "Lokalni tim u Novom Sadu znači da razumemo srpski biznis, radimo sa PANTHEON sistemom, SEF e-fakturama, i pružamo podršku na vašem jeziku."
+      "text": "Lokalni tim u Novom Sadu znači da razumemo srpski biznis, generišemo CMR, fakture i e-fakture, i pružamo podršku na vašem jeziku."
     },
     "contact": {
       "office": "Novi Sad, Srbija",
@@ -654,11 +654,11 @@
   "seo": {
     "home": {
       "title": "Lako Services — Telegram i Viber botovi za automatizaciju biznisa | Novi Sad",
-      "description": "Automatizujte logistiku, salon ili servis sa Telegram i Viber botovima. PANTHEON integracija, EXPO 2027 spremnost. Lokalna podrška u Novom Sadu."
+      "description": "Automatizujte logistiku, salon ili servis sa Telegram botovima. CMR, fakture, e-fakture. Lokalna podrška u Novom Sadu."
     },
     "logistics": {
       "title": "Logistika za EXPO 2027 — automatizacija i GPS praćenje | Lako Services",
-      "description": "Pripremite logističku kompaniju za EXPO 2027. Automatski raspored, GPS tracking uživo, PANTHEON integracija. Besplatna analiza."
+      "description": "Automatizujte logističku kompaniju. Raspored, CMR dokumenta, fakture i e-fakture iz Telegram bota. Besplatna analiza."
     },
     "smallBusiness": {
       "title": "Mali biznis — Automatizacija salona i servisa | Lako Services",
@@ -666,7 +666,7 @@
     },
     "about": {
       "title": "O nama — Lako Services | Novi Sad",
-      "description": "Srpska kompanija za automatizaciju biznisa. Lokalni tim u Novom Sadu, PANTHEON integracija, podrška na srpskom."
+      "description": "Srpska kompanija za automatizaciju biznisa. Lokalni tim u Novom Sadu, CMR i e-fakture, podrška na srpskom."
     },
     "contact": {
       "title": "Kontakt — Lako Services | Novi Sad",
