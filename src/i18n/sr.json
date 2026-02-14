@@ -202,14 +202,14 @@
       },
       "featuresTitle": "Šta bot može",
       "features": [
-        { "icon": "trip", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
-        { "icon": "cmr", "title": "CMR dokumenti", "description": "Automatsko generisanje CMR u PDF formatu — spreman za štampu." },
-        { "icon": "invoice", "title": "Fakture (Invoice)", "description": "Profesionalne fakture u PDF-u sa svim potrebnim podacima." },
-        { "icon": "efaktura", "title": "E-fakture (XML)", "description": "UBL 2.1 XML e-fakture za SEF — bez ručnog unosa." },
-        { "icon": "driver", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
-        { "icon": "vehicle", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
-        { "icon": "customer", "title": "Baza klijenata", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
-        { "icon": "stats", "title": "Statistika i Excel", "description": "Pregled performansi i eksport podataka u Excel." }
+        { "icon": "trip", "slug": "trips", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
+        { "icon": "cmr", "slug": "cmr", "title": "CMR dokumenti", "description": "Automatsko generisanje CMR u PDF formatu — spreman za štampu." },
+        { "icon": "invoice", "slug": "invoices", "title": "Fakture (Invoice)", "description": "Profesionalne fakture u PDF-u sa svim potrebnim podacima." },
+        { "icon": "efaktura", "slug": "efaktura", "title": "E-fakture (XML)", "description": "UBL 2.1 XML e-fakture za SEF — bez ručnog unosa." },
+        { "icon": "driver", "slug": "drivers", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
+        { "icon": "vehicle", "slug": "vehicles", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
+        { "icon": "customer", "slug": "customers", "title": "Baza klijenata", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
+        { "icon": "stats", "slug": "stats", "title": "Statistika i Excel", "description": "Pregled performansi i eksport podataka u Excel." }
       ],
       "video": {
         "title": "Pogledajte kako radi",
@@ -244,6 +244,294 @@
               "CMR, fakture, e-fakture",
               "Podrška putem Telegrama"
             ]
+          }
+        ]
+      }
+    },
+    "guides": {
+      "back": "Nazad na logistiku",
+      "openBot": "Otvori bota",
+      "tip": "Savet",
+      "trips": {
+        "title": "Upravljanje rejsovima",
+        "description": "Kompletno uputstvo za kreiranje, pretragu i upravljanje rejsovima kroz Telegram bota.",
+        "steps": [
+          {
+            "title": "Kreiranje rejsa",
+            "content": "Otvorite Glavni meni → Novi rejs. Izaberite prevozno sredstvo, zatim vozača, pa klijenta. Unesite grad i adresu utovara, grad i adresu istovara, opis tereta, težinu i cenu. Alternativno — koristite Brzi rejs koji zahteva samo 4 koraka.",
+            "tip": "Brzi rejs je idealan za ponavljajuće maršrute — unosite samo ključne podatke."
+          },
+          {
+            "title": "Lista rejsova",
+            "content": "Pregledajte sve rejsove sa filterom po statusu (kreiran, u toku, završen). Lista prikazuje po 10 rejsova sa paginacijom.",
+            "tip": ""
+          },
+          {
+            "title": "Pretraga",
+            "content": "Koristite pretragu za brz pronalazak rejsa — pretražujte po broju, klijentu, gradu ili vozaču.",
+            "tip": ""
+          },
+          {
+            "title": "Statusi rejsa",
+            "content": "Svaki rejs prolazi kroz tri faze: Kreiran → U toku → Završen. Status možete promeniti iz kartice rejsa.",
+            "tip": "Vozač sa povezanim Telegram nalogom može sam menjati status svojih rejsova."
+          },
+          {
+            "title": "Uređivanje rejsa",
+            "content": "Otvorite karticu rejsa i izmenite bilo koje polje — grad, adresu, teret, cenu, vozača, vozilo ili klijenta.",
+            "tip": ""
+          },
+          {
+            "title": "Dupliranje rejsa",
+            "content": "Kreirajte kopiju postojećeg rejsa za sličan maršrut — uštedite vreme pri ponovljenim isporukama.",
+            "tip": ""
+          },
+          {
+            "title": "Šabloni",
+            "content": "Sačuvajte rejs kao šablon za najčešće maršrute. Iz šablona kreirate nov rejs u jednom kliku.",
+            "tip": "Šabloni su idealni za redovne linije — npr. Beograd–Novi Sad svaki ponedeljak."
+          },
+          {
+            "title": "Eksport u Excel",
+            "content": "Eksportujte sve rejsove ili filtrirane po statusu u .xlsx fajl. Dostupno samo na PRO planu.",
+            "tip": ""
+          }
+        ]
+      },
+      "cmr": {
+        "title": "CMR dokumenti",
+        "description": "Uputstvo za generisanje CMR tovarnih listova iz Telegram bota.",
+        "steps": [
+          {
+            "title": "Kada generisati CMR",
+            "content": "Otvorite karticu završenog rejsa i kliknite dugme CMR. CMR se generiše na osnovu podataka rejsa — adrese, teret, vozač, vozilo.",
+            "tip": "CMR možete generisati i za rejsove koji nisu završeni, ali se preporučuje da sve podatke unesete pre generisanja."
+          },
+          {
+            "title": "Master CMR",
+            "content": "Popunite dodatna polja: tip pakovanja, količinu, markaciju, opis robe i napomene. Ova polja nisu obavezna ali obogaćuju dokument.",
+            "tip": ""
+          },
+          {
+            "title": "Automatska numeracija",
+            "content": "Svaki CMR dobija jedinstveni broj u formatu CMR-YYYY-NNN, jedinstven za vašu kompaniju.",
+            "tip": ""
+          },
+          {
+            "title": "PDF dokument",
+            "content": "CMR se generiše kao profesionalni PDF sa ćiriličnim fontom (Roboto), spreman za štampu na A4 formatu.",
+            "tip": ""
+          },
+          {
+            "title": "Preuzimanje",
+            "content": "PDF se šalje kao fajl direktno u Telegram čet — preuzmite ga jednim klikom.",
+            "tip": ""
+          }
+        ]
+      },
+      "invoices": {
+        "title": "Fakture (Invoice)",
+        "description": "Uputstvo za kreiranje profesionalnih faktura sa svim potrebnim podacima.",
+        "steps": [
+          {
+            "title": "Kreiranje fakture",
+            "content": "Otvorite karticu rejsa i kliknite dugme Faktura. Faktura se kreira sa podacima rejsa — klijent, usluge, cena.",
+            "tip": ""
+          },
+          {
+            "title": "Master fakture",
+            "content": "Unesite broj fakture (automatski ili ručno), datum izdavanja, rok plaćanja (7, 14, 30 ili 60 dana) i pozicije — svaka sa opisom, količinom, jedinicom mere, cenom i PDV-om.",
+            "tip": ""
+          },
+          {
+            "title": "Šabloni usluga",
+            "content": "Koristite gotove šablone usluga (Transportna usluga, Utovar, Istovar i dr.) za brzo dodavanje pozicija na fakturu.",
+            "tip": "Šabloni štede vreme — najčešće usluge dodajete u jednom kliku."
+          },
+          {
+            "title": "Statusi fakture",
+            "content": "Faktura prolazi kroz faze: Nacrt → Poslata → Plaćena ili Otkazana. Status menjate iz kartice fakture.",
+            "tip": ""
+          },
+          {
+            "title": "Lista faktura",
+            "content": "Pregledajte sve fakture sa filterom po statusu. Svaka faktura je povezana sa rejsom iz kojeg je kreirana.",
+            "tip": ""
+          },
+          {
+            "title": "PDF dokument",
+            "content": "Faktura se generiše kao profesionalni PDF sa rekvizitima kompanije, pozicijama, PDV-om i ukupnim iznosom.",
+            "tip": ""
+          }
+        ]
+      },
+      "efaktura": {
+        "title": "E-fakture (XML)",
+        "description": "Uputstvo za generisanje XML e-faktura za portal efaktura.gov.rs (SEF).",
+        "steps": [
+          {
+            "title": "Šta je e-faktura",
+            "content": "E-faktura je XML fajl u UBL 2.1 formatu koji se učitava na portal efaktura.gov.rs (SEF) za elektronsko fakturisanje u Srbiji.",
+            "tip": ""
+          },
+          {
+            "title": "Generisanje",
+            "content": "Otvorite karticu postojeće fakture i kliknite dugme E-faktura. XML se generiše na osnovu podataka fakture.",
+            "tip": ""
+          },
+          {
+            "title": "Validacija",
+            "content": "Pre generisanja, bot proverava da li kompanija i klijent imaju unesen PIB i da li faktura ima pozicije. Ako nešto nedostaje — dobićete poruku o grešci.",
+            "tip": "Obavezno unesite PIB vaše kompanije i klijenata pre generisanja e-faktura."
+          },
+          {
+            "title": "XML fajl",
+            "content": "XML fajl se preuzima iz Telegrama i ručno se učitava na portal SEF.",
+            "tip": ""
+          },
+          {
+            "title": "Statusi e-fakture",
+            "content": "E-fakture imaju statuse: Nacrt, Poslata, Prihvaćena, Odbijena — pratite status na portalu SEF.",
+            "tip": ""
+          }
+        ]
+      },
+      "drivers": {
+        "title": "Evidencija vozača",
+        "description": "Kompletno uputstvo za upravljanje vozačima — od dodavanja do povezivanja sa Telegramom.",
+        "steps": [
+          {
+            "title": "Otvaranje sekcije Vozači",
+            "content": "U glavnom meniju kliknite dugme 👤 Vozači da biste otvorili listu svih vozača vaše kompanije.",
+            "tip": ""
+          },
+          {
+            "title": "Dodavanje vozača",
+            "content": "Kliknite ➕ Dodaj → unesite ime, prezime, broj telefona, broj vozačke dozvole i napomene (opciono).",
+            "tip": "Na Trial pretplati možete dodati maksimalno 1 vozača. Za više — nadogradite na PRO."
+          },
+          {
+            "title": "Povezivanje Telegram naloga",
+            "content": "Ovo je ključna funkcija: vozač otvara bota → šalje /start → bot pita vlasnika 'Poveži sa vozačem?' → vlasnik bira iz liste → vozač dobija svoj interfejs. Vozač MORA prvi da pokrene čet sa botom.",
+            "tip": "Vozač mora prvi da započne razgovor sa botom — bez toga povezivanje nije moguće."
+          },
+          {
+            "title": "Šta vidi vozač",
+            "content": "Povezan vozač vidi svoju listu rejsova, može menjati status (kreiran → u toku → završen) i preuzimati CMR i fakture.",
+            "tip": ""
+          },
+          {
+            "title": "Uređivanje vozača",
+            "content": "Izaberite vozača iz liste → otvorite karticu → Izmeni → promenite ime, prezime, telefon, broj dozvole ili napomene.",
+            "tip": ""
+          },
+          {
+            "title": "Odvezivanje Telegrama",
+            "content": "U kartici vozača kliknite 'Odveži Telegram' — vozač gubi pristup botu i ne može više videti rejsove.",
+            "tip": ""
+          },
+          {
+            "title": "Brisanje vozača",
+            "content": "Kliknite Obriši → potvrdite brisanje. Brisanje je soft-delete — rejsovi vozača se čuvaju u istoriji.",
+            "tip": "Čak i ako obrišete vozača, svi njegovi rejsovi ostaju sačuvani u sistemu."
+          }
+        ]
+      },
+      "vehicles": {
+        "title": "Evidencija vozila",
+        "description": "Uputstvo za upravljanje voznim parkom — dodavanje, uređivanje i praćenje vozila.",
+        "steps": [
+          {
+            "title": "Dodavanje vozila",
+            "content": "Unesite registarski broj, marku/model, tip (Kamion, Kombi ili Prikolica), nosivost, datum tehničkog pregleda i napomene.",
+            "tip": ""
+          },
+          {
+            "title": "Lista vozila",
+            "content": "Pregledajte sva vozila sortirana po registarskom broju.",
+            "tip": ""
+          },
+          {
+            "title": "Uređivanje vozila",
+            "content": "Otvorite karticu vozila i izmenite bilo koje polje — registraciju, marku, tip, nosivost ili datum pregleda.",
+            "tip": ""
+          },
+          {
+            "title": "Brisanje vozila",
+            "content": "Kliknite Obriši → potvrdite brisanje.",
+            "tip": ""
+          },
+          {
+            "title": "Podsetnici za tehnički pregled",
+            "content": "Bot vas automatski obaveštava kada se približava datum tehničkog pregleda vašeg vozila.",
+            "tip": "Unesite tačan datum tehničkog pregleda da biste dobijali pravovremena obaveštenja."
+          }
+        ]
+      },
+      "customers": {
+        "title": "Baza klijenata",
+        "description": "Uputstvo za upravljanje bazom klijenata — dodavanje, pretraga i uređivanje.",
+        "steps": [
+          {
+            "title": "Dodavanje klijenta",
+            "content": "Unesite naziv firme, PIB, adresu, grad, kontakt osobu, email, telefon i državu.",
+            "tip": ""
+          },
+          {
+            "title": "Lista klijenata",
+            "content": "Pregledajte sve klijente sortirane po nazivu sa prikazom grada.",
+            "tip": ""
+          },
+          {
+            "title": "Uređivanje klijenta",
+            "content": "Otvorite karticu klijenta i izmenite bilo koje polje.",
+            "tip": ""
+          },
+          {
+            "title": "Brisanje klijenta",
+            "content": "Kliknite Obriši → potvrdite brisanje.",
+            "tip": ""
+          },
+          {
+            "title": "Brzo dodavanje",
+            "content": "Klijenta možete dodati direktno prilikom kreiranja rejsa — ne morate se vraćati u bazu klijenata.",
+            "tip": "Koristite brzo dodavanje za nove klijente — uštedite korak pri kreiranju rejsa."
+          }
+        ]
+      },
+      "stats": {
+        "title": "Statistika i Excel",
+        "description": "Uputstvo za praćenje performansi i eksport podataka.",
+        "steps": [
+          {
+            "title": "Kontrolna tabla",
+            "content": "Vidite pregled rejsova po statusu, ukupnu zaradu, zbir faktura, top klijenta, top vozilo i top vozača.",
+            "tip": ""
+          },
+          {
+            "title": "Period",
+            "content": "Izaberite period: ovaj mesec, prošli mesec ili sve vreme.",
+            "tip": ""
+          },
+          {
+            "title": "Statistika po vozačima",
+            "content": "Pregledajte broj rejsova, prosečnu cenu, klijente i vozila za svakog vozača.",
+            "tip": ""
+          },
+          {
+            "title": "Statistika po klijentima",
+            "content": "Pregledajte broj rejsova, ukupnu zaradu, vozače i vozila za svakog klijenta.",
+            "tip": ""
+          },
+          {
+            "title": "Dospele fakture",
+            "content": "Aging report: fakture dospele pre 30+ dana, 7–30 dana i manje od 7 dana.",
+            "tip": "Redovno proveravajte dospele fakture da izbegnete kašnjenja u naplati."
+          },
+          {
+            "title": "Excel eksport",
+            "content": "Eksportujte sve rejsove u .xlsx fajl. Dostupno samo na PRO planu.",
+            "tip": ""
           }
         ]
       }
@@ -658,7 +946,17 @@
     },
     "logistics": {
       "title": "Logistika za EXPO 2027 — automatizacija i GPS praćenje | Lako Services",
-      "description": "Automatizujte logističku kompaniju. Raspored, CMR dokumenta, fakture i e-fakture iz Telegram bota. Besplatna analiza."
+      "description": "Automatizujte logističku kompaniju. Raspored, CMR dokumenta, fakture i e-fakture iz Telegram bota. Besplatna analiza.",
+      "guides": {
+        "trips": { "title": "Upravljanje rejsovima — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje, pretraga i upravljanje rejsovima kroz Telegram bota Lako Prevoz." },
+        "cmr": { "title": "CMR dokumenti — Uputstvo | Lako Prevoz Bot", "description": "Generisanje CMR tovarnih listova u PDF formatu iz Telegram bota." },
+        "invoices": { "title": "Fakture — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje profesionalnih faktura sa pozicijama, PDV-om i rokovima plaćanja." },
+        "efaktura": { "title": "E-fakture (XML) — Uputstvo | Lako Prevoz Bot", "description": "Generisanje UBL 2.1 XML e-faktura za portal efaktura.gov.rs (SEF)." },
+        "drivers": { "title": "Evidencija vozača — Uputstvo | Lako Prevoz Bot", "description": "Dodavanje vozača, povezivanje Telegram naloga i upravljanje pristupom." },
+        "vehicles": { "title": "Evidencija vozila — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje voznim parkom — registracije, tipovi i podsetnici za pregled." },
+        "customers": { "title": "Baza klijenata — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje bazom klijenata — dodavanje, pretraga i uređivanje kontakata." },
+        "stats": { "title": "Statistika i Excel — Uputstvo | Lako Prevoz Bot", "description": "Pregled performansi, aging report i eksport podataka u Excel." }
+      }
     },
     "smallBusiness": {
       "title": "Mali biznis — Automatizacija salona i servisa | Lako Services",

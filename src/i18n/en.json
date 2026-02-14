@@ -202,14 +202,14 @@
       },
       "featuresTitle": "What the bot can do",
       "features": [
-        { "icon": "trip", "title": "Trip management", "description": "Create, track and complete trips in a few clicks." },
-        { "icon": "cmr", "title": "CMR documents", "description": "Automatic CMR generation in PDF format — ready to print." },
-        { "icon": "invoice", "title": "Invoices", "description": "Professional invoices in PDF with all required details." },
-        { "icon": "efaktura", "title": "E-invoices (XML)", "description": "UBL 2.1 XML e-invoices for SEF — no manual entry." },
-        { "icon": "driver", "title": "Driver records", "description": "Add, edit and search drivers in your database." },
-        { "icon": "vehicle", "title": "Vehicle records", "description": "Manage your fleet — registrations, types, status." },
-        { "icon": "customer", "title": "Client database", "description": "All your clients in one place with collaboration history." },
-        { "icon": "stats", "title": "Statistics & Excel", "description": "Performance overview and data export to Excel." }
+        { "icon": "trip", "slug": "trips", "title": "Trip management", "description": "Create, track and complete trips in a few clicks." },
+        { "icon": "cmr", "slug": "cmr", "title": "CMR documents", "description": "Automatic CMR generation in PDF format — ready to print." },
+        { "icon": "invoice", "slug": "invoices", "title": "Invoices", "description": "Professional invoices in PDF with all required details." },
+        { "icon": "efaktura", "slug": "efaktura", "title": "E-invoices (XML)", "description": "UBL 2.1 XML e-invoices for SEF — no manual entry." },
+        { "icon": "driver", "slug": "drivers", "title": "Driver records", "description": "Add, edit and search drivers in your database." },
+        { "icon": "vehicle", "slug": "vehicles", "title": "Vehicle records", "description": "Manage your fleet — registrations, types, status." },
+        { "icon": "customer", "slug": "customers", "title": "Client database", "description": "All your clients in one place with collaboration history." },
+        { "icon": "stats", "slug": "stats", "title": "Statistics & Excel", "description": "Performance overview and data export to Excel." }
       ],
       "video": {
         "title": "See how it works",
@@ -244,6 +244,294 @@
               "CMR, invoices, e-invoices",
               "Telegram support"
             ]
+          }
+        ]
+      }
+    },
+    "guides": {
+      "back": "Back to logistics",
+      "openBot": "Open bot",
+      "tip": "Tip",
+      "trips": {
+        "title": "Trip Management",
+        "description": "Complete guide for creating, searching and managing trips through the Telegram bot.",
+        "steps": [
+          {
+            "title": "Creating a trip",
+            "content": "Open Main menu \u2192 New trip. Select a vehicle, then a driver, then a client. Enter the pickup city and address, delivery city and address, cargo description, weight, and price. Alternatively, use Quick trip which requires only 4 steps.",
+            "tip": "Quick trip is ideal for repeating routes \u2014 enter only the key data."
+          },
+          {
+            "title": "Trip list",
+            "content": "View all trips with a status filter (created, in progress, completed). The list shows 10 trips per page with pagination.",
+            "tip": ""
+          },
+          {
+            "title": "Search",
+            "content": "Use search to quickly find a trip \u2014 search by number, client, city, or driver.",
+            "tip": ""
+          },
+          {
+            "title": "Trip statuses",
+            "content": "Each trip goes through three phases: Created \u2192 In Progress \u2192 Completed. You can change the status from the trip card.",
+            "tip": "A driver with a linked Telegram account can change the status of their own trips."
+          },
+          {
+            "title": "Editing a trip",
+            "content": "Open the trip card and edit any field \u2014 city, address, cargo, price, driver, vehicle, or client.",
+            "tip": ""
+          },
+          {
+            "title": "Duplicating a trip",
+            "content": "Create a copy of an existing trip for a similar route \u2014 save time on repeat deliveries.",
+            "tip": ""
+          },
+          {
+            "title": "Templates",
+            "content": "Save a trip as a template for your most common routes. Create a new trip from a template in one click.",
+            "tip": "Templates are ideal for regular lines \u2014 e.g. Belgrade\u2013Novi Sad every Monday."
+          },
+          {
+            "title": "Export to Excel",
+            "content": "Export all trips or filtered by status to an .xlsx file. Available only on the PRO plan.",
+            "tip": ""
+          }
+        ]
+      },
+      "cmr": {
+        "title": "CMR Documents",
+        "description": "Guide for generating CMR consignment notes from the Telegram bot.",
+        "steps": [
+          {
+            "title": "When to generate a CMR",
+            "content": "Open the card of a completed trip and click the CMR button. The CMR is generated based on the trip data \u2014 addresses, cargo, driver, vehicle.",
+            "tip": "You can generate a CMR for trips that are not yet completed, but it is recommended to enter all data beforehand."
+          },
+          {
+            "title": "CMR wizard",
+            "content": "Fill in additional fields: packaging type, quantity, markings, goods description, and notes. These fields are optional but enrich the document.",
+            "tip": ""
+          },
+          {
+            "title": "Auto-numbering",
+            "content": "Each CMR receives a unique number in the format CMR-YYYY-NNN, unique to your company.",
+            "tip": ""
+          },
+          {
+            "title": "PDF document",
+            "content": "The CMR is generated as a professional PDF with Cyrillic font (Roboto), ready for printing on A4.",
+            "tip": ""
+          },
+          {
+            "title": "Download",
+            "content": "The PDF is sent as a file directly in the Telegram chat \u2014 download it with one click.",
+            "tip": ""
+          }
+        ]
+      },
+      "invoices": {
+        "title": "Invoices",
+        "description": "Guide for creating professional invoices with all required data.",
+        "steps": [
+          {
+            "title": "Creating an invoice",
+            "content": "Open the trip card and click the Invoice button. The invoice is created with the trip data \u2014 client, services, price.",
+            "tip": ""
+          },
+          {
+            "title": "Invoice wizard",
+            "content": "Enter the invoice number (auto or manual), issue date, payment term (7, 14, 30, or 60 days), and line items \u2014 each with description, quantity, unit, price, and VAT.",
+            "tip": ""
+          },
+          {
+            "title": "Service templates",
+            "content": "Use ready-made service templates (Transport service, Loading, Unloading, etc.) to quickly add line items to the invoice.",
+            "tip": "Templates save time \u2014 add your most common services in one click."
+          },
+          {
+            "title": "Invoice statuses",
+            "content": "An invoice goes through stages: Draft \u2192 Sent \u2192 Paid or Cancelled. Change the status from the invoice card.",
+            "tip": ""
+          },
+          {
+            "title": "Invoice list",
+            "content": "View all invoices with a status filter. Each invoice is linked to the trip it was created from.",
+            "tip": ""
+          },
+          {
+            "title": "PDF document",
+            "content": "The invoice is generated as a professional PDF with company details, line items, VAT, and total amount.",
+            "tip": ""
+          }
+        ]
+      },
+      "efaktura": {
+        "title": "E-Invoices (XML)",
+        "description": "Guide for generating XML e-invoices for the efaktura.gov.rs (SEF) portal.",
+        "steps": [
+          {
+            "title": "What is an e-invoice",
+            "content": "An e-invoice is an XML file in UBL 2.1 format that is uploaded to the efaktura.gov.rs (SEF) portal for electronic invoicing in Serbia.",
+            "tip": ""
+          },
+          {
+            "title": "Generation",
+            "content": "Open the card of an existing invoice and click the E-invoice button. The XML is generated based on the invoice data.",
+            "tip": ""
+          },
+          {
+            "title": "Validation",
+            "content": "Before generating, the bot checks if the company and client have a tax ID (PIB) entered and if the invoice has line items. If something is missing \u2014 you will get an error message.",
+            "tip": "Make sure to enter the tax ID for your company and clients before generating e-invoices."
+          },
+          {
+            "title": "XML file",
+            "content": "The XML file is downloaded from Telegram and manually uploaded to the SEF portal.",
+            "tip": ""
+          },
+          {
+            "title": "E-invoice statuses",
+            "content": "E-invoices have statuses: Draft, Sent, Accepted, Rejected \u2014 track the status on the SEF portal.",
+            "tip": ""
+          }
+        ]
+      },
+      "drivers": {
+        "title": "Driver Management",
+        "description": "Complete guide for managing drivers \u2014 from adding to linking with Telegram.",
+        "steps": [
+          {
+            "title": "Opening the Drivers section",
+            "content": "In the main menu, click the \ud83d\udc64 Drivers button to open the list of all drivers in your company.",
+            "tip": ""
+          },
+          {
+            "title": "Adding a driver",
+            "content": "Click \u2795 Add \u2192 enter first name, last name, phone number, driver's license number, and notes (optional).",
+            "tip": "On the Trial plan, you can add a maximum of 1 driver. For more \u2014 upgrade to PRO."
+          },
+          {
+            "title": "Linking a Telegram account",
+            "content": "This is the key feature: the driver opens the bot \u2192 sends /start \u2192 the bot asks the owner 'Link to a driver?' \u2192 the owner selects from the list \u2192 the driver gets their own interface. The driver MUST start the chat with the bot first.",
+            "tip": "The driver must initiate the conversation with the bot first \u2014 without this, linking is not possible."
+          },
+          {
+            "title": "What the driver sees",
+            "content": "A linked driver sees their own trip list, can change statuses (created \u2192 in progress \u2192 completed), and download CMR and invoices.",
+            "tip": ""
+          },
+          {
+            "title": "Editing a driver",
+            "content": "Select the driver from the list \u2192 open the card \u2192 Edit \u2192 change name, last name, phone, license number, or notes.",
+            "tip": ""
+          },
+          {
+            "title": "Unlinking Telegram",
+            "content": "In the driver card, click 'Unlink Telegram' \u2014 the driver loses access to the bot and can no longer see trips.",
+            "tip": ""
+          },
+          {
+            "title": "Deleting a driver",
+            "content": "Click Delete \u2192 confirm. Deletion is a soft-delete \u2014 the driver's trips are preserved in the history.",
+            "tip": "Even if you delete a driver, all their trips remain saved in the system."
+          }
+        ]
+      },
+      "vehicles": {
+        "title": "Vehicle Management",
+        "description": "Guide for managing your fleet \u2014 adding, editing, and tracking vehicles.",
+        "steps": [
+          {
+            "title": "Adding a vehicle",
+            "content": "Enter the license plate, make/model, type (Truck, Van, or Trailer), load capacity, technical inspection date, and notes.",
+            "tip": ""
+          },
+          {
+            "title": "Vehicle list",
+            "content": "View all vehicles sorted by license plate.",
+            "tip": ""
+          },
+          {
+            "title": "Editing a vehicle",
+            "content": "Open the vehicle card and edit any field \u2014 plate, make, type, capacity, or inspection date.",
+            "tip": ""
+          },
+          {
+            "title": "Deleting a vehicle",
+            "content": "Click Delete \u2192 confirm.",
+            "tip": ""
+          },
+          {
+            "title": "Inspection reminders",
+            "content": "The bot automatically notifies you when a technical inspection date is approaching for your vehicle.",
+            "tip": "Enter the exact technical inspection date to receive timely reminders."
+          }
+        ]
+      },
+      "customers": {
+        "title": "Customer Database",
+        "description": "Guide for managing your customer database \u2014 adding, searching, and editing.",
+        "steps": [
+          {
+            "title": "Adding a customer",
+            "content": "Enter the company name, tax ID (PIB), address, city, contact person, email, phone, and country.",
+            "tip": ""
+          },
+          {
+            "title": "Customer list",
+            "content": "View all customers sorted by name with city displayed.",
+            "tip": ""
+          },
+          {
+            "title": "Editing a customer",
+            "content": "Open the customer card and edit any field.",
+            "tip": ""
+          },
+          {
+            "title": "Deleting a customer",
+            "content": "Click Delete \u2192 confirm.",
+            "tip": ""
+          },
+          {
+            "title": "Quick add",
+            "content": "You can add a customer directly when creating a trip \u2014 no need to go back to the customer database.",
+            "tip": "Use quick add for new customers \u2014 save a step when creating a trip."
+          }
+        ]
+      },
+      "stats": {
+        "title": "Statistics & Excel",
+        "description": "Guide for tracking performance and exporting data.",
+        "steps": [
+          {
+            "title": "Dashboard",
+            "content": "See an overview of trips by status, total revenue, invoice totals, top client, top vehicle, and top driver.",
+            "tip": ""
+          },
+          {
+            "title": "Period",
+            "content": "Select a period: this month, last month, or all time.",
+            "tip": ""
+          },
+          {
+            "title": "Driver statistics",
+            "content": "View the number of trips, average price, clients, and vehicles for each driver.",
+            "tip": ""
+          },
+          {
+            "title": "Client statistics",
+            "content": "View the number of trips, total revenue, drivers, and vehicles for each client.",
+            "tip": ""
+          },
+          {
+            "title": "Overdue invoices",
+            "content": "Aging report: invoices overdue by 30+ days, 7\u201330 days, and less than 7 days.",
+            "tip": "Regularly check overdue invoices to avoid delays in payment collection."
+          },
+          {
+            "title": "Excel export",
+            "content": "Export all trips to an .xlsx file. Available only on the PRO plan.",
+            "tip": ""
           }
         ]
       }
@@ -658,7 +946,17 @@
     },
     "logistics": {
       "title": "Logistics for EXPO 2027 — automation and GPS tracking | Lako Services",
-      "description": "Automate your logistics company. Scheduling, CMR documents, invoices and e-invoices from a Telegram bot. Free analysis."
+      "description": "Automate your logistics company. Scheduling, CMR documents, invoices and e-invoices from a Telegram bot. Free analysis.",
+      "guides": {
+        "trips": { "title": "Trip Management — Guide | Lako Prevoz Bot", "description": "Create, search and manage trips through the Lako Prevoz Telegram bot." },
+        "cmr": { "title": "CMR Documents — Guide | Lako Prevoz Bot", "description": "Generate CMR consignment notes in PDF format from the Telegram bot." },
+        "invoices": { "title": "Invoices — Guide | Lako Prevoz Bot", "description": "Create professional invoices with line items, VAT and payment terms." },
+        "efaktura": { "title": "E-Invoices (XML) — Guide | Lako Prevoz Bot", "description": "Generate UBL 2.1 XML e-invoices for the efaktura.gov.rs (SEF) portal." },
+        "drivers": { "title": "Driver Management — Guide | Lako Prevoz Bot", "description": "Add drivers, link Telegram accounts and manage access." },
+        "vehicles": { "title": "Vehicle Management — Guide | Lako Prevoz Bot", "description": "Manage your fleet — registrations, types and inspection reminders." },
+        "customers": { "title": "Customer Database — Guide | Lako Prevoz Bot", "description": "Manage your customer database — add, search and edit contacts." },
+        "stats": { "title": "Statistics & Excel — Guide | Lako Prevoz Bot", "description": "Performance overview, aging report and data export to Excel." }
+      }
     },
     "smallBusiness": {
       "title": "Small Business — Salon & service automation | Lako Services",

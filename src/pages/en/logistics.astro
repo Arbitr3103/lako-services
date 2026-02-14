@@ -17,7 +17,7 @@ const comparisonRows = tObject<Array<{feature: string, without: string, with: st
 const steps = tObject<Array<{title: string, description: string, duration: string}>>(locale, 'logistics.howItWorks.steps');
 const guaranteeItems = tObject<Array<{icon: string, text: string}>>(locale, 'logistics.guarantees.items');
 const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'logistics.faq.items');
-const botFeatures = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.bot.features');
+const botFeatures = tObject<Array<{icon: string, slug: string, title: string, description: string}>>(locale, 'logistics.bot.features');
 const botPricingPlans = tObject<Array<{name: string, badge: string, price: string, period: string, description: string, features: string[]}>>(locale, 'logistics.bot.pricing.plans');
 
 const featureIcons: Record<string, string> = {
@@ -290,13 +290,13 @@ const botFeatureIcons: Record<string, string> = {
       <h3 class="text-2xl font-bold text-center mb-8">{t(locale, 'logistics.bot.featuresTitle')}</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16">
         {botFeatures.map((feature) => (
-          <div class="bg-bg-card rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="bg-bg-card rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
             </div>
             <h4 class="text-base font-semibold mb-1">{feature.title}</h4>
             <p class="text-text-light text-sm">{feature.description}</p>
-          </div>
+          </a>
         ))}
       </div>
 
