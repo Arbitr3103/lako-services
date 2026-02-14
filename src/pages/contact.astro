@@ -67,7 +67,7 @@ const locale = 'sr';
               <div>
                 <p class="font-semibold text-text">Telegram</p>
                 <a href="https://t.me/Bragin_Arbitr" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{t(locale, 'contact.channels.telegramUsername')}</a>
-                <p class="text-text-light text-sm">{t(locale, 'contact.channels.telegram')}</p>
+                <p class="text-text-light mt-0.5">{t(locale, 'contact.channels.telegram')}</p>
               </div>
             </div>
 
@@ -78,7 +78,8 @@ const locale = 'sr';
               </div>
               <div>
                 <p class="font-semibold text-text">WhatsApp</p>
-                <a href="https://wa.me/381638941789" target="_blank" rel="noopener" class="text-primary hover:underline">{t(locale, 'contact.channels.whatsapp')}</a>
+                <a href="https://wa.me/381638941789" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{locale === 'sr' ? 'Pišite nam' : 'Message us'}</a>
+                <p class="text-text-light mt-0.5">{t(locale, 'contact.channels.whatsapp')}</p>
               </div>
             </div>
 
