@@ -151,11 +151,9 @@
     "howItWorks": {
       "title": "How to get started?",
       "steps": [
-        { "title": "Consultation", "description": "Schedule 30 minutes — we analyze your needs", "duration": "Day 1" },
-        { "title": "Process analysis", "description": "We map your operations and create a plan", "duration": "Day 2-3" },
-        { "title": "System setup", "description": "We configure the bot for your operations", "duration": "Day 4-10" },
-        { "title": "Team training", "description": "We train dispatchers and drivers to use the system", "duration": "Day 11" },
-        { "title": "Launch", "description": "System is running — you manage from your armchair", "duration": "Day 12" }
+        { "title": "Registration", "description": "Open the bot, press /start and fill in your company details — tax ID, address, contacts", "duration": "5 minutes" },
+        { "title": "Setup", "description": "Add drivers, vehicles and customers. Drivers connect themselves via the bot", "duration": "30 minutes" },
+        { "title": "Work", "description": "Create trips, generate CMR and invoices, track statistics — you're all set", "duration": "Right away" }
       ]
     },
     "guarantees": {

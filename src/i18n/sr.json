@@ -151,11 +151,9 @@
     "howItWorks": {
       "title": "Kako početi?",
       "steps": [
-        { "title": "Konsultacija", "description": "Zakažete 30 minuta — analiziramo vaše potrebe", "duration": "Dan 1" },
-        { "title": "Analiza procesa", "description": "Mapiramo vaše operacije i pravimo plan", "duration": "Dan 2-3" },
-        { "title": "Podešavanje sistema", "description": "Konfigurišemo bota za vaše operacije", "duration": "Dan 4-10" },
-        { "title": "Obuka tima", "description": "Obučavamo dispečere i vozače za rad sa sistemom", "duration": "Dan 11" },
-        { "title": "Pokretanje", "description": "Sistem radi — vi upravljate iz fotelje", "duration": "Dan 12" }
+        { "title": "Registracija", "description": "Otvorite bota, pritisnite /start i unesite podatke firme — PIB, adresu, kontakte", "duration": "5 minuta" },
+        { "title": "Podešavanje", "description": "Dodajte vozače, vozila i klijente. Vozači se povezuju sami preko bota", "duration": "30 minuta" },
+        { "title": "Rad", "description": "Kreirajte rejsove, generišite CMR i fakture, pratite statistiku — sve je spremno", "duration": "Odmah" }
       ]
     },
     "guarantees": {
