@@ -187,7 +187,10 @@
         { "question": "What if we're not on PANTHEON?", "answer": "Lako currently works as a standalone system. PANTHEON integration is in development." },
         { "question": "How much does it cost?", "answer": "For the first 5 companies: 3 months free, then 2,500 RSD/month. For others: 30-day free trial, then 3,500 RSD/month." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
-        { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." }
+        { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." },
+        { "question": "How is my data technically protected?", "answer": "All data is encrypted in transit (HTTPS/TLS) and at rest (PostgreSQL with encryption). Automatic backups are made every 24 hours and stored for 30 days. Server access is restricted to authorized personnel only." },
+        { "question": "Who can see my data?", "answer": "Only you and employees you add to the system yourself. Technical support can access your data ONLY with your permission to resolve issues. All support actions are logged." },
+        { "question": "What if the server goes down?", "answer": "We have a recovery plan: automatic backups every 24 hours, system restoration within 2-4 hours, and a Telegram notification about the issue. Also, all your PDF documents (CMR, invoices) and Excel exports are always with you — you don't depend on the server alone." }
       ]
     },
     "bot": {

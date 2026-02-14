@@ -187,7 +187,10 @@
         { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako trenutno radi kao samostalan sistem. Integracija sa PANTHEON-om je u pripremi." },
         { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
-        { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." }
+        { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." },
+        { "question": "Kako su moji podaci tehnički zaštićeni?", "answer": "Svi podaci se šifruju pri prenosu (HTTPS/TLS) i pri čuvanju (PostgreSQL sa šifrovanjem). Automatski bekapi se prave svakih 24 sata i čuvaju se 30 dana. Pristup serverima je ograničen na ovlašćene osobe." },
+        { "question": "Ko može da vidi moje podatke?", "answer": "Samo vi i vaši zaposleni koje sami dodate u sistem. Tehnička podrška može pristupiti vašim podacima SAMO uz vašu dozvolu radi rešavanja problema. Sve akcije podrške se beleže u logu." },
+        { "question": "Šta ako server padne?", "answer": "Imamo plan oporavka: automatski bekapi svakih 24 sata, obnova sistema u roku od 2-4 sata, obaveštenje o problemu putem Telegrama. Takođe, svi vaši PDF dokumenti (CMR, fakture) i Excel eksporti su uvek kod vas — ne zavisite samo od servera." }
       ]
     },
     "bot": {
