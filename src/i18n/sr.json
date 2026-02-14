@@ -201,6 +201,7 @@
         "cta": "Otvori u Telegramu"
       },
       "featuresTitle": "Šta bot može",
+      "readGuide": "Uputstvo →",
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
         { "icon": "cmr", "slug": "cmr", "title": "CMR dokumenti", "description": "Automatsko generisanje CMR u PDF formatu — spreman za štampu." },

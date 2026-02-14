@@ -201,6 +201,7 @@
         "cta": "Open in Telegram"
       },
       "featuresTitle": "What the bot can do",
+      "readGuide": "Read guide →",
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Trip management", "description": "Create, track and complete trips in a few clicks." },
         { "icon": "cmr", "slug": "cmr", "title": "CMR documents", "description": "Automatic CMR generation in PDF format — ready to print." },

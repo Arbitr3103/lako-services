@@ -201,6 +201,7 @@
         "cta": "Открыть в Telegram"
       },
       "featuresTitle": "Что умеет бот",
+      "readGuide": "Инструкция →",
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Управление рейсами", "description": "Создавайте, отслеживайте и завершайте рейсы в пару кликов." },
         { "icon": "cmr", "slug": "cmr", "title": "CMR-документы", "description": "Автоматическая генерация CMR в PDF — готов к печати." },

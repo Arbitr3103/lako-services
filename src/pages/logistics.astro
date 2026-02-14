@@ -288,15 +288,16 @@ const botFeatureIcons: Record<string, string> = {
       </div>
 
       {/* Feature Grid */}
-      <h3 class="text-2xl font-bold text-center mb-8">{t(locale, 'logistics.bot.featuresTitle')}</h3>
+      <h3 id="bot-features" class="text-2xl font-bold text-center mb-8 scroll-mt-8">{t(locale, 'logistics.bot.featuresTitle')}</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16">
         {botFeatures.map((feature) => (
-          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="bg-bg-card rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
+          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
             </div>
             <h4 class="text-base font-semibold mb-1">{feature.title}</h4>
-            <p class="text-text-light text-sm">{feature.description}</p>
+            <p class="text-text-light text-sm mb-3">{feature.description}</p>
+            <span class="text-primary text-sm font-medium opacity-70 group-hover:opacity-100 transition-opacity">{t(locale, 'logistics.bot.readGuide')}</span>
           </a>
         ))}
       </div>
