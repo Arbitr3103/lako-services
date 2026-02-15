@@ -220,6 +220,17 @@
         "placeholder": "Video prezentacija bota",
         "comingSoon": "Video se priprema"
       },
+      "security": {
+        "question": "Da li su moji podaci bezbedni?",
+        "subtitle": "Vaši podaci su potpuno izolovani od drugih kompanija i zaštićeni na svim nivoima.",
+        "items": [
+          "256-bit enkripcija podataka",
+          "Potpuna izolacija kompanija",
+          "Automatski bekapi svakih 24h",
+          "GDPR i srpski zakon"
+        ],
+        "cta": "Detaljnije o zaštiti"
+      },
       "pricing": {
         "title": "Cene",
         "plans": [

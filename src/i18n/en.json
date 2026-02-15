@@ -220,6 +220,17 @@
         "placeholder": "Bot video presentation",
         "comingSoon": "Video coming soon"
       },
+      "security": {
+        "question": "Is my data safe?",
+        "subtitle": "Your data is completely isolated from other companies and protected at every level.",
+        "items": [
+          "256-bit data encryption",
+          "Full company isolation",
+          "Automatic backups every 24h",
+          "GDPR & Serbian law compliant"
+        ],
+        "cta": "Learn more about security"
+      },
       "pricing": {
         "title": "Pricing",
         "plans": [
