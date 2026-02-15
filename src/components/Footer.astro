@@ -69,6 +69,14 @@ const navItems = [
           </li>
           <li>
             <a
+              href={getLocalizedPath('/zastita-podataka', locale)}
+              class="text-text-muted hover:text-primary transition-colors text-sm"
+            >
+              {t(locale, 'footer.dataProtection')}
+            </a>
+          </li>
+          <li>
+            <a
               href={getLocalizedPath('/terms', locale)}
               class="text-text-muted hover:text-primary transition-colors text-sm"
             >

@@ -42,6 +42,17 @@
         "title": "Mali biznis",
         "description": "Savršeno za barbere, stomatologe, auto-servise i hemijske čistionice — automatsko zakazivanje, podsećanja na termine i trenutne poruke klijentima."
       }
+    },
+    "security": {
+      "title": "Zaštita podataka",
+      "subtitle": "Vaši poslovni podaci su zaštićeni na svakom koraku — od šifrovanja do automatskih bekapa.",
+      "items": [
+        "Svi podaci se šifruju pri prenosu (HTTPS/TLS)",
+        "Automatski bekapi svakih 24 sata sa 30 dana čuvanja",
+        "Pristup samo ovlašćenim korisnicima",
+        "Potpuna usklađenost sa GDPR i srpskim zakonom"
+      ],
+      "cta": "Saznajte više o zaštiti"
     }
   },
   "logistics": {
@@ -765,6 +776,93 @@
       "address": "Novi Sad, Srbija"
     }
   },
+  "dataProtection": {
+    "hero": {
+      "title": "Zaštita podataka",
+      "subtitle": "Bezbednost vaših poslovnih podataka je naš prioritet. Koristimo najsavremenije tehnologije i prakse za zaštitu svake informacije."
+    },
+    "stats": [
+      { "value": "256-bit", "label": "enkripcija podataka" },
+      { "value": "24h", "label": "ciklus bekapa" },
+      { "value": "30 dana", "label": "čuvanje bekapa" },
+      { "value": "100%", "label": "GDPR usklađenost" }
+    ],
+    "features": {
+      "title": "Kako štitimo vaše podatke",
+      "items": [
+        {
+          "title": "Enkripcija u prenosu",
+          "description": "Svi podaci se šifruju pomoću HTTPS/TLS protokola. Cloudflare SSL obezbeđuje dodatni sloj zaštite."
+        },
+        {
+          "title": "Bezbednost baze",
+          "description": "PostgreSQL baza sa šifrovanjem podataka i parametrizovanim upitima — zaštita od SQL injection napada."
+        },
+        {
+          "title": "Automatski bekapi",
+          "description": "Bekapi se prave svakih 24 sata i čuvaju 30 dana. Vaši podaci su uvek sigurni i dostupni za obnovu."
+        },
+        {
+          "title": "Kontrola pristupa",
+          "description": "Webhook autentifikacija, zaštita od IDOR napada i ograničen pristup serverima — samo ovlašćene osobe."
+        },
+        {
+          "title": "Zaštita infrastrukture",
+          "description": "Cloudflare DDoS zaštita i WAF (Web Application Firewall). Origin server je skriven iza proxy-ja."
+        },
+        {
+          "title": "Privatnost GPS podataka",
+          "description": "GPS praćenje samo tokom radnog vremena. Pravo na brisanje istorijskih podataka o lokaciji."
+        }
+      ]
+    },
+    "ownership": {
+      "title": "Vaši podaci — vaša svojina",
+      "items": [
+        "Svi poslovni podaci pripadaju isključivo vama",
+        "Ne delimo podatke sa trećim licima bez vaše dozvole",
+        "Izvoz svih podataka u Excel u bilo kom trenutku",
+        "Potpuno brisanje podataka na vaš zahtev u roku od 30 dana",
+        "Tehnička podrška pristupa vašim podacima SAMO uz vašu dozvolu"
+      ]
+    },
+    "compliance": {
+      "title": "Usklađenost sa regulativom",
+      "serbian": {
+        "title": "Srpski zakon o zaštiti podataka",
+        "items": [
+          "Usklađenost sa Zakonom o zaštiti podataka o ličnosti",
+          "Registracija kod Poverenika",
+          "Imenovano lice za zaštitu podataka",
+          "Transparentne procedure obrade"
+        ]
+      },
+      "gdpr": {
+        "title": "GDPR (Opšta uredba EU)",
+        "items": [
+          "Pravo na pristup i ispravku podataka",
+          "Pravo na brisanje ('pravo na zaborav')",
+          "Pravo na prenosivost podataka",
+          "Obaveštenje o incidentima u roku od 72 sata"
+        ]
+      }
+    },
+    "recovery": {
+      "title": "Plan oporavka",
+      "steps": [
+        { "title": "Automatski bekapi", "description": "Bekapi svakih 24 sata na geografski odvojenoj lokaciji" },
+        { "title": "Brza obnova", "description": "Obnova sistema u roku od 2-4 sata od prijave problema" },
+        { "title": "Obaveštenja", "description": "Trenutna obaveštenja putem Telegrama o svim tehničkim problemima" },
+        { "title": "Lokalne kopije", "description": "Svi PDF dokumenti (CMR, fakture) i Excel eksporti su uvek kod vas" }
+      ]
+    },
+    "cta": {
+      "title": "Imate pitanja o bezbednosti?",
+      "subtitle": "Kontaktirajte nas — rado ćemo odgovoriti na sva vaša pitanja o zaštiti podataka.",
+      "button": "Kontaktirajte nas",
+      "privacyLink": "Pogledajte politiku privatnosti"
+    }
+  },
   "notFound": {
     "title": "Stranica nije pronađena",
     "description": "Izvinite, stranica koju tražite ne postoji.",
@@ -779,7 +877,8 @@
     "legal": "Pravne informacije",
     "privacyPolicy": "Politika privatnosti",
     "cookiePolicy": "Politika kolačića",
-    "termsOfService": "Uslovi korišćenja"
+    "termsOfService": "Uslovi korišćenja",
+    "dataProtection": "Zaštita podataka"
   },
   "cookieBanner": {
     "text": "Koristimo kolačiće za poboljšanje vašeg iskustva na sajtu.",
@@ -981,6 +1080,10 @@
     "terms": {
       "title": "Uslovi korišćenja | Lako Services",
       "description": "Uslovi korišćenja sajta lako.services i usluga Lako Services."
+    },
+    "dataProtection": {
+      "title": "Zaštita podataka | Lako Services",
+      "description": "Kako štitimo vaše poslovne podatke — enkripcija, bekapi, GDPR usklađenost i kontrola pristupa."
     }
   }
 }

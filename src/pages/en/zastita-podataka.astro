@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { t, tObject, getLocalizedPath } from '../../i18n/utils';
+
+const locale = 'en';
+
+interface StatItem {
+  value: string;
+  label: string;
+}
+
+interface FeatureItem {
+  title: string;
+  description: string;
+}
+
+interface RecoveryStep {
+  title: string;
+  description: string;
+}
+
+const stats = tObject<StatItem[]>(locale, 'dataProtection.stats');
+const features = tObject<FeatureItem[]>(locale, 'dataProtection.features.items');
+const ownershipItems = tObject<string[]>(locale, 'dataProtection.ownership.items');
+const serbianItems = tObject<string[]>(locale, 'dataProtection.compliance.serbian.items');
+const gdprItems = tObject<string[]>(locale, 'dataProtection.compliance.gdpr.items');
+const recoverySteps = tObject<RecoveryStep[]>(locale, 'dataProtection.recovery.steps');
+
+const featureIcons = [
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />',
+  '<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />'
+];
+---
+<BaseLayout
+  title={t(locale, 'seo.dataProtection.title')}
+  description={t(locale, 'seo.dataProtection.description')}
+  locale={locale}
+>
+  {/* Hero */}
+  <section class="relative overflow-hidden py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="w-20 h-20 bg-green-500/15 rounded-2xl flex items-center justify-center mx-auto mb-8">
+        <svg class="w-10 h-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-text mb-4">
+        {t(locale, 'dataProtection.hero.title')}
+      </h1>
+      <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto">
+        {t(locale, 'dataProtection.hero.subtitle')}
+      </p>
+    </div>
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-green-500/5 rounded-full blur-3xl"></div>
+    </div>
+  </section>
+
+  {/* Stats */}
+  <section class="py-12 bg-bg-alt">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {stats.map((stat: StatItem) => (
+          <div class="text-center p-6 rounded-2xl bg-bg-card border border-border">
+            <div class="text-3xl md:text-4xl font-bold text-green-400 mb-1">{stat.value}</div>
+            <div class="text-sm text-text-muted">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Features */}
+  <section class="py-20 bg-bg reveal">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-text text-center mb-12">
+        {t(locale, 'dataProtection.features.title')}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature: FeatureItem, i: number) => (
+          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-green-500/30 transition-colors">
+            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <Fragment set:html={featureIcons[i]} />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-text mb-2">{feature.title}</h3>
+            <p class="text-text-light">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Data Ownership */}
+  <section class="py-20 bg-bg-alt reveal">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-green-500/20 bg-gradient-to-br from-green-500/5 to-transparent p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-text mb-8">
+          {t(locale, 'dataProtection.ownership.title')}
+        </h2>
+        <ul class="space-y-4">
+          {ownershipItems.map((item: string) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-text-light text-lg">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* Compliance */}
+  <section class="py-20 bg-bg reveal">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-text text-center mb-12">
+        {t(locale, 'dataProtection.compliance.title')}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-bg-card rounded-2xl p-8 border border-border">
+          <h3 class="text-xl font-semibold text-text mb-6">
+            {t(locale, 'dataProtection.compliance.serbian.title')}
+          </h3>
+          <ul class="space-y-3">
+            {serbianItems.map((item: string) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-text-light">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-bg-card rounded-2xl p-8 border border-border">
+          <h3 class="text-xl font-semibold text-text mb-6">
+            {t(locale, 'dataProtection.compliance.gdpr.title')}
+          </h3>
+          <ul class="space-y-3">
+            {gdprItems.map((item: string) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-text-light">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Recovery Plan */}
+  <section class="py-20 bg-bg-alt reveal">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-text text-center mb-12">
+        {t(locale, 'dataProtection.recovery.title')}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {recoverySteps.map((step: RecoveryStep, i: number) => (
+          <div class="bg-bg-card rounded-2xl p-6 border border-border text-center">
+            <div class="w-10 h-10 bg-green-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-green-400 font-bold">{i + 1}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-text mb-2">{step.title}</h3>
+            <p class="text-text-light text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Bottom CTA */}
+  <section class="py-16 bg-gradient-to-r from-green-500/10 to-green-500/5 border-t border-border">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-text mb-4">
+        {t(locale, 'dataProtection.cta.title')}
+      </h2>
+      <p class="text-text-light mb-8 text-lg">
+        {t(locale, 'dataProtection.cta.subtitle')}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+          {t(locale, 'dataProtection.cta.button')}
+        </CTA>
+        <CTA href={getLocalizedPath('/privacy-policy', locale)} variant="secondary" size="lg">
+          {t(locale, 'dataProtection.cta.privacyLink')}
+        </CTA>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -42,6 +42,17 @@
         "title": "Small business",
         "description": "Perfect for barbers, dentists, auto services, and dry cleaners — automated booking, appointment reminders, and instant client updates."
       }
+    },
+    "security": {
+      "title": "Data Protection",
+      "subtitle": "Your business data is protected at every step — from encryption to automatic backups.",
+      "items": [
+        "All data encrypted in transit (HTTPS/TLS)",
+        "Automatic backups every 24 hours with 30-day retention",
+        "Access restricted to authorized users only",
+        "Full compliance with GDPR and Serbian data protection law"
+      ],
+      "cta": "Learn more about protection"
     }
   },
   "logistics": {
@@ -765,6 +776,93 @@
       "address": "Novi Sad, Serbia"
     }
   },
+  "dataProtection": {
+    "hero": {
+      "title": "Data Protection",
+      "subtitle": "The security of your business data is our priority. We use cutting-edge technologies and practices to protect every piece of information."
+    },
+    "stats": [
+      { "value": "256-bit", "label": "data encryption" },
+      { "value": "24h", "label": "backup cycle" },
+      { "value": "30 days", "label": "backup retention" },
+      { "value": "100%", "label": "GDPR compliant" }
+    ],
+    "features": {
+      "title": "How we protect your data",
+      "items": [
+        {
+          "title": "Encryption in transit",
+          "description": "All data is encrypted using HTTPS/TLS protocols. Cloudflare SSL provides an additional layer of protection."
+        },
+        {
+          "title": "Database security",
+          "description": "PostgreSQL database with data encryption and parameterized queries — protection against SQL injection attacks."
+        },
+        {
+          "title": "Automatic backups",
+          "description": "Backups are created every 24 hours and retained for 30 days. Your data is always safe and available for recovery."
+        },
+        {
+          "title": "Access control",
+          "description": "Webhook authentication, IDOR attack protection, and restricted server access — authorized personnel only."
+        },
+        {
+          "title": "Infrastructure protection",
+          "description": "Cloudflare DDoS protection and WAF (Web Application Firewall). Origin server is hidden behind a proxy."
+        },
+        {
+          "title": "GPS data privacy",
+          "description": "GPS tracking only during working hours. Right to delete historical location data."
+        }
+      ]
+    },
+    "ownership": {
+      "title": "Your data — your property",
+      "items": [
+        "All business data belongs exclusively to you",
+        "We don't share data with third parties without your permission",
+        "Export all data to Excel at any time",
+        "Complete data deletion on your request within 30 days",
+        "Technical support accesses your data ONLY with your permission"
+      ]
+    },
+    "compliance": {
+      "title": "Regulatory compliance",
+      "serbian": {
+        "title": "Serbian Data Protection Law",
+        "items": [
+          "Compliance with the Personal Data Protection Act",
+          "Registration with the Commissioner",
+          "Appointed data protection officer",
+          "Transparent processing procedures"
+        ]
+      },
+      "gdpr": {
+        "title": "GDPR (EU General Regulation)",
+        "items": [
+          "Right to access and correct data",
+          "Right to erasure ('right to be forgotten')",
+          "Right to data portability",
+          "Incident notification within 72 hours"
+        ]
+      }
+    },
+    "recovery": {
+      "title": "Recovery plan",
+      "steps": [
+        { "title": "Automatic backups", "description": "Backups every 24 hours at a geographically separate location" },
+        { "title": "Quick recovery", "description": "System recovery within 2-4 hours of issue report" },
+        { "title": "Notifications", "description": "Instant Telegram notifications about all technical issues" },
+        { "title": "Local copies", "description": "All PDF documents (CMR, invoices) and Excel exports are always with you" }
+      ]
+    },
+    "cta": {
+      "title": "Have questions about security?",
+      "subtitle": "Contact us — we'll be happy to answer all your questions about data protection.",
+      "button": "Contact us",
+      "privacyLink": "View privacy policy"
+    }
+  },
   "notFound": {
     "title": "Page not found",
     "description": "Sorry, the page you're looking for doesn't exist.",
@@ -779,7 +877,8 @@
     "legal": "Legal",
     "privacyPolicy": "Privacy Policy",
     "cookiePolicy": "Cookie Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "dataProtection": "Data Protection"
   },
   "cookieBanner": {
     "text": "We use cookies to improve your experience on our website.",
@@ -980,6 +1079,10 @@
     "terms": {
       "title": "Terms of Service | Lako Services",
       "description": "Terms of service for lako.services and Lako Services."
+    },
+    "dataProtection": {
+      "title": "Data Protection | Lako Services",
+      "description": "How we protect your business data — encryption, backups, GDPR compliance and access control."
     }
   }
 }
