@@ -427,12 +427,12 @@
           },
           {
             "title": "Linking a Telegram account",
-            "content": "This is the key feature: the driver opens the bot \u2192 sends /start \u2192 the bot asks the owner 'Link to a driver?' \u2192 the owner selects from the list \u2192 the driver gets their own interface. The driver MUST start the chat with the bot first.",
-            "tip": "The driver must initiate the conversation with the bot first \u2014 without this, linking is not possible."
+            "content": "When you add a driver, the bot automatically generates a personal invite link. Click '\ud83d\udce4 Share link' to send the link to the driver. The driver clicks the link \u2192 the bot automatically recognizes and links them to their account. The owner receives a notification of successful linking.",
+            "tip": "Each driver gets a unique link \u2014 no manual linking needed. The link can be regenerated in the driver's card."
           },
           {
             "title": "What the driver sees",
-            "content": "A linked driver sees their own trip list, can change statuses (created \u2192 in progress \u2192 completed), and download CMR and invoices.",
+            "content": "A linked driver sees their own trip list, can change statuses (created \u2192 in progress \u2192 completed), submit photo evidence and GPS location on status changes, and download CMR and invoices.",
             "tip": ""
           },
           {

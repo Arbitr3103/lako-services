@@ -427,12 +427,12 @@
           },
           {
             "title": "Povezivanje Telegram naloga",
-            "content": "Ovo je ključna funkcija: vozač otvara bota → šalje /start → bot pita vlasnika 'Poveži sa vozačem?' → vlasnik bira iz liste → vozač dobija svoj interfejs. Vozač MORA prvi da pokrene čet sa botom.",
-            "tip": "Vozač mora prvi da započne razgovor sa botom — bez toga povezivanje nije moguće."
+            "content": "Kada dodate vozača, bot automatski generiše lični pozivni link. Kliknite '📤 Podeli link' da biste poslali link vozaču. Vozač klikne na link → bot ga automatski prepoznaje i povezuje sa njegovim nalogom. Vlasnik dobija obaveštenje o uspešnom povezivanju.",
+            "tip": "Svaki vozač dobija jedinstven link — nema potrebe za ručnim povezivanjem. Link se može regenerisati u kartici vozača."
           },
           {
             "title": "Šta vidi vozač",
-            "content": "Povezan vozač vidi svoju listu rejsova, može menjati status (kreiran → u toku → završen) i preuzimati CMR i fakture.",
+            "content": "Povezan vozač vidi svoju listu rejsova, može menjati status (kreiran → u toku → završen), slati fotodokumentaciju i GPS lokaciju pri promeni statusa, i preuzimati CMR i fakture.",
             "tip": ""
           },
           {
