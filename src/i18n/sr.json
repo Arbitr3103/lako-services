@@ -36,7 +36,7 @@
       "title": "Ko koristi Lako Services?",
       "logistics": {
         "title": "Logističke kompanije",
-        "description": "Pripremite se za EXPO 2027 sa automatizovanim dispečingom, praćenjem vozila u realnom vremenu i koordinacijom vozača preko Telegrama."
+        "description": "Pripremite se za EXPO 2027 sa automatizovanim dispečingom, digitalnom dokumentacijom i koordinacijom vozača preko Telegrama."
       },
       "smallBusiness": {
         "title": "Mali biznis",
@@ -86,8 +86,8 @@
         },
         {
           "number": "#2",
-          "title": "70% kašnjenja bez real-time praćenja",
-          "description": "Bez GPS praćenja uživo ne znate gde su vaša vozila. Klijent pita — vi ne znate odgovor. Rezultat: žalbe i izgubljeni ugovori."
+          "title": "Nema dokaza o isporuci",
+          "description": "Bez digitalne evidencije ne znate tačno šta se desilo na terenu. Klijent reklamira — vi nemate dokaz. Rezultat: sporovi i izgubljeni ugovori."
         },
         {
           "number": "#3",
@@ -811,8 +811,8 @@
           "description": "Cloudflare DDoS zaštita i WAF (Web Application Firewall). Origin server je skriven iza proxy-ja."
         },
         {
-          "title": "Privatnost GPS podataka",
-          "description": "GPS praćenje samo tokom radnog vremena. Pravo na brisanje istorijskih podataka o lokaciji."
+          "title": "Evidencija sa GPS koordinatama",
+          "description": "Fotografije i GPS koordinate se beleže samo pri promeni statusa rejsa. Podaci se čuvaju bezbedno i dostupni su za izvoz."
         }
       ]
     },
@@ -917,7 +917,7 @@
         },
         "gpsTracking": {
           "title": "GPS praćenje",
-          "content": "Za logistička rešenja koristimo GPS praćenje koje uključuje:\n- Lokaciju vozača u realnom vremenu\n- Istoriju maršruta\n- Procenjeno vreme dolaska\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača. GPS podaci se obrađuju samo tokom radnog vremena.\n\nVozači imaju pravo da:\n- Budu informisani o praćenju\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
+          "content": "Za logistička rešenja koristimo GPS koordinate koje se beleže pri promeni statusa rejsa (utovar, istovar, završetak):\n- GPS koordinate uz fotografiju pri statusnim promenama\n- Evidencija lokacije utovara i istovara\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača.\n\nVozači imaju pravo da:\n- Budu informisani o beleženju lokacije\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
         },
         "purposeOfProcessing": {
           "title": "Svrha obrade",
@@ -1039,7 +1039,7 @@
       "description": "Automatizujte logistiku, salon ili servis sa Telegram botovima. CMR, fakture, e-fakture. Lokalna podrška u Novom Sadu."
     },
     "logistics": {
-      "title": "Logistika za EXPO 2027 — automatizacija i GPS praćenje | Lako Services",
+      "title": "Logistika za EXPO 2027 — digitalni dispečing i dokumentacija | Lako Services",
       "description": "Automatizujte logističku kompaniju. Raspored, CMR dokumenta, fakture i e-fakture iz Telegram bota. Besplatna analiza.",
       "guides": {
         "trips": { "title": "Upravljanje rejsovima — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje, pretraga i upravljanje rejsovima kroz Telegram bota Lako Prevoz." },

@@ -36,7 +36,7 @@
       "title": "Who uses Lako Services?",
       "logistics": {
         "title": "Logistics companies",
-        "description": "Get ready for EXPO 2027 with automated dispatching, real-time vehicle tracking, and driver coordination via Telegram."
+        "description": "Get ready for EXPO 2027 with automated dispatching, digital documentation, and driver coordination via Telegram."
       },
       "smallBusiness": {
         "title": "Small business",
@@ -86,8 +86,8 @@
         },
         {
           "number": "#2",
-          "title": "70% delays without real-time tracking",
-          "description": "Without live GPS tracking you don't know where your vehicles are. Client asks — you don't have an answer. Result: complaints and lost contracts."
+          "title": "No proof of delivery",
+          "description": "Without digital records you don't know exactly what happened on the ground. Client complains — you have no proof. Result: disputes and lost contracts."
         },
         {
           "number": "#3",
@@ -811,8 +811,8 @@
           "description": "Cloudflare DDoS protection and WAF (Web Application Firewall). Origin server is hidden behind a proxy."
         },
         {
-          "title": "GPS data privacy",
-          "description": "GPS tracking only during working hours. Right to delete historical location data."
+          "title": "Evidence with GPS coordinates",
+          "description": "Photos and GPS coordinates are recorded only on trip status changes. Data is stored securely and available for export."
         }
       ]
     },
@@ -917,7 +917,7 @@
         },
         "gpsTracking": {
           "title": "GPS Tracking",
-          "content": "For logistics solutions, we use GPS tracking that includes:\n- Real-time driver location\n- Route history\n- Estimated arrival time\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer. GPS data is only processed during working hours.\n\nDrivers have the right to:\n- Be informed about tracking\n- Access their location data\n- Request deletion of historical location data"
+          "content": "For logistics solutions, we use GPS coordinates recorded during trip status changes (loading, unloading, completion):\n- GPS coordinates with photos on status changes\n- Location records for loading and unloading points\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer.\n\nDrivers have the right to:\n- Be informed about location recording\n- Access their location data\n- Request deletion of historical location data"
         },
         "purposeOfProcessing": {
           "title": "Purpose of Processing",
@@ -1039,7 +1039,7 @@
       "description": "Automate your logistics, salon or service with Telegram bots. CMR, invoices, e-invoices. Local support in Novi Sad."
     },
     "logistics": {
-      "title": "Logistics for EXPO 2027 — automation and GPS tracking | Lako Services",
+      "title": "Logistics for EXPO 2027 — digital dispatch and documentation | Lako Services",
       "description": "Automate your logistics company. Scheduling, CMR documents, invoices and e-invoices from a Telegram bot. Free analysis.",
       "guides": {
         "trips": { "title": "Trip Management — Guide | Lako Prevoz Bot", "description": "Create, search and manage trips through the Lako Prevoz Telegram bot." },
