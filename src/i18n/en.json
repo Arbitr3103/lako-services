@@ -48,7 +48,8 @@
     "hero": {
       "title": "EXPO 2027: digital logistics awaiting you",
       "subtitle": "6 million visitors. One opportunity. Is your system ready?",
-      "cta": "Schedule your logistics analysis"
+      "cta": "Try it free",
+      "ctaSecondary": "Open bot in Telegram"
     },
     "countdown": {
       "title": "EXPO 2027 is approaching fast",
@@ -107,24 +108,14 @@
           "icon": "route"
         },
         {
-          "title": "GPS tracking (coming soon)",
-          "description": "Real-time vehicle tracking — in development. Know where your vehicles are at every moment.",
-          "icon": "gps"
-        },
-        {
-          "title": "PANTHEON integration (coming soon)",
-          "description": "Automatic order synchronization with PANTHEON ERP system — in development.",
-          "icon": "sync"
+          "title": "CMR documents",
+          "description": "Generate a CMR consignment note for every trip — one click, straight to PDF.",
+          "icon": "cmr"
         },
         {
           "title": "E-invoices without headaches",
           "description": "SEF e-invoices are sent automatically. Full tax compliance — you don't have to do anything.",
           "icon": "invoice"
-        },
-        {
-          "title": "Automatic reports (coming soon)",
-          "description": "Daily performance overview without manual spreadsheet creation — in development.",
-          "icon": "chart"
         }
       ],
       "roi": {
@@ -141,11 +132,10 @@
       "headers": { "feature": "Parameter", "without": "Without Lako", "with": "With Lako" },
       "rows": [
         { "feature": "Dispatcher coordination time", "without": "3-4 hours/day", "with": "30 min/day" },
-        { "feature": "Route visibility", "without": "None", "with": "Coming soon" },
         { "feature": "Documentation", "without": "Paper", "with": "Digital" },
         { "feature": "Client response time", "without": "10-30 min", "with": "10 seconds" },
         { "feature": "E-invoices", "without": "Manual", "with": "Automatic" },
-        { "feature": "Reports", "without": "Manual Excel", "with": "Automatic every morning" }
+        { "feature": "Reports", "without": "Manual Excel", "with": "Statistics in bot" }
       ]
     },
     "howItWorks": {
@@ -184,7 +174,7 @@
       "items": [
         { "question": "How long does onboarding take?", "answer": "From first consultation to full operation — about 12 days. Training takes 1 day." },
         { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
-        { "question": "What if we're not on PANTHEON?", "answer": "Lako currently works as a standalone system. PANTHEON integration is in development." },
+        { "question": "What if we're not on PANTHEON?", "answer": "Lako works as a standalone system. It does not require integration with ERP software." },
         { "question": "How much does it cost?", "answer": "For the first 5 companies: 3 months free, then 2,500 RSD/month. For others: 30-day free trial, then 3,500 RSD/month." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
         { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." },
@@ -542,7 +532,7 @@
     "finalCta": {
       "title": "Be among the first ready for EXPO 2027",
       "subtitle": "Schedule a free 30-minute logistics analysis",
-      "cta": "Schedule analysis"
+      "cta": "Open the bot"
     }
   },
   "smallBusiness": {

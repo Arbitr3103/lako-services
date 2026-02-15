@@ -48,7 +48,8 @@
     "hero": {
       "title": "EXPO 2027: digitalna logistika koja vas čeka",
       "subtitle": "6 miliona posetilaca. Jedna prilika. Je li vaš sistem spreman?",
-      "cta": "Zakažite analizu vaše logistike"
+      "cta": "Probajte besplatno",
+      "ctaSecondary": "Otvori bota u Telegramu"
     },
     "countdown": {
       "title": "EXPO 2027 se ubrzano približava",
@@ -107,24 +108,14 @@
           "icon": "route"
         },
         {
-          "title": "GPS praćenje (uskoro)",
-          "description": "Praćenje vozila u realnom vremenu — u pripremi. Znate gde su vaša vozila u svakom trenutku.",
-          "icon": "gps"
-        },
-        {
-          "title": "PANTHEON integracija (uskoro)",
-          "description": "Automatska sinhronizacija narudžbina sa PANTHEON ERP sistemom — u pripremi.",
-          "icon": "sync"
+          "title": "CMR dokumenti",
+          "description": "Generišite CMR tovarni list za svaki rejs — jednim klikom, direktno u PDF.",
+          "icon": "cmr"
         },
         {
           "title": "E-fakture bez glavobolje",
           "description": "SEF e-fakture se šalju automatski. Puna usklađenost sa poreskim propisima — vi ne morate ništa da radite.",
           "icon": "invoice"
-        },
-        {
-          "title": "Automatski izveštaji (uskoro)",
-          "description": "Dnevni pregled performansi bez ručnog pravljenja tabela — u pripremi.",
-          "icon": "chart"
         }
       ],
       "roi": {
@@ -141,11 +132,10 @@
       "headers": { "feature": "Parametar", "without": "Bez Lako", "with": "Sa Lako" },
       "rows": [
         { "feature": "Vreme dispečera na koordinaciju", "without": "3-4 sata/dan", "with": "30 min/dan" },
-        { "feature": "Vidljivost maršruta", "without": "Nema", "with": "Uskoro" },
         { "feature": "Dokumentacija", "without": "Papir", "with": "Digitalna" },
         { "feature": "Vreme odgovora klijentu", "without": "10-30 min", "with": "10 sekundi" },
         { "feature": "E-fakture", "without": "Ručno", "with": "Automatski" },
-        { "feature": "Izveštaji", "without": "Excel ručno", "with": "Automatski svako jutro" }
+        { "feature": "Izveštaji", "without": "Excel ručno", "with": "Statistika u botu" }
       ]
     },
     "howItWorks": {
@@ -184,7 +174,7 @@
       "items": [
         { "question": "Koliko vremena treba za uvođenje?", "answer": "Od prve konsultacije do punog rada — oko 12 dana. Obuka traje 1 dan." },
         { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
-        { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako trenutno radi kao samostalan sistem. Integracija sa PANTHEON-om je u pripremi." },
+        { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako radi kao samostalan sistem. Ne zahteva integraciju sa ERP softverom." },
         { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
         { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." },
@@ -542,7 +532,7 @@
     "finalCta": {
       "title": "Budite među prvima koji su spremni za EXPO 2027",
       "subtitle": "Zakažite besplatnu 30-minutnu analizu vaše logistike",
-      "cta": "Zakažite analizu"
+      "cta": "Otvori bota"
     }
   },
   "smallBusiness": {
