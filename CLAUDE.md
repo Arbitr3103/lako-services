@@ -44,7 +44,9 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Telegram bots**: Catalog bot = `@LakoBot` (`t.me/LakoBot`), Admin bot = `@LakoAdminBot` (`t.me/LakoAdminBot`). Used in small-business pages and i18n. Footer/contact link = `t.me/Bragin_Arbitr` (personal).
 
-**Anchor links**: Small-business hero CTA scrolls to `#how-it-works` section on the same page (not a navigation link).
+**Anchor links**: Small-business hero CTA scrolls to `#how-it-works` section on the same page (not a navigation link). Logistics hero secondary CTA scrolls to `#bot-section`.
+
+**Logistics page** (`/logistics`): 12 sections focused on transport bot product. Hero CTA links directly to `t.me/lakoprevoz_bot`. Bot section (Section 9) has: video + CMR screenshot grid → bot card → feature grid with guide links → pricing. Final CTA also links to Telegram bot (not contact page). No "coming soon" features — only working functionality. CMR screenshot needs `bg-white` container (dark theme readability).
 
 ## Environment Variables
 
