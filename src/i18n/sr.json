@@ -273,12 +273,12 @@
         "steps": [
           {
             "title": "Kreiranje rejsa",
-            "content": "Otvorite Glavni meni → Novi rejs. Izaberite prevozno sredstvo, zatim vozača, pa klijenta. Unesite grad i adresu utovara, grad i adresu istovara, opis tereta, težinu i cenu. Alternativno — koristite Brzi rejs koji zahteva samo 4 koraka.",
+            "content": "Otvorite Glavni meni → Novi rejs. Izaberite prevozno sredstvo, zatim vozača. Unesite grad i adresu utovara, grad i adresu istovara, zatim izaberite klijenta. Na kraju unesite opis tereta, težinu i cenu. Alternativno — koristite Brzi rejs koji zahteva samo 4 koraka.",
             "tip": "Brzi rejs je idealan za ponavljajuće maršrute — unosite samo ključne podatke."
           },
           {
             "title": "Lista rejsova",
-            "content": "Pregledajte sve rejsove sa filterom po statusu (kreiran, u toku, završen). Lista prikazuje po 10 rejsova sa paginacijom.",
+            "content": "Pregledajte sve rejsove sa filterom po statusu (kreiran, u toku, završen, otkazan). Lista prikazuje po 10 rejsova sa paginacijom.",
             "tip": ""
           },
           {
@@ -288,12 +288,12 @@
           },
           {
             "title": "Statusi rejsa",
-            "content": "Svaki rejs prolazi kroz tri faze: Kreiran → U toku → Završen. Status možete promeniti iz kartice rejsa.",
-            "tip": "Vozač sa povezanim Telegram nalogom može sam menjati status svojih rejsova."
+            "content": "Svaki rejs prolazi kroz faze: Kreiran → U toku → Završen. Rejs se može i otkazati. Status možete promeniti iz kartice rejsa.",
+            "tip": "Vozač sa povezanim Telegram nalogom može sam menjati status svojih rejsova — uz slanje fotografije i GPS lokacije kao dokaza."
           },
           {
             "title": "Uređivanje rejsa",
-            "content": "Otvorite karticu rejsa i izmenite bilo koje polje — grad, adresu, teret, cenu, vozača, vozilo ili klijenta.",
+            "content": "Otvorite karticu rejsa i izmenite bilo koje polje — grad, adresu, teret, cenu, vozača, vozilo ili klijenta. Uređivanje je dostupno dok je rejs u statusu Kreiran ili U toku.",
             "tip": ""
           },
           {
@@ -308,7 +308,7 @@
           },
           {
             "title": "Eksport u Excel",
-            "content": "Eksportujte sve rejsove ili filtrirane po statusu u .xlsx fajl. Dostupno samo na PRO planu.",
+            "content": "Eksportujte sve rejsove ili filtrirane po statusu u .xlsx fajl. Dostupno na Early Adopter i PRO planu.",
             "tip": ""
           }
         ]
@@ -334,7 +334,7 @@
           },
           {
             "title": "PDF dokument",
-            "content": "CMR se generiše kao profesionalni PDF sa ćiriličnim fontom (Roboto), spreman za štampu na A4 formatu.",
+            "content": "CMR se generiše kao profesionalni PDF sa latiničnim fontom (Roboto), spreman za štampu na A4 formatu.",
             "tip": ""
           },
           {
@@ -355,7 +355,7 @@
           },
           {
             "title": "Master fakture",
-            "content": "Unesite broj fakture (automatski ili ručno), datum izdavanja, rok plaćanja (7, 14, 30 ili 60 dana) i pozicije — svaka sa opisom, količinom, jedinicom mere, cenom i PDV-om.",
+            "content": "Unesite broj fakture (automatski ili ručno), datum izdavanja, rok plaćanja (7, 15 ili 30 dana) i pozicije — svaka sa opisom, količinom, jedinicom mere, cenom i PDV-om.",
             "tip": ""
           },
           {
@@ -365,7 +365,7 @@
           },
           {
             "title": "Statusi fakture",
-            "content": "Faktura prolazi kroz faze: Nacrt → Poslata → Plaćena ili Otkazana. Status menjate iz kartice fakture.",
+            "content": "Faktura se kreira sa statusom Poslata. Status se može promeniti u: Plaćena ili Stornirana. Status menjate iz kartice fakture.",
             "tip": ""
           },
           {
@@ -391,7 +391,7 @@
           },
           {
             "title": "Generisanje",
-            "content": "Otvorite karticu postojeće fakture i kliknite dugme E-faktura. XML se generiše na osnovu podataka fakture.",
+            "content": "Otvorite karticu rejsa koji ima fakturu i kliknite dugme E-faktura. XML se generiše na osnovu podataka fakture.",
             "tip": ""
           },
           {
@@ -406,7 +406,7 @@
           },
           {
             "title": "Statusi e-fakture",
-            "content": "E-fakture imaju statuse: Nacrt, Poslata, Prihvaćena, Odbijena — pratite status na portalu SEF.",
+            "content": "Bot generiše XML fajl sa statusom Generisana. Dalji statusi (Poslata, Prihvaćena, Odbijena) prate se na portalu SEF.",
             "tip": ""
           }
         ]
@@ -458,7 +458,7 @@
         "steps": [
           {
             "title": "Dodavanje vozila",
-            "content": "Unesite registarski broj, marku/model, tip (Kamion, Kombi ili Prikolica), nosivost, datum tehničkog pregleda i napomene.",
+            "content": "Unesite registarski broj, marku, model, tip (Kamion, Kombi ili Prikolica), nosivost i napomene.",
             "tip": ""
           },
           {
@@ -468,7 +468,7 @@
           },
           {
             "title": "Uređivanje vozila",
-            "content": "Otvorite karticu vozila i izmenite bilo koje polje — registraciju, marku, tip, nosivost ili datum pregleda.",
+            "content": "Otvorite karticu vozila i izmenite registraciju, marku, model, nosivost, datum tehničkog pregleda ili napomene.",
             "tip": ""
           },
           {
@@ -489,7 +489,7 @@
         "steps": [
           {
             "title": "Dodavanje klijenta",
-            "content": "Unesite naziv firme, PIB, adresu, grad, kontakt osobu, email, telefon i državu.",
+            "content": "Unesite naziv firme, PIB, adresu, grad, kontakt osobu i telefon.",
             "tip": ""
           },
           {
@@ -530,22 +530,22 @@
           },
           {
             "title": "Statistika po vozačima",
-            "content": "Pregledajte broj rejsova, prosečnu cenu, klijente i vozila za svakog vozača.",
+            "content": "Pregledajte broj rejsova i ukupnu zaradu za svakog vozača.",
             "tip": ""
           },
           {
             "title": "Statistika po klijentima",
-            "content": "Pregledajte broj rejsova, ukupnu zaradu, vozače i vozila za svakog klijenta.",
+            "content": "Pregledajte broj rejsova i ukupnu zaradu za svakog klijenta.",
             "tip": ""
           },
           {
             "title": "Dospele fakture",
-            "content": "Aging report: fakture dospele pre 30+ dana, 7–30 dana i manje od 7 dana.",
+            "content": "Aging report: fakture grupisane po kašnjenju — 0–30, 31–60, 61–90 i 90+ dana.",
             "tip": "Redovno proveravajte dospele fakture da izbegnete kašnjenja u naplati."
           },
           {
             "title": "Excel eksport",
-            "content": "Eksportujte sve rejsove u .xlsx fajl. Dostupno samo na PRO planu.",
+            "content": "Eksportujte sve rejsove u .xlsx fajl. Dostupno na Early Adopter i PRO planu.",
             "tip": ""
           }
         ]

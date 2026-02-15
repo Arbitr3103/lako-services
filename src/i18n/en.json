@@ -273,12 +273,12 @@
         "steps": [
           {
             "title": "Creating a trip",
-            "content": "Open Main menu \u2192 New trip. Select a vehicle, then a driver, then a client. Enter the pickup city and address, delivery city and address, cargo description, weight, and price. Alternatively, use Quick trip which requires only 4 steps.",
+            "content": "Open Main menu → New trip. Select a vehicle, then a driver. Enter the pickup city and address, delivery city and address, then select a client. Finally, enter the cargo description, weight, and price. Alternatively, use Quick trip which requires only 4 steps.",
             "tip": "Quick trip is ideal for repeating routes \u2014 enter only the key data."
           },
           {
             "title": "Trip list",
-            "content": "View all trips with a status filter (created, in progress, completed). The list shows 10 trips per page with pagination.",
+            "content": "View all trips with a status filter (created, in progress, completed, cancelled). The list shows 10 trips per page with pagination.",
             "tip": ""
           },
           {
@@ -288,12 +288,12 @@
           },
           {
             "title": "Trip statuses",
-            "content": "Each trip goes through three phases: Created \u2192 In Progress \u2192 Completed. You can change the status from the trip card.",
-            "tip": "A driver with a linked Telegram account can change the status of their own trips."
+            "content": "Each trip goes through phases: Created → In Progress → Completed. A trip can also be cancelled. You can change the status from the trip card.",
+            "tip": "A driver with a linked Telegram account can change the status of their own trips — with photo and GPS evidence submission."
           },
           {
             "title": "Editing a trip",
-            "content": "Open the trip card and edit any field \u2014 city, address, cargo, price, driver, vehicle, or client.",
+            "content": "Open the trip card and edit any field — city, address, cargo, price, driver, vehicle, or client. Editing is available while the trip status is Created or In Progress.",
             "tip": ""
           },
           {
@@ -308,7 +308,7 @@
           },
           {
             "title": "Export to Excel",
-            "content": "Export all trips or filtered by status to an .xlsx file. Available only on the PRO plan.",
+            "content": "Export all trips or filtered by status to an .xlsx file. Available on the Early Adopter and PRO plans.",
             "tip": ""
           }
         ]
@@ -334,7 +334,7 @@
           },
           {
             "title": "PDF document",
-            "content": "The CMR is generated as a professional PDF with Cyrillic font (Roboto), ready for printing on A4.",
+            "content": "The CMR is generated as a professional PDF with Latin font (Roboto), ready for printing on A4.",
             "tip": ""
           },
           {
@@ -355,7 +355,7 @@
           },
           {
             "title": "Invoice wizard",
-            "content": "Enter the invoice number (auto or manual), issue date, payment term (7, 14, 30, or 60 days), and line items \u2014 each with description, quantity, unit, price, and VAT.",
+            "content": "Enter the invoice number (auto or manual), issue date, payment term (7, 15, or 30 days), and line items \u2014 each with description, quantity, unit, price, and VAT.",
             "tip": ""
           },
           {
@@ -365,7 +365,7 @@
           },
           {
             "title": "Invoice statuses",
-            "content": "An invoice goes through stages: Draft \u2192 Sent \u2192 Paid or Cancelled. Change the status from the invoice card.",
+            "content": "An invoice is created with the status Sent. The status can then be changed to: Paid or Cancelled. Change the status from the invoice card.",
             "tip": ""
           },
           {
@@ -391,7 +391,7 @@
           },
           {
             "title": "Generation",
-            "content": "Open the card of an existing invoice and click the E-invoice button. The XML is generated based on the invoice data.",
+            "content": "Open the trip card that has an invoice and click the E-invoice button. The XML is generated based on the invoice data.",
             "tip": ""
           },
           {
@@ -406,7 +406,7 @@
           },
           {
             "title": "E-invoice statuses",
-            "content": "E-invoices have statuses: Draft, Sent, Accepted, Rejected \u2014 track the status on the SEF portal.",
+            "content": "The bot generates the XML file with status Generated. Further statuses (Sent, Accepted, Rejected) are tracked on the SEF portal.",
             "tip": ""
           }
         ]
@@ -458,7 +458,7 @@
         "steps": [
           {
             "title": "Adding a vehicle",
-            "content": "Enter the license plate, make/model, type (Truck, Van, or Trailer), load capacity, technical inspection date, and notes.",
+            "content": "Enter the license plate, make, model, type (Truck, Van, or Trailer), load capacity, and notes.",
             "tip": ""
           },
           {
@@ -468,7 +468,7 @@
           },
           {
             "title": "Editing a vehicle",
-            "content": "Open the vehicle card and edit any field \u2014 plate, make, type, capacity, or inspection date.",
+            "content": "Open the vehicle card and edit the plate, make, model, capacity, technical inspection date, or notes.",
             "tip": ""
           },
           {
@@ -489,7 +489,7 @@
         "steps": [
           {
             "title": "Adding a customer",
-            "content": "Enter the company name, tax ID (PIB), address, city, contact person, email, phone, and country.",
+            "content": "Enter the company name, tax ID (PIB), address, city, contact person, and phone.",
             "tip": ""
           },
           {
@@ -530,22 +530,22 @@
           },
           {
             "title": "Driver statistics",
-            "content": "View the number of trips, average price, clients, and vehicles for each driver.",
+            "content": "View the number of trips and total revenue for each driver.",
             "tip": ""
           },
           {
             "title": "Client statistics",
-            "content": "View the number of trips, total revenue, drivers, and vehicles for each client.",
+            "content": "View the number of trips and total revenue for each client.",
             "tip": ""
           },
           {
             "title": "Overdue invoices",
-            "content": "Aging report: invoices overdue by 30+ days, 7\u201330 days, and less than 7 days.",
+            "content": "Aging report: invoices grouped by overdue period — 0–30, 31–60, 61–90, and 90+ days.",
             "tip": "Regularly check overdue invoices to avoid delays in payment collection."
           },
           {
             "title": "Excel export",
-            "content": "Export all trips to an .xlsx file. Available only on the PRO plan.",
+            "content": "Export all trips to an .xlsx file. Available on the Early Adopter and PRO plans.",
             "tip": ""
           }
         ]
