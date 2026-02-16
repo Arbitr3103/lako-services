@@ -10,7 +10,7 @@ Business automation website (Telegram bots) for Lako Services, Novi Sad, Serbia.
 
 ## Tech Stack
 
-Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudflare Pages.
+Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudflare Workers.
 
 ## Architecture
 
@@ -36,7 +36,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Colors**: Primary `#2563EB` (blue), Accent `#D97706` (orange CTA), Text `#1F2937`.
 
-**Cloudflare Pages env vars**: `import.meta.env` НЕ работает для server-side переменных на Cloudflare Pages runtime. Используй `astro:env/server`: определи schema в `astro.config.mjs` → `envField.string({ context: 'server', access: 'secret' })`, импортируй через `import { VAR } from 'astro:env/server'` или `getSecret('VAR')`.
+**Cloudflare Workers env vars**: `import.meta.env` НЕ работает для server-side переменных на Cloudflare Workers runtime. Используй `astro:env/server`: определи schema в `astro.config.mjs` → `envField.string({ context: 'server', access: 'secret' })`, импортируй через `import { VAR } from 'astro:env/server'` или `getSecret('VAR')`. Секреты задаются через `npx wrangler secret put`. Для локальной разработки — `.dev.vars`.
 
 **Contact form**: React island → POST `/api/contact` → Resend email + Telegram Bot notification.
 
@@ -61,10 +61,30 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 
 ## Deployment
 
-- **Platform**: Cloudflare Pages (SSR via `@astrojs/cloudflare`)
+- **Platform**: Cloudflare Workers (SSR via `@astrojs/cloudflare` adapter)
 - **Repo**: github.com/Arbitr3103/lako-services
-- **Domain**: lako.services (DNS via Cloudflare)
+- **Domain**: lako.services (custom domain on Worker)
 - **Node**: 20 (see .nvmrc)
+- **Deploy**: `npm run deploy` (builds Astro + deploys Worker via wrangler)
+- **Preview**: `npm run preview` (builds + runs local Worker on :8787)
+- **Auto-deploy**: Workers Builds — push to `main` triggers build+deploy (see setup below)
+- **Secrets**: set via `npx wrangler secret put <NAME>` (RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, REGISTRATION_SECRET)
+- **Observability**: enabled in wrangler.toml — logs/traces in Workers dashboard
+- **Worker route**: `lako.services/*` → `lako-services` (DNS A record 192.0.2.1 proxied)
+
+### Workers Builds Setup (one-time, via Dashboard)
+
+1. CF Dashboard → Workers & Pages → `lako-services` → Settings → Builds
+2. Connect to GitHub → `Arbitr3103/lako-services`
+3. Build command: `npm run build`, Deploy command: `npx wrangler deploy`, Branch: `main`
+4. Save and Deploy
+
+### Post-migration Cleanup (after 1 week stable)
+
+1. Delete staging Worker: `CLOUDFLARE_API_TOKEN=xxx npx wrangler delete --name lako-services-staging`
+2. Disconnect Pages from GitHub: CF Dashboard → Pages → `lako-services` → Settings → Build → Disconnect
+3. Delete Pages project: `CLOUDFLARE_API_TOKEN=xxx npx wrangler pages project delete lako-services`
+4. Remove this cleanup section from CLAUDE.md
 
 ## GDPR / Legal
 
