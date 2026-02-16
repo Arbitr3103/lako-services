@@ -669,6 +669,17 @@
       "screenshotPlaceholder": "Interface preview",
       "adminScreenshotPlaceholder": "Business registration"
     },
+    "trustBanner": {
+      "question": "Is my client data safe?",
+      "subtitle": "Your business data and client information are protected at every step.",
+      "items": [
+        "HTTPS encryption",
+        "Per-business data isolation",
+        "Servers in Europe",
+        "GDPR compliant"
+      ],
+      "cta": "Learn more about security"
+    },
     "faq": {
       "title": "Frequently asked questions",
       "items": [

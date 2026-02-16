@@ -669,6 +669,17 @@
       "screenshotPlaceholder": "Primer interfejsa",
       "adminScreenshotPlaceholder": "Registracija biznisa"
     },
+    "trustBanner": {
+      "question": "Da li su podaci mojih klijenata bezbedni?",
+      "subtitle": "Vaši poslovni podaci i podaci klijenata su zaštićeni na svakom koraku.",
+      "items": [
+        "HTTPS enkripcija",
+        "Izolacija podataka po firmi",
+        "Serveri u Evropi",
+        "GDPR usklađenost"
+      ],
+      "cta": "Detaljnije o zaštiti"
+    },
     "faq": {
       "title": "Najčešća pitanja",
       "items": [
