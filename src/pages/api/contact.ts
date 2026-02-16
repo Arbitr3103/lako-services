@@ -32,8 +32,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'Lako Services <onboarding@resend.dev>',
-            to: 'bragin.arbitr@gmail.com',
+            from: 'Lako Services <noreply@lako.services>',
+            to: 'info@lako.services',
             reply_to: email,
             subject: `Nova poruka od ${name} (${businessType})`,
             html: `
