@@ -1217,6 +1217,17 @@
       ],
       "currency": "RSD"
     },
+    "trustBanner": {
+      "question": "Is my data safe?",
+      "subtitle": "Your invoices and business data are protected at every step — from encryption to server security.",
+      "items": [
+        "HTTPS encryption",
+        "argon2 password protection",
+        "Data stays on EU servers",
+        "GDPR compliant"
+      ],
+      "cta": "Learn more about security"
+    },
     "faq": {
       "title": "Frequently Asked Questions",
       "items": [

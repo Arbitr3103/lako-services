@@ -1218,6 +1218,17 @@
       ],
       "currency": "RSD"
     },
+    "trustBanner": {
+      "question": "Da li su moji podaci bezbedni?",
+      "subtitle": "Vaši fakture i poslovni podaci su zaštićeni na svakom koraku — od šifrovanja do serverske bezbednosti.",
+      "items": [
+        "HTTPS enkripcija",
+        "argon2 zaštita lozinki",
+        "Podaci ostaju na serveru u Evropi",
+        "GDPR usklađenost"
+      ],
+      "cta": "Detaljnije o zaštiti"
+    },
     "faq": {
       "title": "Česta pitanja",
       "items": [
