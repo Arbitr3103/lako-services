@@ -10,9 +10,11 @@ interface Props {
   description: string;
   locale: Locale;
   noindex?: boolean;
+  ogImage?: string;
+  jsonLd?: Record<string, any>;
 }
 
-const { title, description, locale, noindex = false } = Astro.props;
+const { title, description, locale, noindex = false, ogImage, jsonLd } = Astro.props;
 const currentPath = getPathWithoutLocale(Astro.url.pathname);
 const canonicalUrl = new URL(getLocalizedPath(currentPath, locale), Astro.site);
 
@@ -44,6 +46,10 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     <meta property="og:site_name" content="Lako Services" />
     <meta property="og:locale" content={ogLocaleMap[locale]} />
     <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).href} />}
+
+    {/* Custom JSON-LD */}
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     {/* Favicon */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

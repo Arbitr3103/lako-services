@@ -121,8 +121,23 @@ function countValid(data: InvoiceData): { valid: number; total: number } {
   return { valid, total };
 }
 
+function trackEvent(event: string, data?: Record<string, any>) {
+  try {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', event, data);
+    }
+    // Also fire a beacon for our own analytics
+    if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+      navigator.sendBeacon('/api/analytics', JSON.stringify({ event, ...data, ts: Date.now() }));
+    }
+  } catch {}
+}
+
 export default function Studio({ locale, apiUrl }: Props) {
   const t = translations[locale] || translations.sr;
+
+  // Track studio open
+  useEffect(() => { trackEvent('efaktura_studio_open', { locale }); }, []);
 
   const [invoice, dispatch] = useReducer(reducer, null, () => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem('efaktura-seller') : null;
@@ -161,6 +176,7 @@ export default function Studio({ locale, apiUrl }: Props) {
 
   const handleGenerate = async () => {
     setGenStatus('generating');
+    trackEvent('efaktura_generate_start', { locale, items: invoice.items.length });
     try {
       const createRes = await fetch(`${apiUrl}/api/efaktura/invoices`, {
         method: 'POST',
@@ -190,6 +206,7 @@ export default function Studio({ locale, apiUrl }: Props) {
           const dlData = await dlRes.json();
           setDownloadData(dlData);
           setGenStatus('ready');
+          trackEvent('efaktura_generate_success', { locale });
           return;
         }
         if (status.status === 'error') {
@@ -205,6 +222,7 @@ export default function Studio({ locale, apiUrl }: Props) {
   };
 
   const downloadFile = (base64: string, filename: string, mime: string) => {
+    trackEvent('efaktura_download', { locale, type: mime.includes('pdf') ? 'pdf' : 'xml' });
     const binary = atob(base64);
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
