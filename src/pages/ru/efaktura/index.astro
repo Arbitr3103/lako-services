@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import { t, tObject, getLocalizedPath } from '../../../i18n/utils';
+
+const locale = 'ru';
+
+const problems = tObject<Array<{title: string, description: string}>>(locale, 'efaktura.problems.items');
+const solutions = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'efaktura.solutions.items');
+const steps = tObject<Array<{number: string, title: string, description: string}>>(locale, 'efaktura.howItWorks.steps');
+const plans = tObject<Array<{name: string, price: string, period: string, features: string[], cta: string, popular?: boolean}>>(locale, 'efaktura.pricing.plans');
+const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'efaktura.faq.items');
+const securityItems = tObject<string[]>(locale, 'efaktura.security.items');
+
+const problemIcons = [
+  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>`,
+  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" /></svg>`,
+];
+
+const solutionIcons: Record<string, string> = {
+  split: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>`,
+  check: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>`,
+  download: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>`,
+};
+
+const stepIcons = [
+  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>`,
+  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>`,
+];
+---
+<BaseLayout
+  title={t(locale, 'efaktura.seo.title')}
+  description={t(locale, 'efaktura.seo.description')}
+  locale={locale}
+>
+  {/* 1. Hero */}
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-bg to-accent/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block px-4 py-1.5 text-sm font-semibold rounded-full bg-accent/10 text-accent mb-6">
+          {t(locale, 'efaktura.hero.badge')}
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text">
+          {t(locale, 'efaktura.hero.title')}
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-text-light max-w-2xl mx-auto">
+          {t(locale, 'efaktura.hero.subtitle')}
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={getLocalizedPath('/efaktura/studio', locale)}
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-xl transition-colors text-lg">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+            {t(locale, 'efaktura.hero.cta')}
+          </a>
+          <a href="#how-it-works"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors text-lg">
+            {t(locale, 'efaktura.hero.ctaSecondary')}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+    </div>
+  </section>
+
+  {/* 2. Problems */}
+  <section class="reveal py-20 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'efaktura.problems.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12 -mt-8">
+        {t(locale, 'efaktura.problems.subtitle')}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {problems.map((item, i) => (
+          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+              <Fragment set:html={problemIcons[i]} />
+            </div>
+            <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+            <p class="text-text-light">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 3. Solutions */}
+  <section class="reveal py-20 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'efaktura.solutions.title')}</SectionHeading>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {solutions.map((item) => (
+          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+              <Fragment set:html={solutionIcons[item.icon] || ''} />
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-text-light text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 4. How It Works */}
+  <section id="how-it-works" class="reveal py-24 bg-bg scroll-mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'efaktura.howItWorks.title')}</SectionHeading>
+
+      <div class="relative max-w-3xl mx-auto">
+        <div class="hidden md:block absolute top-24 left-[calc(16%+24px)] right-[calc(16%+24px)] h-0.5 border-t-2 border-dashed border-primary/30"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((step, i) => (
+            <div class="relative flex flex-col items-center text-center">
+              <div class="text-5xl font-bold text-accent/30 mb-2">{step.number}</div>
+              <div class="relative z-10 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                <Fragment set:html={stepIcons[i]} />
+              </div>
+              <h3 class="text-lg font-semibold mb-1">{step.title}</h3>
+              <p class="text-text-light text-sm">{step.description}</p>
+              {i < 2 && (
+                <div class="md:hidden mt-4 text-primary/30">
+                  <svg class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 5. Pricing */}
+  <section class="reveal py-20 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'efaktura.pricing.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12 -mt-8">
+        {t(locale, 'efaktura.pricing.subtitle')}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {plans.map((plan) => (
+          <div class:list={[
+            "bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 relative",
+            plan.popular ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5"
+          ]}>
+            {plan.popular && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold rounded-full bg-accent text-white">
+                Popular
+              </span>
+            )}
+            <h4 class="text-xl font-bold mb-2">{plan.name}</h4>
+            <div class="mb-4">
+              <span class="text-4xl font-bold">{plan.price}</span>
+              {plan.price !== '0' && <span class="text-text-light ml-1">{t(locale, 'efaktura.pricing.currency')}</span>}
+              <span class="text-text-light ml-1">/ {plan.period}</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+              {plan.features.map((feature) => (
+                <li class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-text-light text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={getLocalizedPath('/efaktura/studio', locale)}
+              class:list={[
+                "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
+                plan.popular
+                  ? "bg-accent hover:bg-accent/90 text-white"
+                  : "border-2 border-primary/30 hover:border-primary text-text"
+              ]}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 6. FAQ */}
+  <section class="reveal py-24 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'efaktura.faq.title')}</SectionHeading>
+
+      <div class="max-w-2xl mx-auto space-y-4">
+        {faqItems.map((item) => (
+          <details class="group bg-bg-card rounded-2xl border border-border overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-text font-semibold hover:bg-bg-card/80 transition-colors list-none [&::-webkit-details-marker]:hidden">
+              <span>{item.question}</span>
+              <svg class="w-5 h-5 text-text-light flex-shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </summary>
+            <div class="faq-content">
+              <div class="faq-inner px-6 pb-5 text-text-light">
+                {item.answer}
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 7. Security */}
+  <section class="reveal py-20 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'efaktura.security.title')}</SectionHeading>
+
+      <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+        {securityItems.map((item) => (
+          <span class="flex items-center gap-2 bg-bg-card rounded-xl px-5 py-3 border border-border text-sm">
+            <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-text-light">{item}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 8. Bottom CTA */}
+  <section class="reveal py-20 bg-gradient-to-r from-primary/20 to-accent/10 border-t border-border">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        {t(locale, 'efaktura.bottomCta.title')}
+      </h2>
+      <p class="text-lg text-text-light mb-8">
+        {t(locale, 'efaktura.bottomCta.subtitle')}
+      </p>
+      <a href={getLocalizedPath('/efaktura/studio', locale)}
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-xl transition-colors text-lg">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+        {t(locale, 'efaktura.bottomCta.cta')}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

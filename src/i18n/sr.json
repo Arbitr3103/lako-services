@@ -8,7 +8,8 @@
     "logistics": "Logistika",
     "smallBusiness": "Mali biznis",
     "about": "O nama",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "efaktura": "e-Faktura"
   },
   "home": {
     "hero": {
@@ -1095,6 +1096,218 @@
     "dataProtection": {
       "title": "Zaštita podataka | Lako Services",
       "description": "Kako štitimo vaše poslovne podatke — enkripcija, bekapi, GDPR usklađenost i kontrola pristupa."
+    },
+    "efaktura": {
+      "title": "e-Faktura Studio — Besplatno kreiranje e-faktura za male firme | Lako Services",
+      "description": "Kreirajte SEF-kompatibilne e-fakture za 2 minuta. PDF + UBL XML. Besplatno za 3 fakture mesečno."
+    }
+  },
+  "efaktura": {
+    "seo": {
+      "title": "e-Faktura Studio — Besplatno kreiranje e-faktura za male firme",
+      "description": "Kreirajte SEF-kompatibilne e-fakture za 2 minuta. PDF + UBL XML. Besplatno za 3 fakture mesečno."
+    },
+    "hero": {
+      "badge": "Besplatno za male firme",
+      "title": "e-Faktura Studio",
+      "subtitle": "Kreirajte profesionalne fakture za 2 minuta. PDF + UBL XML — spremno za SEF portal.",
+      "cta": "Napravi fakturu",
+      "ctaSecondary": "Kako radi?"
+    },
+    "problems": {
+      "title": "Zašto vam treba e-Faktura Studio?",
+      "subtitle": "Od januara 2023 e-fakture su obavezne za B2B. Kazne idu do 2 miliona dinara.",
+      "items": [
+        {
+          "title": "SEF portal je spor",
+          "description": "Ručno unošenje svake fakture u portal troši 15-20 minuta. Za 10 faktura mesečno — 3 sata."
+        },
+        {
+          "title": "Greške u unosu",
+          "description": "Pogrešan PIB, netačan PDV, format koji SEF ne prihvata — pa ponovo od početka."
+        },
+        {
+          "title": "Nema pregleda pre slanja",
+          "description": "Ne vidite kako faktura izgleda dok je ne pošaljete. Korekcije troše još više vremena."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Jedno mesto za sve",
+      "items": [
+        {
+          "icon": "split",
+          "title": "Unesite — vidite odmah",
+          "description": "Split-screen: forma levo, PDF pregled desno. Svaka promena se vidi u realnom vremenu."
+        },
+        {
+          "icon": "check",
+          "title": "Automatska validacija",
+          "description": "PIB provera, PDV obračun, UBL format — sve se proverava pre generisanja."
+        },
+        {
+          "icon": "download",
+          "title": "PDF + XML jednim klikom",
+          "description": "Generišite SEF-kompatibilan XML i profesionalan PDF — preuzmite i pošaljite."
+        }
+      ]
+    },
+    "howItWorks": {
+      "title": "Kako radi?",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Popunite podatke",
+          "description": "Unesite podatke o firmi, kupcu i stavkama. Automatski obračun PDV-a."
+        },
+        {
+          "number": "2",
+          "title": "Proverite pregled",
+          "description": "Vidite fakturu u realnom vremenu. Popravite greške pre generisanja."
+        },
+        {
+          "number": "3",
+          "title": "Preuzmite PDF + XML",
+          "description": "Jedan klik — dobijate PDF za kupca i XML za SEF portal."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Cene",
+      "subtitle": "Počnite besplatno, nadogradite kada vam zatreba",
+      "plans": [
+        {
+          "name": "Besplatno",
+          "price": "0",
+          "period": "zauvek",
+          "features": [
+            "3 fakture mesečno",
+            "PDF + UBL XML",
+            "Automatska validacija",
+            "Podaci u browseru"
+          ],
+          "cta": "Počni besplatno"
+        },
+        {
+          "name": "Pro",
+          "price": "990",
+          "period": "mesečno",
+          "features": [
+            "Neograničen broj faktura",
+            "Istorija faktura",
+            "Sačuvani kupci",
+            "Više firmi",
+            "Prioritetna podrška"
+          ],
+          "cta": "Aktiviraj Pro",
+          "popular": true
+        },
+        {
+          "name": "Biznis",
+          "price": "2.490",
+          "period": "mesečno",
+          "features": [
+            "Sve iz Pro plana",
+            "Logo na fakturi",
+            "Šabloni faktura",
+            "Batch generisanje",
+            "API pristup"
+          ],
+          "cta": "Kontaktirajte nas"
+        }
+      ],
+      "currency": "RSD"
+    },
+    "faq": {
+      "title": "Česta pitanja",
+      "items": [
+        {
+          "question": "Da li je e-Faktura Studio besplatan?",
+          "answer": "Da, osnovni plan je besplatan zauvek — 3 fakture mesečno sa punom funkcionalnošću."
+        },
+        {
+          "question": "Da li generisani XML odgovara SEF formatu?",
+          "answer": "Da, generišemo UBL 2.1 XML koji je potpuno kompatibilan sa Sistemom elektronskih faktura (SEF)."
+        },
+        {
+          "question": "Da li mogu da koristim bez registracije?",
+          "answer": "Da! Bez naloga možete generisati do 3 fakture mesečno. Podaci vaše firme se čuvaju lokalno u browseru."
+        },
+        {
+          "question": "Koji podaci su potrebni za fakturu?",
+          "answer": "PIB i naziv prodavca i kupca, adrese, stavke sa cenama i PDV stopom. Sistem automatski obračunava iznose."
+        },
+        {
+          "question": "Da li podržavate paušalce?",
+          "answer": "Da! Ako niste u sistemu PDV, sistem automatski generiše fakturu sa oznakom oslobođenja od PDV-a."
+        },
+        {
+          "question": "Da li su moji podaci bezbedni?",
+          "answer": "Lozinke se čuvaju sa argon2 enkripcijom. Sva komunikacija je preko HTTPS-a. Ne delimo podatke sa trećim stranama."
+        }
+      ]
+    },
+    "security": {
+      "title": "Bezbednost i usklađenost",
+      "items": [
+        "HTTPS enkripcija",
+        "argon2 zaštita lozinki",
+        "UBL 2.1 standard",
+        "SEF kompatibilnost",
+        "GDPR usklađenost",
+        "Bez skladištenja osetljivih podataka"
+      ]
+    },
+    "bottomCta": {
+      "title": "Spremni da napravite prvu fakturu?",
+      "subtitle": "Besplatno za male firme. Bez kartice, bez obaveza.",
+      "cta": "Kreiraj fakturu za 2 minuta"
+    },
+    "studio": {
+      "title": "e-Faktura Studio",
+      "seller": "Prodavac",
+      "buyer": "Kupac",
+      "items": "Stavke",
+      "details": "Detalji",
+      "preview": "Pregled",
+      "form": "Forma",
+      "generate": "Generiši fakturu",
+      "download": "Preuzmi",
+      "downloadPdf": "Preuzmi PDF",
+      "downloadXml": "Preuzmi XML",
+      "invoiceNumber": "Broj fakture",
+      "issueDate": "Datum izdavanja",
+      "deliveryDate": "Datum isporuke",
+      "dueDate": "Rok plaćanja",
+      "paymentTerms": "Rok plaćanja",
+      "paymentReference": "Poziv na broj",
+      "notes": "Napomene",
+      "description": "Opis",
+      "quantity": "Količina",
+      "unit": "Jedinica",
+      "unitPrice": "Cena",
+      "vatRate": "PDV %",
+      "amount": "Iznos",
+      "subtotal": "Osnovica",
+      "vat": "PDV",
+      "total": "Ukupno",
+      "addItem": "Dodaj stavku",
+      "removeItem": "Obriši",
+      "saveBuyer": "Sačuvaj kupca",
+      "editCompany": "Izmeni podatke firme",
+      "pib": "PIB",
+      "companyName": "Naziv firme",
+      "address": "Adresa",
+      "city": "Grad",
+      "bankAccount": "Tekući račun",
+      "vatRegistered": "U sistemu PDV",
+      "validationProgress": "polja validno",
+      "generating": "Generisanje u toku...",
+      "success": "Faktura uspešno generisana!",
+      "error": "Greška pri generisanju",
+      "days": "dana",
+      "bankTransfer": "Virman",
+      "preview_watermark": "PREGLED"
     }
   }
 }

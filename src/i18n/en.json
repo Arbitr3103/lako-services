@@ -8,7 +8,8 @@
     "logistics": "Logistics",
     "smallBusiness": "Small Business",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "efaktura": "e-Faktura"
   },
   "home": {
     "hero": {
@@ -1094,6 +1095,218 @@
     "dataProtection": {
       "title": "Data Protection | Lako Services",
       "description": "How we protect your business data — encryption, backups, GDPR compliance and access control."
+    },
+    "efaktura": {
+      "title": "e-Faktura Studio — Free e-Invoice Generator for Small Business | Lako Services",
+      "description": "Create SEF-compliant e-invoices in 2 minutes. PDF + UBL XML. Free for 3 invoices per month."
+    }
+  },
+  "efaktura": {
+    "seo": {
+      "title": "e-Faktura Studio — Free e-Invoice Generator for Small Business",
+      "description": "Create SEF-compliant e-invoices in 2 minutes. PDF + UBL XML. Free for 3 invoices per month."
+    },
+    "hero": {
+      "badge": "Free for small business",
+      "title": "e-Faktura Studio",
+      "subtitle": "Create professional invoices in 2 minutes. PDF + UBL XML — ready for the SEF portal.",
+      "cta": "Create invoice",
+      "ctaSecondary": "How it works?"
+    },
+    "problems": {
+      "title": "Why do you need e-Faktura Studio?",
+      "subtitle": "Since January 2023, e-invoices are mandatory for B2B in Serbia. Fines up to 2 million RSD.",
+      "items": [
+        {
+          "title": "SEF portal is slow",
+          "description": "Manual entry of each invoice takes 15-20 minutes. For 10 invoices per month — 3 hours."
+        },
+        {
+          "title": "Data entry errors",
+          "description": "Wrong PIB, incorrect VAT, format rejected by SEF — start over again."
+        },
+        {
+          "title": "No preview before sending",
+          "description": "You can't see the invoice until you submit it. Corrections waste even more time."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Everything in one place",
+      "items": [
+        {
+          "icon": "split",
+          "title": "Enter — see instantly",
+          "description": "Split-screen: form on the left, PDF preview on the right. Every change visible in real-time."
+        },
+        {
+          "icon": "check",
+          "title": "Automatic validation",
+          "description": "PIB verification, VAT calculation, UBL format — everything checked before generation."
+        },
+        {
+          "icon": "download",
+          "title": "PDF + XML in one click",
+          "description": "Generate SEF-compliant XML and professional PDF — download and send."
+        }
+      ]
+    },
+    "howItWorks": {
+      "title": "How it works?",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Fill in the data",
+          "description": "Enter company, buyer and item details. Automatic VAT calculation."
+        },
+        {
+          "number": "2",
+          "title": "Check the preview",
+          "description": "See the invoice in real-time. Fix errors before generating."
+        },
+        {
+          "number": "3",
+          "title": "Download PDF + XML",
+          "description": "One click — get a PDF for the buyer and XML for the SEF portal."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Pricing",
+      "subtitle": "Start free, upgrade when you need more",
+      "plans": [
+        {
+          "name": "Free",
+          "price": "0",
+          "period": "forever",
+          "features": [
+            "3 invoices per month",
+            "PDF + UBL XML",
+            "Automatic validation",
+            "Data stored in browser"
+          ],
+          "cta": "Start free"
+        },
+        {
+          "name": "Pro",
+          "price": "990",
+          "period": "monthly",
+          "features": [
+            "Unlimited invoices",
+            "Invoice history",
+            "Saved customers",
+            "Multiple companies",
+            "Priority support"
+          ],
+          "cta": "Activate Pro",
+          "popular": true
+        },
+        {
+          "name": "Business",
+          "price": "2,490",
+          "period": "monthly",
+          "features": [
+            "Everything in Pro",
+            "Logo on invoice",
+            "Invoice templates",
+            "Batch generation",
+            "API access"
+          ],
+          "cta": "Contact us"
+        }
+      ],
+      "currency": "RSD"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is e-Faktura Studio free?",
+          "answer": "Yes, the basic plan is free forever — 3 invoices per month with full functionality."
+        },
+        {
+          "question": "Does the generated XML match the SEF format?",
+          "answer": "Yes, we generate UBL 2.1 XML fully compatible with Serbia's Electronic Invoice System (SEF)."
+        },
+        {
+          "question": "Can I use it without registration?",
+          "answer": "Yes! Without an account, you can generate up to 3 invoices per month. Your company data is stored locally in the browser."
+        },
+        {
+          "question": "What data is needed for an invoice?",
+          "answer": "PIB and name of seller and buyer, addresses, items with prices and VAT rates. The system automatically calculates totals."
+        },
+        {
+          "question": "Do you support flat-rate taxpayers?",
+          "answer": "Yes! If you're not in the VAT system, the system automatically generates an invoice with VAT exemption."
+        },
+        {
+          "question": "Is my data secure?",
+          "answer": "Passwords are stored with argon2 encryption. All communication is over HTTPS. We don't share data with third parties."
+        }
+      ]
+    },
+    "security": {
+      "title": "Security & Compliance",
+      "items": [
+        "HTTPS encryption",
+        "argon2 password protection",
+        "UBL 2.1 standard",
+        "SEF compliance",
+        "GDPR compliance",
+        "No sensitive data storage"
+      ]
+    },
+    "bottomCta": {
+      "title": "Ready to create your first invoice?",
+      "subtitle": "Free for small businesses. No card, no commitment.",
+      "cta": "Create invoice in 2 minutes"
+    },
+    "studio": {
+      "title": "e-Faktura Studio",
+      "seller": "Seller",
+      "buyer": "Buyer",
+      "items": "Items",
+      "details": "Details",
+      "preview": "Preview",
+      "form": "Form",
+      "generate": "Generate invoice",
+      "download": "Download",
+      "downloadPdf": "Download PDF",
+      "downloadXml": "Download XML",
+      "invoiceNumber": "Invoice number",
+      "issueDate": "Issue date",
+      "deliveryDate": "Delivery date",
+      "dueDate": "Due date",
+      "paymentTerms": "Payment terms",
+      "paymentReference": "Payment reference",
+      "notes": "Notes",
+      "description": "Description",
+      "quantity": "Quantity",
+      "unit": "Unit",
+      "unitPrice": "Price",
+      "vatRate": "VAT %",
+      "amount": "Amount",
+      "subtotal": "Subtotal",
+      "vat": "VAT",
+      "total": "Total",
+      "addItem": "Add item",
+      "removeItem": "Remove",
+      "saveBuyer": "Save buyer",
+      "editCompany": "Edit company details",
+      "pib": "PIB",
+      "companyName": "Company name",
+      "address": "Address",
+      "city": "City",
+      "bankAccount": "Bank account",
+      "vatRegistered": "VAT registered",
+      "validationProgress": "fields valid",
+      "generating": "Generating...",
+      "success": "Invoice generated successfully!",
+      "error": "Error generating invoice",
+      "days": "days",
+      "bankTransfer": "Bank transfer",
+      "preview_watermark": "PREVIEW"
     }
   }
 }

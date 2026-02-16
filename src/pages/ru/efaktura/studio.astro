@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Studio from '../../../components/efaktura/Studio';
+import { t } from '../../../i18n/utils';
+
+const locale = 'ru';
+const apiUrl = 'https://bot.lako.services';
+---
+
+<BaseLayout title={t(locale, 'efaktura.studio.title')} description={t(locale, 'efaktura.seo.description')} locale={locale} noindex={true}>
+  <Studio client:load locale={locale} apiUrl={apiUrl} />
+</BaseLayout>
