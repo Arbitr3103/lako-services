@@ -1,12 +1,17 @@
 import type { APIRoute } from 'astro';
-import { RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, getSecret } from 'astro:env/server';
 
 const LAKO_BOT_API_URL = 'https://bot.lako.services';
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const data = await request.json();
-    const REGISTRATION_SECRET = await getSecret('REGISTRATION_SECRET');
+
+    // Access Cloudflare Worker env bindings directly
+    const cfEnv = (locals as any).runtime?.env ?? {};
+    const REGISTRATION_SECRET = cfEnv.REGISTRATION_SECRET;
+    const RESEND_API_KEY = cfEnv.RESEND_API_KEY;
+    const TELEGRAM_BOT_TOKEN = cfEnv.TELEGRAM_BOT_TOKEN;
+    const TELEGRAM_CHAT_ID = cfEnv.TELEGRAM_CHAT_ID;
     const { businessName, category, city, address, phone, instagram, website, contactName, email } = data;
 
     if (!businessName || !category || !city || !address || !phone || !contactName || !email) {
@@ -43,7 +48,7 @@ export const POST: APIRoute = async ({ request }) => {
           },
           body: JSON.stringify({
             from: 'Lako Services <onboarding@resend.dev>',
-            to: 'info@lako.services',
+            to: 'bragin.arbitr@gmail.com',
             subject: `Novi zahtev za registraciju: ${businessName} (${category})`,
             html: `
               <h2>Novi zahtev za registraciju biznisa</h2>

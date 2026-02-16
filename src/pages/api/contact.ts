@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro';
-import { RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } from 'astro:env/server';
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const data = await request.json();
     const { name, email, phone, businessType, message } = data;
@@ -14,10 +13,19 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    // Access Cloudflare Worker env bindings directly
+    const cfEnv = (locals as any).runtime?.env ?? {};
+    const RESEND_API_KEY = cfEnv.RESEND_API_KEY;
+    const TELEGRAM_BOT_TOKEN = cfEnv.TELEGRAM_BOT_TOKEN;
+    const TELEGRAM_CHAT_ID = cfEnv.TELEGRAM_CHAT_ID;
+
+    let emailSent = false;
+    let telegramSent = false;
+
     // Email via Resend
     if (RESEND_API_KEY) {
       try {
-        await fetch('https://api.resend.com/emails', {
+        const resendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${RESEND_API_KEY}`,
@@ -25,7 +33,8 @@ export const POST: APIRoute = async ({ request }) => {
           },
           body: JSON.stringify({
             from: 'Lako Services <onboarding@resend.dev>',
-            to: 'info@lako.services',
+            to: 'bragin.arbitr@gmail.com',
+            reply_to: email,
             subject: `Nova poruka od ${name} (${businessType})`,
             html: `
               <h2>Nova poruka sa sajta</h2>
@@ -38,9 +47,17 @@ export const POST: APIRoute = async ({ request }) => {
             `,
           }),
         });
+        if (resendRes.ok) {
+          emailSent = true;
+        } else {
+          const errBody = await resendRes.text();
+          console.error('Resend API error:', resendRes.status, errBody);
+        }
       } catch (e) {
-        console.error('Resend error:', e);
+        console.error('Resend fetch error:', e);
       }
+    } else {
+      console.error('RESEND_API_KEY not configured');
     }
 
     // Telegram notification
@@ -58,7 +75,7 @@ export const POST: APIRoute = async ({ request }) => {
           message,
         ].join('\n');
 
-        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        const tgRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -67,9 +84,25 @@ export const POST: APIRoute = async ({ request }) => {
             parse_mode: 'HTML',
           }),
         });
+        if (tgRes.ok) {
+          telegramSent = true;
+        } else {
+          const errBody = await tgRes.text();
+          console.error('Telegram API error:', tgRes.status, errBody);
+        }
       } catch (e) {
-        console.error('Telegram error:', e);
+        console.error('Telegram fetch error:', e);
       }
+    } else {
+      console.error('TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not configured');
+    }
+
+    // At least one channel must succeed
+    if (!emailSent && !telegramSent) {
+      return new Response(
+        JSON.stringify({ error: 'Failed to send message. Please try again or contact us directly.' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
     return new Response(
