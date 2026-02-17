@@ -597,9 +597,11 @@
   },
   "smallBusiness": {
     "hero": {
+      "badge": "For small businesses",
       "title": "Automation for your salon, clinic or service",
-      "subtitle": "Two Telegram bots working together: clients find you and book appointments through Lako Catalog, while you manage everything through Lako Admin.",
-      "cta": "See how it works"
+      "subtitle": "Clients book through Lako Catalog — you manage through Lako Admin.",
+      "cta": "See how it works",
+      "ctaSecondary": "Add business"
     },
     "howItWorks": {
       "title": "How it works",
@@ -617,7 +619,7 @@
           "description": "Bot sends reminders to clients 24h before the appointment. You get notified in @LakoAdminBot about every new booking."
         },
         {
-          "title": "You manage via Lako Admin",
+          "title": "You're in control",
           "description": "Through @LakoAdminBot you see all appointments, change schedules, and send promotions."
         }
       ]
@@ -631,7 +633,7 @@
         },
         {
           "title": "Dental clinics",
-          "description": "Patients schedule appointments automatically, receive reminders before visits, and you maintain digital health records — all GDPR-compliant."
+          "description": "Patients schedule appointments automatically, receive reminders before visits, and you track appointments for each patient — all GDPR-compliant."
         },
         {
           "title": "Auto services",
@@ -652,7 +654,7 @@
         },
         {
           "title": "Automatic reminders",
-          "description": "Bot sends reminders 24 hours before appointments, reducing no-shows by 70% — that's fewer empty slots and more revenue."
+          "description": "Bot sends reminders 24 hours before appointments, significantly reducing no-shows — that's fewer empty slots and more revenue."
         },
         {
           "title": "Client loyalty",
@@ -660,7 +662,7 @@
         },
         {
           "title": "Time savings",
-          "description": "Save 2-3 hours daily on phone calls, scheduling, and reminders — spend that time on your actual work instead."
+          "description": "Save 2-3 hours daily on phone calls, scheduling, and reminders — spend that time on the work you actually love."
         },
         {
           "title": "Free notifications",
@@ -726,7 +728,7 @@
         },
         {
           "question": "How much does it cost?",
-          "answer": "Catalog — free (your business listed with no restrictions). Pro (€29/mo) — 24/7 online booking, free Telegram notifications instead of expensive SMS, click analytics. Business (€49/mo) — SEF integration (fiscal receipts), loyalty automation and cashback programs. First 5 clients: 3 months free. Everyone else: 30-day free trial."
+          "answer": "Catalog — free (your business listed with no restrictions). Pro (€29 / 3,400 RSD per month) — 24/7 online booking, free Telegram notifications instead of expensive SMS, click analytics. Business (€49 / 5,750 RSD per month) — SEF integration (fiscal receipts), loyalty automation and cashback programs. First 5 clients: 3 months free. Everyone else: 30-day free trial."
         },
         {
           "question": "How long does it take to get started?",
@@ -746,9 +748,62 @@
         },
         {
           "question": "Can it integrate with my existing system?",
-          "answer": "Currently Lako works as a standalone system. For custom integrations, contact us — we can build connections tailored to your needs."
+          "answer": "Currently Lako works as a standalone system. For custom integrations, contact us — we can build connections tailored to your needs. Write to us at info@lako.services."
         }
       ]
+    },
+    "pricing": {
+      "title": "Pricing",
+      "subtitle": "Choose the plan that fits your business",
+      "plans": [
+        {
+          "name": "Catalog",
+          "price": "0",
+          "period": "free forever",
+          "description": "Your business in the catalog",
+          "features": [
+            "Business profile in catalog",
+            "Visibility in search",
+            "Basic contact page"
+          ],
+          "cta": "Add business",
+          "popular": false
+        },
+        {
+          "name": "Pro",
+          "price": "29",
+          "period": "€ / month",
+          "description": "Booking and communication",
+          "features": [
+            "Everything in Catalog plan",
+            "24/7 online booking",
+            "Automatic reminders",
+            "Telegram notifications",
+            "Click analytics"
+          ],
+          "cta": "Start free",
+          "popular": true
+        },
+        {
+          "name": "Business",
+          "price": "49",
+          "period": "€ / month",
+          "description": "Full automation",
+          "features": [
+            "Everything in Pro plan",
+            "SEF integration",
+            "Loyalty and cashback",
+            "Priority support"
+          ],
+          "cta": "Contact us",
+          "popular": false
+        }
+      ],
+      "trial": "First 5 clients: 3 months free. Everyone else: 30-day free trial."
+    },
+    "seoBlock": {
+      "title": "Appointment automation for small businesses in Serbia",
+      "text": "Lako Services helps salons, clinics, auto services and dry cleaners in Serbia automate appointment scheduling and client communication. Instead of phone calls and manual schedule management, your clients book appointments 24/7 through Telegram — the most popular messenger in the region. Two bots work together: Lako Catalog lets clients find you and book an appointment, while Lako Admin gives you full visibility and control over your business."
     },
     "register": {
       "title": "Add your business to the catalog",
@@ -1113,7 +1168,7 @@
       }
     },
     "smallBusiness": {
-      "title": "Small Business — Salon & service automation | Lako Services",
+      "title": "Small Business — Appointment Automation for Salons and Services | Lako Services",
       "description": "Telegram bot for barbers, dentists, auto services. Booking, reminders, client communication."
     },
     "about": {

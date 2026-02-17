@@ -13,14 +13,27 @@ const comparisonRows = tObject<Array<{label: string, catalog: boolean, admin: bo
 const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'smallBusiness.faq.items');
 const trustItems = tObject<string[]>(locale, 'smallBusiness.trustBanner.items');
 
+const pricingPlans = tObject<Array<{name: string, price: string, period: string, description: string, features: string[], cta: string, popular: boolean}>>(locale, 'smallBusiness.pricing.plans');
+const seoBlockTitle = t(locale, 'smallBusiness.seoBlock.title');
+const seoBlockText = t(locale, 'smallBusiness.seoBlock.text');
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+
 const stepIcons = [
-  /* 1: Search / magnifying glass */
   `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>`,
-  /* 2: Calendar */
   `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>`,
-  /* 3: Bell */
   `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>`,
-  /* 4: Settings/cog */
   `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
 ];
 ---
@@ -33,15 +46,21 @@ const stepIcons = [
   <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-bg to-accent/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
       <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block text-sm font-semibold uppercase tracking-wider text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-6">
+          {t(locale, 'smallBusiness.hero.badge')}
+        </span>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text">
           {t(locale, 'smallBusiness.hero.title')}
         </h1>
         <p class="mt-6 text-lg md:text-xl leading-relaxed text-text-light max-w-2xl mx-auto">
           {t(locale, 'smallBusiness.hero.subtitle')}
         </p>
-        <div class="mt-10">
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <CTA href="#how-it-works" variant="accent" size="lg">
             {t(locale, 'smallBusiness.hero.cta')}
+          </CTA>
+          <CTA href={getLocalizedPath('/dodaj-biznis', locale)} variant="secondary" size="lg">
+            {t(locale, 'smallBusiness.hero.ctaSecondary')}
           </CTA>
         </div>
       </div>
@@ -52,60 +71,23 @@ const stepIcons = [
     </div>
   </section>
 
-  {/* Trust Banner */}
-  <section class="reveal py-8 bg-bg">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="relative rounded-2xl border border-green-500/20 bg-gradient-to-r from-green-500/5 to-emerald-500/5 p-6 md:p-8">
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0 w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-lg font-semibold text-text mb-1">{t(locale, 'smallBusiness.trustBanner.question')}</h3>
-            <p class="text-sm text-text-light mb-3">{t(locale, 'smallBusiness.trustBanner.subtitle')}</p>
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-text-light">
-              {trustItems.map((item) => (
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <a href={getLocalizedPath('/zastita-podataka', locale)} class="inline-flex items-center gap-1 text-sm text-green-400 hover:text-green-300 mt-3 transition-colors">
-              {t(locale, 'smallBusiness.trustBanner.cta')}
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   {/* How it works — 4-step flow */}
   <section id="how-it-works" class="reveal py-24 bg-bg-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'smallBusiness.howItWorks.title')}</SectionHeading>
 
       <div class="relative max-w-5xl mx-auto">
-        {/* Connecting line (desktop only) */}
         <div class="hidden md:block absolute top-24 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 border-t-2 border-dashed border-primary/30"></div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           {howItWorksSteps.map((step, i) => (
             <div class="relative flex flex-col items-center text-center">
-              {/* Step number */}
               <div class="text-5xl font-bold text-accent/30 mb-2">{i + 1}</div>
-              {/* Icon */}
               <div class="relative z-10 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <Fragment set:html={stepIcons[i]} />
               </div>
               <h3 class="text-lg font-semibold mb-2">{step.title}</h3>
               <p class="text-text-light text-sm">{step.description}</p>
-              {/* Mobile connecting arrow */}
               {i < 3 && (
                 <div class="md:hidden mt-4 text-primary/30">
                   <svg class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -126,7 +108,6 @@ const stepIcons = [
       <SectionHeading>{t(locale, 'smallBusiness.services.title')}</SectionHeading>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {/* Barbershops */}
         <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
           <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -137,7 +118,6 @@ const stepIcons = [
           <p class="text-text-light">{serviceItems[0].description}</p>
         </div>
 
-        {/* Dental */}
         <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
           <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -148,7 +128,6 @@ const stepIcons = [
           <p class="text-text-light">{serviceItems[1].description}</p>
         </div>
 
-        {/* Auto services */}
         <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
           <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -159,11 +138,10 @@ const stepIcons = [
           <p class="text-text-light">{serviceItems[2].description}</p>
         </div>
 
-        {/* Dry cleaners */}
         <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
           <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
             <svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 2h12l-1.5 3H7.5L6 2zm0 0v0M7.5 5H5a1 1 0 0 0-1 1v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a1 1 0 0 0-1-1h-2.5M9 10a3 3 0 1 0 6 0" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c-1.2 0-4 .5-4 3M12 3c1.2 0 4 .5 4 3M12 3V2M8 6c-3 0-4 2-4 4 0 3 2 12 2 12h12s2-9 2-12c0-2-1-4-4-4" />
             </svg>
           </div>
           <h3 class="text-xl font-semibold mb-2">{serviceItems[3].title}</h3>
@@ -173,7 +151,7 @@ const stepIcons = [
     </div>
   </section>
 
-  {/* Benefits — What do you get? */}
+  {/* Benefits */}
   <section class="reveal py-24 bg-bg-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'smallBusiness.benefits.title')}</SectionHeading>
@@ -201,14 +179,11 @@ const stepIcons = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'smallBusiness.bots.title')}</SectionHeading>
 
-      {/* Intro text */}
       <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12">
         {t(locale, 'smallBusiness.bots.subtitle')}
       </p>
 
-      {/* Bot cards */}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {/* Lako Catalog */}
         <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
@@ -226,7 +201,6 @@ const stepIcons = [
           </a>
         </div>
 
-        {/* Lako Admin */}
         <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-accent hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
@@ -307,8 +281,112 @@ const stepIcons = [
     </div>
   </section>
 
+  {/* Trust Banner */}
+  <section class="py-8 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href={getLocalizedPath('/zastita-podataka', locale)} class="group block max-w-4xl mx-auto rounded-2xl border border-green-500/30 bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent p-8 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/5 transition-all duration-300">
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="w-14 h-14 bg-green-500/15 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-text mb-1">{t(locale, 'smallBusiness.trustBanner.question')}</h3>
+            <p class="text-text-light text-sm mb-3">{t(locale, 'smallBusiness.trustBanner.subtitle')}</p>
+            <div class="flex flex-wrap gap-x-6 gap-y-1">
+              {trustItems.map((item) => (
+                <span class="flex items-center gap-2 text-sm text-green-400">
+                  <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+          <span class="text-green-400 font-medium text-sm whitespace-nowrap opacity-70 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+            {t(locale, 'smallBusiness.trustBanner.cta')}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  {/* Pricing */}
+  <section class="reveal py-24 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'smallBusiness.pricing.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12">
+        {t(locale, 'smallBusiness.pricing.subtitle')}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {pricingPlans.map((plan) => (
+          <div class:list={[
+            'relative bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1',
+            plan.popular ? 'border-primary shadow-lg shadow-primary/10 ring-1 ring-primary/30' : 'border-border hover:border-primary/50'
+          ]}>
+            {plan.popular && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span class="bg-primary text-bg text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Popular</span>
+              </div>
+            )}
+            <div class="text-center mb-6">
+              <h3 class="text-xl font-bold text-text mb-1">{plan.name}</h3>
+              <p class="text-sm text-text-light mb-4">{plan.description}</p>
+              {plan.price !== '0' ? (
+                <div>
+                  <span class="text-4xl font-bold text-text">{plan.price}</span>
+                  <span class="text-text-light ml-1">{plan.period}</span>
+                </div>
+              ) : (
+                <div>
+                  <span class="text-2xl font-bold text-green-400">{plan.period}</span>
+                </div>
+              )}
+            </div>
+            <ul class="space-y-3 mb-8">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2 text-sm text-text-light">
+                  <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <CTA
+              href={plan.popular ? getLocalizedPath('/dodaj-biznis', locale) : plan.price === '0' ? getLocalizedPath('/dodaj-biznis', locale) : getLocalizedPath('/contact', locale)}
+              variant={plan.popular ? 'accent' : 'secondary'}
+              size="md"
+              class="w-full text-center"
+            >
+              {plan.cta}
+            </CTA>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm text-text-light mt-8">
+        {t(locale, 'smallBusiness.pricing.trial')}
+      </p>
+    </div>
+  </section>
+
+  {/* SEO Text Block */}
+  <section class="py-16 bg-bg-alt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-text mb-4">{seoBlockTitle}</h2>
+      <p class="text-text-light leading-relaxed">{seoBlockText}</p>
+    </div>
+  </section>
+
   {/* FAQ */}
-  <section class="reveal py-24 bg-bg-alt">
+  <section class="reveal py-24 bg-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'smallBusiness.faq.title')}</SectionHeading>
 
@@ -350,7 +428,7 @@ const stepIcons = [
   {/* Bottom CTA */}
   <section class="reveal py-20 bg-gradient-to-r from-primary/20 to-accent/10 border-t border-border">
     <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-white mb-8 animate-pulse">
+      <h2 class="text-3xl font-bold text-text mb-8">
         {t(locale, 'smallBusiness.cta.text')}
       </h2>
       <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
@@ -358,4 +436,7 @@ const stepIcons = [
       </CTA>
     </div>
   </section>
+
+  {/* FAQ JSON-LD */}
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 </BaseLayout>

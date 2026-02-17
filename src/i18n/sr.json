@@ -597,9 +597,11 @@
   },
   "smallBusiness": {
     "hero": {
+      "badge": "Za male biznise",
       "title": "Automatizacija za vaš salon, ordinaciju ili servis",
-      "subtitle": "Dva Telegram bota koja rade zajedno: klijenti vas pronalaze i zakazuju termine kroz Lako Katalog, a vi upravljate svime kroz Lako Admin.",
-      "cta": "Pogledajte kako radi"
+      "subtitle": "Klijenti zakazuju kroz Lako Katalog — vi upravljate kroz Lako Admin.",
+      "cta": "Pogledajte kako radi",
+      "ctaSecondary": "Dodaj biznis"
     },
     "howItWorks": {
       "title": "Kako to radi?",
@@ -617,7 +619,7 @@
           "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje u @LakoAdminBot o svakom novom zakazivanju."
         },
         {
-          "title": "Vi upravljate kroz Lako Admin",
+          "title": "Vi ste u kontroli",
           "description": "Kroz @LakoAdminBot vidite sve termine, menjate raspored i šaljete promocije."
         }
       ]
@@ -631,7 +633,7 @@
         },
         {
           "title": "Stomatološke ordinacije",
-          "description": "Pacijenti zakazuju termine automatski, dobijaju podsetnike pre posete, a vi vodite digitalnu zdravstvenu dokumentaciju — sve u skladu sa GDPR-om."
+          "description": "Pacijenti zakazuju termine automatski, dobijaju podsetnike pre posete, a vi pratite termine za svakog pacijenta — sve u skladu sa GDPR-om."
         },
         {
           "title": "Auto-servisi",
@@ -652,7 +654,7 @@
         },
         {
           "title": "Automatska podsećanja",
-          "description": "Bot šalje podsetnike 24 sata pre termina, smanjujući no-show za 70% — to znači manje praznih termina i više prihoda."
+          "description": "Bot šalje podsetnike 24 sata pre termina, značajno smanjujući no-show — to znači manje praznih termina i više prihoda."
         },
         {
           "title": "Lojalnost klijenata",
@@ -660,7 +662,7 @@
         },
         {
           "title": "Ušteda vremena",
-          "description": "Uštedite 2-3 sata dnevno na telefonskim pozivima, zakazivanju i podsetnicima — provedite to vreme na vašem stvarnom poslu umesto toga."
+          "description": "Uštedite 2-3 sata dnevno na telefonskim pozivima, zakazivanju i podsetnicima — provedite to vreme na poslu koji stvarno volite."
         },
         {
           "title": "Besplatna obaveštenja",
@@ -726,7 +728,7 @@
         },
         {
           "question": "Koliko to košta?",
-          "answer": "Katalog — besplatno (vaš biznis u katalogu bez ograničenja). Pro (29€/mes) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu umesto skupih SMS-ova, analitika klikova. Business (49€/mes) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda."
+          "answer": "Katalog — besplatno (vaš biznis u katalogu bez ograničenja). Pro (3.400 RSD / 29€ mesečno) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu umesto skupih SMS-ova, analitika klikova. Business (5.750 RSD / 49€ mesečno) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda."
         },
         {
           "question": "Koliko vremena treba za pokretanje?",
@@ -746,9 +748,62 @@
         },
         {
           "question": "Da li se može integrisati sa mojim postojećim sistemom?",
-          "answer": "Trenutno Lako radi kao samostalan sistem. Za prilagođene integracije kontaktirajte nas — možemo razviti povezivanje po vašim potrebama."
+          "answer": "Trenutno Lako radi kao samostalan sistem. Za prilagođene integracije kontaktirajte nas — možemo razviti povezivanje po vašim potrebama. Pišite nam na info@lako.services."
         }
       ]
+    },
+    "pricing": {
+      "title": "Cene",
+      "subtitle": "Izaberite plan koji odgovara vašem biznisu",
+      "plans": [
+        {
+          "name": "Katalog",
+          "price": "0",
+          "period": "zauvek besplatno",
+          "description": "Vaš biznis u katalogu",
+          "features": [
+            "Profil biznisa u katalogu",
+            "Vidljivost u pretrazi",
+            "Osnovna kontakt stranica"
+          ],
+          "cta": "Dodaj biznis",
+          "popular": false
+        },
+        {
+          "name": "Pro",
+          "price": "3.400",
+          "period": "RSD / mesečno",
+          "description": "Zakazivanje i komunikacija",
+          "features": [
+            "Sve iz Katalog plana",
+            "Onlajn zakazivanje 24/7",
+            "Automatska podsećanja",
+            "Telegram obaveštenja",
+            "Analitika klikova"
+          ],
+          "cta": "Počni besplatno",
+          "popular": true
+        },
+        {
+          "name": "Business",
+          "price": "5.750",
+          "period": "RSD / mesečno",
+          "description": "Puna automatizacija",
+          "features": [
+            "Sve iz Pro plana",
+            "SEF integracija",
+            "Lojalnost i kešbek",
+            "Prioritetna podrška"
+          ],
+          "cta": "Kontaktirajte nas",
+          "popular": false
+        }
+      ],
+      "trial": "Prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda."
+    },
+    "seoBlock": {
+      "title": "Automatizacija zakazivanja za male biznise u Srbiji",
+      "text": "Lako Services pomaže salonima, ordinacijama, servisima i hemijskim čistionicama u Srbiji da automatizuju zakazivanje termina i komunikaciju sa klijentima. Umesto telefonskih poziva i ručnog vođenja rasporeda, vaši klijenti zakazuju termine 24/7 kroz Telegram — najpopularniji messenger u regionu. Dva bota rade zajedno: Lako Katalog omogućava klijentima da vas pronađu i zakažu termin, dok vam Lako Admin daje potpun pregled i kontrolu nad vašim poslovanjem."
     },
     "register": {
       "title": "Dodajte svoj biznis u katalog",
@@ -1113,7 +1168,7 @@
       }
     },
     "smallBusiness": {
-      "title": "Mali biznis — Automatizacija salona i servisa | Lako Services",
+      "title": "Mali biznis — Automatizacija zakazivanja za salone i servise | Lako Services",
       "description": "Telegram bot za barbere, stomatologe, auto-servise. Zakazivanje, podsećanja, komunikacija sa klijentima."
     },
     "about": {
