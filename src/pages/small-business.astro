@@ -63,7 +63,7 @@ const stepIcons = [
           <CTA href="#how-it-works" variant="accent" size="lg">
             {t(locale, 'smallBusiness.hero.cta')}
           </CTA>
-          <CTA href={getLocalizedPath('/dodaj-biznis', locale)} variant="secondary" size="lg">
+          <CTA href={getLocalizedPath('/dodaj-biznis', locale)} variant="secondary" size="lg" class="!bg-transparent !border-2 !border-primary hover:!bg-primary/10">
             {t(locale, 'smallBusiness.hero.ctaSecondary')}
           </CTA>
         </div>
@@ -379,7 +379,7 @@ const stepIcons = [
               href={plan.popular ? getLocalizedPath('/dodaj-biznis', locale) : plan.price === '0' ? getLocalizedPath('/dodaj-biznis', locale) : getLocalizedPath('/contact', locale)}
               variant={plan.popular ? 'accent' : 'secondary'}
               size="md"
-              class="w-full text-center"
+              class={plan.popular ? 'w-full text-center' : 'w-full text-center !bg-transparent !border-2 !border-primary hover:!bg-primary/10'}
             >
               {plan.cta}
             </CTA>
