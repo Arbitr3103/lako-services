@@ -71,7 +71,7 @@
         "Za solo preduzetnike u drumskom prevozu, svaki minut na utovaru je bitan. Telegram bot ne zahteva instalaciju, ne traži posebnu lozinku i radi na svakom telefonu — Android ili iPhone. Foto, PDF i XML dokumenti se šalju direktno u čat, spremni za inspekciju ili za slanje klijentu."
       ],
       "bullets": [
-        "Već instaliran na 90% telefona vozača",
+        "Telegram koristi većina vozača u Srbiji",
         "Radi i sa slabim internetom",
         "Foto + PDF + XML direktno u čat",
         "Bez nove lozinke i registracije"
@@ -127,7 +127,7 @@
       }
     },
     "compliance": {
-      "title": "Bezbednost pre svega",
+      "title": "Problem → Rešenje",
       "subtitle": "Situacije koje svaki vozač poznaje — i kako ih Lako rešava.",
       "items": [
         {
@@ -154,7 +154,7 @@
       "title": "Lako vs Manualni rad",
       "headers": { "feature": "Parametar", "without": "Ručno", "with": "Sa Lako" },
       "rows": [
-        { "feature": "Rizik od kazne na kontroli", "without": "Visok", "with": "Eliminisan" },
+        { "feature": "Rizik od kazne na kontroli", "without": "Visok", "with": "Minimalan" },
         { "feature": "Dokument na putu", "without": "Papir ili ništa", "with": "Uvek u telefonu" },
         { "feature": "SEF rok", "without": "Rok se lako propusti", "with": "XML odmah" },
         { "feature": "Dokaz isporuke", "without": "Papirna potvrda", "with": "QR + GPS + foto" },
@@ -197,8 +197,8 @@
         { "question": "Nemam dispečera — imam li sve funkcije?", "answer": "Da, imate pristup svim modulima — rejsovi, CMR, fakture, e-fakture, statistika. Dispečer nije potreban." },
         { "question": "Koliko vremena treba za uvođenje?", "answer": "Ceo proces traje samo 1 radni dan. Registrujte se, unesite podatke firme — i počnite da radite. Sva uputstva su na sajtu." },
         { "question": "Da li vozačima treba pametan telefon?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
-        { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako radi kao samostalan sistem. Ne zahteva integraciju sa ERP softverom." },
-        { "question": "Koliko košta?", "answer": "Solo preduzetnici: 1.490 RSD mesečno. Kompanije: 3.500 RSD mesečno. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda bez obaveza." },
+        { "question": "Da li Lako radi sa ERP sistemima?", "answer": "Lako radi kao samostalan sistem i ne zahteva integraciju sa ERP softverom (PANTHEON, SAP i dr.). Dokumenti se generišu nezavisno." },
+        { "question": "Koliko košta?", "answer": "Solo preduzetnici: 1.490 RSD mesečno. Kompanije: 3.500 RSD mesečno. Early Adopter program: 3 meseca besplatno uz povratne informacije. Svi ostali: 30 dana probnog perioda bez obaveza." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
         { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." },
         { "question": "Kako su moji podaci tehnički zaštićeni?", "answer": "Svi podaci se šifruju pri prenosu (HTTPS/TLS) i pri čuvanju (PostgreSQL sa šifrovanjem). Automatski bekapi se prave svakih 24 sata i čuvaju se 30 dana. Pristup serverima je ograničen na ovlašćene osobe." },
@@ -258,13 +258,12 @@
         "plans": [
           {
             "name": "Early Adopter",
-            "price": "0",
+            "price": "Besplatno",
             "period": "3 meseca",
-            "subtitle": "Vi pomažete nama da budemo bolji, da bismo vam pomogli da budete najbolji",
+            "subtitle": "Pomozite nam da budemo bolji — a mi ćemo pomoći vama",
             "features": [
               "Pun pristup Solo ili Company planu",
               "3 meseca potpuno besplatno",
-              "Samo za prvih 5 klijenata",
               "Uslov: povratna informacija o proizvodu"
             ],
             "cta": "Postani Early Adopter",
@@ -285,7 +284,7 @@
             "popular": true
           },
           {
-            "name": "Kompanija",
+            "name": "Kompanijski plan",
             "price": "3.500",
             "period": "mesečno",
             "features": [
@@ -593,7 +592,7 @@
       "text": "Drumski prevoz u Srbiji suočava se sa sve strožim zakonskim obavezama — od obavezne otpremnice za svaki prevoz robe do elektronskog fakturisanja kroz Sistem E-Faktura (SEF). Solo preduzetnici i manje transportne firme često gube vreme na ručnu dokumentaciju umesto da se fokusiraju na vožnju i isporuku. Lako Prevoz Bot automatizuje ovaj proces: od kreiranja otpremnice i CMR-a (međunarodnog tovarnog lista) do generisanja XML e-fakture za SEF portal — sve kroz Telegram, direktno sa terena. Zakon o prevozu robe zahteva da svaka pošiljka ima prateću dokumentaciju, a Lako obezbeđuje da je uvek imate pri ruci."
     },
     "finalCta": {
-      "title": "Spavajte mirno. Automatizujte dokumentaciju pre sledeće isporuke.",
+      "title": "Krećete na rejs? Dokumenti su gotovi za 15 sekundi.",
       "subtitle": "Otpremnica, faktura, e-faktura — sve iz telefona, za 15 sekundi.",
       "cta": "Probajte besplatno"
     }
@@ -935,7 +934,7 @@
     "company": "Lako Services",
     "location": "Novi Sad, Srbija",
     "rights": "Sva prava zadržana",
-    "beta": "Servis je u fazi aktivnog razvoja. Cenimo vaše povratne informacije — pomozite nam da postanemo bolji!",
+    "beta": "Imate pitanja ili sugestije? Javite nam se — stalno unapređujemo servis.",
     "contactUs": "Kontaktirajte nas",
     "legal": "Pravne informacije",
     "privacyPolicy": "Politika privatnosti",
@@ -1103,7 +1102,7 @@
     },
     "logistics": {
       "title": "Logistika za solo preduzetnike — otpremnica i e-faktura za 15 sekundi | Lako Services",
-      "description": "Generišite otpremnicu, fakturu i e-fakturu direktno sa telefona. CMR, QR potpis, XML za SEF. Besplatno za prvih 5 kompanija.",
+      "description": "Generišite otpremnicu, fakturu i e-fakturu direktno sa telefona. CMR, QR potpis, XML za SEF. Probajte besplatno.",
       "guides": {
         "trips": { "title": "Upravljanje rejsovima — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje, pretraga i upravljanje rejsovima kroz Telegram bota Lako Prevoz." },
         "cmr": { "title": "CMR dokumenti — Uputstvo | Lako Prevoz Bot", "description": "Generisanje CMR tovarnih listova u PDF formatu iz Telegram bota." },

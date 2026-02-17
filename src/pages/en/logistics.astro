@@ -95,7 +95,7 @@ const botFeatureIcons: Record<string, string> = {
               {t(locale, 'logistics.hero.cta')}
             </a>
             <a href="#how-it-works"
-              class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors text-lg">
+              class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary hover:bg-primary/10 text-text font-semibold rounded-xl transition-colors text-lg">
               {t(locale, 'logistics.hero.ctaSecondary')}
             </a>
           </div>
@@ -190,9 +190,9 @@ const botFeatureIcons: Record<string, string> = {
               <div class="relative z-10 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <Fragment set:html={stepIcons[i]} />
               </div>
-              <h3 class="text-lg font-semibold mb-1">{step.title}</h3>
-              <span class="text-xs text-accent font-medium mb-2">{step.duration}</span>
-              <p class="text-text-light text-sm">{step.description}</p>
+              <h3 class="text-xl font-semibold mb-1">{step.title}</h3>
+              <span class="text-sm text-accent font-medium mb-2">{step.duration}</span>
+              <p class="text-text-light">{step.description}</p>
               {i < 2 && (
                 <div class="md:hidden mt-4 text-primary/30">
                   <svg class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -501,7 +501,7 @@ const botFeatureIcons: Record<string, string> = {
             <h4 class="text-xl font-bold mb-2">{plan.name}</h4>
             <div class="mb-4">
               <span class:list={["text-4xl font-bold", plan.earlyAdopter && "text-green-400"]}>{plan.price}</span>
-              {plan.price !== '0' && <span class="text-text-light ml-1">{t(locale, 'logistics.bot.pricing.currency')}</span>}
+              {!plan.earlyAdopter && <span class="text-text-light ml-1">{t(locale, 'logistics.bot.pricing.currency')}</span>}
               <span class="text-text-light ml-1">/ {plan.period}</span>
             </div>
             {plan.subtitle && (

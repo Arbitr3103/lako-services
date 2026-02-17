@@ -71,7 +71,7 @@
         "For solo entrepreneurs in road transport, every minute at the loading dock counts. The Telegram bot requires no installation, no separate password, and works on any phone — Android or iPhone. Photos, PDFs, and XML documents are sent directly to your chat, ready for inspection or forwarding to clients."
       ],
       "bullets": [
-        "Already installed on 90% of drivers' phones",
+        "Most drivers in Serbia already use Telegram",
         "Works even with weak internet",
         "Photos + PDF + XML right in chat",
         "No new password or registration"
@@ -127,7 +127,7 @@
       }
     },
     "compliance": {
-      "title": "Safety first",
+      "title": "Problem → Solution",
       "subtitle": "Situations every driver knows — and how Lako solves them.",
       "items": [
         {
@@ -154,7 +154,7 @@
       "title": "Lako vs Manual work",
       "headers": { "feature": "Parameter", "without": "Manual", "with": "With Lako" },
       "rows": [
-        { "feature": "Risk of fine at checkpoint", "without": "High", "with": "Eliminated" },
+        { "feature": "Risk of fine at checkpoint", "without": "High", "with": "Minimal" },
         { "feature": "Documents on the road", "without": "Paper or nothing", "with": "Always on phone" },
         { "feature": "SEF deadline", "without": "Easy to miss", "with": "XML instantly" },
         { "feature": "Proof of delivery", "without": "Paper receipt", "with": "QR + GPS + photo" },
@@ -197,7 +197,7 @@
         { "question": "I don't have a dispatcher — do I get all features?", "answer": "Yes, you have access to all modules — trips, CMR, invoices, e-invoices, statistics. No dispatcher needed." },
         { "question": "How long does onboarding take?", "answer": "The entire process takes 1 day. Sign up, enter your company details — and start working. All instructions are on our website." },
         { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
-        { "question": "What if we're not on PANTHEON?", "answer": "Lako works as a standalone system. It does not require integration with ERP software." },
+        { "question": "Does Lako work with ERP systems?", "answer": "Lako works as a standalone system and does not require ERP integration (PANTHEON, SAP, etc.). Documents are generated independently." },
         { "question": "How much does it cost?", "answer": "Solo entrepreneurs: 1,490 RSD/month. Companies: 3,500 RSD/month. First 5 clients: 3 months free. Everyone else: 30-day free trial, no obligations." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
         { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." },
@@ -258,13 +258,12 @@
         "plans": [
           {
             "name": "Early Adopter",
-            "price": "0",
+            "price": "Free",
             "period": "3 months",
-            "subtitle": "You help us get better, so we can help you become the best",
+            "subtitle": "Help us get better — and we'll help you succeed",
             "features": [
               "Full access to Solo or Company plan",
               "3 months completely free",
-              "Only for the first 5 clients",
               "Condition: product feedback"
             ],
             "cta": "Become an Early Adopter",
@@ -285,7 +284,7 @@
             "popular": true
           },
           {
-            "name": "Company",
+            "name": "Company Plan",
             "price": "3,500",
             "period": "monthly",
             "features": [
@@ -593,7 +592,7 @@
       "text": "Road transport in Serbia faces increasingly strict legal requirements — from mandatory waybills for every goods shipment to electronic invoicing through the Electronic Invoice System (SEF). Solo entrepreneurs and small transport companies often waste time on manual paperwork instead of focusing on driving and delivery. Lako Prevoz Bot automates this process: from creating waybills and CMR consignment notes to generating XML e-invoices for the SEF portal — all through Telegram, right from the field. Serbian transport law requires every shipment to have accompanying documentation, and Lako ensures you always have it at hand."
     },
     "finalCta": {
-      "title": "Sleep easy. Automate your documentation before the next delivery.",
+      "title": "Heading out? Your documents are ready in 15 seconds.",
       "subtitle": "Waybill, invoice, e-invoice — all from your phone, in 15 seconds.",
       "cta": "Try it free"
     }
@@ -935,7 +934,7 @@
     "company": "Lako Services",
     "location": "Novi Sad, Serbia",
     "rights": "All rights reserved",
-    "beta": "The service is in active development. We value your feedback — help us get better!",
+    "beta": "Questions or suggestions? Let us know — we're always improving.",
     "contactUs": "Get in touch",
     "legal": "Legal",
     "privacyPolicy": "Privacy Policy",
@@ -1103,7 +1102,7 @@
     },
     "logistics": {
       "title": "Logistics for solo entrepreneurs — waybill and e-invoice in 15 seconds | Lako Services",
-      "description": "Generate waybill, invoice and e-invoice right from your phone. CMR, QR signature, XML for SEF. Free for the first 5 companies.",
+      "description": "Generate waybill, invoice and e-invoice right from your phone. CMR, QR signature, XML for SEF. Try it free.",
       "guides": {
         "trips": { "title": "Trip Management — Guide | Lako Prevoz Bot", "description": "Create, search and manage trips through the Lako Prevoz Telegram bot." },
         "cmr": { "title": "CMR Documents — Guide | Lako Prevoz Bot", "description": "Generate CMR consignment notes in PDF format from the Telegram bot." },
