@@ -67,12 +67,10 @@
     "whyTelegram": {
       "title": "Zašto Telegram, a ne aplikacija?",
       "paragraphs": [
-        "Većina vozača u Srbiji već koristi Telegram svakodnevno — za komunikaciju sa porodicom, kolegama i poslovnim partnerima. Umesto da instalirate još jednu aplikaciju, Lako radi tamo gde ste već prisutni.",
+        "Viber je za rođendane. Telegram je za posao. Botovi, trenutni dokumenti, bez instalacije — Lako radi direktno u njemu.",
         "Za solo preduzetnike u drumskom prevozu, svaki minut na utovaru je bitan. Telegram bot ne zahteva instalaciju, ne traži posebnu lozinku i radi na svakom telefonu — Android ili iPhone. Foto, PDF i XML dokumenti se šalju direktno u čat, spremni za inspekciju ili za slanje klijentu."
       ],
       "bullets": [
-        "Telegram koristi većina vozača u Srbiji",
-        "Radi i sa slabim internetom",
         "Foto + PDF + XML direktno u čat",
         "Bez nove lozinke i registracije"
       ]
@@ -593,7 +591,7 @@
     },
     "finalCta": {
       "title": "Krećete na rejs? Dokumenti su gotovi za 15 sekundi.",
-      "subtitle": "Otpremnica, faktura, e-faktura — sve iz telefona, za 15 sekundi.",
+      "subtitle": "Otpremnica, faktura, e-faktura — sve iz telefona, bez papira.",
       "cta": "Probajte besplatno"
     }
   },

@@ -9,7 +9,7 @@
     "smallBusiness": "Small Business",
     "about": "About",
     "contact": "Contact",
-    "efaktura": "e-Faktura"
+    "efaktura": "e-Invoice"
   },
   "home": {
     "hero": {
@@ -67,12 +67,10 @@
     "whyTelegram": {
       "title": "Why Telegram, not a separate app?",
       "paragraphs": [
-        "Most drivers in Serbia already use Telegram daily — for family, colleagues, and business partners. Instead of installing yet another app, Lako works where you already are.",
+        "Viber is for birthdays. Telegram is where business gets done. Bots, instant documents, no apps to install — Lako runs right inside it.",
         "For solo entrepreneurs in road transport, every minute at the loading dock counts. The Telegram bot requires no installation, no separate password, and works on any phone — Android or iPhone. Photos, PDFs, and XML documents are sent directly to your chat, ready for inspection or forwarding to clients."
       ],
       "bullets": [
-        "Most drivers in Serbia already use Telegram",
-        "Works even with weak internet",
         "Photos + PDF + XML right in chat",
         "No new password or registration"
       ]
@@ -593,7 +591,7 @@
     },
     "finalCta": {
       "title": "Heading out? Your documents are ready in 15 seconds.",
-      "subtitle": "Waybill, invoice, e-invoice — all from your phone, in 15 seconds.",
+      "subtitle": "Waybill, invoice, e-invoice — all from your phone, no paper.",
       "cta": "Try it free"
     }
   },
