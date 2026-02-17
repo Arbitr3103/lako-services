@@ -1163,7 +1163,7 @@
     },
     "problems": {
       "title": "Why do you need e-Faktura Studio?",
-      "subtitle": "Since January 2023, e-invoices are mandatory for B2B in Serbia. Fines up to 2 million RSD.",
+      "subtitle": "E-invoices are mandatory for B2B in Serbia. Fines up to 2 million RSD.",
       "items": [
         {
           "title": "SEF portal is slow",
@@ -1180,7 +1180,7 @@
       ]
     },
     "solutions": {
-      "title": "Everything in one place",
+      "title": "Everything you need for e-invoicing",
       "items": [
         {
           "icon": "split",
@@ -1231,7 +1231,7 @@
             "3 invoices per month",
             "PDF + UBL XML",
             "Automatic validation",
-            "Data stored in browser"
+            "No account needed"
           ],
           "cta": "Start free"
         },
@@ -1270,7 +1270,7 @@
       "subtitle": "Your invoices and business data are protected at every step — from encryption to server security.",
       "items": [
         "HTTPS encryption",
-        "argon2 password protection",
+        "Password encryption",
         "Data stays on EU servers",
         "GDPR compliant"
       ],
@@ -1300,20 +1300,28 @@
           "answer": "Yes! If you're not in the VAT system, the system automatically generates an invoice with VAT exemption."
         },
         {
+          "question": "What is the deadline for submitting an e-invoice to SEF?",
+          "answer": "An e-invoice must be submitted within 5 business days from the transaction date. Studio generates the XML instantly — just upload it to the SEF portal."
+        },
+        {
           "question": "Is my data secure?",
-          "answer": "Passwords are stored with argon2 encryption. All communication is over HTTPS. We don't share data with third parties."
+          "answer": "Passwords are protected with strong encryption. All communication is over HTTPS. We don't share data with third parties."
         }
       ]
+    },
+    "seoBlock": {
+      "title": "E-invoicing in Serbia — digitization for every business",
+      "text": "The Electronic Invoice System (SEF) is mandatory for all B2B transactions in Serbia. For small businesses and solo entrepreneurs, manually creating UBL XML invoices often means wasting time on the portal and risking errors. e-Faktura Studio automates this process — enter the data, see a real-time preview, and download the PDF for your client and XML for the SEF portal. Free for up to 3 invoices per month, no registration required."
     },
     "security": {
       "title": "Security & Compliance",
       "items": [
         "HTTPS encryption",
-        "argon2 password protection",
+        "Password encryption",
         "UBL 2.1 standard",
         "SEF compliance",
         "GDPR compliance",
-        "No sensitive data storage"
+        "No credit card data stored"
       ]
     },
     "bottomCta": {

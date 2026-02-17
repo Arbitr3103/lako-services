@@ -1164,7 +1164,7 @@
     },
     "problems": {
       "title": "Zašto vam treba e-Faktura Studio?",
-      "subtitle": "Od januara 2023 e-fakture su obavezne za B2B. Kazne idu do 2 miliona dinara.",
+      "subtitle": "E-fakture su obavezne za B2B. Kazne idu do 2 miliona dinara.",
       "items": [
         {
           "title": "SEF portal je spor",
@@ -1181,7 +1181,7 @@
       ]
     },
     "solutions": {
-      "title": "Jedno mesto za sve",
+      "title": "Sve što vam treba za e-fakturu",
       "items": [
         {
           "icon": "split",
@@ -1232,7 +1232,7 @@
             "3 fakture mesečno",
             "PDF + UBL XML",
             "Automatska validacija",
-            "Podaci u browseru"
+            "Bez naloga"
           ],
           "cta": "Počni besplatno"
         },
@@ -1271,7 +1271,7 @@
       "subtitle": "Vaši fakture i poslovni podaci su zaštićeni na svakom koraku — od šifrovanja do serverske bezbednosti.",
       "items": [
         "HTTPS enkripcija",
-        "argon2 zaštita lozinki",
+        "Enkripcija lozinki",
         "Podaci ostaju na serveru u Evropi",
         "GDPR usklađenost"
       ],
@@ -1301,20 +1301,28 @@
           "answer": "Da! Ako niste u sistemu PDV, sistem automatski generiše fakturu sa oznakom oslobođenja od PDV-a."
         },
         {
+          "question": "Koji je rok za slanje e-fakture na SEF?",
+          "answer": "E-faktura se mora poslati u roku od 5 radnih dana od datuma prometa. Studio generiše XML odmah — samo ga upload-ujete na SEF portal."
+        },
+        {
           "question": "Da li su moji podaci bezbedni?",
-          "answer": "Lozinke se čuvaju sa argon2 enkripcijom. Sva komunikacija je preko HTTPS-a. Ne delimo podatke sa trećim stranama."
+          "answer": "Lozinke su zaštićene jakom enkripcijom. Sva komunikacija je preko HTTPS-a. Ne delimo podatke sa trećim stranama."
         }
       ]
+    },
+    "seoBlock": {
+      "title": "E-fakture u Srbiji — digitalizacija za svaki biznis",
+      "text": "Sistem elektronskih faktura (SEF) je obavezan za sve B2B transakcije u Srbiji. Za male firme i solo preduzetnike, ručno kreiranje UBL XML faktura često znači gubljenje vremena na portalu i rizik od grešaka. e-Faktura Studio automatizuje ovaj proces — unesete podatke, vidite pregled u realnom vremenu i preuzmete PDF za klijenta i XML za SEF portal. Besplatno za do 3 fakture mesečno, bez registracije."
     },
     "security": {
       "title": "Bezbednost i usklađenost",
       "items": [
         "HTTPS enkripcija",
-        "argon2 zaštita lozinki",
+        "Enkripcija lozinki",
         "UBL 2.1 standard",
         "SEF kompatibilnost",
         "GDPR usklađenost",
-        "Bez skladištenja osetljivih podataka"
+        "Bez čuvanja podataka o karticama"
       ]
     },
     "bottomCta": {
