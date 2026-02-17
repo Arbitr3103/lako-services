@@ -92,6 +92,27 @@
         { "title": "XML ide na SEF", "description": "Sistem generiše e-fakturu u XML formatu — učitajte na SEF i zatvorite poreske obaveze.", "duration": "Automatski" }
       ]
     },
+    "ePrijemnica": {
+      "title": "Digitalni potpis — vaš dokaz isporuke",
+      "subtitle": "Kupac potpisuje prijem prstom na ekranu. Vi dobijate PDF sa potpisom, GPS lokacijom i vremenom — odmah u Telegram.",
+      "solo": {
+        "badge": "Solo",
+        "title": "Zaštita od kazni i garancija naplate",
+        "description": "Kupac potpisuje prijem na vašem telefonu ili svom — vi dobijate PDF sa potpisom koji važi kao dokaz isporuke. Inspekcija? Pokazujete telefon. Kupac ne plaća? Šaljete potpisan dokument.",
+        "items": ["Potpis prstom na ekranu", "GPS lokacija isporuke", "PDF odmah u Telegram", "Dokaz za inspekciju i naplatu"]
+      },
+      "company": {
+        "badge": "Kompanija",
+        "title": "Kontrola flote i brža naplata za 72 sata",
+        "description": "Svaki vozač šalje QR kupcu — potpisan prijem stiže dispečeru u realnom vremenu. Faktura ide na naplatu istog dana, umesto da čekate papire iz kabine.",
+        "items": ["Potpis kupca u realnom vremenu", "Dispečer vidi svaku isporuku", "Faktura → naplata istog dana", "Nema čekanja na papirnu potvrdu"]
+      },
+      "flow": {
+        "step1": "Vozač šalje QR",
+        "step2": "Kupac potpisuje",
+        "step3": "PDF stiže odmah"
+      }
+    },
     "compliance": {
       "title": "Bezbednost pre svega",
       "subtitle": "Situacije koje svaki vozač poznaje — i kako ih Lako rešava.",

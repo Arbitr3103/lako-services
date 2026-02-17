@@ -92,6 +92,27 @@
         { "title": "XML goes to SEF", "description": "The system generates an e-invoice in XML format — upload to SEF and close your tax obligations.", "duration": "Automatic" }
       ]
     },
+    "ePrijemnica": {
+      "title": "Digital signature — your proof of delivery",
+      "subtitle": "The buyer signs receipt with their finger on the screen. You get a PDF with the signature, GPS location, and timestamp — instantly in Telegram.",
+      "solo": {
+        "badge": "Solo",
+        "title": "Protection from fines and payment guarantee",
+        "description": "The buyer signs receipt on your phone or theirs — you get a PDF with a signature that serves as proof of delivery. Inspection? Show your phone. Buyer won't pay? Send the signed document.",
+        "items": ["Finger signature on screen", "GPS delivery location", "PDF instantly in Telegram", "Proof for inspections and collections"]
+      },
+      "company": {
+        "badge": "Company",
+        "title": "Fleet control and 72-hour faster payments",
+        "description": "Every driver sends a QR to the buyer — the signed receipt arrives to the dispatcher in real time. The invoice goes to collection the same day instead of waiting for paperwork from the cab.",
+        "items": ["Buyer signature in real time", "Dispatcher sees every delivery", "Invoice → collection same day", "No waiting for paper receipts"]
+      },
+      "flow": {
+        "step1": "Driver sends QR",
+        "step2": "Buyer signs",
+        "step3": "PDF arrives instantly"
+      }
+    },
     "compliance": {
       "title": "Safety first",
       "subtitle": "Situations every driver knows — and how Lako solves them.",
