@@ -1,52 +1,44 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
-import ExpoCountdown from '../../components/react/ExpoCountdown.tsx';
-import SavingsCalculator from '../../components/react/SavingsCalculator.tsx';
 import { t, tObject, getLocalizedPath } from '../../i18n/utils';
 
 const locale = 'ru';
 
-const problems = tObject<Array<{number: string, title: string, description: string}>>(locale, 'logistics.problems.items');
-const costItems = tObject<Array<{value: string, label: string}>>(locale, 'logistics.costOfInaction.items');
-const features = tObject<Array<{title: string, description: string, icon: string}>>(locale, 'logistics.solution.features');
-const roiItems = tObject<string[]>(locale, 'logistics.solution.roi.items');
+const soloItems = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.soloValue.items');
+const steps = tObject<Array<{title: string, description: string, duration: string}>>(locale, 'logistics.howItWorks.steps');
+const complianceItems = tObject<Array<{icon: string, title: string, problem: string, solution: string}>>(locale, 'logistics.compliance.items');
 const comparisonHeaders = tObject<{feature: string, without: string, with: string}>(locale, 'logistics.comparison.headers');
 const comparisonRows = tObject<Array<{feature: string, without: string, with: string}>>(locale, 'logistics.comparison.rows');
-const steps = tObject<Array<{title: string, description: string, duration: string}>>(locale, 'logistics.howItWorks.steps');
-const guaranteeItems = tObject<Array<{icon: string, text: string}>>(locale, 'logistics.guarantees.items');
+const companyItems = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.company.items');
 const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'logistics.faq.items');
 const botFeatures = tObject<Array<{icon: string, slug: string, title: string, description: string}>>(locale, 'logistics.bot.features');
-const botPricingPlans = tObject<Array<{name: string, badge: string, price: string, period: string, description: string, features: string[]}>>(locale, 'logistics.bot.pricing.plans');
+const botPricingPlans = tObject<Array<{name: string, price: string, period: string, features: string[], cta: string, popular?: boolean}>>(locale, 'logistics.bot.pricing.plans');
 const securityItems = tObject<string[]>(locale, 'logistics.bot.security.items');
 
-const featureIcons: Record<string, string> = {
-  route: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>`,
-  cmr: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>`,
-  invoice: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>`,
+const soloIcons: Record<string, string> = {
+  speed: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>`,
+  docs: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>`,
+  legal: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>`,
 };
-
-const guaranteeIcons: Record<string, string> = {
-  shield: `<svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>`,
-  calendar: `<svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>`,
-  tools: `<svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" /></svg>`,
-  chat: `<svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>`,
-  lock: `<svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>`,
-  trash: `<svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>`,
-};
-
-const problemIcons = [
-  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>`,
-  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>`,
-  `<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>`,
-];
 
 const stepIcons = [
-  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>`,
-  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /></svg>`,
+  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>`,
+  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" /></svg>`,
+  `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>`,
 ];
+
+const complianceIcons: Record<string, string> = {
+  inspection: `<svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>`,
+  deadline: `<svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  proof: `<svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+};
+
+const companyIcons: Record<string, string> = {
+  dispatch: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>`,
+  fleet: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>`,
+  reports: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>`,
+};
 
 const botFeatureIcons: Record<string, string> = {
   trip: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>`,
@@ -64,26 +56,49 @@ const botFeatureIcons: Record<string, string> = {
   description={t(locale, 'seo.logistics.description')}
   locale={locale}
 >
-  {/* 1. Hero */}
+  {/* 1. Hero — Solo hook */}
   <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-bg to-accent/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text">
-          {t(locale, 'logistics.hero.title')}
-        </h1>
-        <p class="mt-6 text-lg md:text-xl text-text-light max-w-2xl mx-auto">
-          {t(locale, 'logistics.hero.subtitle')}
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://t.me/lakoprevoz_bot" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-xl transition-colors text-lg">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            {t(locale, 'logistics.hero.cta')}
-          </a>
-          <a href="#bot-section"
-            class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors text-lg">
-            {t(locale, 'logistics.hero.ctaSecondary')}
-          </a>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 text-sm font-semibold rounded-full bg-accent/10 text-accent mb-6">
+            {t(locale, 'logistics.hero.badge')}
+          </span>
+          <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-text leading-tight">
+            {t(locale, 'logistics.hero.title')}
+          </h1>
+          <p class="mt-6 text-lg text-text-light">
+            {t(locale, 'logistics.hero.subtitle')}
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="https://t.me/lakoprevoz_bot" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-xl transition-colors text-lg">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              {t(locale, 'logistics.hero.cta')}
+            </a>
+            <a href="#how-it-works"
+              class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors text-lg">
+              {t(locale, 'logistics.hero.ctaSecondary')}
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center justify-center">
+          <div class="w-full max-w-sm bg-bg-card rounded-2xl border border-border p-6 shadow-lg">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 bg-[#229ED9]/10 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-[#229ED9]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-text">Lako Prevoz Bot</div>
+                <div class="text-xs text-text-light">@lakoprevoz_bot</div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">Nova prodaja → Faktura + Otpremnica</div>
+              <div class="bg-primary/10 rounded-xl px-4 py-3 text-sm text-primary font-medium">PDF + XML za 15 sek</div>
+              <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">QR potpis → Dokaz isporuke</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -93,125 +108,27 @@ const botFeatureIcons: Record<string, string> = {
     </div>
   </section>
 
-  {/* 2. EXPO Countdown */}
+  {/* 2. Solo Value Prop */}
   <section class="reveal py-20 bg-bg-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.countdown.title')}</SectionHeading>
-      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12">
-        {t(locale, 'logistics.countdown.subtitle')}
-      </p>
-      <ExpoCountdown locale={locale} client:load />
-    </div>
-  </section>
+      <SectionHeading>{t(locale, 'logistics.soloValue.title')}</SectionHeading>
 
-  {/* 3. Problems */}
-  <section class="reveal py-20 bg-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.problems.title')}</SectionHeading>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {problems.map((item, i) => (
-          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
-            <div class="flex items-start gap-4 mb-4">
-              <span class="text-4xl font-bold text-accent/30">{item.number}</span>
-              <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Fragment set:html={problemIcons[i]} />
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {soloItems.map((item) => (
+          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 text-center">
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 mx-auto">
+              <Fragment set:html={soloIcons[item.icon] || ''} />
             </div>
-            <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
-            <p class="text-text-light">{item.description}</p>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-text-light text-sm">{item.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  {/* 4. Cost of Inaction */}
-  <section class="reveal py-20 bg-bg-alt">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.costOfInaction.title')}</SectionHeading>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto mb-10">
-        {costItems.map((item) => (
-          <div class="text-center">
-            <div class="text-4xl sm:text-5xl font-bold text-red-400 mb-2">{item.value}</div>
-            <div class="text-text-light">{item.label}</div>
-          </div>
-        ))}
-      </div>
-
-      <p class="text-center text-lg text-text-light max-w-2xl mx-auto">
-        {t(locale, 'logistics.costOfInaction.text')}
-      </p>
-    </div>
-  </section>
-
-  {/* 5. Solution */}
-  <section class="reveal py-20 bg-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.solution.title')}</SectionHeading>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-        {features.map((feature) => (
-          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
-            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-              <Fragment set:html={featureIcons[feature.icon] || ''} />
-            </div>
-            <h3 class="text-lg font-semibold mb-2">{feature.title}</h3>
-            <p class="text-text-light text-sm">{feature.description}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* ROI block */}
-      <div class="max-w-2xl mx-auto bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 border border-border">
-        <h3 class="text-xl font-semibold mb-4 text-center">{t(locale, 'logistics.solution.roi.title')}</h3>
-        <ul class="space-y-3">
-          {roiItems.map((item) => (
-            <li class="flex items-center gap-3">
-              <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-text-light">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  {/* 6. Comparison Table */}
-  <section class="reveal py-20 bg-bg-alt">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.comparison.title')}</SectionHeading>
-
-      <div class="max-w-3xl mx-auto">
-        <div class="bg-bg-card rounded-2xl border border-border overflow-hidden">
-          <table class="w-full">
-            <thead>
-              <tr class="border-b border-border">
-                <th class="text-left px-6 py-4 text-sm font-semibold text-text">{comparisonHeaders.feature}</th>
-                <th class="px-6 py-4 text-sm font-semibold text-red-400 text-center">{comparisonHeaders.without}</th>
-                <th class="px-6 py-4 text-sm font-semibold text-green-400 text-center">{comparisonHeaders.with}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparisonRows.map((row, i) => (
-                <tr class:list={[i < comparisonRows.length - 1 && 'border-b border-border/50', 'hover:bg-bg-card-hover/50 transition-colors']}>
-                  <td class="px-6 py-3 text-sm text-text">{row.feature}</td>
-                  <td class="px-6 py-3 text-center text-sm comparison-row-without">{row.without}</td>
-                  <td class="px-6 py-3 text-center text-sm comparison-row-with font-medium">{row.with}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* 7. How It Works */}
-  <section class="reveal py-24 bg-bg">
+  {/* 3. How It Works — 3 steps */}
+  <section id="how-it-works" class="reveal py-24 bg-bg scroll-mt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'logistics.howItWorks.title')}</SectionHeading>
 
@@ -242,24 +159,122 @@ const botFeatureIcons: Record<string, string> = {
     </div>
   </section>
 
-  {/* 8. Guarantees */}
+  {/* 4. Compliance — risks/penalties */}
   <section class="reveal py-20 bg-bg-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.guarantees.title')}</SectionHeading>
+      <SectionHeading>{t(locale, 'logistics.compliance.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12 -mt-8">
+        {t(locale, 'logistics.compliance.subtitle')}
+      </p>
 
-      <div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
-        {guaranteeItems.map((item) => (
-          <div class="flex items-center gap-3 bg-bg-card rounded-xl px-6 py-4 border border-border hover:border-green-500/30 transition-colors">
-            <Fragment set:html={guaranteeIcons[item.icon] || ''} />
-            <span class="text-text font-medium">{item.text}</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {complianceItems.map((item) => (
+          <div class="bg-bg-card rounded-2xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+              <Fragment set:html={complianceIcons[item.icon] || ''} />
+            </div>
+            <h3 class="text-lg font-semibold mb-4">{item.title}</h3>
+            <div class="mb-3">
+              <span class="text-xs font-semibold text-red-400 uppercase tracking-wide">Problem</span>
+              <p class="text-text-light text-sm mt-1">{item.problem}</p>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-green-400 uppercase tracking-wide">Rešenje</span>
+              <p class="text-text-light text-sm mt-1">{item.solution}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  {/* 9. Transport Bot */}
-  <section id="bot-section" class="reveal py-20 bg-bg scroll-mt-8">
+  {/* 5. Comparison Table */}
+  <section class="reveal py-20 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'logistics.comparison.title')}</SectionHeading>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-bg-card rounded-2xl border border-border overflow-hidden">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="text-left px-6 py-4 text-sm font-semibold text-text">{comparisonHeaders.feature}</th>
+                <th class="px-6 py-4 text-sm font-semibold text-red-400 text-center">{comparisonHeaders.without}</th>
+                <th class="px-6 py-4 text-sm font-semibold text-green-400 text-center">{comparisonHeaders.with}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row, i) => (
+                <tr class:list={[i < comparisonRows.length - 1 && 'border-b border-border/50', 'hover:bg-bg-card-hover/50 transition-colors']}>
+                  <td class="px-6 py-3 text-sm text-text">{row.feature}</td>
+                  <td class="px-6 py-3 text-center text-sm comparison-row-without">{row.without}</td>
+                  <td class="px-6 py-3 text-center text-sm comparison-row-with font-medium">{row.with}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 6. Document Preview */}
+  <section class="reveal py-20 bg-bg-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'logistics.docPreview.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12 -mt-8">
+        {t(locale, 'logistics.docPreview.subtitle')}
+      </p>
+
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="rounded-2xl border border-border overflow-hidden shadow-lg bg-white p-4 mb-8">
+          <img src="/images/screenshots/cmr-example.png" alt="Otpremnica primer" class="w-full h-auto rounded-lg" loading="lazy" />
+        </div>
+        <a href={getLocalizedPath('/efaktura/studio', locale)}
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors">
+          {t(locale, 'logistics.docPreview.cta')}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* 7. Company Section */}
+  <section class="reveal py-20 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading>{t(locale, 'logistics.company.title')}</SectionHeading>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12 -mt-8">
+        {t(locale, 'logistics.company.subtitle')}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
+        {companyItems.map((item) => (
+          <div class="bg-bg-card rounded-2xl p-6 border border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 text-center">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <Fragment set:html={companyIcons[item.icon] || ''} />
+            </div>
+            <h3 class="text-base font-semibold mb-1">{item.title}</h3>
+            <p class="text-text-light text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="#bot-section"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors">
+          {t(locale, 'logistics.company.cta')}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* 8. Transport Bot — UNCHANGED */}
+  <section id="bot-section" class="reveal py-20 bg-bg-alt scroll-mt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'logistics.bot.title')}</SectionHeading>
       <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12">
@@ -279,7 +294,7 @@ const botFeatureIcons: Record<string, string> = {
         <div>
           <h3 class="text-xl font-bold text-center mb-4">CMR PDF</h3>
           <div class="rounded-2xl border border-border overflow-hidden shadow-lg bg-white p-4">
-            <img src="/images/screenshots/cmr-example.png" alt="CMR товарный лист" class="w-full h-auto rounded-lg" loading="lazy" />
+            <img src="/images/screenshots/cmr-example.png" alt="CMR tovarni list" class="w-full h-auto rounded-lg" loading="lazy" />
           </div>
         </div>
       </div>
@@ -354,26 +369,28 @@ const botFeatureIcons: Record<string, string> = {
       </a>
 
       {/* Pricing */}
-      <h3 class="text-2xl font-bold text-center mb-8">{t(locale, 'logistics.bot.pricing.title')}</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-        {botPricingPlans.map((plan, i) => (
+      <h3 class="text-2xl font-bold text-center mb-2">{t(locale, 'logistics.bot.pricing.title')}</h3>
+      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-8">
+        {t(locale, 'logistics.bot.pricing.subtitle')}
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {botPricingPlans.map((plan) => (
           <div class:list={[
-            "bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1",
-            i === 0 ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5"
+            "bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 relative",
+            plan.popular ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5"
           ]}>
-            <div class="flex items-center justify-between mb-4">
-              <h4 class="text-xl font-bold">{plan.name}</h4>
-              <span class:list={[
-                "px-3 py-1 text-xs font-semibold rounded-full",
-                i === 0 ? "bg-accent/10 text-accent" : "bg-primary/10 text-primary"
-              ]}>{plan.badge}</span>
-            </div>
-            <div class="mb-2">
-              <span class="text-3xl font-bold">{plan.price}</span>
+            {plan.popular && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold rounded-full bg-accent text-white">
+                Popular
+              </span>
+            )}
+            <h4 class="text-xl font-bold mb-2">{plan.name}</h4>
+            <div class="mb-4">
+              <span class="text-4xl font-bold">{plan.price}</span>
+              {plan.price !== '0' && <span class="text-text-light ml-1">{t(locale, 'logistics.bot.pricing.currency')}</span>}
               <span class="text-text-light ml-1">/ {plan.period}</span>
             </div>
-            <p class="text-text-light text-sm mb-6">{plan.description}</p>
-            <ul class="space-y-3">
+            <ul class="space-y-3 mb-8">
               {plan.features.map((feature) => (
                 <li class="flex items-center gap-3">
                   <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -383,21 +400,26 @@ const botFeatureIcons: Record<string, string> = {
                 </li>
               ))}
             </ul>
+            <a
+              href="https://t.me/lakoprevoz_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
+                plan.popular
+                  ? "bg-accent hover:bg-accent/90 text-white"
+                  : "border-2 border-primary/30 hover:border-primary text-text"
+              ]}
+            >
+              {plan.cta}
+            </a>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  {/* 10. Savings Calculator */}
-  <section class="reveal py-20 bg-bg-alt">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.calculator.title')}</SectionHeading>
-      <SavingsCalculator locale={locale} client:load />
-    </div>
-  </section>
-
-  {/* 11. FAQ */}
+  {/* 9. FAQ */}
   <section class="reveal py-24 bg-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeading>{t(locale, 'logistics.faq.title')}</SectionHeading>
@@ -422,7 +444,7 @@ const botFeatureIcons: Record<string, string> = {
     </div>
   </section>
 
-  {/* 12. Final CTA */}
+  {/* 10. Final CTA */}
   <section class="reveal py-20 bg-gradient-to-r from-primary/20 to-accent/10 border-t border-border">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">

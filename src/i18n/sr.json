@@ -58,132 +58,109 @@
   },
   "logistics": {
     "hero": {
-      "title": "EXPO 2027: digitalna logistika koja vas čeka",
-      "subtitle": "6 miliona posetilaca. Jedna prilika. Je li vaš sistem spreman?",
+      "badge": "Za solo preduzetnike",
+      "title": "Sami vozite? Generišite Otpremnicu i e-Fakturu za 15 sekundi direktno sa utovara.",
+      "subtitle": "Bez papira, samo vaš telefon.",
       "cta": "Probajte besplatno",
-      "ctaSecondary": "Kako radi?"
+      "ctaSecondary": "Kako funkcioniše?"
     },
-    "countdown": {
-      "title": "EXPO 2027 se ubrzano približava",
-      "subtitle": "Logističke kompanije bez digitalnih sistema neće moći da ispune narudžbine.",
-      "date": "2027-05-15",
-      "stats": [
-        { "value": "6M+", "label": "očekivanih posetilaca" },
-        { "value": "300%", "label": "rast logističkog saobraćaja" },
-        { "value": "18", "label": "meseci do početka" }
-      ],
-      "days": "dana",
-      "hours": "sati",
-      "minutes": "minuta",
-      "seconds": "sekundi"
-    },
-    "problems": {
-      "title": "Zašto vaš trenutni sistem neće izdržati",
+    "soloValue": {
+      "title": "Solo preduzetnik? Imamo rešenje baš za vas",
       "items": [
         {
-          "number": "#1",
-          "title": "Dispečeri gube 3-4 sata dnevno",
-          "description": "Vaši dispečeri provode 3-4 sata dnevno na telefonskoj koordinaciji umesto optimizacije ruta. To je 15-20 izgubljenih sati nedeljno."
+          "icon": "speed",
+          "title": "Brzina na terenu",
+          "description": "Otpremnica i faktura za 15 sekundi — dok utovarate, dokumenti su gotovi."
         },
         {
-          "number": "#2",
-          "title": "Nema dokaza o isporuci",
-          "description": "Bez digitalne evidencije ne znate tačno šta se desilo na terenu. Klijent reklamira — vi nemate dokaz. Rezultat: sporovi i izgubljeni ugovori."
+          "icon": "docs",
+          "title": "Svi dokumenti u telefonu",
+          "description": "CMR, otpremnica, faktura, e-faktura — sve na jednom mestu, uvek pri ruci."
         },
         {
-          "number": "#3",
-          "title": "Papir = izgubljeni dokazi",
-          "description": "Rukom pisane potvrde nestaju, narudžbine se dupliraju. Kada nastane spor s klijentom — nemate dokaz."
-        },
-        {
-          "number": "#4",
-          "title": "Svaki novi kamion = novi troškovi",
-          "description": "Dodajete vozilo — zapošljavate dispečera. Vaši administrativni troškovi rastu brže od prihoda."
+          "icon": "legal",
+          "title": "Usklađenost sa zakonom",
+          "description": "XML za SEF, QR potpis, digitalni dokaz isporuke — spremni za inspekciju."
         }
-      ]
-    },
-    "costOfInaction": {
-      "title": "Koliko vas košta da ne menjate ništa?",
-      "items": [
-        { "value": "15-20h", "label": "izgubljeno nedeljno na koordinaciji" },
-        { "value": "30%", "label": "kašnjenja u isporukama" },
-        { "value": "40%", "label": "viši administrativni troškovi" }
-      ],
-      "text": "Dok čekate, vaša konkurencija se digitalizuje. EXPO 2027 donosi 6 miliona posetilaca — ko prvi stigne, taj pobeđuje."
-    },
-    "solution": {
-      "title": "Kako vam Lako pomaže",
-      "features": [
-        {
-          "title": "Raspored za 30 sekundi",
-          "description": "Vaši vozači dobijaju maršrute za 30 sekundi — bez čekanja, bez grešaka, bez poziva dispečeru.",
-          "icon": "route"
-        },
-        {
-          "title": "CMR dokumenti",
-          "description": "Generišite CMR tovarni list za svaki rejs — jednim klikom, direktno u PDF.",
-          "icon": "cmr"
-        },
-        {
-          "title": "E-fakture bez glavobolje",
-          "description": "SEF e-fakture se šalju automatski. Puna usklađenost sa poreskim propisima — vi ne morate ništa da radite.",
-          "icon": "invoice"
-        }
-      ],
-      "roi": {
-        "title": "Vaš povrat investicije",
-        "items": [
-          "Ušteda 15-20 sati nedeljno na koordinaciji",
-          "Smanjenje administrativnih troškova za 40%",
-          "Više narudžbina bez zapošljavanja novih dispečera"
-        ]
-      }
-    },
-    "comparison": {
-      "title": "Sa Lako i bez Lako",
-      "headers": { "feature": "Parametar", "without": "Bez Lako", "with": "Sa Lako" },
-      "rows": [
-        { "feature": "Vreme dispečera na koordinaciju", "without": "3-4 sata/dan", "with": "30 min/dan" },
-        { "feature": "Dokumentacija", "without": "Papir", "with": "Digitalna" },
-        { "feature": "Vreme odgovora klijentu", "without": "10-30 min", "with": "10 sekundi" },
-        { "feature": "E-fakture", "without": "Ručno", "with": "Automatski" },
-        { "feature": "Izveštaji", "without": "Excel ručno", "with": "Statistika u botu" }
       ]
     },
     "howItWorks": {
-      "title": "Kako početi?",
+      "title": "Kako funkcioniše u 3 koraka",
       "steps": [
-        { "title": "Registracija", "description": "Otvorite bota, pritisnite /start i unesite podatke firme — PIB, adresu, kontakte", "duration": "5 minuta" },
-        { "title": "Podešavanje", "description": "Dodajte vozače, vozila i klijente. Vozači se povezuju sami preko bota", "duration": "30 minuta" },
-        { "title": "Rad", "description": "Kreirajte rejsove, generišite CMR i fakture, pratite statistiku — sve je spremno", "duration": "Odmah" }
+        { "title": "Unesite podatke u Telegram", "description": "Bot kreira Fakturu i Otpremnicu na osnovu vaših podataka — bez papira, bez grešaka.", "duration": "15 sekundi" },
+        { "title": "Pokažite QR kupcu", "description": "Kupac skenira QR kod i potpisuje prijem robe — digitalni dokaz bez papirnog potpisa.", "duration": "10 sekundi" },
+        { "title": "XML ide na SEF", "description": "Sistem generiše e-fakturu u XML formatu — učitajte na SEF i zatvorite poreske obaveze.", "duration": "Automatski" }
       ]
     },
-    "guarantees": {
-      "title": "Zašto je lako početi",
+    "compliance": {
+      "title": "Bezbednost pre svega",
+      "subtitle": "Situacije koje svaki vozač poznaje — i kako ih Lako rešava.",
       "items": [
-        { "icon": "shield", "text": "Bez obavezujućeg ugovora" },
-        { "icon": "calendar", "text": "30 dana probnog perioda" },
-        { "icon": "tools", "text": "Besplatno uvođenje" },
-        { "icon": "chat", "text": "Lokalna podrška na srpskom" },
-        { "icon": "lock", "text": "Vaši podaci — samo vaši. Ne delimo ih ni sa kim" },
-        { "icon": "trash", "text": "Otkazujete se? Izvoz podataka + potpuno brisanje u roku od 30 dana" }
+        {
+          "icon": "inspection",
+          "title": "Saobraćajna inspekcija",
+          "problem": "Stojite na kontroli, a otpremnica je u kancelariji, nečitljiva ili za drugi rejs.",
+          "solution": "Lako generiše otpremnicu pre polaska — uvek u telefonu, uvek tačna."
+        },
+        {
+          "icon": "deadline",
+          "title": "SEF rokovi",
+          "problem": "Ceo dan na putu, propustili ste rok za e-fakturu.",
+          "solution": "XML odmah nakon isporuke — šaljete na SEF istog dana."
+        },
+        {
+          "icon": "proof",
+          "title": "Izgubljene potvrde",
+          "problem": "Kupac kaže da roba nije stigla, a papirnu potvrdu ne možete da nađete.",
+          "solution": "Digitalni potpis QR + GPS + foto — dokaz koji se ne gubi."
+        }
       ]
     },
-    "calculator": {
-      "title": "Izračunajte vašu uštedu",
-      "vehicles": "Broj vozila",
-      "dispatchers": "Broj dispečera",
-      "calculate": "Izračunaj",
-      "results": {
-        "title": "Vaša ušteda sa Lako",
-        "hoursWeek": "sati nedeljno na koordinaciji",
-        "costReduction": "smanjenje admin. troškova",
-        "capacityIncrease": "više narudžbina bez novih zaposlenih"
-      }
+    "comparison": {
+      "title": "Lako vs Manualni rad",
+      "headers": { "feature": "Parametar", "without": "Ručno", "with": "Sa Lako" },
+      "rows": [
+        { "feature": "Rizik od kazne na kontroli", "without": "Visok", "with": "Eliminisan" },
+        { "feature": "Dokument na putu", "without": "Papir ili ništa", "with": "Uvek u telefonu" },
+        { "feature": "SEF rok", "without": "Lako se propusti", "with": "XML odmah" },
+        { "feature": "Dokaz isporuke", "without": "Papirna potvrda", "with": "QR + GPS + foto" },
+        { "feature": "Vreme na dokumentaciji", "without": "30+ min", "with": "15 sekundi" }
+      ]
+    },
+    "docPreview": {
+      "title": "Pogledajte primer dokumenta",
+      "subtitle": "Ovako izgleda otpremnica generisana iz Lako bota.",
+      "cta": "Pogledajte e-Faktura Studio"
+    },
+    "company": {
+      "title": "Imate firmu sa vozačima?",
+      "subtitle": "Lako radi i za kompanije sa flotom — dispečer upravlja svim rejsovima.",
+      "items": [
+        {
+          "icon": "dispatch",
+          "title": "Dispečerski centar",
+          "description": "Dodeljujte rejsove, pratite status u realnom vremenu."
+        },
+        {
+          "icon": "fleet",
+          "title": "Upravljanje flotom",
+          "description": "Vozači, vozila, klijenti — sve u jednom sistemu."
+        },
+        {
+          "icon": "reports",
+          "title": "Izveštaji i eksport",
+          "description": "Statistika po vozačima i klijentima + Excel za računovodstvo."
+        }
+      ],
+      "cta": "Pogledajte mogućnosti bota"
     },
     "faq": {
       "title": "Najčešća pitanja",
       "items": [
+        { "question": "Radim sam — da li je Lako za mene?", "answer": "Da, Lako je napravljen upravo za solo preduzetnike koji sami voze i trebaju brzu dokumentaciju na terenu." },
+        { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, sve radi kroz Telegram — kreirate dokumente direktno sa utovara ili istovara, bez kompjutera." },
+        { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše XML fajl u UBL 2.1 formatu. Vi ga samo učitate na portal efaktura.gov.rs — bez ručnog unosa." },
+        { "question": "Nemam dispečera — imam li sve funkcije?", "answer": "Da, imate pristup svim modulima — rejsovi, CMR, fakture, e-fakture, statistika. Dispečer nije potreban." },
         { "question": "Koliko vremena treba za uvođenje?", "answer": "Od prve konsultacije do punog rada — oko 12 dana. Obuka traje 1 dan." },
         { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
         { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako radi kao samostalan sistem. Ne zahteva integraciju sa ERP softverom." },
@@ -234,32 +211,47 @@
       },
       "pricing": {
         "title": "Cene",
+        "subtitle": "Počnite besplatno, nadogradite kada porastete",
+        "currency": "RSD",
         "plans": [
           {
-            "name": "Early Adopter",
-            "badge": "Prvih 5 kompanija",
-            "price": "Besplatno",
-            "period": "3 meseca",
-            "description": "Zatim 2.500 RSD/mesečno",
+            "name": "Besplatno",
+            "price": "0",
+            "period": "zauvek",
             "features": [
-              "Svi moduli uključeni",
-              "Neograničen broj rejs​ova",
-              "CMR, fakture, e-fakture",
-              "Prioritetna podrška"
-            ]
+              "5 rejsova mesečno",
+              "CMR + otpremnica",
+              "E-faktura XML",
+              "QR potpis"
+            ],
+            "cta": "Počni besplatno"
           },
           {
-            "name": "PRO",
-            "badge": "Za ostale",
-            "price": "3.500 RSD",
+            "name": "Solo",
+            "price": "1.490",
             "period": "mesečno",
-            "description": "30 dana besplatnog probnog perioda",
             "features": [
-              "Svi moduli uključeni",
-              "Neograničen broj rejs​ova",
-              "CMR, fakture, e-fakture",
-              "Podrška putem Telegrama"
-            ]
+              "Neograničen broj rejsova",
+              "CMR + otpremnica + faktura",
+              "E-faktura XML + PDF",
+              "Automatski QR potpis",
+              "Prioritetna podrška"
+            ],
+            "cta": "Aktiviraj Solo",
+            "popular": true
+          },
+          {
+            "name": "Kompanija",
+            "price": "3.500",
+            "period": "mesečno",
+            "features": [
+              "Sve iz Solo plana",
+              "Dispečerski centar",
+              "Upravljanje flotom",
+              "Izveštaji + Excel export",
+              "Više vozača i vozila"
+            ],
+            "cta": "Kontaktirajte nas"
           }
         ]
       }
@@ -553,9 +545,9 @@
       }
     },
     "finalCta": {
-      "title": "Budite među prvima koji su spremni za EXPO 2027",
-      "subtitle": "Isprobajte Telegram bota za upravljanje prevozom — besplatno",
-      "cta": "Otvori bota"
+      "title": "Spavajte mirno. Automatizujte dokumentaciju pre sledeće isporuke.",
+      "subtitle": "Otpremnica, faktura, e-faktura — sve iz telefona, za 15 sekundi.",
+      "cta": "Probajte besplatno"
     }
   },
   "smallBusiness": {
@@ -1062,8 +1054,8 @@
       "description": "Automatizujte logistiku, salon ili servis sa Telegram botovima. CMR, fakture, e-fakture. Lokalna podrška u Novom Sadu."
     },
     "logistics": {
-      "title": "Logistika za EXPO 2027 — digitalni dispečing i dokumentacija | Lako Services",
-      "description": "Automatizujte logističku kompaniju. Raspored, CMR dokumenta, fakture i e-fakture iz Telegram bota. Besplatna analiza.",
+      "title": "Logistika za solo preduzetnike — otpremnica i e-faktura za 15 sekundi | Lako Services",
+      "description": "Generišite otpremnicu, fakturu i e-fakturu direktno sa telefona. CMR, QR potpis, XML za SEF. Besplatno za prvih 5 kompanija.",
       "guides": {
         "trips": { "title": "Upravljanje rejsovima — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje, pretraga i upravljanje rejsovima kroz Telegram bota Lako Prevoz." },
         "cmr": { "title": "CMR dokumenti — Uputstvo | Lako Prevoz Bot", "description": "Generisanje CMR tovarnih listova u PDF formatu iz Telegram bota." },

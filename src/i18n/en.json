@@ -58,132 +58,109 @@
   },
   "logistics": {
     "hero": {
-      "title": "EXPO 2027: digital logistics awaiting you",
-      "subtitle": "6 million visitors. One opportunity. Is your system ready?",
+      "badge": "For solo entrepreneurs",
+      "title": "Driving solo? Generate a Waybill and e-Invoice in 15 seconds right from the loading dock.",
+      "subtitle": "No paper, just your phone.",
       "cta": "Try it free",
-      "ctaSecondary": "How it works"
+      "ctaSecondary": "How does it work?"
     },
-    "countdown": {
-      "title": "EXPO 2027 is approaching fast",
-      "subtitle": "Logistics companies without digital systems won't be able to fulfill orders.",
-      "date": "2027-05-15",
-      "stats": [
-        { "value": "6M+", "label": "expected visitors" },
-        { "value": "300%", "label": "logistics traffic growth" },
-        { "value": "18", "label": "months until start" }
-      ],
-      "days": "days",
-      "hours": "hours",
-      "minutes": "minutes",
-      "seconds": "seconds"
-    },
-    "problems": {
-      "title": "Why your current system won't survive",
+    "soloValue": {
+      "title": "Solo entrepreneur? We have a solution just for you",
       "items": [
         {
-          "number": "#1",
-          "title": "Dispatchers lose 3-4 hours daily",
-          "description": "Your dispatchers spend 3-4 hours daily on phone coordination instead of route optimization. That's 15-20 lost hours per week."
+          "icon": "speed",
+          "title": "Speed in the field",
+          "description": "Waybill and invoice in 15 seconds — while you're loading, the documents are ready."
         },
         {
-          "number": "#2",
-          "title": "No proof of delivery",
-          "description": "Without digital records you don't know exactly what happened on the ground. Client complains — you have no proof. Result: disputes and lost contracts."
+          "icon": "docs",
+          "title": "All documents on your phone",
+          "description": "CMR, waybill, invoice, e-invoice — everything in one place, always at hand."
         },
         {
-          "number": "#3",
-          "title": "Paper = lost evidence",
-          "description": "Handwritten confirmations disappear, orders get duplicated. When a dispute arises — you have no proof."
-        },
-        {
-          "number": "#4",
-          "title": "Every new truck = new costs",
-          "description": "Add a vehicle — hire a dispatcher. Your administrative costs grow faster than revenue."
+          "icon": "legal",
+          "title": "Legal compliance",
+          "description": "XML for SEF, QR signature, digital proof of delivery — ready for inspection."
         }
-      ]
-    },
-    "costOfInaction": {
-      "title": "How much does it cost you to change nothing?",
-      "items": [
-        { "value": "15-20h", "label": "lost weekly on coordination" },
-        { "value": "30%", "label": "delivery delays" },
-        { "value": "40%", "label": "higher administrative costs" }
-      ],
-      "text": "While you wait, your competition is digitalizing. EXPO 2027 brings 6 million visitors — whoever gets there first, wins."
-    },
-    "solution": {
-      "title": "How Lako helps you",
-      "features": [
-        {
-          "title": "Schedule in 30 seconds",
-          "description": "Your drivers get routes in 30 seconds — no waiting, no mistakes, no calling the dispatcher.",
-          "icon": "route"
-        },
-        {
-          "title": "CMR documents",
-          "description": "Generate a CMR consignment note for every trip — one click, straight to PDF.",
-          "icon": "cmr"
-        },
-        {
-          "title": "E-invoices without headaches",
-          "description": "SEF e-invoices are sent automatically. Full tax compliance — you don't have to do anything.",
-          "icon": "invoice"
-        }
-      ],
-      "roi": {
-        "title": "Your return on investment",
-        "items": [
-          "Save 15-20 hours weekly on coordination",
-          "Reduce administrative costs by 40%",
-          "More orders without hiring new dispatchers"
-        ]
-      }
-    },
-    "comparison": {
-      "title": "With Lako and without Lako",
-      "headers": { "feature": "Parameter", "without": "Without Lako", "with": "With Lako" },
-      "rows": [
-        { "feature": "Dispatcher coordination time", "without": "3-4 hours/day", "with": "30 min/day" },
-        { "feature": "Documentation", "without": "Paper", "with": "Digital" },
-        { "feature": "Client response time", "without": "10-30 min", "with": "10 seconds" },
-        { "feature": "E-invoices", "without": "Manual", "with": "Automatic" },
-        { "feature": "Reports", "without": "Manual Excel", "with": "Statistics in bot" }
       ]
     },
     "howItWorks": {
-      "title": "How to get started?",
+      "title": "How it works in 3 steps",
       "steps": [
-        { "title": "Registration", "description": "Open the bot, press /start and fill in your company details — tax ID, address, contacts", "duration": "5 minutes" },
-        { "title": "Setup", "description": "Add drivers, vehicles and customers. Drivers connect themselves via the bot", "duration": "30 minutes" },
-        { "title": "Work", "description": "Create trips, generate CMR and invoices, track statistics — you're all set", "duration": "Right away" }
+        { "title": "Enter data in Telegram", "description": "The bot creates an Invoice and Waybill based on your data — no paper, no mistakes.", "duration": "15 seconds" },
+        { "title": "Show QR to the buyer", "description": "The buyer scans the QR code and signs for receipt — digital proof without a paper signature.", "duration": "10 seconds" },
+        { "title": "XML goes to SEF", "description": "The system generates an e-invoice in XML format — upload to SEF and close your tax obligations.", "duration": "Automatic" }
       ]
     },
-    "guarantees": {
-      "title": "Why it's easy to start",
+    "compliance": {
+      "title": "Safety first",
+      "subtitle": "Situations every driver knows — and how Lako solves them.",
       "items": [
-        { "icon": "shield", "text": "No binding contract" },
-        { "icon": "calendar", "text": "30-day trial period" },
-        { "icon": "tools", "text": "Free onboarding" },
-        { "icon": "chat", "text": "Local support in Serbian" },
-        { "icon": "lock", "text": "Your data is yours alone. We never share it" },
-        { "icon": "trash", "text": "Leaving? Data export + full deletion within 30 days" }
+        {
+          "icon": "inspection",
+          "title": "Traffic inspection",
+          "problem": "You're stopped at a checkpoint, but the waybill is at the office, illegible, or for a different trip.",
+          "solution": "Lako generates the waybill before departure — always on your phone, always accurate."
+        },
+        {
+          "icon": "deadline",
+          "title": "SEF deadlines",
+          "problem": "You've been on the road all day, and you missed the e-invoice deadline.",
+          "solution": "XML right after delivery — send to SEF the same day."
+        },
+        {
+          "icon": "proof",
+          "title": "Lost confirmations",
+          "problem": "The buyer says the goods never arrived, and you can't find the paper confirmation.",
+          "solution": "Digital QR signature + GPS + photo — proof that doesn't get lost."
+        }
       ]
     },
-    "calculator": {
-      "title": "Calculate your savings",
-      "vehicles": "Number of vehicles",
-      "dispatchers": "Number of dispatchers",
-      "calculate": "Calculate",
-      "results": {
-        "title": "Your savings with Lako",
-        "hoursWeek": "hours weekly on coordination",
-        "costReduction": "admin cost reduction",
-        "capacityIncrease": "more orders without new hires"
-      }
+    "comparison": {
+      "title": "Lako vs Manual work",
+      "headers": { "feature": "Parameter", "without": "Manual", "with": "With Lako" },
+      "rows": [
+        { "feature": "Risk of fine at checkpoint", "without": "High", "with": "Eliminated" },
+        { "feature": "Documents on the road", "without": "Paper or nothing", "with": "Always on phone" },
+        { "feature": "SEF deadline", "without": "Easy to miss", "with": "XML instantly" },
+        { "feature": "Proof of delivery", "without": "Paper receipt", "with": "QR + GPS + photo" },
+        { "feature": "Time on documentation", "without": "30+ min", "with": "15 seconds" }
+      ]
+    },
+    "docPreview": {
+      "title": "See a sample document",
+      "subtitle": "This is what a waybill generated from the Lako bot looks like.",
+      "cta": "Try e-Faktura Studio"
+    },
+    "company": {
+      "title": "Have a company with drivers?",
+      "subtitle": "Lako also works for companies with a fleet — the dispatcher manages all trips.",
+      "items": [
+        {
+          "icon": "dispatch",
+          "title": "Dispatch center",
+          "description": "Assign trips, track status in real time."
+        },
+        {
+          "icon": "fleet",
+          "title": "Fleet management",
+          "description": "Drivers, vehicles, clients — all in one system."
+        },
+        {
+          "icon": "reports",
+          "title": "Reports & export",
+          "description": "Statistics by driver and client + Excel for accounting."
+        }
+      ],
+      "cta": "See bot capabilities"
     },
     "faq": {
       "title": "Frequently asked questions",
       "items": [
+        { "question": "I work alone — is Lako for me?", "answer": "Yes, Lako is built specifically for solo entrepreneurs who drive themselves and need fast documentation in the field." },
+        { "question": "Can I use it from my phone, on the road?", "answer": "Yes, everything works through Telegram — create documents right from the loading or unloading site, no computer needed." },
+        { "question": "What about the SEF portal?", "answer": "The bot generates an XML file in UBL 2.1 format. You just upload it to efaktura.gov.rs — no manual entry required." },
+        { "question": "I don't have a dispatcher — do I get all features?", "answer": "Yes, you have access to all modules — trips, CMR, invoices, e-invoices, statistics. No dispatcher needed." },
         { "question": "How long does onboarding take?", "answer": "From first consultation to full operation — about 12 days. Training takes 1 day." },
         { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
         { "question": "What if we're not on PANTHEON?", "answer": "Lako works as a standalone system. It does not require integration with ERP software." },
@@ -234,32 +211,47 @@
       },
       "pricing": {
         "title": "Pricing",
+        "subtitle": "Start for free, upgrade when you grow",
+        "currency": "RSD",
         "plans": [
           {
-            "name": "Early Adopter",
-            "badge": "First 5 companies",
-            "price": "Free",
-            "period": "3 months",
-            "description": "Then 2,500 RSD/month",
+            "name": "Free",
+            "price": "0",
+            "period": "forever",
             "features": [
-              "All modules included",
-              "Unlimited trips",
-              "CMR, invoices, e-invoices",
-              "Priority support"
-            ]
+              "5 trips per month",
+              "CMR + waybill",
+              "E-invoice XML",
+              "QR signature"
+            ],
+            "cta": "Start for free"
           },
           {
-            "name": "PRO",
-            "badge": "For others",
-            "price": "3,500 RSD",
+            "name": "Solo",
+            "price": "1,490",
             "period": "monthly",
-            "description": "30-day free trial",
             "features": [
-              "All modules included",
               "Unlimited trips",
-              "CMR, invoices, e-invoices",
-              "Telegram support"
-            ]
+              "CMR + waybill + invoice",
+              "E-invoice XML + PDF",
+              "Automatic QR signature",
+              "Priority support"
+            ],
+            "cta": "Activate Solo",
+            "popular": true
+          },
+          {
+            "name": "Company",
+            "price": "3,500",
+            "period": "monthly",
+            "features": [
+              "Everything in Solo",
+              "Dispatch center",
+              "Fleet management",
+              "Reports + Excel export",
+              "Multiple drivers & vehicles"
+            ],
+            "cta": "Contact us"
           }
         ]
       }
@@ -553,9 +545,9 @@
       }
     },
     "finalCta": {
-      "title": "Be among the first ready for EXPO 2027",
-      "subtitle": "Try the Telegram bot for transport management — free",
-      "cta": "Open the bot"
+      "title": "Sleep easy. Automate your documentation before the next delivery.",
+      "subtitle": "Waybill, invoice, e-invoice — all from your phone, in 15 seconds.",
+      "cta": "Try it free"
     }
   },
   "smallBusiness": {
@@ -1062,8 +1054,8 @@
       "description": "Automate your logistics, salon or service with Telegram bots. CMR, invoices, e-invoices. Local support in Novi Sad."
     },
     "logistics": {
-      "title": "Logistics for EXPO 2027 — digital dispatch and documentation | Lako Services",
-      "description": "Automate your logistics company. Scheduling, CMR documents, invoices and e-invoices from a Telegram bot. Free analysis.",
+      "title": "Logistics for solo entrepreneurs — waybill and e-invoice in 15 seconds | Lako Services",
+      "description": "Generate waybill, invoice and e-invoice right from your phone. CMR, QR signature, XML for SEF. Free for the first 5 companies.",
       "guides": {
         "trips": { "title": "Trip Management — Guide | Lako Prevoz Bot", "description": "Create, search and manage trips through the Lako Prevoz Telegram bot." },
         "cmr": { "title": "CMR Documents — Guide | Lako Prevoz Bot", "description": "Generate CMR consignment notes in PDF format from the Telegram bot." },
