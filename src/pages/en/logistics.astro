@@ -15,6 +15,8 @@ const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'log
 const botFeatures = tObject<Array<{icon: string, slug: string, title: string, description: string}>>(locale, 'logistics.bot.features');
 const botPricingPlans = tObject<Array<{name: string, price: string, period: string, features: string[], cta: string, popular?: boolean}>>(locale, 'logistics.bot.pricing.plans');
 const securityItems = tObject<string[]>(locale, 'logistics.bot.security.items');
+const ePrijemnicaSoloItems = tObject<string[]>(locale, 'logistics.ePrijemnica.solo.items');
+const ePrijemnicaCompanyItems = tObject<string[]>(locale, 'logistics.ePrijemnica.company.items');
 
 const soloIcons: Record<string, string> = {
   speed: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>`,
@@ -196,7 +198,7 @@ const botFeatureIcons: Record<string, string> = {
           <h3 class="text-xl font-bold mb-3 text-text">{t(locale, 'logistics.ePrijemnica.solo.title')}</h3>
           <p class="text-text-light text-sm mb-6">{t(locale, 'logistics.ePrijemnica.solo.description')}</p>
           <ul class="space-y-2">
-            {tObject<string[]>(locale, 'logistics.ePrijemnica.solo.items').map((item) => (
+            {ePrijemnicaSoloItems.map((item) => (
               <li class="flex items-center gap-2 text-sm">
                 <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -216,7 +218,7 @@ const botFeatureIcons: Record<string, string> = {
           <h3 class="text-xl font-bold mb-3 text-text">{t(locale, 'logistics.ePrijemnica.company.title')}</h3>
           <p class="text-text-light text-sm mb-6">{t(locale, 'logistics.ePrijemnica.company.description')}</p>
           <ul class="space-y-2">
-            {tObject<string[]>(locale, 'logistics.ePrijemnica.company.items').map((item) => (
+            {ePrijemnicaCompanyItems.map((item) => (
               <li class="flex items-center gap-2 text-sm">
                 <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
