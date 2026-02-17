@@ -13,10 +13,25 @@ const comparisonRows = tObject<Array<{feature: string, without: string, with: st
 const companyItems = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.company.items');
 const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'logistics.faq.items');
 const botFeatures = tObject<Array<{icon: string, slug: string, title: string, description: string}>>(locale, 'logistics.bot.features');
-const botPricingPlans = tObject<Array<{name: string, price: string, period: string, features: string[], cta: string, popular?: boolean}>>(locale, 'logistics.bot.pricing.plans');
+const botPricingPlans = tObject<Array<{name: string, price: string, period: string, features: string[], cta: string, popular?: boolean, earlyAdopter?: boolean, subtitle?: string}>>(locale, 'logistics.bot.pricing.plans');
 const securityItems = tObject<string[]>(locale, 'logistics.bot.security.items');
 const ePrijemnicaSoloItems = tObject<string[]>(locale, 'logistics.ePrijemnica.solo.items');
 const ePrijemnicaCompanyItems = tObject<string[]>(locale, 'logistics.ePrijemnica.company.items');
+const whyTelegramParagraphs = tObject<string[]>(locale, 'logistics.whyTelegram.paragraphs');
+const whyTelegramBullets = tObject<string[]>(locale, 'logistics.whyTelegram.bullets');
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 
 const soloIcons: Record<string, string> = {
   speed: `<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>`,
@@ -57,6 +72,7 @@ const botFeatureIcons: Record<string, string> = {
   title={t(locale, 'seo.logistics.title')}
   description={t(locale, 'seo.logistics.description')}
   locale={locale}
+  jsonLd={faqJsonLd}
 >
   {/* 1. Hero — Solo hook */}
   <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-bg to-accent/5">
@@ -85,7 +101,9 @@ const botFeatureIcons: Record<string, string> = {
           </div>
         </div>
         <div class="hidden md:flex items-center justify-center">
-          <div class="w-full max-w-sm bg-bg-card rounded-2xl border border-border p-6 shadow-lg">
+          <div class="relative w-full max-w-sm">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-semibold rounded-full bg-[#229ED9] text-white z-10">Telegram Bot</span>
+          <div class="w-full max-w-sm bg-bg-card rounded-2xl border border-border p-6 shadow-xl shadow-primary/10 ring-1 ring-primary/5">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-10 h-10 bg-[#229ED9]/10 rounded-full flex items-center justify-center">
                 <svg class="w-6 h-6 text-[#229ED9]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -101,12 +119,40 @@ const botFeatureIcons: Record<string, string> = {
               <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">QR potpis → Dokaz isporuke</div>
             </div>
           </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="absolute inset-0 -z-10 overflow-hidden">
       <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
       <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+    </div>
+  </section>
+
+  {/* 1.5. Why Telegram? */}
+  <section class="reveal py-20 bg-gradient-to-r from-primary/[0.08] to-accent/[0.05]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/photos/driver-tablet.webp" alt={t(locale, 'logistics.whyTelegram.title')} class="w-full h-auto object-cover" loading="lazy" width="800" height="533" />
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-text mb-6">{t(locale, 'logistics.whyTelegram.title')}</h2>
+          {whyTelegramParagraphs.map((p) => (
+            <p class="text-text-light mb-4">{p}</p>
+          ))}
+          <ul class="mt-6 space-y-3">
+            {whyTelegramBullets.map((bullet) => (
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-text font-medium">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -291,29 +337,6 @@ const botFeatureIcons: Record<string, string> = {
     </div>
   </section>
 
-  {/* 6. Document Preview */}
-  <section class="reveal py-20 bg-bg-alt">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading>{t(locale, 'logistics.docPreview.title')}</SectionHeading>
-      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-12 -mt-8">
-        {t(locale, 'logistics.docPreview.subtitle')}
-      </p>
-
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="rounded-2xl border border-border overflow-hidden shadow-lg bg-white p-4 mb-8">
-          <img src="/images/screenshots/cmr-example.png" alt="Otpremnica primer" class="w-full h-auto rounded-lg" loading="lazy" />
-        </div>
-        <a href={getLocalizedPath('/efaktura/studio', locale)}
-          class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary/30 hover:border-primary text-text font-semibold rounded-xl transition-colors">
-          {t(locale, 'logistics.docPreview.cta')}
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   {/* 7. Company Section */}
   <section class="reveal py-20 bg-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -395,10 +418,27 @@ const botFeatureIcons: Record<string, string> = {
         </div>
       </div>
 
-      {/* Feature Grid */}
-      <h3 id="bot-features" class="text-2xl font-bold text-center mb-8 scroll-mt-8">{t(locale, 'logistics.bot.featuresTitle')}</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16">
-        {botFeatures.map((feature) => (
+      {/* Feature Grid — Documents */}
+      <h3 id="bot-features" class="text-2xl font-bold text-center mb-4 scroll-mt-8">{t(locale, 'logistics.bot.featuresTitle')}</h3>
+
+      <h4 class="text-lg font-semibold text-text-light mb-6 max-w-5xl mx-auto">{t(locale, 'logistics.bot.groupDocs')}</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-12">
+        {botFeatures.slice(0, 4).map((feature) => (
+          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+              <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
+            </div>
+            <h4 class="text-base font-semibold mb-1">{feature.title}</h4>
+            <p class="text-text-light text-sm mb-3">{feature.description}</p>
+            <span class="text-primary text-sm font-medium opacity-70 group-hover:opacity-100 transition-opacity">{t(locale, 'logistics.bot.readGuide')}</span>
+          </a>
+        ))}
+      </div>
+
+      {/* Feature Grid — Management */}
+      <h4 class="text-lg font-semibold text-text-light mb-6 max-w-5xl mx-auto">{t(locale, 'logistics.bot.groupManage')}</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
+        {botFeatures.slice(4).map((feature) => (
           <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
@@ -450,23 +490,27 @@ const botFeatureIcons: Record<string, string> = {
         {botPricingPlans.map((plan) => (
           <div class:list={[
             "bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 relative",
-            plan.popular ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-border hover:border-primary hover:shadow-lg hover:shadow-primary/5"
+            plan.earlyAdopter ? "border-green-500 hover:shadow-lg hover:shadow-green-500/10" : plan.popular ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-primary hover:shadow-lg hover:shadow-primary/5"
           ]}>
-            {plan.popular && (
-              <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold rounded-full bg-accent text-white">
-                Popular
-              </span>
-            )}
+            <span class:list={[
+              "absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold rounded-full text-white",
+              plan.earlyAdopter ? "bg-green-500" : plan.popular ? "bg-accent" : "bg-primary"
+            ]}>
+              {plan.earlyAdopter ? "Early Adopter" : plan.popular ? "Popular" : "Pro"}
+            </span>
             <h4 class="text-xl font-bold mb-2">{plan.name}</h4>
             <div class="mb-4">
-              <span class="text-4xl font-bold">{plan.price}</span>
+              <span class:list={["text-4xl font-bold", plan.earlyAdopter && "text-green-400"]}>{plan.price}</span>
               {plan.price !== '0' && <span class="text-text-light ml-1">{t(locale, 'logistics.bot.pricing.currency')}</span>}
               <span class="text-text-light ml-1">/ {plan.period}</span>
             </div>
+            {plan.subtitle && (
+              <p class="text-sm text-green-400/80 italic mb-4 -mt-2">{plan.subtitle}</p>
+            )}
             <ul class="space-y-3 mb-8">
               {plan.features.map((feature) => (
                 <li class="flex items-center gap-3">
-                  <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <svg class:list={["w-5 h-5 flex-shrink-0", plan.earlyAdopter ? "text-green-400" : "text-green-400"]} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                   <span class="text-text-light text-sm">{feature}</span>
@@ -479,15 +523,32 @@ const botFeatureIcons: Record<string, string> = {
               rel="noopener noreferrer"
               class:list={[
                 "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
-                plan.popular
-                  ? "bg-accent hover:bg-accent/90 text-white"
-                  : "border-2 border-primary/30 hover:border-primary text-text"
+                plan.earlyAdopter
+                  ? "bg-green-500 hover:bg-green-600 text-white"
+                  : plan.popular
+                    ? "bg-accent hover:bg-accent/90 text-white"
+                    : "bg-primary hover:bg-primary/90 text-white"
               ]}
             >
               {plan.cta}
             </a>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 8.5. SEO Text Block */}
+  <section class="reveal py-20 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="/images/photos/truck-road.webp" alt={t(locale, 'logistics.seoBlock.title')} class="w-full h-auto object-cover" loading="lazy" width="800" height="534" />
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-text mb-6">{t(locale, 'logistics.seoBlock.title')}</h2>
+          <p class="text-text-light leading-relaxed">{t(locale, 'logistics.seoBlock.text')}</p>
+        </div>
       </div>
     </div>
   </section>

@@ -60,9 +60,22 @@
     "hero": {
       "badge": "Za solo preduzetnike",
       "title": "Sami vozite? Generišite Otpremnicu i e-Fakturu za 15 sekundi direktno sa utovara.",
-      "subtitle": "Bez papira, samo vaš telefon.",
+      "subtitle": "Otpremnica (dokument za prevoz robe), faktura i XML e-faktura za SEF portal — sve iz telefona, bez papira.",
       "cta": "Probajte besplatno",
       "ctaSecondary": "Kako funkcioniše?"
+    },
+    "whyTelegram": {
+      "title": "Zašto Telegram, a ne aplikacija?",
+      "paragraphs": [
+        "Većina vozača u Srbiji već koristi Telegram svakodnevno — za komunikaciju sa porodicom, kolegama i poslovnim partnerima. Umesto da instalirate još jednu aplikaciju, Lako radi tamo gde ste već prisutni.",
+        "Za solo preduzetnike u drumskom prevozu, svaki minut na utovaru je bitan. Telegram bot ne zahteva instalaciju, ne traži posebnu lozinku i radi na svakom telefonu — Android ili iPhone. Foto, PDF i XML dokumenti se šalju direktno u čat, spremni za inspekciju ili za slanje klijentu."
+      ],
+      "bullets": [
+        "Već instaliran na 90% telefona vozača",
+        "Radi i sa slabim internetom",
+        "Foto + PDF + XML direktno u čat",
+        "Bez nove lozinke i registracije"
+      ]
     },
     "soloValue": {
       "title": "Solo preduzetnik? Imamo rešenje baš za vas",
@@ -133,7 +146,7 @@
           "icon": "proof",
           "title": "Izgubljene potvrde",
           "problem": "Kupac kaže da roba nije stigla, a papirnu potvrdu ne možete da nađete.",
-          "solution": "Digitalni potpis QR + GPS + foto — dokaz koji se ne gubi."
+          "solution": "Digitalni potpis: QR + GPS + foto — dokaz koji se ne gubi."
         }
       ]
     },
@@ -143,7 +156,7 @@
       "rows": [
         { "feature": "Rizik od kazne na kontroli", "without": "Visok", "with": "Eliminisan" },
         { "feature": "Dokument na putu", "without": "Papir ili ništa", "with": "Uvek u telefonu" },
-        { "feature": "SEF rok", "without": "Lako se propusti", "with": "XML odmah" },
+        { "feature": "SEF rok", "without": "Rok se lako propusti", "with": "XML odmah" },
         { "feature": "Dokaz isporuke", "without": "Papirna potvrda", "with": "QR + GPS + foto" },
         { "feature": "Vreme na dokumentaciji", "without": "30+ min", "with": "15 sekundi" }
       ]
@@ -178,14 +191,14 @@
     "faq": {
       "title": "Najčešća pitanja",
       "items": [
-        { "question": "Radim sam — da li je Lako za mene?", "answer": "Da, Lako je napravljen upravo za solo preduzetnike koji sami voze i trebaju brzu dokumentaciju na terenu." },
+        { "question": "Radim sam — da li je Lako za mene?", "answer": "Da, Lako je napravljen upravo za solo preduzetnike kojima treba brza dokumentacija na terenu." },
         { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, sve radi kroz Telegram — kreirate dokumente direktno sa utovara ili istovara, bez kompjutera." },
         { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše XML fajl u UBL 2.1 formatu. Vi ga samo učitate na portal efaktura.gov.rs — bez ručnog unosa." },
         { "question": "Nemam dispečera — imam li sve funkcije?", "answer": "Da, imate pristup svim modulima — rejsovi, CMR, fakture, e-fakture, statistika. Dispečer nije potreban." },
-        { "question": "Koliko vremena treba za uvođenje?", "answer": "Od prve konsultacije do punog rada — oko 12 dana. Obuka traje 1 dan." },
-        { "question": "Da li vozačima trebaju pametni telefoni?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
+        { "question": "Koliko vremena treba za uvođenje?", "answer": "Ceo proces traje samo 1 radni dan. Registrujte se, unesite podatke firme — i počnite da radite. Sva uputstva su na sajtu." },
+        { "question": "Da li vozačima treba pametan telefon?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
         { "question": "Šta ako nismo na PANTHEON-u?", "answer": "Lako radi kao samostalan sistem. Ne zahteva integraciju sa ERP softverom." },
-        { "question": "Koliko košta?", "answer": "Za prvih 5 kompanija: 3 meseca besplatno, zatim 2.500 RSD mesečno. Za ostale: 30 dana probnog perioda, zatim 3.500 RSD mesečno." },
+        { "question": "Koliko košta?", "answer": "Solo preduzetnici: 1.490 RSD mesečno. Kompanije: 3.500 RSD mesečno. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda bez obaveza." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
         { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." },
         { "question": "Kako su moji podaci tehnički zaštićeni?", "answer": "Svi podaci se šifruju pri prenosu (HTTPS/TLS) i pri čuvanju (PostgreSQL sa šifrovanjem). Automatski bekapi se prave svakih 24 sata i čuvaju se 30 dana. Pristup serverima je ograničen na ovlašćene osobe." },
@@ -195,7 +208,7 @@
     },
     "bot": {
       "title": "Telegram bot za vašu logistiku",
-      "subtitle": "Upravljajte rejs​ovima, dokumentima i vozačima — sve kroz Telegram.",
+      "subtitle": "Upravljajte vožnjama (rejsovima), dokumentima i vozačima — sve kroz Telegram.",
       "card": {
         "badge": "Telegram Bot",
         "title": "Lako Prevoz",
@@ -203,6 +216,8 @@
         "cta": "Otvori u Telegramu"
       },
       "featuresTitle": "Šta bot može",
+      "groupDocs": "Dokumenti",
+      "groupManage": "Upravljanje",
       "readGuide": "Uputstvo →",
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
@@ -232,20 +247,28 @@
       },
       "pricing": {
         "title": "Cene",
-        "subtitle": "Počnite besplatno, nadogradite kada porastete",
+        "subtitle": "Probajte besplatno, platite kad ste spremni",
         "currency": "RSD",
+        "earlyAdopter": {
+          "badge": "Prvih 5 klijenata",
+          "text": "3 meseca besplatno — pomozite nam da postanemo bolji, a mi ćemo pomoći vama da budete najbolji.",
+          "note": "Ostalo još {{remaining}} mesta"
+        },
+        "trial": "30 dana besplatno za sve nove korisnike",
         "plans": [
           {
-            "name": "Besplatno",
+            "name": "Early Adopter",
             "price": "0",
-            "period": "zauvek",
+            "period": "3 meseca",
+            "subtitle": "Vi pomažete nama da budemo bolji, da bismo vam pomogli da budete najbolji",
             "features": [
-              "5 rejsova mesečno",
-              "CMR + otpremnica",
-              "E-faktura XML",
-              "QR potpis"
+              "Pun pristup Solo ili Company planu",
+              "3 meseca potpuno besplatno",
+              "Samo za prvih 5 klijenata",
+              "Uslov: povratna informacija o proizvodu"
             ],
-            "cta": "Počni besplatno"
+            "cta": "Postani Early Adopter",
+            "earlyAdopter": true
           },
           {
             "name": "Solo",
@@ -258,7 +281,7 @@
               "Automatski QR potpis",
               "Prioritetna podrška"
             ],
-            "cta": "Aktiviraj Solo",
+            "cta": "Probaj 30 dana besplatno",
             "popular": true
           },
           {
@@ -272,7 +295,7 @@
               "Izveštaji + Excel export",
               "Više vozača i vozila"
             ],
-            "cta": "Kontaktirajte nas"
+            "cta": "Probaj 30 dana besplatno"
           }
         ]
       }
@@ -565,6 +588,10 @@
         ]
       }
     },
+    "seoBlock": {
+      "title": "Digitalizacija drumskog prevoza u Srbiji",
+      "text": "Drumski prevoz u Srbiji suočava se sa sve strožim zakonskim obavezama — od obavezne otpremnice za svaki prevoz robe do elektronskog fakturisanja kroz Sistem E-Faktura (SEF). Solo preduzetnici i manje transportne firme često gube vreme na ručnu dokumentaciju umesto da se fokusiraju na vožnju i isporuku. Lako Prevoz Bot automatizuje ovaj proces: od kreiranja otpremnice i CMR-a (međunarodnog tovarnog lista) do generisanja XML e-fakture za SEF portal — sve kroz Telegram, direktno sa terena. Zakon o prevozu robe zahteva da svaka pošiljka ima prateću dokumentaciju, a Lako obezbeđuje da je uvek imate pri ruci."
+    },
     "finalCta": {
       "title": "Spavajte mirno. Automatizujte dokumentaciju pre sledeće isporuke.",
       "subtitle": "Otpremnica, faktura, e-faktura — sve iz telefona, za 15 sekundi.",
@@ -697,12 +724,12 @@
       "title": "Najčešća pitanja",
       "items": [
         {
-          "question": "Da li mi trebaju oba bota?",
+          "question": "Da li su mi potrebna oba bota?",
           "answer": "Da, ali vi koristite samo Lako Admin. Lako Katalog koriste vaši klijenti za pretragu i zakazivanje."
         },
         {
           "question": "Koliko to košta?",
-          "answer": "Tri plana: Free — katalog + osnovna kartica vašeg biznisa (besplatno zauvek). Pro (29€/mes) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu umesto skupih SMS-ova, analitika klikova. Business (49€/mes) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa."
+          "answer": "Katalog — besplatno (vaš biznis u katalogu bez ograničenja). Pro (29€/mes) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu umesto skupih SMS-ova, analitika klikova. Business (49€/mes) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda."
         },
         {
           "question": "Koliko vremena treba za pokretanje?",
@@ -728,7 +755,7 @@
     },
     "register": {
       "title": "Dodajte svoj biznis u katalog",
-      "subtitle": "Besplatno. Registracija traje 2 minuta. Već 150+ biznisa koristi Lako Services. Vaš biznis je u katalogu u roku od 24 sata.",
+      "subtitle": "Besplatno. Registracija traje 2 minuta. Već 150+ biznisa u katalogu Lako Services. Vaš biznis je u katalogu u roku od 24 sata.",
       "cta": "Dodaj svoj biznis"
     }
   },
