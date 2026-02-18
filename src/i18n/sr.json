@@ -603,6 +603,32 @@
       "cta": "Pogledajte kako radi",
       "ctaSecondary": "Dodaj biznis"
     },
+    "ownerDay": {
+      "title": "Vaše jutro sa Lako",
+      "subtitle": "Evo kako izgleda tipičan dan vlasnika salona koji koristi Lako",
+      "steps": [
+        {
+          "time": "08:00",
+          "title": "Budite se, raspored vas čeka",
+          "description": "Otvarate @LakoAdminBot — vidite 6 zakazanih termina za danas. Jedan klijent je otkazao sinoć u 23h — slobodan slot je automatski ponuđen drugima."
+        },
+        {
+          "time": "08:05",
+          "title": "Alert o zalihama",
+          "description": "Bot javlja: 'Boja za kosu Loreal 7.1 — ostalo 2 komada (minimum: 5)'. Naručujete odmah, pre nego što ponestane."
+        },
+        {
+          "time": "09:00",
+          "title": "Prvi klijent dolazi",
+          "description": "Klijent je dobio podsetnik juče u 9h i danas u 7h. Dolazi na vreme. Vi otvarate nalog, birate uslugu i materijal — zalihe se automatski ažuriraju."
+        },
+        {
+          "time": "18:00",
+          "title": "Kraj dana — pregled",
+          "description": "8 klijenata, 0 no-show, 3 nove rezervacije za sledeću nedelju. Jedan klijent je platio IPS QR kodom direktno na vaš račun."
+        }
+      ]
+    },
     "howItWorks": {
       "title": "Kako to radi?",
       "steps": [
@@ -612,11 +638,11 @@
         },
         {
           "title": "Klijent se zakazuje",
-          "description": "Bira uslugu, datum i vreme — direktno u Telegramu. Bez poziva, bez čekanja."
+          "description": "Bira uslugu, majstora i slobodan termin u narednih 14 dana — direktno u Telegramu. Vidi realno zauzeće svakog majstora."
         },
         {
           "title": "Automatika radi umesto vas",
-          "description": "Bot šalje podsetnike klijentima 24h pre termina. Vi dobijate obaveštenje u @LakoAdminBot o svakom novom zakazivanju."
+          "description": "Bot šalje podsetnike klijentima 24h i 2h pre termina. Vi dobijate obaveštenje u @LakoAdminBot o svakom novom zakazivanju."
         },
         {
           "title": "Vi ste u kontroli",
@@ -629,19 +655,28 @@
       "items": [
         {
           "title": "Barbershops i saloni",
-          "description": "Klijenti zakazuju termine preko Telegrama 24/7, dobijaju automatska podsećanja i vaše najnovije promocije — bez telefonskih poziva. Automatsko praćenje zaliha materijala — nikad više ne ostajte bez boje ili šampona."
+          "description": "Klijenti zakazuju termine preko Telegrama 24/7, dobijaju automatska podsećanja i vaše najnovije promocije — bez telefonskih poziva. Automatsko praćenje zaliha materijala — nikad više ne ostajte bez boje ili šampona.",
+          "cta": "Počni za salon"
         },
         {
           "title": "Stomatološke ordinacije",
-          "description": "Pacijenti zakazuju termine automatski, dobijaju podsetnike pre posete, a vi pratite termine za svakog pacijenta — sve u skladu sa GDPR-om."
+          "description": "Pacijenti zakazuju termine automatski, dobijaju podsetnike pre posete, a vi pratite termine za svakog pacijenta — sve u skladu sa GDPR-om.",
+          "cta": "Počni za ordinaciju"
         },
         {
           "title": "Auto-servisi",
-          "description": "Mušterije zakazuju servis, dobijaju ažuriranja popravke u realnom vremenu i fakture odmah preko bota — bez telefonskog ping-ponga. Fotografišite vozilo pre i posle servisa — automatski PDF izveštaj za svaki nalog."
+          "description": "Mušterije zakazuju servis, dobijaju ažuriranja popravke u realnom vremenu i fakture odmah preko bota — bez telefonskog ping-ponga. Fotografišite vozilo pre i posle servisa — automatski PDF izveštaj za svaki nalog.",
+          "cta": "Počni za servis"
         },
         {
           "title": "Hemijske čistionice",
-          "description": "Automatizovan prijem odeće sa foto potvrdom, instant obaveštenja kada je gotovo i lako zakazivanje preuzimanja — klijenti vole pogodnost. Foto dokumentacija pri prijemu i izdavanju odeće — pravna zaštita za vas i klijenta."
+          "description": "Dva režima rada: klijent donosi odeću (dropoff) ili kurir dolazi po nju (pickup). Lifecycle narudžbine: primljeno → u procesu → gotovo → preuzeto. Foto dokumentacija pri prijemu i izdavanju odeće — pravna zaštita za vas i klijenta. Svaki dokument dobija broj DC-XXXXXX.",
+          "cta": "Počni za čistionicu"
+        },
+        {
+          "title": "Rent-a-car",
+          "description": "Upravljanje flotom vozila sa foto evidencijom pre i posle iznajmljivanja. Blokada vozila za vreme servisa — ne može se iznajmiti dok je u popravci. Dokumenti sa brojem CR-XXXXXX.",
+          "cta": "Počni za rent-a-car"
         }
       ]
     },
@@ -654,7 +689,7 @@
         },
         {
           "title": "Automatska podsećanja",
-          "description": "Bot šalje podsetnike 24 sata pre termina, značajno smanjujući no-show — to znači manje praznih termina i više prihoda."
+          "description": "Bot šalje podsetnike 24 sata i 2 sata pre termina, značajno smanjujući no-show — to znači manje praznih termina i više prihoda."
         },
         {
           "title": "Lojalnost klijenata",
@@ -698,7 +733,7 @@
       "subtitle": "Svaka predaja i preuzimanje — dokumentovano, geotagovano, vremenski označeno.",
       "items": [
         { "title": "Foto evidencija", "description": "Fotografišite stanje pre i posle. Anti-fraud detekcija galerijskih slika." },
-        { "title": "PDF akti", "description": "Automatski akt primopredaje sa fotografijama. Šalje se odmah po završetku usluge." },
+        { "title": "PDF akti", "description": "Automatski akt primopredaje sa fotografijama i jedinstvenim brojem dokumenta. Šalje se odmah po završetku usluge." },
         { "title": "Arhiva 60 dana", "description": "Sve fotografije čuvamo 60 dana na serveru. Dostupne kada su vam potrebne." }
       ]
     },
@@ -707,7 +742,8 @@
       "subtitle": "Za salone, barber shopove i kozmetičare",
       "items": [
         { "title": "Praćenje u realnom vremenu", "description": "Svako trošenje materijala se beleži. Vidite potrošnju po majstoru, po usluzi, po danu." },
-        { "title": "Alert pre nego što ponestane", "description": "Svako jutro u 8h dobijate obaveštenje o artiklima čije su zalihe ispod minimuma." }
+        { "title": "Alert pre nego što ponestane", "description": "Svako jutro u 8h dobijate obaveštenje o artiklima čije su zalihe ispod minimuma." },
+        { "title": "Analitika gubitaka", "description": "Beležite rastur, istekle proizvode i rasipanje. Vidite koliko vas zaista košta svaki gubitak — donosite odluke na osnovu podataka." }
       ]
     },
     "qrPayment": {
@@ -759,6 +795,15 @@
         "GDPR usklađenost"
       ],
       "cta": "Detaljnije o zaštiti"
+    },
+    "socialProof": {
+      "title": "Lako u brojkama",
+      "stats": [
+        { "value": "150+", "label": "biznisa u katalogu" },
+        { "value": "24/7", "label": "zakazivanje bez pauze" },
+        { "value": "2-3h", "label": "uštede dnevno" },
+        { "value": "0 RSD", "label": "za start — Katalog je besplatan" }
+      ]
     },
     "faq": {
       "title": "Najčešća pitanja",

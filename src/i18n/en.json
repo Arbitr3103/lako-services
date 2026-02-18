@@ -603,6 +603,32 @@
       "cta": "See how it works",
       "ctaSecondary": "Add business"
     },
+    "ownerDay": {
+      "title": "Your morning with Lako",
+      "subtitle": "Here's what a typical day looks like for a salon owner using Lako",
+      "steps": [
+        {
+          "time": "08:00",
+          "title": "You wake up, your schedule is ready",
+          "description": "You open @LakoAdminBot — you see 6 booked appointments for today. One client cancelled last night at 11pm — the free slot was automatically offered to others."
+        },
+        {
+          "time": "08:05",
+          "title": "Stock alert",
+          "description": "Bot reports: 'Hair dye Loreal 7.1 — 2 left (minimum: 5)'. You order right away, before you run out."
+        },
+        {
+          "time": "09:00",
+          "title": "First client arrives",
+          "description": "The client got a reminder yesterday at 9am and today at 7am. Arrives on time. You open the order, select the service and materials — stock updates automatically."
+        },
+        {
+          "time": "18:00",
+          "title": "End of day — review",
+          "description": "8 clients, 0 no-shows, 3 new bookings for next week. One client paid with IPS QR code directly to your account."
+        }
+      ]
+    },
     "howItWorks": {
       "title": "How it works",
       "steps": [
@@ -612,11 +638,11 @@
         },
         {
           "title": "Client books an appointment",
-          "description": "They choose a service, date, and time — right in Telegram. No calls, no waiting."
+          "description": "Chooses a service, a specialist and an available slot within the next 14 days — directly in Telegram. Sees real-time availability for each specialist."
         },
         {
           "title": "Automation does the work",
-          "description": "Bot sends reminders to clients 24h before the appointment. You get notified in @LakoAdminBot about every new booking."
+          "description": "The bot sends reminders to clients 24h and 2h before the appointment. You get notified in @LakoAdminBot about every new booking."
         },
         {
           "title": "You're in control",
@@ -629,19 +655,28 @@
       "items": [
         {
           "title": "Barbershops & salons",
-          "description": "Clients book appointments via Telegram 24/7, get automatic reminders, and receive your latest promotions — no phone calls needed. Automatic inventory tracking — never run out of dye or shampoo again."
+          "description": "Clients book appointments via Telegram 24/7, get automatic reminders, and receive your latest promotions — no phone calls needed. Automatic inventory tracking — never run out of dye or shampoo again.",
+          "cta": "Start for salon"
         },
         {
           "title": "Dental clinics",
-          "description": "Patients schedule appointments automatically, receive reminders before visits, and you track appointments for each patient — all GDPR-compliant."
+          "description": "Patients schedule appointments automatically, receive reminders before visits, and you track appointments for each patient — all GDPR-compliant.",
+          "cta": "Start for clinic"
         },
         {
           "title": "Auto services",
-          "description": "Customers book service appointments, receive real-time repair updates, and get invoices instantly via bot — no phone tag. Photograph the vehicle before and after service — automatic PDF report for every work order."
+          "description": "Customers book service appointments, receive real-time repair updates, and get invoices instantly via bot — no phone tag. Photograph the vehicle before and after service — automatic PDF report for every work order.",
+          "cta": "Start for service"
         },
         {
           "title": "Dry cleaners",
-          "description": "Automated clothes intake with photo confirmation, instant notifications when ready, and easy pickup scheduling — customers love the convenience. Photo documentation at intake and pickup — legal protection for you and your client."
+          "description": "Two modes: the client brings clothes in (dropoff) or a courier picks them up (pickup). Order lifecycle: received → in process → ready → picked up. Photo documentation at intake and handoff — legal protection for you and the client. Every document gets a DC-XXXXXX number.",
+          "cta": "Start for dry cleaner"
+        },
+        {
+          "title": "Car rental",
+          "description": "Fleet management with photo evidence before and after each rental. Vehicle blocking during maintenance — the car can't be rented while in service. Documents numbered CR-XXXXXX.",
+          "cta": "Start for car rental"
         }
       ]
     },
@@ -654,7 +689,7 @@
         },
         {
           "title": "Automatic reminders",
-          "description": "Bot sends reminders 24 hours before appointments, significantly reducing no-shows — that's fewer empty slots and more revenue."
+          "description": "The bot sends reminders 24 hours and 2 hours before the appointment, significantly reducing no-shows — that means fewer empty slots and more revenue."
         },
         {
           "title": "Client loyalty",
@@ -698,7 +733,7 @@
       "subtitle": "Every handover and pickup — documented, geotagged, timestamped.",
       "items": [
         { "title": "Photo evidence", "description": "Photograph condition before and after. Anti-fraud detection of gallery images." },
-        { "title": "PDF reports", "description": "Automatic handover report with photos. Sent immediately upon service completion." },
+        { "title": "PDF reports", "description": "Auto-generated handover report with photos and a unique document number. Sent immediately upon service completion." },
         { "title": "60-day archive", "description": "All photos stored on server for 60 days. Available when you need them." }
       ]
     },
@@ -707,7 +742,8 @@
       "subtitle": "For salons, barber shops, and beauty studios",
       "items": [
         { "title": "Real-time tracking", "description": "Every material usage is logged. See consumption by worker, by service, by day." },
-        { "title": "Alert before you run out", "description": "Every morning at 8am you get a notification about items below minimum stock." }
+        { "title": "Alert before you run out", "description": "Every morning at 8am you get a notification about items below minimum stock." },
+        { "title": "Loss analytics", "description": "Track spoilage, expired products and waste. See the real cost of each loss — make data-driven decisions." }
       ]
     },
     "qrPayment": {
@@ -759,6 +795,15 @@
         "GDPR compliant"
       ],
       "cta": "Learn more about security"
+    },
+    "socialProof": {
+      "title": "Lako in numbers",
+      "stats": [
+        { "value": "150+", "label": "businesses in catalog" },
+        { "value": "24/7", "label": "booking without breaks" },
+        { "value": "2-3h", "label": "saved daily" },
+        { "value": "0 RSD", "label": "to start — Catalog is free" }
+      ]
     },
     "faq": {
       "title": "Frequently asked questions",
