@@ -771,7 +771,7 @@
         },
         {
           "name": "Pro",
-          "price": "3.400",
+          "price": "2.500",
           "period": "RSD / mesečno",
           "description": "Zakazivanje i komunikacija",
           "features": [
@@ -786,7 +786,7 @@
         },
         {
           "name": "Business",
-          "price": "5.750",
+          "price": "3.500",
           "period": "RSD / mesečno",
           "description": "Puna automatizacija",
           "features": [

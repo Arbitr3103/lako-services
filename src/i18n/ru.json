@@ -771,8 +771,8 @@
         },
         {
           "name": "Pro",
-          "price": "29",
-          "period": "€ / месяц",
+          "price": "2.500",
+          "period": "RSD / месяц",
           "description": "Запись и коммуникация",
           "features": [
             "Всё из плана Каталог",
@@ -786,8 +786,8 @@
         },
         {
           "name": "Business",
-          "price": "49",
-          "period": "€ / месяц",
+          "price": "3.500",
+          "period": "RSD / месяц",
           "description": "Полная автоматизация",
           "features": [
             "Всё из плана Pro",

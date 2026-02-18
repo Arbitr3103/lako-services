@@ -771,8 +771,8 @@
         },
         {
           "name": "Pro",
-          "price": "29",
-          "period": "€ / month",
+          "price": "2.500",
+          "period": "RSD / month",
           "description": "Booking and communication",
           "features": [
             "Everything in Catalog plan",
@@ -786,8 +786,8 @@
         },
         {
           "name": "Business",
-          "price": "49",
-          "period": "€ / month",
+          "price": "3.500",
+          "period": "RSD / month",
           "description": "Full automation",
           "features": [
             "Everything in Pro plan",
