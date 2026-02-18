@@ -52,7 +52,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Logistics page** (`/logistics`): 12 sections focused on transport bot product. Hero CTA links directly to `t.me/lakoprevoz_bot`. Bot section (Section 9) has: video + CMR screenshot grid → bot card → feature grid with guide links → pricing. Final CTA also links to Telegram bot (not contact page). No "coming soon" features — only working functionality. CMR screenshot needs `bg-white` container (dark theme readability).
 
-**e-Faktura Studio** (`/efaktura`): Landing page (pure Astro) + `/efaktura/studio` (React SPA via `client:load`). Split-screen invoice builder: form left, live PDF preview right. Generates SEF-compliant PDF + UBL 2.1 XML. Backend on lako-bot (`POST /api/efaktura/*`). Feature flags: `{ ai: false, excel: false, sef: false }`. SoftwareApplication JSON-LD for SEO.
+**e-Faktura Studio** (`/efaktura`): Landing page (pure Astro) + `/efaktura/studio` (React SPA via `client:load`). Split-screen invoice builder: form left, live PDF preview right. Generates SEF-compliant PDF + UBL 2.1 XML. Backend on lako-bot (`POST /api/efaktura/*`). Feature flags: `{ ai: false, excel: false, sef: false }`. SoftwareApplication JSON-LD for SEO. Business plan CTA links to `t.me/Bragin_Arbitr` (not studio).
 
 **Trust banner**: Green gradient card with shield icon + 4 security bullet points + link to `/zastita-podataka`. Present on: efaktura landing, small-business, logistics pages (all 3 locales). i18n keys: `efaktura.trustBanner.*`, `smallBusiness.trustBanner.*`.
 
@@ -76,27 +76,21 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 - **Platform**: Cloudflare Workers (SSR via `@astrojs/cloudflare` adapter)
 - **Repo**: github.com/Arbitr3103/lako-services
 - **Domain**: lako.services (custom domain on Worker)
-- **Node**: 20 (see .nvmrc)
+- **Node**: 22 (required by Astro 5)
 - **Deploy**: `npm run deploy` (builds Astro + deploys Worker via wrangler)
 - **Preview**: `npm run preview` (builds + runs local Worker on :8787)
-- **Auto-deploy**: Workers Builds — push to `main` triggers build+deploy (see setup below)
+- **Auto-deploy**: GitHub Actions (`.github/workflows/deploy.yml`) — push to `main` triggers build+deploy (~33s). Secret `CLOUDFLARE_API_TOKEN` set in GitHub repo settings.
+- **Manual deploy**: `source ~/.nvm/nvm.sh && nvm use 22 && CLOUDFLARE_API_TOKEN=... npm run deploy`
 - **Secrets**: set via `npx wrangler secret put <NAME>` (RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, REGISTRATION_SECRET)
 - **Observability**: enabled in wrangler.toml — logs/traces in Workers dashboard
 - **Worker route**: `lako.services/*` → `lako-services` (DNS A record 192.0.2.1 proxied)
 
-### Workers Builds Setup (one-time, via Dashboard)
+### Pricing (small-business page)
 
-1. CF Dashboard → Workers & Pages → `lako-services` → Settings → Builds
-2. Connect to GitHub → `Arbitr3103/lako-services`
-3. Build command: `npm run build`, Deploy command: `npx wrangler deploy`, Branch: `main`
-4. Save and Deploy
-
-### Post-migration Cleanup (23.02.2026 — after 1 week stable)
-
-1. Delete staging Worker: `CLOUDFLARE_API_TOKEN=xxx npx wrangler delete --name lako-services-staging`
-2. Disconnect Pages from GitHub: CF Dashboard → Pages → `lako-services` → Settings → Build → Disconnect
-3. Delete Pages project: `CLOUDFLARE_API_TOKEN=xxx npx wrangler pages project delete lako-services`
-4. Remove this cleanup section from CLAUDE.md
+- **Katalog**: бесплатно
+- **Pro**: 2.500 RSD / месяц
+- **Business**: 3.500 RSD / месяц
+- Все локали (SR/EN/RU) в RSD. Цены в i18n JSON + FAQ текстах.
 
 ## GDPR / Legal
 
