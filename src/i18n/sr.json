@@ -629,7 +629,7 @@
       "items": [
         {
           "title": "Barbershops i saloni",
-          "description": "Klijenti zakazuju termine preko Telegrama 24/7, dobijaju automatska podsećanja i vaše najnovije promocije — bez telefonskih poziva."
+          "description": "Klijenti zakazuju termine preko Telegrama 24/7, dobijaju automatska podsećanja i vaše najnovije promocije — bez telefonskih poziva. Automatsko praćenje zaliha materijala — nikad više ne ostajte bez boje ili šampona."
         },
         {
           "title": "Stomatološke ordinacije",
@@ -637,11 +637,11 @@
         },
         {
           "title": "Auto-servisi",
-          "description": "Mušterije zakazuju servis, dobijaju ažuriranja popravke u realnom vremenu i fakture odmah preko bota — bez telefonskog ping-ponga."
+          "description": "Mušterije zakazuju servis, dobijaju ažuriranja popravke u realnom vremenu i fakture odmah preko bota — bez telefonskog ping-ponga. Fotografišite vozilo pre i posle servisa — automatski PDF izveštaj za svaki nalog."
         },
         {
           "title": "Hemijske čistionice",
-          "description": "Automatizovan prijem odeće sa foto potvrdom, instant obaveštenja kada je gotovo i lako zakazivanje preuzimanja — klijenti vole pogodnost."
+          "description": "Automatizovan prijem odeće sa foto potvrdom, instant obaveštenja kada je gotovo i lako zakazivanje preuzimanja — klijenti vole pogodnost. Foto dokumentacija pri prijemu i izdavanju odeće — pravna zaštita za vas i klijenta."
         }
       ]
     },
@@ -671,11 +671,48 @@
         {
           "title": "Analitika i uvidi",
           "description": "Pratite koliko ljudi gleda vaš profil, klikće na telefon ili Instagram — donosite odluke na osnovu podataka, ne nagađanja."
+        },
+        {
+          "title": "Foto dokumentacija",
+          "description": "Bot traži fotografiju pri svakoj promeni statusa. GPS, vreme i anti-fraud zaštita — automatski."
+        },
+        {
+          "title": "Automatski PDF akti",
+          "description": "Akt primopredaje sa fotografijama se generiše i šalje automatski — bez papira, bez gubitka vremena."
+        },
+        {
+          "title": "Upravljanje zalihama",
+          "description": "Pratite potrošnju materijala u realnom vremenu. Alert kada zalihe padnu ispod minimuma."
+        },
+        {
+          "title": "QR plaćanje (IPS)",
+          "description": "Klijent skenira QR kod i plaća direktno na vaš račun — bez kase, bez gotovine."
         }
       ]
     },
     "cta": {
       "text": "Zakažite demo za vaš biznis"
+    },
+    "protection": {
+      "title": "Pravna zaštita za vaš biznis",
+      "subtitle": "Svaka predaja i preuzimanje — dokumentovano, geotagovano, vremenski označeno.",
+      "items": [
+        { "title": "Foto evidencija", "description": "Fotografišite stanje pre i posle. Anti-fraud detekcija galerijskih slika." },
+        { "title": "PDF akti", "description": "Automatski akt primopredaje sa fotografijama. Šalje se odmah po završetku usluge." },
+        { "title": "Arhiva 60 dana", "description": "Sve fotografije čuvamo 60 dana na serveru. Dostupne kada su vam potrebne." }
+      ]
+    },
+    "inventory": {
+      "title": "Kontrolišite troškove materijala",
+      "subtitle": "Za salone, barber shopove i kozmetičare",
+      "items": [
+        { "title": "Praćenje u realnom vremenu", "description": "Svako trošenje materijala se beleži. Vidite potrošnju po majstoru, po usluzi, po danu." },
+        { "title": "Alert pre nego što ponestane", "description": "Svako jutro u 8h dobijate obaveštenje o artiklima čije su zalihe ispod minimuma." }
+      ]
+    },
+    "qrPayment": {
+      "title": "Instant plaćanje — IPS QR",
+      "description": "Klijent skenira QR kod u aplikaciji i plaća direktno na vaš račun. Podržano od svih banaka u Srbiji. Bez kase, bez gotovine, bez čekanja."
     },
     "bots": {
       "title": "Dva bota — jedan sistem",
@@ -702,7 +739,11 @@
           { "label": "Upravljanje rasporedom", "catalog": false, "admin": true },
           { "label": "Baza klijenata", "catalog": false, "admin": true },
           { "label": "Slanje promocija", "catalog": false, "admin": true },
-          { "label": "Obaveštenja o novim terminima", "catalog": false, "admin": true }
+          { "label": "Obaveštenja o novim terminima", "catalog": false, "admin": true },
+          { "label": "Foto dokumentacija narudžbine", "catalog": false, "admin": true },
+          { "label": "PDF akt primopredaje", "catalog": false, "admin": true },
+          { "label": "Upravljanje zalihama", "catalog": false, "admin": true },
+          { "label": "QR plaćanje (IPS)", "catalog": true, "admin": true }
         ]
       },
       "screenshotPlaceholder": "Primer interfejsa",
@@ -749,6 +790,18 @@
         {
           "question": "Da li se može integrisati sa mojim postojećim sistemom?",
           "answer": "Trenutno Lako radi kao samostalan sistem. Za prilagođene integracije kontaktirajte nas — možemo razviti povezivanje po vašim potrebama. Pišite nam na info@lako.services."
+        },
+        {
+          "question": "Kako funkcioniše foto dokumentacija?",
+          "answer": "Kada majstor menja status narudžbine (npr. iz 'primljeno' u 'u procesu'), bot automatski traži fotografiju. Svaka slika dobija GPS koordinate i vremenski pečat. Sistem detektuje pokušaj slanja slike iz galerije — potrebna je originalna fotografija. Na kraju se generiše PDF akt sa svim fotografijama."
+        },
+        {
+          "question": "Da li klijenti mogu da plate QR kodom?",
+          "answer": "Da, klijent skenira IPS QR kod direktno u svojoj bankarskoj aplikaciji i plaća na vaš račun. Podržano od svih banaka u Srbiji — NBS IPS standard. Bez kase, bez gotovine."
+        },
+        {
+          "question": "Kako pratim zalihe materijala?",
+          "answer": "Kroz @LakoAdminBot dodajete artikle, postavljate minimum i beležite svako trošenje. Svako jutro u 8h dobijate obaveštenje o artiklima čije su zalihe ispod minimuma."
         }
       ]
     },
@@ -779,7 +832,9 @@
             "Onlajn zakazivanje 24/7",
             "Automatska podsećanja",
             "Telegram obaveštenja",
-            "Analitika klikova"
+            "Analitika klikova",
+            "Foto dokumentacija narudžbina",
+            "Automatski PDF akti primopredaje"
           ],
           "cta": "Počni besplatno",
           "popular": true
@@ -793,7 +848,10 @@
             "Sve iz Pro plana",
             "SEF integracija",
             "Lojalnost i kešbek",
-            "Prioritetna podrška"
+            "Prioritetna podrška",
+            "Upravljanje zalihama + alerta",
+            "QR plaćanje (IPS standard)",
+            "Foto anti-fraud zaštita"
           ],
           "cta": "Kontaktirajte nas",
           "popular": false

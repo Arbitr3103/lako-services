@@ -629,7 +629,7 @@
       "items": [
         {
           "title": "Barbershops & salons",
-          "description": "Clients book appointments via Telegram 24/7, get automatic reminders, and receive your latest promotions — no phone calls needed."
+          "description": "Clients book appointments via Telegram 24/7, get automatic reminders, and receive your latest promotions — no phone calls needed. Automatic inventory tracking — never run out of dye or shampoo again."
         },
         {
           "title": "Dental clinics",
@@ -637,11 +637,11 @@
         },
         {
           "title": "Auto services",
-          "description": "Customers book service appointments, receive real-time repair updates, and get invoices instantly via bot — no phone tag."
+          "description": "Customers book service appointments, receive real-time repair updates, and get invoices instantly via bot — no phone tag. Photograph the vehicle before and after service — automatic PDF report for every work order."
         },
         {
           "title": "Dry cleaners",
-          "description": "Automated clothes intake with photo confirmation, instant notifications when ready, and easy pickup scheduling — customers love the convenience."
+          "description": "Automated clothes intake with photo confirmation, instant notifications when ready, and easy pickup scheduling — customers love the convenience. Photo documentation at intake and pickup — legal protection for you and your client."
         }
       ]
     },
@@ -671,11 +671,48 @@
         {
           "title": "Analytics & insights",
           "description": "Track how many people view your profile, click your phone number or Instagram — make decisions based on data, not guesswork."
+        },
+        {
+          "title": "Photo documentation",
+          "description": "Bot requests a photo on every status change. GPS, timestamp, and anti-fraud protection — automatic."
+        },
+        {
+          "title": "Automatic PDF reports",
+          "description": "Handover report with photos is generated and sent automatically — no paper, no wasted time."
+        },
+        {
+          "title": "Inventory management",
+          "description": "Track material consumption in real time. Alert when stock drops below minimum."
+        },
+        {
+          "title": "QR payment (IPS)",
+          "description": "Client scans a QR code and pays directly to your account — no cash register, no cash."
         }
       ]
     },
     "cta": {
       "text": "Schedule a demo for your business"
+    },
+    "protection": {
+      "title": "Legal protection for your business",
+      "subtitle": "Every handover and pickup — documented, geotagged, timestamped.",
+      "items": [
+        { "title": "Photo evidence", "description": "Photograph condition before and after. Anti-fraud detection of gallery images." },
+        { "title": "PDF reports", "description": "Automatic handover report with photos. Sent immediately upon service completion." },
+        { "title": "60-day archive", "description": "All photos stored on server for 60 days. Available when you need them." }
+      ]
+    },
+    "inventory": {
+      "title": "Control your material costs",
+      "subtitle": "For salons, barber shops, and beauty studios",
+      "items": [
+        { "title": "Real-time tracking", "description": "Every material usage is logged. See consumption by worker, by service, by day." },
+        { "title": "Alert before you run out", "description": "Every morning at 8am you get a notification about items below minimum stock." }
+      ]
+    },
+    "qrPayment": {
+      "title": "Instant payment — IPS QR",
+      "description": "Client scans a QR code in their app and pays directly to your account. Supported by all banks in Serbia. No cash register, no cash, no waiting."
     },
     "bots": {
       "title": "Two bots — one system",
@@ -702,7 +739,11 @@
           { "label": "Schedule management", "catalog": false, "admin": true },
           { "label": "Client database", "catalog": false, "admin": true },
           { "label": "Send promotions", "catalog": false, "admin": true },
-          { "label": "New booking notifications", "catalog": false, "admin": true }
+          { "label": "New booking notifications", "catalog": false, "admin": true },
+          { "label": "Order photo documentation", "catalog": false, "admin": true },
+          { "label": "PDF handover report", "catalog": false, "admin": true },
+          { "label": "Inventory management", "catalog": false, "admin": true },
+          { "label": "QR payment (IPS)", "catalog": true, "admin": true }
         ]
       },
       "screenshotPlaceholder": "Interface preview",
@@ -749,6 +790,18 @@
         {
           "question": "Can it integrate with my existing system?",
           "answer": "Currently Lako works as a standalone system. For custom integrations, contact us — we can build connections tailored to your needs. Write to us at info@lako.services."
+        },
+        {
+          "question": "How does photo documentation work?",
+          "answer": "When a worker changes the order status (e.g., from 'received' to 'in progress'), the bot automatically requests a photo. Each image gets GPS coordinates and a timestamp. The system detects attempts to send gallery images — an original photo is required. At the end, a PDF report with all photos is generated."
+        },
+        {
+          "question": "Can clients pay with a QR code?",
+          "answer": "Yes, the client scans an IPS QR code directly in their banking app and pays to your account. Supported by all banks in Serbia — NBS IPS standard. No cash register, no cash."
+        },
+        {
+          "question": "How do I track material inventory?",
+          "answer": "Through @LakoAdminBot you add items, set minimums, and log every usage. Every morning at 8am you receive a notification about items below minimum stock."
         }
       ]
     },
@@ -779,7 +832,9 @@
             "24/7 online booking",
             "Automatic reminders",
             "Telegram notifications",
-            "Click analytics"
+            "Click analytics",
+            "Order photo documentation",
+            "Automatic PDF handover reports"
           ],
           "cta": "Start free",
           "popular": true
@@ -793,7 +848,10 @@
             "Everything in Pro plan",
             "SEF integration",
             "Loyalty and cashback",
-            "Priority support"
+            "Priority support",
+            "Inventory management + alerts",
+            "QR payment (IPS standard)",
+            "Photo anti-fraud protection"
           ],
           "cta": "Contact us",
           "popular": false
