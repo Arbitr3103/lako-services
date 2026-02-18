@@ -253,7 +253,9 @@ const stepIcons = [
               ))}
             </ul>
             <a
-              href={getLocalizedPath('/efaktura/studio', locale)}
+              href={plan.price !== '0' && !plan.popular ? 'https://t.me/Bragin_Arbitr' : getLocalizedPath('/efaktura/studio', locale)}
+              target={plan.price !== '0' && !plan.popular ? '_blank' : undefined}
+              rel={plan.price !== '0' && !plan.popular ? 'noopener' : undefined}
               class:list={[
                 "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
                 plan.popular
