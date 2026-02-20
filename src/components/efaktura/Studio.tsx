@@ -15,7 +15,7 @@ const translations: Record<string, Record<string, string>> = {
     downloadPdf: 'Preuzmi PDF', downloadXml: 'Preuzmi XML',
     invoiceNumber: 'Broj fakture', issueDate: 'Datum izdavanja',
     deliveryDate: 'Datum isporuke', dueDate: 'Rok plaćanja',
-    paymentReference: 'Poziv na broj', notes: 'Napomene',
+    paymentReference: 'Poziv na broj', paymentRefAuto: 'automatski iz broja fakture', notes: 'Napomene',
     description: 'Opis', quantity: 'Kol.', unit: 'Jed.',
     unitPrice: 'Cena', vatRate: 'PDV %', amount: 'Iznos',
     addItem: '+ Dodaj stavku', removeItem: 'Obriši',
@@ -37,7 +37,7 @@ const translations: Record<string, Record<string, string>> = {
     downloadPdf: 'Download PDF', downloadXml: 'Download XML',
     invoiceNumber: 'Invoice number', issueDate: 'Issue date',
     deliveryDate: 'Delivery date', dueDate: 'Due date',
-    paymentReference: 'Payment reference', notes: 'Notes',
+    paymentReference: 'Payment reference', paymentRefAuto: 'auto-generated from invoice number', notes: 'Notes',
     description: 'Description', quantity: 'Qty', unit: 'Unit',
     unitPrice: 'Price', vatRate: 'VAT %', amount: 'Amount',
     addItem: '+ Add item', removeItem: 'Remove',
@@ -59,7 +59,7 @@ const translations: Record<string, Record<string, string>> = {
     downloadPdf: 'Скачать PDF', downloadXml: 'Скачать XML',
     invoiceNumber: 'Номер счёта', issueDate: 'Дата выставления',
     deliveryDate: 'Дата доставки', dueDate: 'Срок оплаты',
-    paymentReference: 'Ссылка на платёж', notes: 'Примечания',
+    paymentReference: 'Основание платежа (poziv na broj)', paymentRefAuto: 'авто из номера счёта', notes: 'Примечания',
     description: 'Описание', quantity: 'Кол.', unit: 'Ед.',
     unitPrice: 'Цена', vatRate: 'НДС %', amount: 'Сумма',
     addItem: '+ Добавить', removeItem: 'Удалить',
@@ -166,6 +166,19 @@ function countValid(data: InvoiceData): { valid: number; total: number } {
   if (data.dueDate) valid++;
   if (data.items?.length > 0 && data.items.some(i => i.description?.trim())) valid++;
   return { valid, total };
+}
+
+function getMissingFields(data: InvoiceData, t: Record<string, string>): string[] {
+  const missing: string[] = [];
+  if (!data.invoiceNumber?.trim()) missing.push(t.invoiceNumber);
+  if (!data.seller?.name?.trim()) missing.push(`${t.seller}: ${t.companyName}`);
+  if (!data.seller?.pib || !/^\d{9}$/.test(data.seller.pib)) missing.push(`${t.seller}: ${t.pib}`);
+  if (!data.buyer?.name?.trim()) missing.push(`${t.buyer}: ${t.companyName}`);
+  if (!data.buyer?.pib || !/^\d{9}$/.test(data.buyer.pib)) missing.push(`${t.buyer}: ${t.pib}`);
+  if (!data.issueDate) missing.push(t.issueDate);
+  if (!data.dueDate) missing.push(t.dueDate);
+  if (!data.items?.length || !data.items.some(i => i.description?.trim())) missing.push(t.items);
+  return missing;
 }
 
 function trackEvent(event: string, data?: Record<string, any>) {
@@ -666,9 +679,10 @@ export default function Studio({ locale, apiUrl }: Props) {
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>{t.paymentReference}</label>
-                  <input className={inputClass} value={invoice.paymentReference || ''} readOnly
-                    title="Auto-generated from invoice number" />
+                  <label className={labelClass}>{t.paymentReference} <span className="text-text-muted/60">({t.paymentRefAuto})</span></label>
+                  <input className={inputClass} value={invoice.paymentReference || ''}
+                    placeholder={t.paymentRefAuto}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: e.target.value })} />
                 </div>
                 <div className="col-span-2">
                   <label className={labelClass}>{t.notes}</label>
@@ -690,6 +704,15 @@ export default function Studio({ locale, apiUrl }: Props) {
               </div>
               <span className="text-text-muted text-xs whitespace-nowrap">{valid}/{total} {t.validFields}</span>
             </div>
+            {valid > 0 && valid < total && (
+              <div className="flex flex-wrap gap-1 mb-2">
+                {getMissingFields(invoice, t).map((f, i) => (
+                  <span key={i} className="text-red-400/80 text-[10px] bg-red-500/10 px-1.5 py-0.5 rounded">
+                    {f}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {genStatus === 'ready' && downloadData ? (
               <div className="space-y-2">
