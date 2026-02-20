@@ -1,7 +1,7 @@
-import { useReducer, useState, useEffect } from 'react';
+import { useReducer, useState, useEffect, useRef } from 'react';
 import InvoicePreview from './InvoicePreview';
-import type { InvoiceData } from './types';
-import { createEmptyInvoice, generatePaymentReference, computeTotals } from './types';
+import type { InvoiceData, BuyerData } from './types';
+import { createEmptyInvoice, generatePaymentReference } from './types';
 
 interface Props {
   locale: string;
@@ -11,23 +11,24 @@ interface Props {
 const translations: Record<string, Record<string, string>> = {
   sr: {
     seller: 'Prodavac', buyer: 'Kupac', items: 'Stavke', details: 'Detalji',
-    preview: 'Pregled', form: 'Forma', generate: 'Generi\u0161i fakturu',
+    preview: 'Pregled', form: 'Forma', generate: 'Generiši fakturu',
     downloadPdf: 'Preuzmi PDF', downloadXml: 'Preuzmi XML',
     invoiceNumber: 'Broj fakture', issueDate: 'Datum izdavanja',
-    deliveryDate: 'Datum isporuke', dueDate: 'Rok pla\u0107anja',
+    deliveryDate: 'Datum isporuke', dueDate: 'Rok plaćanja',
     paymentReference: 'Poziv na broj', notes: 'Napomene',
     description: 'Opis', quantity: 'Kol.', unit: 'Jed.',
     unitPrice: 'Cena', vatRate: 'PDV %', amount: 'Iznos',
-    addItem: '+ Dodaj stavku', removeItem: 'Obri\u0161i',
+    addItem: '+ Dodaj stavku', removeItem: 'Obriši',
     pib: 'PIB', companyName: 'Naziv firme', address: 'Adresa',
-    city: 'Grad', bankAccount: 'Teku\u0107i ra\u010dun', bankName: 'Banka',
+    city: 'Grad', bankAccount: 'Tekući račun', bankName: 'Banka',
     vatRegistered: 'U sistemu PDV', editCompany: 'Izmeni podatke firme',
-    saveBuyer: 'Sa\u010duvaj kupca', validFields: 'polja validno',
-    generating: 'Generisanje...', success: 'Faktura uspe\u0161no generisana!',
-    error: 'Gre\u0161ka pri generisanju', mb: 'Mati\u010dni broj',
+    saveBuyer: 'Sačuvaj kupca', validFields: 'polja validno',
+    generating: 'Generisanje...', success: 'Faktura uspešno generisana!',
+    error: 'Greška pri generisanju', mb: 'Matični broj',
     subtotal: 'Osnovica', vat: 'PDV', total: 'Ukupno',
     days7: '7 dana', days15: '15 dana', days30: '30 dana', days60: '60 dana',
-    currency: 'RSD', postalCode: 'Po\u0161tanski broj', country: 'Dr\u017eava',
+    currency: 'RSD', postalCode: 'Poštanski broj', country: 'Država',
+    buyerAutoFilled: 'Kupac pronađen iz istorije',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
@@ -48,33 +49,74 @@ const translations: Record<string, Record<string, string>> = {
     subtotal: 'Subtotal', vat: 'VAT', total: 'Total',
     days7: '7 days', days15: '15 days', days30: '30 days', days60: '60 days',
     currency: 'RSD', postalCode: 'Postal code', country: 'Country',
+    buyerAutoFilled: 'Buyer found from history',
   },
   ru: {
-    seller: '\u041f\u0440\u043e\u0434\u0430\u0432\u0435\u0446', buyer: '\u041f\u043e\u043a\u0443\u043f\u0430\u0442\u0435\u043b\u044c', items: '\u041f\u043e\u0437\u0438\u0446\u0438\u0438', details: '\u0414\u0435\u0442\u0430\u043b\u0438',
-    preview: '\u041f\u0440\u0435\u0434\u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440', form: '\u0424\u043e\u0440\u043c\u0430', generate: '\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0447\u0451\u0442',
-    downloadPdf: '\u0421\u043a\u0430\u0447\u0430\u0442\u044c PDF', downloadXml: '\u0421\u043a\u0430\u0447\u0430\u0442\u044c XML',
-    invoiceNumber: '\u041d\u043e\u043c\u0435\u0440 \u0441\u0447\u0451\u0442\u0430', issueDate: '\u0414\u0430\u0442\u0430 \u0432\u044b\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u044f',
-    deliveryDate: '\u0414\u0430\u0442\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438', dueDate: '\u0421\u0440\u043e\u043a \u043e\u043f\u043b\u0430\u0442\u044b',
-    paymentReference: '\u0421\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u043f\u043b\u0430\u0442\u0451\u0436', notes: '\u041f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u044f',
-    description: '\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435', quantity: '\u041a\u043e\u043b.', unit: '\u0415\u0434.',
-    unitPrice: '\u0426\u0435\u043d\u0430', vatRate: '\u041d\u0414\u0421 %', amount: '\u0421\u0443\u043c\u043c\u0430',
-    addItem: '+ \u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c', removeItem: '\u0423\u0434\u0430\u043b\u0438\u0442\u044c',
-    pib: '\u041f\u0418\u0411', companyName: '\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435', address: '\u0410\u0434\u0440\u0435\u0441',
-    city: '\u0413\u043e\u0440\u043e\u0434', bankAccount: '\u0421\u0447\u0451\u0442', bankName: '\u0411\u0430\u043d\u043a',
-    vatRegistered: '\u0412 \u0441\u0438\u0441\u0442\u0435\u043c\u0435 \u041d\u0414\u0421', editCompany: '\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435',
-    saveBuyer: '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c', validFields: '\u043f\u043e\u043b\u0435\u0439 \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u043e',
-    generating: '\u0413\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044f...', success: '\u0421\u0447\u0451\u0442 \u0441\u043e\u0437\u0434\u0430\u043d!',
-    error: '\u041e\u0448\u0438\u0431\u043a\u0430', mb: '\u041c\u0430\u0442\u0438\u0447\u043d\u044b\u0439 \u043d\u043e\u043c\u0435\u0440',
-    subtotal: '\u041e\u0441\u043d\u043e\u0432\u0430', vat: '\u041d\u0414\u0421', total: '\u0418\u0442\u043e\u0433\u043e',
-    days7: '7 \u0434\u043d\u0435\u0439', days15: '15 \u0434\u043d\u0435\u0439', days30: '30 \u0434\u043d\u0435\u0439', days60: '60 \u0434\u043d\u0435\u0439',
-    currency: 'RSD', postalCode: '\u0418\u043d\u0434\u0435\u043a\u0441', country: '\u0421\u0442\u0440\u0430\u043d\u0430',
+    seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
+    preview: 'Предпросмотр', form: 'Форма', generate: 'Создать счёт',
+    downloadPdf: 'Скачать PDF', downloadXml: 'Скачать XML',
+    invoiceNumber: 'Номер счёта', issueDate: 'Дата выставления',
+    deliveryDate: 'Дата доставки', dueDate: 'Срок оплаты',
+    paymentReference: 'Ссылка на платёж', notes: 'Примечания',
+    description: 'Описание', quantity: 'Кол.', unit: 'Ед.',
+    unitPrice: 'Цена', vatRate: 'НДС %', amount: 'Сумма',
+    addItem: '+ Добавить', removeItem: 'Удалить',
+    pib: 'ПИБ', companyName: 'Название', address: 'Адрес',
+    city: 'Город', bankAccount: 'Счёт', bankName: 'Банк',
+    vatRegistered: 'В системе НДС', editCompany: 'Изменить данные',
+    saveBuyer: 'Сохранить', validFields: 'полей заполнено',
+    generating: 'Генерация...', success: 'Счёт создан!',
+    error: 'Ошибка', mb: 'Матичный номер',
+    subtotal: 'Основа', vat: 'НДС', total: 'Итого',
+    days7: '7 дней', days15: '15 дней', days30: '30 дней', days60: '60 дней',
+    currency: 'RSD', postalCode: 'Индекс', country: 'Страна',
+    buyerAutoFilled: 'Покупатель найден в истории',
   },
 };
+
+// ── localStorage helpers ──────────────────────────────────────────────────────
+
+interface SavedBuyer { name: string; address: string; city: string }
+interface SavedItem { description: string; unit: string; unitPrice: number; vatRate: number }
+
+function loadSavedBuyers(): Record<string, SavedBuyer> {
+  if (typeof window === 'undefined') return {};
+  try { return JSON.parse(localStorage.getItem('efaktura-buyers') || '{}'); } catch { return {}; }
+}
+
+function persistBuyer(pib: string, buyer: BuyerData) {
+  try {
+    const all = loadSavedBuyers();
+    all[pib] = { name: buyer.name, address: buyer.address, city: buyer.city };
+    localStorage.setItem('efaktura-buyers', JSON.stringify(all));
+  } catch {}
+}
+
+function loadSavedItems(): SavedItem[] {
+  if (typeof window === 'undefined') return [];
+  try { return JSON.parse(localStorage.getItem('efaktura-items') || '[]'); } catch { return []; }
+}
+
+function persistItems(items: InvoiceData['items']) {
+  try {
+    const saved = loadSavedItems();
+    for (const item of items) {
+      if (!item.description?.trim()) continue;
+      const entry: SavedItem = { description: item.description, unit: item.unit, unitPrice: item.unitPrice, vatRate: item.vatRate };
+      const idx = saved.findIndex(s => s.description === item.description);
+      if (idx >= 0) saved[idx] = entry; else saved.unshift(entry);
+    }
+    localStorage.setItem('efaktura-items', JSON.stringify(saved.slice(0, 50)));
+  } catch {}
+}
+
+// ── Reducer ───────────────────────────────────────────────────────────────────
 
 type Action =
   | { type: 'SET_FIELD'; path: string; value: any }
   | { type: 'SET_SELLER_FIELD'; field: string; value: any }
   | { type: 'SET_BUYER_FIELD'; field: string; value: any }
+  | { type: 'SET_BUYER'; buyer: BuyerData }
   | { type: 'SET_ITEM_FIELD'; index: number; field: string; value: any }
   | { type: 'ADD_ITEM' }
   | { type: 'REMOVE_ITEM'; index: number }
@@ -88,6 +130,8 @@ function reducer(state: InvoiceData, action: Action): InvoiceData {
       return { ...state, seller: { ...state.seller, [action.field]: action.value } };
     case 'SET_BUYER_FIELD':
       return { ...state, buyer: { ...state.buyer, [action.field]: action.value } };
+    case 'SET_BUYER':
+      return { ...state, buyer: action.buyer };
     case 'SET_ITEM_FIELD': {
       const items = [...state.items];
       items[action.index] = { ...items[action.index], [action.field]: action.value };
@@ -126,26 +170,24 @@ function trackEvent(event: string, data?: Record<string, any>) {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', event, data);
     }
-    // Also fire a beacon for our own analytics
     if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
       navigator.sendBeacon('/api/analytics', JSON.stringify({ event, ...data, ts: Date.now() }));
     }
   } catch {}
 }
 
+// ── Component ─────────────────────────────────────────────────────────────────
+
 export default function Studio({ locale, apiUrl }: Props) {
   const t = translations[locale] || translations.sr;
 
-  // Track studio open
   useEffect(() => { trackEvent('efaktura_studio_open', { locale }); }, []);
 
   const [invoice, dispatch] = useReducer(reducer, null, () => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem('efaktura-seller') : null;
     const empty = createEmptyInvoice();
     if (saved) {
-      try {
-        empty.seller = JSON.parse(saved);
-      } catch {}
+      try { empty.seller = JSON.parse(saved); } catch {}
     }
     return empty;
   });
@@ -156,6 +198,13 @@ export default function Studio({ locale, apiUrl }: Props) {
   const [showDetails, setShowDetails] = useState(false);
   const [mobileTab, setMobileTab] = useState<'form' | 'preview'>('form');
   const [editingSeller, setEditingSeller] = useState(false);
+
+  // Buyer auto-fill flash
+  const [buyerFlash, setBuyerFlash] = useState(false);
+
+  // Item autocomplete
+  const [itemSuggestions, setItemSuggestions] = useState<Record<number, SavedItem[]>>({});
+  const autocompleteRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   const { valid, total } = countValid(invoice);
 
@@ -173,6 +222,53 @@ export default function Studio({ locale, apiUrl }: Props) {
       dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: ref });
     }
   }, [invoice.invoiceNumber]);
+
+  // Close autocomplete on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      const hasOpen = Object.keys(itemSuggestions).some(k => (itemSuggestions as any)[k]?.length > 0);
+      if (!hasOpen) return;
+      const target = e.target as Node;
+      const clickedInside = Object.values(autocompleteRefs.current).some(ref => ref?.contains(target));
+      if (!clickedInside) setItemSuggestions({});
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [itemSuggestions]);
+
+  // Buyer PIB lookup
+  function handleBuyerPibChange(val: string) {
+    dispatch({ type: 'SET_BUYER_FIELD', field: 'pib', value: val });
+    if (val.length === 9) {
+      const saved = loadSavedBuyers();
+      if (saved[val]) {
+        dispatch({ type: 'SET_BUYER', buyer: { ...invoice.buyer, pib: val, ...saved[val] } });
+        setBuyerFlash(true);
+        setTimeout(() => setBuyerFlash(false), 1500);
+      }
+    }
+  }
+
+  // Item description autocomplete
+  function handleItemDescriptionChange(idx: number, val: string) {
+    dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'description', value: val });
+    if (val.trim().length >= 1) {
+      const saved = loadSavedItems();
+      const lower = val.toLowerCase();
+      const matches = saved.filter(s => s.description.toLowerCase().includes(lower)).slice(0, 6);
+      setItemSuggestions(prev => ({ ...prev, [idx]: matches }));
+    } else {
+      setItemSuggestions(prev => ({ ...prev, [idx]: [] }));
+    }
+  }
+
+  function applyItemSuggestion(idx: number, suggestion: SavedItem) {
+    dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'description', value: suggestion.description });
+    dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'unit', value: suggestion.unit });
+    dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'unitPrice', value: suggestion.unitPrice });
+    dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'vatRate', value: suggestion.vatRate });
+    setItemSuggestions(prev => ({ ...prev, [idx]: [] }));
+  }
 
   const handleGenerate = async () => {
     setGenStatus('generating');
@@ -207,6 +303,11 @@ export default function Studio({ locale, apiUrl }: Props) {
           setDownloadData(dlData);
           setGenStatus('ready');
           trackEvent('efaktura_generate_success', { locale });
+          // Save buyer and items to localStorage for future auto-fill
+          if (invoice.buyer.pib && /^\d{9}$/.test(invoice.buyer.pib) && invoice.buyer.name) {
+            persistBuyer(invoice.buyer.pib, invoice.buyer);
+          }
+          persistItems(invoice.items);
           return;
         }
         if (status.status === 'error') {
@@ -345,7 +446,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                     <p className="font-medium text-text">{invoice.seller.name}</p>
                     {invoice.seller.address && <p>{invoice.seller.address}, {invoice.seller.city}</p>}
                     {invoice.seller.pib && <p>PIB: {invoice.seller.pib}</p>}
-                    {invoice.seller.bankAccount && <p>Ra\u010dun: {invoice.seller.bankAccount}</p>}
+                    {invoice.seller.bankAccount && <p>Račun: {invoice.seller.bankAccount}</p>}
                   </>
                 ) : (
                   <p className="text-text-muted italic">{t.editCompany}</p>
@@ -355,13 +456,24 @@ export default function Studio({ locale, apiUrl }: Props) {
           </div>
 
           {/* Buyer */}
-          <div className={sectionClass}>
-            <h2 className="text-text font-semibold mb-3">{t.buyer}</h2>
+          <div className={`${sectionClass} transition-all duration-300 ${buyerFlash ? 'ring-2 ring-green-500 ring-opacity-60' : ''}`}>
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-text font-semibold">{t.buyer}</h2>
+              {buyerFlash && (
+                <span className="text-green-400 text-xs font-medium animate-pulse">
+                  ✓ {t.buyerAutoFilled}
+                </span>
+              )}
+            </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className={labelClass}>{t.pib}</label>
-                <input className={inputClass} value={invoice.buyer.pib || ''} maxLength={9}
-                  onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'pib', value: e.target.value.replace(/\D/g, '') })} />
+                <input
+                  className={`${inputClass} ${buyerFlash ? 'border-green-500' : ''}`}
+                  value={invoice.buyer.pib || ''}
+                  maxLength={9}
+                  onChange={e => handleBuyerPibChange(e.target.value.replace(/\D/g, ''))}
+                />
               </div>
               <div>
                 <label className={labelClass}>{t.companyName} *</label>
@@ -392,16 +504,43 @@ export default function Studio({ locale, apiUrl }: Props) {
                       onClick={() => dispatch({ type: 'REMOVE_ITEM', index: idx })}
                       className="absolute top-2 right-2 text-red-400 hover:text-red-300 text-xs"
                     >
-                      {'\u2715'}
+                      ✕
                     </button>
                   )}
-                  <div className="mb-2">
+                  {/* Description with autocomplete */}
+                  <div className="mb-2 relative" ref={el => { autocompleteRefs.current[idx] = el; }}>
                     <input
                       className={inputClass}
                       placeholder={t.description}
                       value={item.description}
-                      onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'description', value: e.target.value })}
+                      onChange={e => handleItemDescriptionChange(idx, e.target.value)}
+                      onFocus={() => {
+                        if (item.description.trim().length >= 1) {
+                          const saved = loadSavedItems();
+                          const lower = item.description.toLowerCase();
+                          const matches = saved.filter(s => s.description.toLowerCase().includes(lower)).slice(0, 6);
+                          setItemSuggestions(prev => ({ ...prev, [idx]: matches }));
+                        }
+                      }}
+                      autoComplete="off"
                     />
+                    {itemSuggestions[idx] && itemSuggestions[idx].length > 0 && (
+                      <div className="absolute left-0 right-0 top-full mt-1 bg-bg-card border border-border-light rounded-lg shadow-lg z-20 overflow-hidden">
+                        {itemSuggestions[idx].map((s, si) => (
+                          <button
+                            key={si}
+                            type="button"
+                            className="w-full text-left px-3 py-2 text-sm hover:bg-bg-alt transition-colors flex items-center justify-between gap-2"
+                            onMouseDown={e => { e.preventDefault(); applyItemSuggestion(idx, s); }}
+                          >
+                            <span className="text-text truncate">{s.description}</span>
+                            <span className="text-text-muted text-xs whitespace-nowrap shrink-0">
+                              {s.unitPrice.toLocaleString('sr-Latn-RS')} RSD / {s.unit}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <div className="grid grid-cols-4 gap-2">
                     <div>
@@ -458,7 +597,7 @@ export default function Studio({ locale, apiUrl }: Props) {
               className="text-text font-semibold w-full text-left flex items-center justify-between"
             >
               <span>{t.details}</span>
-              <span className={`transform transition-transform ${showDetails ? 'rotate-180' : ''}`}>{'\u25BC'}</span>
+              <span className={`transform transition-transform ${showDetails ? 'rotate-180' : ''}`}>▼</span>
             </button>
             {showDetails && (
               <div className="grid grid-cols-2 gap-3 mt-3">
@@ -508,9 +647,8 @@ export default function Studio({ locale, apiUrl }: Props) {
             )}
           </div>
 
-          {/* Sticky footer with validation + generate button */}
+          {/* Sticky footer */}
           <div className="sticky bottom-0 bg-bg border-t border-border p-4 -mx-4 md:-mx-6">
-            {/* Validation progress */}
             <div className="flex items-center gap-3 mb-3">
               <div className="flex-1 bg-bg-alt rounded-full h-2">
                 <div
