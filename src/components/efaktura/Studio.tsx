@@ -29,6 +29,7 @@ const translations: Record<string, Record<string, string>> = {
     days7: '7 dana', days15: '15 dana', days30: '30 dana', days60: '60 dana',
     currency: 'RSD', postalCode: 'Poštanski broj', country: 'Država',
     buyerAutoFilled: 'Kupac pronađen iz istorije',
+    pibHint: '9 cifara', bankAccountHint: 'npr. 160-0000000000000-00',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
@@ -50,6 +51,7 @@ const translations: Record<string, Record<string, string>> = {
     days7: '7 days', days15: '15 days', days30: '30 days', days60: '60 days',
     currency: 'RSD', postalCode: 'Postal code', country: 'Country',
     buyerAutoFilled: 'Buyer found from history',
+    pibHint: '9 digits', bankAccountHint: 'e.g. 160-0000000000000-00',
   },
   ru: {
     seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
@@ -71,6 +73,7 @@ const translations: Record<string, Record<string, string>> = {
     days7: '7 дней', days15: '15 дней', days30: '30 дней', days60: '60 дней',
     currency: 'RSD', postalCode: 'Индекс', country: 'Страна',
     buyerAutoFilled: 'Покупатель найден в истории',
+    pibHint: '9 цифр', bankAccountHint: 'напр. 160-0000000000000-00',
   },
 };
 
@@ -337,8 +340,31 @@ export default function Studio({ locale, apiUrl }: Props) {
   };
 
   const inputClass = 'w-full bg-bg-alt border border-border-light rounded px-3 py-2 text-text text-sm focus:outline-none focus:border-primary transition-colors';
+  const inputError = 'w-full bg-bg-alt border border-red-500/50 rounded px-3 py-2 text-text text-sm focus:outline-none focus:border-red-500 transition-colors';
+  const inputValid = 'w-full bg-bg-alt border border-green-500/50 rounded px-3 py-2 text-text text-sm focus:outline-none focus:border-green-500 transition-colors';
   const labelClass = 'block text-text-muted text-xs mb-1';
   const sectionClass = 'bg-bg-card rounded-lg p-4 mb-4';
+
+  // PIB validation helper: empty=neutral, 9 digits=valid, 1-8=error
+  function pibClass(val: string | undefined): string {
+    if (!val || val.length === 0) return inputClass;
+    return /^\d{9}$/.test(val) ? inputValid : inputError;
+  }
+
+  // Bank account: 18 digits (with or without dashes)
+  function bankClass(val: string | undefined): string {
+    if (!val || val.length === 0) return inputClass;
+    const digits = val.replace(/\D/g, '');
+    return digits.length === 18 ? inputValid : (digits.length > 0 ? inputError : inputClass);
+  }
+
+  // Format bank account with dashes: XXX-XXXXXXXXXXXXX-XX
+  function formatBankAccount(raw: string): string {
+    const digits = raw.replace(/\D/g, '');
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 16) return digits.slice(0, 3) + '-' + digits.slice(3);
+    return digits.slice(0, 3) + '-' + digits.slice(3, 16) + '-' + digits.slice(16, 18);
+  }
 
   return (
     <div className="min-h-screen bg-bg">
@@ -401,8 +427,9 @@ export default function Studio({ locale, apiUrl }: Props) {
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'name', value: e.target.value })} />
                 </div>
                 <div>
-                  <label className={labelClass}>{t.pib} *</label>
-                  <input className={inputClass} value={invoice.seller.pib} maxLength={9}
+                  <label className={labelClass}>{t.pib} * <span className="text-text-muted/60">({t.pibHint})</span></label>
+                  <input className={pibClass(invoice.seller.pib)} value={invoice.seller.pib} maxLength={9}
+                    placeholder="123456789"
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'pib', value: e.target.value.replace(/\D/g, '') })} />
                 </div>
                 <div>
@@ -421,9 +448,10 @@ export default function Studio({ locale, apiUrl }: Props) {
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'mb', value: e.target.value })} />
                 </div>
                 <div>
-                  <label className={labelClass}>{t.bankAccount}</label>
-                  <input className={inputClass} value={invoice.seller.bankAccount || ''}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'bankAccount', value: e.target.value })} />
+                  <label className={labelClass}>{t.bankAccount} <span className="text-text-muted/60">({t.bankAccountHint})</span></label>
+                  <input className={bankClass(invoice.seller.bankAccount)} value={invoice.seller.bankAccount || ''}
+                    placeholder="160-0000000000000-00" maxLength={20}
+                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'bankAccount', value: formatBankAccount(e.target.value) })} />
                 </div>
                 <div>
                   <label className={labelClass}>{t.bankName}</label>
@@ -467,11 +495,12 @@ export default function Studio({ locale, apiUrl }: Props) {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className={labelClass}>{t.pib}</label>
+                <label className={labelClass}>{t.pib} <span className="text-text-muted/60">({t.pibHint})</span></label>
                 <input
-                  className={`${inputClass} ${buyerFlash ? 'border-green-500' : ''}`}
+                  className={buyerFlash ? inputValid : pibClass(invoice.buyer.pib)}
                   value={invoice.buyer.pib || ''}
                   maxLength={9}
+                  placeholder="123456789"
                   onChange={e => handleBuyerPibChange(e.target.value.replace(/\D/g, ''))}
                 />
               </div>
@@ -546,8 +575,10 @@ export default function Studio({ locale, apiUrl }: Props) {
                     <div>
                       <label className={labelClass}>{t.quantity}</label>
                       <input type="number" step="0.01" min="0" className={inputClass}
-                        value={item.quantity}
-                        onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'quantity', value: parseFloat(e.target.value) || 0 })} />
+                        value={item.quantity || ''}
+                        placeholder="1"
+                        onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'quantity', value: parseFloat(e.target.value) || 0 })}
+                        onBlur={e => { if (!e.target.value) dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'quantity', value: 1 }); }} />
                     </div>
                     <div>
                       <label className={labelClass}>{t.unit}</label>
@@ -566,7 +597,8 @@ export default function Studio({ locale, apiUrl }: Props) {
                     <div>
                       <label className={labelClass}>{t.unitPrice}</label>
                       <input type="number" step="0.01" min="0" className={inputClass}
-                        value={item.unitPrice}
+                        value={item.unitPrice || ''}
+                        placeholder="0.00"
                         onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'unitPrice', value: parseFloat(e.target.value) || 0 })} />
                     </div>
                     <div>
