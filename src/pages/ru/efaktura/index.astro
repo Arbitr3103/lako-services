@@ -253,9 +253,9 @@ const stepIcons = [
               ))}
             </ul>
             <a
-              href={plan.price !== '0' && !plan.popular ? 'https://app.echain.world' : getLocalizedPath('/efaktura/studio', locale)}
-              target={plan.price !== '0' && !plan.popular ? '_blank' : undefined}
-              rel={plan.price !== '0' && !plan.popular ? 'noopener' : undefined}
+              href={plan.price !== '0' ? 'https://app.echain.world' : getLocalizedPath('/efaktura/studio', locale)}
+              target={plan.price !== '0' ? '_blank' : undefined}
+              rel={plan.price !== '0' ? 'noopener' : undefined}
               class:list={[
                 "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
                 plan.popular
