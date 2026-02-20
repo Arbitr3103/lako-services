@@ -30,6 +30,9 @@ const translations: Record<string, Record<string, string>> = {
     currency: 'RSD', postalCode: 'Poštanski broj', country: 'Država',
     buyerAutoFilled: 'Kupac pronađen iz istorije',
     pibHint: '9 cifara', bankAccountHint: 'npr. 160-0000000000000-00',
+    proUpsell: 'Želite više mogućnosti?',
+    proFeatures: 'Bez limita \u00b7 bez žiga \u00b7 istorija \u00b7 e-Potpis',
+    proAction: 'Isprobajte Pro',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
@@ -52,6 +55,9 @@ const translations: Record<string, Record<string, string>> = {
     currency: 'RSD', postalCode: 'Postal code', country: 'Country',
     buyerAutoFilled: 'Buyer found from history',
     pibHint: '9 digits', bankAccountHint: 'e.g. 160-0000000000000-00',
+    proUpsell: 'Want more features?',
+    proFeatures: 'No limits \u00b7 no watermark \u00b7 history \u00b7 e-Signature',
+    proAction: 'Try Pro',
   },
   ru: {
     seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
@@ -74,6 +80,9 @@ const translations: Record<string, Record<string, string>> = {
     currency: 'RSD', postalCode: 'Индекс', country: 'Страна',
     buyerAutoFilled: 'Покупатель найден в истории',
     pibHint: '9 цифр', bankAccountHint: 'напр. 160-0000000000000-00',
+    proUpsell: 'Хотите больше возможностей?',
+    proFeatures: 'Без лимита \u00b7 без žiga \u00b7 история \u00b7 е-Подпис',
+    proAction: 'Попробовать Pro',
   },
 };
 
@@ -730,6 +739,18 @@ export default function Studio({ locale, apiUrl }: Props) {
                   >
                     {t.downloadXml}
                   </button>
+                </div>
+                <div className="mt-3 pt-3 border-t border-border-light text-center">
+                  <p className="text-text-muted text-xs mb-1">{t.proUpsell}</p>
+                  <p className="text-text-muted text-[10px] mb-2">{t.proFeatures}</p>
+                  <a
+                    href="https://app.echain.world"
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-block px-4 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors"
+                  >
+                    {t.proAction}
+                  </a>
                 </div>
               </div>
             ) : (
