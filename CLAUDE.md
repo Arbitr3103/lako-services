@@ -52,7 +52,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Logistics page** (`/logistics`): 12 sections focused on transport bot product. Hero CTA links directly to `t.me/lakoprevoz_bot`. Bot section (Section 9) has: video + CMR screenshot grid → bot card → feature grid with guide links → pricing. Final CTA also links to Telegram bot (not contact page). No "coming soon" features — only working functionality. CMR screenshot needs `bg-white` container (dark theme readability).
 
-**e-Faktura Studio** (`/efaktura`): Landing page (pure Astro) + `/efaktura/studio` (React SPA via `client:load`). Split-screen invoice builder: form left, live PDF preview right. Generates SEF-compliant PDF + UBL 2.1 XML. Backend on lako-bot (`POST /api/efaktura/*`). Feature flags: `{ ai: false, excel: false, sef: false }`. SoftwareApplication JSON-LD for SEO. Business plan CTA links to `t.me/Bragin_Arbitr` (not studio).
+**e-Faktura Studio** (`/efaktura`): Landing page (pure Astro) + `/efaktura/studio` (React SPA via `client:load`). Split-screen invoice builder: form left, live PDF preview right. Generates SEF-compliant PDF + UBL 2.1 XML. Backend on lako-bot (`POST /api/efaktura/*`). Feature flags: `{ ai: false, excel: false, sef: false }`. SoftwareApplication JSON-LD for SEO. **Pricing CTA links**: free plan → `/efaktura/studio`, paid plans (Pro/Business) → `https://app.echain.world` (external, `_blank`).
 
 **Trust banner**: Green gradient card with shield icon + 4 security bullet points + link to `/zastita-podataka`. Present on: efaktura landing, small-business, logistics pages (all 3 locales). i18n keys: `efaktura.trustBanner.*`, `smallBusiness.trustBanner.*`.
 
