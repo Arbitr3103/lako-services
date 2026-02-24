@@ -75,7 +75,7 @@ const translations: Record<string, Record<string, string>> = {
     downloadPdf: 'Скачать PDF', downloadXml: 'Скачать XML',
     invoiceNumber: 'Номер счёта', issueDate: 'Дата выставления',
     deliveryDate: 'Дата доставки', dueDate: 'Срок оплаты',
-    paymentReference: 'Основание платежа (poziv na broj)', paymentRefAuto: 'авто из номера счёта', notes: 'Примечания',
+    paymentReference: 'Основание платежа', paymentRefAuto: 'авто из номера счёта', notes: 'Примечания',
     description: 'Описание', quantity: 'Кол.', unit: 'Ед.',
     unitPrice: 'Цена', vatRate: 'НДС %', amount: 'Сумма',
     addItem: '+ Добавить', removeItem: 'Удалить',
