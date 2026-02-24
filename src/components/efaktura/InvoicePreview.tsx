@@ -16,6 +16,12 @@ const fmtDate = (d: string) => {
   return `${day}.${m}.${y}`;
 };
 
+const SIG_LABELS: Record<string, { issued: string; received: string; approved: string }> = {
+  sr: { issued: 'Fakturisao:', received: 'Primio:', approved: 'Odobrio:' },
+  en: { issued: 'Issued by:', received: 'Received by:', approved: 'Approved by:' },
+  ru: { issued: 'Выставил:', received: 'Получил:', approved: 'Утвердил:' },
+};
+
 export default function InvoicePreview({ data, locale }: Props) {
   const { lineItems, subtotal, totalVat, grandTotal, vatSummary } = useMemo(
     () => computeTotals(data),
@@ -130,15 +136,15 @@ export default function InvoicePreview({ data, locale }: Props) {
       {/* Signatures */}
       <div className="absolute bottom-8 left-8 right-8 flex justify-between text-[9px] text-center">
         <div className="w-1/3">
-          <p className="mb-6">Fakturisao:</p>
+          <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).issued}</p>
           <div className="border-t border-gray-400 mx-4"></div>
         </div>
         <div className="w-1/3">
-          <p className="mb-6">Primio:</p>
+          <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).received}</p>
           <div className="border-t border-gray-400 mx-4"></div>
         </div>
         <div className="w-1/3">
-          <p className="mb-6">Odobrio:</p>
+          <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).approved}</p>
           <div className="border-t border-gray-400 mx-4"></div>
         </div>
       </div>

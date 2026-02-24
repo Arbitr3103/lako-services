@@ -56,7 +56,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Trust banner**: Green gradient card with shield icon + 4 security bullet points + link to `/zastita-podataka`. Present on: efaktura landing, small-business, logistics pages (all 3 locales). i18n keys: `efaktura.trustBanner.*`, `smallBusiness.trustBanner.*`.
 
-**Analytics**: `trackEvent()` in Studio.tsx — gtag + sendBeacon. Events: `efaktura_studio_open`, `efaktura_generate_start`, `efaktura_generate_success`, `efaktura_download`.
+**Analytics**: Cloudflare Web Analytics (token `2332d731c66846b5b3d5471c5157bae1`) — JS snippet in `BaseLayout.astro` `<head>`. Provides: visits by country, page views, referrers, devices. Dashboard: Cloudflare → lako.services → Web Analytics. Enabled 2026-02-22. Additionally, `trackEvent()` in Studio.tsx — gtag + sendBeacon for e-Faktura events: `efaktura_studio_open`, `efaktura_generate_start`, `efaktura_generate_success`, `efaktura_download`.
 
 **CORS**: efaktura API routes (`/api/efaktura/*`) have origin restriction — only `lako.services` and `localhost:4321` allowed.
 

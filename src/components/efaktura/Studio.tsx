@@ -27,12 +27,17 @@ const translations: Record<string, Record<string, string>> = {
     error: 'Greška pri generisanju', mb: 'Matični broj',
     subtotal: 'Osnovica', vat: 'PDV', total: 'Ukupno',
     days7: '7 dana', days15: '15 dana', days30: '30 dana', days60: '60 dana',
+    quickSelect: 'Brzi izbor',
     currency: 'RSD', postalCode: 'Poštanski broj', country: 'Država',
     buyerAutoFilled: 'Kupac pronađen iz istorije',
     pibHint: '9 cifara', bankAccountHint: 'npr. 160-0000000000000-00',
     proUpsell: 'Želite više mogućnosti?',
     proFeatures: 'Bez limita \u00b7 bez žiga \u00b7 istorija \u00b7 e-Potpis',
     proAction: 'Isprobajte Pro',
+    limitReachedAnon: 'Dostigli ste mesečni limit od 3 besplatne fakture.',
+    limitReachedFree: 'Dostigli ste mesečni limit od 10 faktura.',
+    limitCtaAnon: 'Napravite nalog za 10 faktura mesečno',
+    limitCtaPro: 'Nadogradite na Pro za neograničen broj',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
@@ -52,12 +57,17 @@ const translations: Record<string, Record<string, string>> = {
     error: 'Error generating invoice', mb: 'Registration number',
     subtotal: 'Subtotal', vat: 'VAT', total: 'Total',
     days7: '7 days', days15: '15 days', days30: '30 days', days60: '60 days',
+    quickSelect: 'Quick select',
     currency: 'RSD', postalCode: 'Postal code', country: 'Country',
     buyerAutoFilled: 'Buyer found from history',
     pibHint: '9 digits', bankAccountHint: 'e.g. 160-0000000000000-00',
     proUpsell: 'Want more features?',
     proFeatures: 'No limits \u00b7 no watermark \u00b7 history \u00b7 e-Signature',
     proAction: 'Try Pro',
+    limitReachedAnon: 'You have reached the free limit of 3 invoices per month.',
+    limitReachedFree: 'You have reached the limit of 10 invoices per month.',
+    limitCtaAnon: 'Create an account for 10 invoices per month',
+    limitCtaPro: 'Upgrade to Pro for unlimited invoices',
   },
   ru: {
     seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
@@ -77,12 +87,17 @@ const translations: Record<string, Record<string, string>> = {
     error: 'Ошибка', mb: 'Матичный номер',
     subtotal: 'Основа', vat: 'НДС', total: 'Итого',
     days7: '7 дней', days15: '15 дней', days30: '30 дней', days60: '60 дней',
+    quickSelect: 'Быстрый выбор',
     currency: 'RSD', postalCode: 'Индекс', country: 'Страна',
     buyerAutoFilled: 'Покупатель найден в истории',
     pibHint: '9 цифр', bankAccountHint: 'напр. 160-0000000000000-00',
     proUpsell: 'Хотите больше возможностей?',
     proFeatures: 'Без лимита \u00b7 без žiga \u00b7 история \u00b7 е-Подпис',
     proAction: 'Попробовать Pro',
+    limitReachedAnon: 'Вы достигли бесплатного лимита — 3 счёта в месяц.',
+    limitReachedFree: 'Вы достигли лимита — 10 счетов в месяц.',
+    limitCtaAnon: 'Создайте аккаунт для 10 счетов в месяц',
+    limitCtaPro: 'Перейдите на Pro для безлимита',
   },
 };
 
@@ -195,9 +210,6 @@ function trackEvent(event: string, data?: Record<string, any>) {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', event, data);
     }
-    if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-      navigator.sendBeacon('/api/analytics', JSON.stringify({ event, ...data, ts: Date.now() }));
-    }
   } catch {}
 }
 
@@ -217,7 +229,7 @@ export default function Studio({ locale, apiUrl }: Props) {
     return empty;
   });
 
-  const [genStatus, setGenStatus] = useState<'idle' | 'generating' | 'ready' | 'error'>('idle');
+  const [genStatus, setGenStatus] = useState<'idle' | 'generating' | 'ready' | 'error' | 'limit_anon' | 'limit_free'>('idle');
   const [invoiceId, setInvoiceId] = useState<string | null>(null);
   const [downloadData, setDownloadData] = useState<{ pdf: string; xml: string } | null>(null);
   const [showDetails, setShowDetails] = useState(false);
@@ -306,6 +318,14 @@ export default function Studio({ locale, apiUrl }: Props) {
       });
       if (!createRes.ok) {
         const err = await createRes.json();
+        if (createRes.status === 429 && err.error?.includes('3 invoices')) {
+          setGenStatus('limit_anon');
+          return;
+        }
+        if (createRes.status === 429 && err.error?.includes('10 invoices')) {
+          setGenStatus('limit_free');
+          return;
+        }
         throw new Error(err.error || 'Failed to create invoice');
       }
       const { id } = await createRes.json();
@@ -671,7 +691,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'dueDate', value: e.target.value })} />
                 </div>
                 <div>
-                  <label className={labelClass}>Quick select</label>
+                  <label className={labelClass}>{t.quickSelect}</label>
                   <div className="flex gap-1">
                     {[7, 15, 30, 60].map(days => (
                       <button key={days}
@@ -682,7 +702,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                         }}
                         className="px-2 py-1 text-xs bg-bg-alt border border-border-light rounded text-text-muted hover:text-primary hover:border-primary transition-colors"
                       >
-                        {days}d
+                        {(t as any)[`days${days}`]}
                       </button>
                     ))}
                   </div>
@@ -756,10 +776,12 @@ export default function Studio({ locale, apiUrl }: Props) {
             ) : (
               <button
                 onClick={handleGenerate}
-                disabled={genStatus === 'generating' || valid < total}
+                disabled={genStatus === 'generating' || genStatus === 'limit_anon' || genStatus === 'limit_free' || valid < total}
                 className={`w-full py-3 rounded-lg font-medium text-white transition-colors ${
                   genStatus === 'generating'
                     ? 'bg-gray-600 cursor-wait'
+                    : genStatus === 'limit_anon' || genStatus === 'limit_free'
+                    ? 'bg-gray-700 cursor-not-allowed opacity-50'
                     : valid < total
                     ? 'bg-gray-700 cursor-not-allowed opacity-50'
                     : 'bg-primary hover:bg-primary-dark'
@@ -770,6 +792,32 @@ export default function Studio({ locale, apiUrl }: Props) {
             )}
             {genStatus === 'error' && (
               <p className="text-red-400 text-sm text-center mt-2">{t.error}</p>
+            )}
+            {genStatus === 'limit_anon' && (
+              <div className="mt-3 p-3 rounded-lg bg-orange-500/10 border border-orange-500/30 text-center space-y-2">
+                <p className="text-orange-400 text-sm font-medium">{t.limitReachedAnon}</p>
+                <a
+                  href="https://app.echain.world"
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-block px-4 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors"
+                >
+                  {t.limitCtaAnon}
+                </a>
+              </div>
+            )}
+            {genStatus === 'limit_free' && (
+              <div className="mt-3 p-3 rounded-lg bg-orange-500/10 border border-orange-500/30 text-center space-y-2">
+                <p className="text-orange-400 text-sm font-medium">{t.limitReachedFree}</p>
+                <a
+                  href="https://app.echain.world"
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-block px-4 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors"
+                >
+                  {t.limitCtaPro}
+                </a>
+              </div>
             )}
           </div>
         </div>
