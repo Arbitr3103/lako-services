@@ -15,7 +15,7 @@
     "hero": {
       "title": "Automatizacija — lako i brzo",
       "subtitle": "Telegram botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
-      "cta": "Zakažite besplatnu konsultaciju",
+      "cta": "Probajte besplatno",
       "ctaSecondary": "Kako to radi?"
     },
     "value": {
@@ -193,7 +193,7 @@
         { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, sve radi kroz Telegram — kreirate dokumente direktno sa utovara ili istovara, bez kompjutera." },
         { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše XML fajl u UBL 2.1 formatu. Vi ga samo učitate na portal efaktura.gov.rs — bez ručnog unosa." },
         { "question": "Nemam dispečera — imam li sve funkcije?", "answer": "Da, imate pristup svim modulima — rejsovi, CMR, fakture, e-fakture, statistika. Dispečer nije potreban." },
-        { "question": "Koliko vremena treba za uvođenje?", "answer": "Ceo proces traje samo 1 radni dan. Registrujte se, unesite podatke firme — i počnite da radite. Sva uputstva su na sajtu." },
+        { "question": "Koliko vremena treba za uvođenje?", "answer": "Registrujte se, unesite podatke firme — i počnite da radite odmah. Sva uputstva su na sajtu." },
         { "question": "Da li vozačima treba pametan telefon?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
         { "question": "Da li Lako radi sa ERP sistemima?", "answer": "Lako radi kao samostalan sistem i ne zahteva integraciju sa ERP softverom (PANTHEON, SAP i dr.). Dokumenti se generišu nezavisno." },
         { "question": "Koliko košta?", "answer": "Solo preduzetnici: 1.490 RSD mesečno. Kompanije: 3.500 RSD mesečno. Early Adopter program: 3 meseca besplatno uz povratne informacije. Svi ostali: 30 dana probnog perioda bez obaveza." },
@@ -1280,7 +1280,7 @@
     },
     "contact": {
       "title": "Kontakt — Lako Services | Novi Sad",
-      "description": "Zakažite besplatnu konsultaciju. Telegram, WhatsApp, email — javite nam se na način koji vam odgovara."
+      "description": "Pišite nam. Telegram, WhatsApp, email — javite nam se na način koji vam odgovara."
 
     },
     "registerBusiness": {

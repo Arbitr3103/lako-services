@@ -15,7 +15,7 @@
     "hero": {
       "title": "Automation made easy",
       "subtitle": "Telegram bots for your business. Save time and money with smart automation.",
-      "cta": "Schedule a free consultation",
+      "cta": "Try it free",
       "ctaSecondary": "How it works?"
     },
     "value": {
@@ -193,7 +193,7 @@
         { "question": "Can I use it from my phone, on the road?", "answer": "Yes, everything works through Telegram — create documents right from the loading or unloading site, no computer needed." },
         { "question": "What about the SEF portal?", "answer": "The bot generates an XML file in UBL 2.1 format. You just upload it to efaktura.gov.rs — no manual entry required." },
         { "question": "I don't have a dispatcher — do I get all features?", "answer": "Yes, you have access to all modules — trips, CMR, invoices, e-invoices, statistics. No dispatcher needed." },
-        { "question": "How long does onboarding take?", "answer": "The entire process takes 1 day. Sign up, enter your company details — and start working. All instructions are on our website." },
+        { "question": "How long does onboarding take?", "answer": "Sign up, enter your company details — and start working right away. All instructions are on our website." },
         { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
         { "question": "Does Lako work with ERP systems?", "answer": "Lako works as a standalone system and does not require ERP integration (PANTHEON, SAP, etc.). Documents are generated independently." },
         { "question": "How much does it cost?", "answer": "Solo entrepreneurs: 1,490 RSD/month. Companies: 3,500 RSD/month. First 5 clients: 3 months free. Everyone else: 30-day free trial, no obligations." },
@@ -1280,7 +1280,7 @@
     },
     "contact": {
       "title": "Contact — Lako Services | Novi Sad",
-      "description": "Schedule a free consultation. Telegram, WhatsApp, email — reach us the way that works for you."
+      "description": "Get in touch. Telegram, WhatsApp, email — reach us the way that works for you."
     },
     "registerBusiness": {
       "title": "Add your business to catalog | Lako Services",
