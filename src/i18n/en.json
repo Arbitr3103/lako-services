@@ -230,7 +230,7 @@
       "video": {
         "title": "See how it works",
         "placeholder": "Bot video presentation",
-        "comingSoon": "Video coming soon"
+        "comingSoon": ""
       },
       "security": {
         "question": "Is my data safe?",
