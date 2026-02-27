@@ -766,7 +766,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                   <a
                     href="https://app.echain.world"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     className="inline-block px-4 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors"
                   >
                     {t.proAction}
@@ -799,7 +799,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                 <a
                   href="https://app.echain.world"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   className="inline-block px-4 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors"
                 >
                   {t.limitCtaAnon}
@@ -812,7 +812,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                 <a
                   href="https://app.echain.world"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   className="inline-block px-4 py-1.5 text-xs font-medium bg-accent/10 text-accent hover:bg-accent/20 rounded-lg transition-colors"
                 >
                   {t.limitCtaPro}

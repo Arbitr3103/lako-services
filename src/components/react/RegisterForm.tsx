@@ -50,7 +50,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="businessName" className="block font-medium mb-1 text-text">
           {form.businessName} *
         </label>
-        <input type="text" id="businessName" name="businessName" required className={inputClass} />
+        <input type="text" id="businessName" name="businessName" required maxLength={200} autoComplete="organization" className={inputClass} />
       </div>
 
       {/* Category */}
@@ -88,7 +88,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="address" className="block font-medium mb-1 text-text">
           {form.address} *
         </label>
-        <input type="text" id="address" name="address" required className={inputClass} />
+        <input type="text" id="address" name="address" required maxLength={300} autoComplete="street-address" className={inputClass} />
       </div>
 
       {/* Phone */}
@@ -96,7 +96,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="phone" className="block font-medium mb-1 text-text">
           {form.phone} *
         </label>
-        <input type="tel" id="phone" name="phone" required className={inputClass} />
+        <input type="tel" id="phone" name="phone" required maxLength={30} autoComplete="tel" className={inputClass} />
       </div>
 
       {/* Instagram */}
@@ -104,7 +104,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="instagram" className="block font-medium mb-1 text-text">
           {form.instagram}
         </label>
-        <input type="text" id="instagram" name="instagram" className={inputClass} />
+        <input type="text" id="instagram" name="instagram" maxLength={100} className={inputClass} />
       </div>
 
       {/* Website */}
@@ -112,7 +112,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="website" className="block font-medium mb-1 text-text">
           {form.website}
         </label>
-        <input type="url" id="website" name="website" className={inputClass} />
+        <input type="url" id="website" name="website" maxLength={300} autoComplete="url" className={inputClass} />
       </div>
 
       {/* Contact Name */}
@@ -120,7 +120,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="contactName" className="block font-medium mb-1 text-text">
           {form.contactName} *
         </label>
-        <input type="text" id="contactName" name="contactName" required className={inputClass} />
+        <input type="text" id="contactName" name="contactName" required maxLength={200} autoComplete="name" className={inputClass} />
       </div>
 
       {/* Email */}
@@ -128,7 +128,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="email" className="block font-medium mb-1 text-text">
           {form.email} *
         </label>
-        <input type="email" id="email" name="email" required className={inputClass} />
+        <input type="email" id="email" name="email" required maxLength={254} autoComplete="email" className={inputClass} />
       </div>
 
       {/* Consent */}

@@ -1,14 +1,54 @@
 import type { APIRoute } from 'astro';
 
+const ALLOWED_ORIGINS = ['https://lako.services', 'http://localhost:4321'];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_FIELD_LEN = 500;
+const MAX_MESSAGE_LEN = 5000;
+
+function escapeTgHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/** Strip newlines and control chars to prevent email header injection */
+function sanitizeHeaderValue(s: string): string {
+  return s.replace(/[\r\n\t]/g, ' ').trim().slice(0, 200);
+}
+
+/** Trim and enforce max length */
+function sanitize(s: unknown, maxLen = MAX_FIELD_LEN): string {
+  if (typeof s !== 'string') return '';
+  return s.trim().slice(0, maxLen);
+}
+
 export const POST: APIRoute = async ({ request, locals }) => {
   try {
+    const origin = request.headers.get('Origin');
+    if (!origin || !ALLOWED_ORIGINS.includes(origin)) {
+      return new Response(
+        JSON.stringify({ error: 'Forbidden' }),
+        { status: 403, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const data = await request.json();
-    const { name, email, phone, businessType, message } = data;
+    const name = sanitize(data.name);
+    const email = sanitize(data.email);
+    const phone = sanitize(data.phone);
+    const businessType = sanitize(data.businessType);
+    const message = sanitize(data.message, MAX_MESSAGE_LEN);
 
     // Validate required fields
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ error: 'Missing required fields' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate email format
+    if (!EMAIL_RE.test(email)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid email address' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
@@ -35,15 +75,15 @@ export const POST: APIRoute = async ({ request, locals }) => {
             from: 'Lako Services <noreply@lako.services>',
             to: 'info@lako.services',
             reply_to: email,
-            subject: `Nova poruka od ${name} (${businessType})`,
+            subject: `Nova poruka od ${sanitizeHeaderValue(name)} (${sanitizeHeaderValue(businessType)})`,
             html: `
               <h2>Nova poruka sa sajta</h2>
-              <p><strong>Ime:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Telefon:</strong> ${phone || 'N/A'}</p>
-              <p><strong>Tip biznisa:</strong> ${businessType}</p>
+              <p><strong>Ime:</strong> ${escapeTgHtml(name)}</p>
+              <p><strong>Email:</strong> ${escapeTgHtml(email)}</p>
+              <p><strong>Telefon:</strong> ${escapeTgHtml(phone || 'N/A')}</p>
+              <p><strong>Tip biznisa:</strong> ${escapeTgHtml(businessType)}</p>
               <p><strong>Poruka:</strong></p>
-              <p>${message}</p>
+              <p>${escapeTgHtml(message)}</p>
             `,
           }),
         });
@@ -66,13 +106,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
         const text = [
           `<b>Nova poruka sa sajta!</b>`,
           ``,
-          `<b>Ime:</b> ${name}`,
-          `<b>Email:</b> ${email}`,
-          `<b>Telefon:</b> ${phone || 'N/A'}`,
-          `<b>Tip biznisa:</b> ${businessType}`,
+          `<b>Ime:</b> ${escapeTgHtml(name)}`,
+          `<b>Email:</b> ${escapeTgHtml(email)}`,
+          `<b>Telefon:</b> ${escapeTgHtml(phone || 'N/A')}`,
+          `<b>Tip biznisa:</b> ${escapeTgHtml(businessType)}`,
           ``,
           `<b>Poruka:</b>`,
-          message,
+          escapeTgHtml(message),
         ].join('\n');
 
         const tgRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {

@@ -52,6 +52,8 @@ export default function ContactForm({ locale }: Props) {
           id="name"
           name="name"
           required
+          maxLength={200}
+          autoComplete="name"
           className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         />
       </div>
@@ -66,6 +68,8 @@ export default function ContactForm({ locale }: Props) {
           id="email"
           name="email"
           required
+          maxLength={254}
+          autoComplete="email"
           className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         />
       </div>
@@ -79,6 +83,8 @@ export default function ContactForm({ locale }: Props) {
           type="tel"
           id="phone"
           name="phone"
+          maxLength={30}
+          autoComplete="tel"
           className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
         />
       </div>
@@ -113,6 +119,7 @@ export default function ContactForm({ locale }: Props) {
           name="message"
           required
           rows={5}
+          maxLength={5000}
           className="w-full border border-border-light rounded-lg p-3 bg-bg-card text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow resize-y"
         />
       </div>

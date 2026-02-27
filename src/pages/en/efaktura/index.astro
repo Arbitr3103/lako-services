@@ -255,7 +255,7 @@ const stepIcons = [
             <a
               href={plan.price !== '0' ? 'https://app.echain.world' : getLocalizedPath('/efaktura/studio', locale)}
               target={plan.price !== '0' ? '_blank' : undefined}
-              rel={plan.price !== '0' ? 'noopener' : undefined}
+              rel={plan.price !== '0' ? 'noopener noreferrer' : undefined}
               class:list={[
                 "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
                 plan.popular
