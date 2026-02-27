@@ -99,6 +99,20 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 - **Terms of Service** (`/terms`)
 - **Cookie Banner** (`CookieBanner.astro`): Accept/Reject/Settings. Settings panel with analytics toggle. localStorage: `cookie-consent` = `accepted`|`rejected`|`custom`, `cookie-analytics` = `true`|`false`
 
+## Security (hardened 2026-02-27)
+
+- **CSP**: Content-Security-Policy in `src/middleware.ts` — `default-src 'self'`, script/style/font/connect allowlists, `frame-ancestors 'none'`
+- **Security headers**: X-Frame-Options SAMEORIGIN, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy (no camera/mic/geo), X-DNS-Prefetch-Control off
+- **SRI**: `integrity` + `crossorigin="anonymous"` on CDN font stylesheets (Geist Sans/Mono)
+- **External links**: all `target="_blank"` links have `rel="noopener noreferrer"`
+- **API input validation**: `sanitize()` enforces string type + trim + maxLength, `sanitizeHeaderValue()` strips CR/LF for email subjects, `EMAIL_RE` format validation
+- **Origin check**: API routes validate `Origin`/`Referer` header against allowlist
+- **HTML escaping**: `escapeTgHtml()` on all user data in Telegram messages + Resend emails
+- **Analytics consent**: CF Web Analytics beacon loads only after cookie consent accepted
+- **Forms**: `autocomplete` + `maxLength` attributes on all input fields
+- **robots.txt**: `Disallow: /api/`
+- **No generator meta**: `<meta name="generator">` removed (no framework version disclosure)
+
 ## SEO
 
 Every page has: title, description, hreflang (SR+EN+RU), OG tags, canonical URL. BaseLayout includes LocalBusiness JSON-LD structured data. BaseLayout supports optional `ogImage` and `jsonLd` props for per-page overrides.
