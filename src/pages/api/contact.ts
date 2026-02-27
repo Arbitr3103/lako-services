@@ -1,6 +1,10 @@
 import type { APIRoute } from 'astro';
+import { createRateLimiter, getClientIp } from '../../utils/rate-limit';
 
 const ALLOWED_ORIGINS = ['https://lako.services', 'http://localhost:4321'];
+
+// 5 requests per 5 minutes per IP
+const limiter = createRateLimiter({ windowMs: 5 * 60_000, maxRequests: 5 });
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FIELD_LEN = 500;
 const MAX_MESSAGE_LEN = 5000;
@@ -22,6 +26,15 @@ function sanitize(s: unknown, maxLen = MAX_FIELD_LEN): string {
 
 export const POST: APIRoute = async ({ request, locals }) => {
   try {
+    // Rate limiting
+    const clientIp = getClientIp(request);
+    if (limiter.isRateLimited(clientIp)) {
+      return new Response(
+        JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+        { status: 429, headers: { 'Content-Type': 'application/json', 'Retry-After': '300' } }
+      );
+    }
+
     const origin = request.headers.get('Origin');
     if (!origin || !ALLOWED_ORIGINS.includes(origin)) {
       return new Response(

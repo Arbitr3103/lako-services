@@ -112,6 +112,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 - **Forms**: `autocomplete` + `maxLength` attributes on all input fields
 - **robots.txt**: `Disallow: /api/`
 - **No generator meta**: `<meta name="generator">` removed (no framework version disclosure)
+- **Rate limiting**: In-memory per-IP rate limiter (`src/utils/rate-limit.ts`). `/api/contact` 5 req/5min, `/api/register-business` 3 req/5min. Returns 429 + `Retry-After: 300`. Uses `cf-connecting-ip` header. Defence-in-depth alongside Cloudflare WAF
 
 ## SEO
 
