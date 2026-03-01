@@ -1,6 +1,8 @@
 // Client-side types matching the backend InvoiceData
 // Keep in sync with lako-bot/src/efaktura/shared/invoice-data.ts
 
+export type DocumentType = 'faktura' | 'otpremnica';
+
 export interface SellerData {
   pib: string;
   mb?: string;
@@ -34,17 +36,22 @@ export interface InvoiceItem {
 }
 
 export interface InvoiceData {
+  documentType?: DocumentType;
   invoiceNumber: string;
   issueDate: string;
-  dueDate: string;
+  dueDate?: string;
   deliveryDate?: string;
   seller: SellerData;
   buyer: BuyerData;
   items: InvoiceItem[];
-  paymentMeansCode: string;
+  paymentMeansCode?: string;
   paymentReference?: string;
   notes?: string;
   currency: string;
+  // Otpremnica-specific transport fields
+  vehicleRegistration?: string;
+  transportInfo?: string;
+  warehouseFrom?: string;
 }
 
 export interface InvoiceLineItem extends InvoiceItem {
@@ -95,18 +102,19 @@ export function generatePaymentReference(invoiceNumber: string): string {
 }
 
 // Default empty invoice
-export function createEmptyInvoice(): InvoiceData {
+export function createEmptyInvoice(documentType: DocumentType = 'faktura'): InvoiceData {
   const today = new Date().toISOString().split('T')[0];
-  const due = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+  const isFaktura = documentType === 'faktura';
   return {
+    documentType,
     invoiceNumber: '',
     issueDate: today,
-    dueDate: due,
+    ...(isFaktura ? { dueDate: new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0] } : {}),
     deliveryDate: today,
     seller: { pib: '', name: '', address: '', city: '', country: 'RS', vatRegistered: false },
     buyer: { pib: '', name: '', address: '', city: '', country: 'RS' },
     items: [{ id: crypto.randomUUID(), description: '', quantity: 1, unit: 'kom', unitPrice: 0, vatRate: 20 }],
-    paymentMeansCode: '30',
+    ...(isFaktura ? { paymentMeansCode: '30' } : {}),
     currency: 'RSD',
   };
 }

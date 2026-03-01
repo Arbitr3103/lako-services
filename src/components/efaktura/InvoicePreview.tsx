@@ -22,11 +22,19 @@ const SIG_LABELS: Record<string, { issued: string; received: string; approved: s
   ru: { issued: 'Выставил:', received: 'Получил:', approved: 'Утвердил:' },
 };
 
+const SIG_LABELS_OTP: Record<string, { handedOver: string; received: string }> = {
+  sr: { handedOver: 'Predao:', received: 'Primio:' },
+  en: { handedOver: 'Handed over:', received: 'Received:' },
+  ru: { handedOver: 'Передал:', received: 'Получил:' },
+};
+
 export default function InvoicePreview({ data, locale }: Props) {
   const { lineItems, subtotal, totalVat, grandTotal, vatSummary } = useMemo(
     () => computeTotals(data),
     [data]
   );
+
+  const isOtpremnica = data.documentType === 'otpremnica';
 
   return (
     <div className="bg-white text-gray-900 p-8 font-serif text-[11px] leading-tight min-h-[297mm] w-full relative"
@@ -37,7 +45,7 @@ export default function InvoicePreview({ data, locale }: Props) {
       </div>
 
       {/* Header */}
-      <h1 className="text-center text-xl font-bold mb-1">FAKTURA</h1>
+      <h1 className="text-center text-xl font-bold mb-1">{isOtpremnica ? 'OTPREMNICA' : 'FAKTURA'}</h1>
       <p className="text-center text-sm font-bold mb-4">Br. {data.invoiceNumber || '___'}</p>
 
       {/* Seller / Buyer */}
@@ -48,8 +56,8 @@ export default function InvoicePreview({ data, locale }: Props) {
           <p>{data.seller.address || ''}</p>
           <p>PIB: {data.seller.pib || '\u2014'}</p>
           {data.seller.mb && <p>Mat. broj: {data.seller.mb}</p>}
-          {data.seller.bankAccount && <p>Ra\u010dun: {data.seller.bankAccount}</p>}
-          {data.seller.bankName && <p>Banka: {data.seller.bankName}</p>}
+          {!isOtpremnica && data.seller.bankAccount && <p>Ra\u010dun: {data.seller.bankAccount}</p>}
+          {!isOtpremnica && data.seller.bankName && <p>Banka: {data.seller.bankName}</p>}
           {!data.seller.vatRegistered && <p className="text-gray-500 italic">Pau\u0161alac \u2014 nije u sistemu PDV</p>}
         </div>
         <div className="flex-1">
@@ -60,14 +68,26 @@ export default function InvoicePreview({ data, locale }: Props) {
         </div>
       </div>
 
-      {/* Dates */}
-      <div className="flex gap-4 mb-3 text-[10px]">
-        <span>Datum fakture: {fmtDate(data.issueDate)}</span>
-        <span>Datum valute: {fmtDate(data.dueDate)}</span>
-        {data.deliveryDate && <span>Datum isporuke: {fmtDate(data.deliveryDate)}</span>}
-      </div>
-      {data.paymentReference && (
-        <p className="text-[10px] mb-3">Poziv na broj: {data.paymentReference}</p>
+      {/* Dates + Transport info */}
+      {isOtpremnica ? (
+        <div className="mb-3 text-[10px] space-y-0.5">
+          <p>Datum izdavanja: {fmtDate(data.issueDate)}</p>
+          {data.deliveryDate && <p>Datum isporuke: {fmtDate(data.deliveryDate)}</p>}
+          {data.vehicleRegistration && <p className="font-bold">Reg. vozila: {data.vehicleRegistration}</p>}
+          {data.transportInfo && <p>Transport: {data.transportInfo}</p>}
+          {data.warehouseFrom && <p>Skladi\u0161te: {data.warehouseFrom}</p>}
+        </div>
+      ) : (
+        <>
+          <div className="flex gap-4 mb-3 text-[10px]">
+            <span>Datum fakture: {fmtDate(data.issueDate)}</span>
+            {data.dueDate && <span>Datum valute: {fmtDate(data.dueDate)}</span>}
+            {data.deliveryDate && <span>Datum isporuke: {fmtDate(data.deliveryDate)}</span>}
+          </div>
+          {data.paymentReference && (
+            <p className="text-[10px] mb-3">Poziv na broj: {data.paymentReference}</p>
+          )}
+        </>
       )}
 
       {/* Items table */}
@@ -135,18 +155,33 @@ export default function InvoicePreview({ data, locale }: Props) {
 
       {/* Signatures */}
       <div className="absolute bottom-8 left-8 right-8 flex justify-between text-[9px] text-center">
-        <div className="w-1/3">
-          <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).issued}</p>
-          <div className="border-t border-gray-400 mx-4"></div>
-        </div>
-        <div className="w-1/3">
-          <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).received}</p>
-          <div className="border-t border-gray-400 mx-4"></div>
-        </div>
-        <div className="w-1/3">
-          <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).approved}</p>
-          <div className="border-t border-gray-400 mx-4"></div>
-        </div>
+        {isOtpremnica ? (
+          <>
+            <div className="w-1/2">
+              <p className="mb-6">{(SIG_LABELS_OTP[locale] || SIG_LABELS_OTP.sr).handedOver}</p>
+              <div className="border-t border-gray-400 mx-4"></div>
+            </div>
+            <div className="w-1/2">
+              <p className="mb-6">{(SIG_LABELS_OTP[locale] || SIG_LABELS_OTP.sr).received}</p>
+              <div className="border-t border-gray-400 mx-4"></div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-1/3">
+              <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).issued}</p>
+              <div className="border-t border-gray-400 mx-4"></div>
+            </div>
+            <div className="w-1/3">
+              <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).received}</p>
+              <div className="border-t border-gray-400 mx-4"></div>
+            </div>
+            <div className="w-1/3">
+              <p className="mb-6">{(SIG_LABELS[locale] || SIG_LABELS.sr).approved}</p>
+              <div className="border-t border-gray-400 mx-4"></div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

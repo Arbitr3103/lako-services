@@ -1,6 +1,6 @@
 import { useReducer, useState, useEffect, useRef } from 'react';
 import InvoicePreview from './InvoicePreview';
-import type { InvoiceData, BuyerData } from './types';
+import type { InvoiceData, BuyerData, DocumentType } from './types';
 import { createEmptyInvoice, generatePaymentReference } from './types';
 
 interface Props {
@@ -12,8 +12,10 @@ const translations: Record<string, Record<string, string>> = {
   sr: {
     seller: 'Prodavac', buyer: 'Kupac', items: 'Stavke', details: 'Detalji',
     preview: 'Pregled', form: 'Forma', generate: 'Generiši fakturu',
+    generateOtpremnica: 'Generiši otpremnicu',
     downloadPdf: 'Preuzmi PDF', downloadXml: 'Preuzmi XML',
-    invoiceNumber: 'Broj fakture', issueDate: 'Datum izdavanja',
+    invoiceNumber: 'Broj fakture', documentNumber: 'Broj dokumenta',
+    issueDate: 'Datum izdavanja',
     deliveryDate: 'Datum isporuke', dueDate: 'Rok plaćanja',
     paymentReference: 'Poziv na broj', paymentRefAuto: 'automatski iz broja fakture', notes: 'Napomene',
     description: 'Opis', quantity: 'Kol.', unit: 'Jed.',
@@ -24,6 +26,7 @@ const translations: Record<string, Record<string, string>> = {
     vatRegistered: 'U sistemu PDV', editCompany: 'Izmeni podatke firme',
     saveBuyer: 'Sačuvaj kupca', validFields: 'polja validno',
     generating: 'Generisanje...', success: 'Faktura uspešno generisana!',
+    successOtpremnica: 'Otpremnica uspešno generisana!',
     error: 'Greška pri generisanju', mb: 'Matični broj',
     subtotal: 'Osnovica', vat: 'PDV', total: 'Ukupno',
     days7: '7 dana', days15: '15 dana', days30: '30 dana', days60: '60 dana',
@@ -38,12 +41,20 @@ const translations: Record<string, Record<string, string>> = {
     limitReachedFree: 'Dostigli ste mesečni limit od 10 faktura.',
     limitCtaAnon: 'Napravite nalog za 10 faktura mesečno',
     limitCtaPro: 'Nadogradite na Pro za neograničen broj',
+    faktura: 'Faktura', otpremnica: 'Otpremnica',
+    vehicleRegistration: 'Reg. vozila', transportInfo: 'Transport',
+    warehouseFrom: 'Skladište',
+    vehiclePlaceholder: 'BG-123-AB',
+    transportPlaceholder: 'Ime vozača, detalji',
+    warehousePlaceholder: 'Magacin Beograd',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
     preview: 'Preview', form: 'Form', generate: 'Generate invoice',
+    generateOtpremnica: 'Generate delivery note',
     downloadPdf: 'Download PDF', downloadXml: 'Download XML',
-    invoiceNumber: 'Invoice number', issueDate: 'Issue date',
+    invoiceNumber: 'Invoice number', documentNumber: 'Document number',
+    issueDate: 'Issue date',
     deliveryDate: 'Delivery date', dueDate: 'Due date',
     paymentReference: 'Payment reference', paymentRefAuto: 'auto-generated from invoice number', notes: 'Notes',
     description: 'Description', quantity: 'Qty', unit: 'Unit',
@@ -54,6 +65,7 @@ const translations: Record<string, Record<string, string>> = {
     vatRegistered: 'VAT registered', editCompany: 'Edit company',
     saveBuyer: 'Save buyer', validFields: 'fields valid',
     generating: 'Generating...', success: 'Invoice generated!',
+    successOtpremnica: 'Delivery note generated!',
     error: 'Error generating invoice', mb: 'Registration number',
     subtotal: 'Subtotal', vat: 'VAT', total: 'Total',
     days7: '7 days', days15: '15 days', days30: '30 days', days60: '60 days',
@@ -68,12 +80,20 @@ const translations: Record<string, Record<string, string>> = {
     limitReachedFree: 'You have reached the limit of 10 invoices per month.',
     limitCtaAnon: 'Create an account for 10 invoices per month',
     limitCtaPro: 'Upgrade to Pro for unlimited invoices',
+    faktura: 'Invoice', otpremnica: 'Delivery note',
+    vehicleRegistration: 'Vehicle reg.', transportInfo: 'Transport',
+    warehouseFrom: 'Warehouse',
+    vehiclePlaceholder: 'BG-123-AB',
+    transportPlaceholder: 'Driver name, details',
+    warehousePlaceholder: 'Warehouse Belgrade',
   },
   ru: {
     seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
     preview: 'Предпросмотр', form: 'Форма', generate: 'Создать счёт',
+    generateOtpremnica: 'Создать накладную',
     downloadPdf: 'Скачать PDF', downloadXml: 'Скачать XML',
-    invoiceNumber: 'Номер счёта', issueDate: 'Дата выставления',
+    invoiceNumber: 'Номер счёта', documentNumber: 'Номер документа',
+    issueDate: 'Дата выставления',
     deliveryDate: 'Дата доставки', dueDate: 'Срок оплаты',
     paymentReference: 'Основание платежа', paymentRefAuto: 'авто из номера счёта', notes: 'Примечания',
     description: 'Описание', quantity: 'Кол.', unit: 'Ед.',
@@ -84,6 +104,7 @@ const translations: Record<string, Record<string, string>> = {
     vatRegistered: 'В системе НДС', editCompany: 'Изменить данные',
     saveBuyer: 'Сохранить', validFields: 'полей заполнено',
     generating: 'Генерация...', success: 'Счёт создан!',
+    successOtpremnica: 'Накладная создана!',
     error: 'Ошибка', mb: 'Матичный номер',
     subtotal: 'Основа', vat: 'НДС', total: 'Итого',
     days7: '7 дней', days15: '15 дней', days30: '30 дней', days60: '60 дней',
@@ -98,6 +119,12 @@ const translations: Record<string, Record<string, string>> = {
     limitReachedFree: 'Вы достигли лимита — 10 счетов в месяц.',
     limitCtaAnon: 'Создайте аккаунт для 10 счетов в месяц',
     limitCtaPro: 'Перейдите на Pro для безлимита',
+    faktura: 'Счёт-фактура', otpremnica: 'Накладная',
+    vehicleRegistration: 'Рег. номер', transportInfo: 'Транспорт',
+    warehouseFrom: 'Склад',
+    vehiclePlaceholder: 'BG-123-AB',
+    transportPlaceholder: 'Имя водителя, детали',
+    warehousePlaceholder: 'Склад Белград',
   },
 };
 
@@ -147,7 +174,8 @@ type Action =
   | { type: 'SET_ITEM_FIELD'; index: number; field: string; value: any }
   | { type: 'ADD_ITEM' }
   | { type: 'REMOVE_ITEM'; index: number }
-  | { type: 'LOAD'; data: InvoiceData };
+  | { type: 'LOAD'; data: InvoiceData }
+  | { type: 'SET_DOCUMENT_TYPE'; documentType: DocumentType };
 
 function reducer(state: InvoiceData, action: Action): InvoiceData {
   switch (action.type) {
@@ -173,13 +201,16 @@ function reducer(state: InvoiceData, action: Action): InvoiceData {
       return { ...state, items: state.items.filter((_, i) => i !== action.index) };
     case 'LOAD':
       return action.data;
+    case 'SET_DOCUMENT_TYPE':
+      return { ...state, documentType: action.documentType };
     default:
       return state;
   }
 }
 
 function countValid(data: InvoiceData): { valid: number; total: number } {
-  const total = 8;
+  const isOtpremnica = data.documentType === 'otpremnica';
+  const total = isOtpremnica ? 6 : 8;
   let valid = 0;
   if (data.invoiceNumber?.trim()) valid++;
   if (data.seller?.name?.trim()) valid++;
@@ -187,20 +218,21 @@ function countValid(data: InvoiceData): { valid: number; total: number } {
   if (data.buyer?.name?.trim()) valid++;
   if (data.buyer?.pib && /^\d{9}$/.test(data.buyer.pib)) valid++;
   if (data.issueDate) valid++;
-  if (data.dueDate) valid++;
+  if (!isOtpremnica && data.dueDate) valid++;
   if (data.items?.length > 0 && data.items.some(i => i.description?.trim())) valid++;
   return { valid, total };
 }
 
 function getMissingFields(data: InvoiceData, t: Record<string, string>): string[] {
+  const isOtpremnica = data.documentType === 'otpremnica';
   const missing: string[] = [];
-  if (!data.invoiceNumber?.trim()) missing.push(t.invoiceNumber);
+  if (!data.invoiceNumber?.trim()) missing.push(isOtpremnica ? t.documentNumber : t.invoiceNumber);
   if (!data.seller?.name?.trim()) missing.push(`${t.seller}: ${t.companyName}`);
   if (!data.seller?.pib || !/^\d{9}$/.test(data.seller.pib)) missing.push(`${t.seller}: ${t.pib}`);
   if (!data.buyer?.name?.trim()) missing.push(`${t.buyer}: ${t.companyName}`);
   if (!data.buyer?.pib || !/^\d{9}$/.test(data.buyer.pib)) missing.push(`${t.buyer}: ${t.pib}`);
   if (!data.issueDate) missing.push(t.issueDate);
-  if (!data.dueDate) missing.push(t.dueDate);
+  if (!isOtpremnica && !data.dueDate) missing.push(t.dueDate);
   if (!data.items?.length || !data.items.some(i => i.description?.trim())) missing.push(t.items);
   return missing;
 }
@@ -231,7 +263,7 @@ export default function Studio({ locale, apiUrl }: Props) {
 
   const [genStatus, setGenStatus] = useState<'idle' | 'generating' | 'ready' | 'error' | 'limit_anon' | 'limit_free'>('idle');
   const [invoiceId, setInvoiceId] = useState<string | null>(null);
-  const [downloadData, setDownloadData] = useState<{ pdf: string; xml: string } | null>(null);
+  const [downloadData, setDownloadData] = useState<{ pdf: string; xml: string | null } | null>(null);
   const [showDetails, setShowDetails] = useState(false);
   const [mobileTab, setMobileTab] = useState<'form' | 'preview'>('form');
   const [editingSeller, setEditingSeller] = useState(false);
@@ -252,13 +284,13 @@ export default function Studio({ locale, apiUrl }: Props) {
     }
   }, [invoice.seller]);
 
-  // Auto-generate payment reference
+  // Auto-generate payment reference (faktura only)
   useEffect(() => {
-    if (invoice.invoiceNumber) {
+    if (invoice.invoiceNumber && invoice.documentType !== 'otpremnica') {
       const ref = generatePaymentReference(invoice.invoiceNumber);
       dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: ref });
     }
-  }, [invoice.invoiceNumber]);
+  }, [invoice.invoiceNumber, invoice.documentType]);
 
   // Close autocomplete on outside click
   useEffect(() => {
@@ -436,15 +468,36 @@ export default function Studio({ locale, apiUrl }: Props) {
         <div className={`w-full md:w-[55%] p-4 md:p-6 overflow-y-auto md:h-screen ${
           mobileTab !== 'form' ? 'hidden md:block' : ''
         }`}>
-          {/* Invoice number */}
+          {/* Document type toggle */}
+          <div className={sectionClass}>
+            <div className="flex rounded-lg bg-bg-alt p-1">
+              {(['faktura', 'otpremnica'] as const).map(dt => (
+                <button
+                  key={dt}
+                  onClick={() => dispatch({ type: 'SET_DOCUMENT_TYPE', documentType: dt })}
+                  className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${
+                    (invoice.documentType || 'faktura') === dt
+                      ? 'bg-primary text-white shadow-sm'
+                      : 'text-text-muted hover:text-text'
+                  }`}
+                >
+                  {t[dt]}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Document number */}
           <div className={sectionClass}>
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-text font-semibold">{t.invoiceNumber}</h2>
+              <h2 className="text-text font-semibold">
+                {invoice.documentType === 'otpremnica' ? t.documentNumber : t.invoiceNumber}
+              </h2>
             </div>
             <input
               type="text"
               className={inputClass}
-              placeholder="001/2026"
+              placeholder={invoice.documentType === 'otpremnica' ? 'O-001/2026' : '001/2026'}
               value={invoice.invoiceNumber}
               onChange={e => dispatch({ type: 'SET_FIELD', path: 'invoiceNumber', value: e.target.value })}
             />
@@ -664,6 +717,33 @@ export default function Studio({ locale, apiUrl }: Props) {
             </button>
           </div>
 
+          {/* Transport fields (otpremnica only) */}
+          {invoice.documentType === 'otpremnica' && (
+            <div className={sectionClass}>
+              <h2 className="text-text font-semibold mb-3">{t.transportInfo}</h2>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className={labelClass}>{t.vehicleRegistration}</label>
+                  <input className={inputClass} value={invoice.vehicleRegistration || ''}
+                    placeholder={t.vehiclePlaceholder}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'vehicleRegistration', value: e.target.value })} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t.transportInfo}</label>
+                  <input className={inputClass} value={invoice.transportInfo || ''}
+                    placeholder={t.transportPlaceholder}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'transportInfo', value: e.target.value })} />
+                </div>
+                <div className="col-span-2">
+                  <label className={labelClass}>{t.warehouseFrom}</label>
+                  <input className={inputClass} value={invoice.warehouseFrom || ''}
+                    placeholder={t.warehousePlaceholder}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'warehouseFrom', value: e.target.value })} />
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Details (collapsible) */}
           <div className={sectionClass}>
             <button
@@ -685,35 +765,39 @@ export default function Studio({ locale, apiUrl }: Props) {
                   <input type="date" className={inputClass} value={invoice.deliveryDate || ''}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'deliveryDate', value: e.target.value })} />
                 </div>
-                <div>
-                  <label className={labelClass}>{t.dueDate}</label>
-                  <input type="date" className={inputClass} value={invoice.dueDate}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'dueDate', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.quickSelect}</label>
-                  <div className="flex gap-1">
-                    {[7, 15, 30, 60].map(days => (
-                      <button key={days}
-                        onClick={() => {
-                          const d = new Date(invoice.issueDate || Date.now());
-                          d.setDate(d.getDate() + days);
-                          dispatch({ type: 'SET_FIELD', path: 'dueDate', value: d.toISOString().split('T')[0] });
-                        }}
-                        className="px-2 py-1 text-xs bg-bg-alt border border-border-light rounded text-text-muted hover:text-primary hover:border-primary transition-colors"
-                      >
-                        {(t as any)[`days${days}`]}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <label className={labelClass}>{t.paymentReference} <span className="text-text-muted/60">({t.paymentRefAuto})</span></label>
-                  <input className={inputClass} value={invoice.paymentReference || ''}
-                    placeholder={t.paymentRefAuto}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: e.target.value })} />
-                </div>
-                <div className="col-span-2">
+                {invoice.documentType !== 'otpremnica' && (
+                  <>
+                    <div>
+                      <label className={labelClass}>{t.dueDate}</label>
+                      <input type="date" className={inputClass} value={invoice.dueDate || ''}
+                        onChange={e => dispatch({ type: 'SET_FIELD', path: 'dueDate', value: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className={labelClass}>{t.quickSelect}</label>
+                      <div className="flex gap-1">
+                        {[7, 15, 30, 60].map(days => (
+                          <button key={days}
+                            onClick={() => {
+                              const d = new Date(invoice.issueDate || Date.now());
+                              d.setDate(d.getDate() + days);
+                              dispatch({ type: 'SET_FIELD', path: 'dueDate', value: d.toISOString().split('T')[0] });
+                            }}
+                            className="px-2 py-1 text-xs bg-bg-alt border border-border-light rounded text-text-muted hover:text-primary hover:border-primary transition-colors"
+                          >
+                            {(t as any)[`days${days}`]}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className={labelClass}>{t.paymentReference} <span className="text-text-muted/60">({t.paymentRefAuto})</span></label>
+                      <input className={inputClass} value={invoice.paymentReference || ''}
+                        placeholder={t.paymentRefAuto}
+                        onChange={e => dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: e.target.value })} />
+                    </div>
+                  </>
+                )}
+                <div className={invoice.documentType === 'otpremnica' ? 'col-span-2' : 'col-span-2'}>
                   <label className={labelClass}>{t.notes}</label>
                   <textarea className={inputClass + ' h-20 resize-none'} value={invoice.notes || ''}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'notes', value: e.target.value })} />
@@ -745,20 +829,27 @@ export default function Studio({ locale, apiUrl }: Props) {
 
             {genStatus === 'ready' && downloadData ? (
               <div className="space-y-2">
-                <p className="text-green-400 text-sm font-medium text-center">{t.success}</p>
+                <p className="text-green-400 text-sm font-medium text-center">
+                  {invoice.documentType === 'otpremnica' ? t.successOtpremnica : t.success}
+                </p>
                 <div className="flex gap-2">
                   <button
-                    onClick={() => downloadFile(downloadData.pdf, `Faktura-${invoice.invoiceNumber}.pdf`, 'application/pdf')}
+                    onClick={() => {
+                      const prefix = invoice.documentType === 'otpremnica' ? 'Otpremnica' : 'Faktura';
+                      downloadFile(downloadData.pdf, `${prefix}-${invoice.invoiceNumber}.pdf`, 'application/pdf');
+                    }}
                     className="flex-1 bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-medium transition-colors"
                   >
                     {t.downloadPdf}
                   </button>
-                  <button
-                    onClick={() => downloadFile(downloadData.xml, `eFaktura-${invoice.invoiceNumber}.xml`, 'application/xml')}
-                    className="flex-1 bg-accent hover:bg-accent-dark text-white py-3 rounded-lg font-medium transition-colors"
-                  >
-                    {t.downloadXml}
-                  </button>
+                  {downloadData.xml && (
+                    <button
+                      onClick={() => downloadFile(downloadData.xml!, `eFaktura-${invoice.invoiceNumber}.xml`, 'application/xml')}
+                      className="flex-1 bg-accent hover:bg-accent-dark text-white py-3 rounded-lg font-medium transition-colors"
+                    >
+                      {t.downloadXml}
+                    </button>
+                  )}
                 </div>
                 <div className="mt-3 pt-3 border-t border-border-light text-center">
                   <p className="text-text-muted text-xs mb-1">{t.proUpsell}</p>
@@ -787,7 +878,9 @@ export default function Studio({ locale, apiUrl }: Props) {
                     : 'bg-primary hover:bg-primary-dark'
                 }`}
               >
-                {genStatus === 'generating' ? t.generating : t.generate}
+                {genStatus === 'generating'
+                  ? t.generating
+                  : invoice.documentType === 'otpremnica' ? t.generateOtpremnica : t.generate}
               </button>
             )}
             {genStatus === 'error' && (
