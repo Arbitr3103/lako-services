@@ -23,7 +23,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 | `src/pages/efaktura/` | e-Faktura Studio landing + app (SR) |
 | `src/components/` | Astro components (Header, Footer, Logo, CTA) |
 | `src/components/react/` | React islands (`client:load`) |
-| `src/components/efaktura/` | Studio React SPA (Studio.tsx, InvoiceForm, LivePreview, ItemsTable) |
+| `src/components/efaktura/` | Studio React SPA (Studio.tsx, InvoicePreview.tsx, types.ts) |
 | `src/layouts/` | BaseLayout with SEO, hreflang, OG, JSON-LD |
 | `src/i18n/` | Translations (sr.json, en.json, ru.json) + utils.ts |
 | `src/styles/` | global.css (Tailwind v4 @theme) |
@@ -52,7 +52,7 @@ Astro 5 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Logistics page** (`/logistics`): 12 sections focused on transport bot product. Hero CTA links directly to `t.me/lakoprevoz_bot`. Bot section (Section 9) has: video + CMR screenshot grid → bot card → feature grid with guide links → pricing. Final CTA also links to Telegram bot (not contact page). No "coming soon" features — only working functionality. CMR screenshot needs `bg-white` container (dark theme readability).
 
-**e-Faktura Studio** (`/efaktura`): Landing page (pure Astro) + `/efaktura/studio` (React SPA via `client:load`). Split-screen invoice builder: form left, live PDF preview right. Generates SEF-compliant PDF + UBL 2.1 XML. Backend on lako-bot (`POST /api/efaktura/*`). Feature flags: `{ ai: false, excel: false, sef: false }`. SoftwareApplication JSON-LD for SEO. **Pricing CTA links**: free plan → `/efaktura/studio`, paid plans (Pro/Business) → `https://app.echain.world` (external, `_blank`). i18n: all Studio labels translated SR/EN/RU (including Quick select, day buttons, signature labels in InvoicePreview). Freemium limit UI: `limit_anon`/`limit_free` states with upsell CTA.
+**e-Faktura Studio** (`/efaktura`): Landing page (pure Astro) + `/efaktura/studio` (React SPA via `client:load`). Split-screen document builder: form left, live PDF preview right. **Two document types**: Faktura (invoice, PDF + UBL 2.1 XML) and Otpremnica (delivery note, PDF only, no XML). Segmented toggle at top of form switches type — preserves all form data (items, seller, buyer). Otpremnica: hides dueDate/paymentReference/bankAccount fields, shows transport section (vehicleRegistration, transportInfo, warehouseFrom), 2 signature lines in preview ("Predao:" | "Primio:"). Backend on lako-bot (`POST /api/efaktura/*`). Feature flags: `{ ai: false, excel: false, sef: false }`. SoftwareApplication JSON-LD for SEO. **Pricing CTA links**: free plan → `/efaktura/studio`, paid plans (Pro/Business) → `https://app.echain.world` (external, `_blank`). i18n: all Studio labels translated SR/EN/RU (including document type names, transport fields, signature labels). Freemium limit UI: `limit_anon`/`limit_free` states with upsell CTA. Types: `DocumentType = 'faktura' | 'otpremnica'` in `types.ts`, `createEmptyInvoice(documentType)` sets appropriate defaults.
 
 **Trust banner**: Green gradient card with shield icon + 4 security bullet points + link to `/zastita-podataka`. Present on: efaktura landing, small-business, logistics pages (all 3 locales). i18n keys: `efaktura.trustBanner.*`, `smallBusiness.trustBanner.*`.
 
