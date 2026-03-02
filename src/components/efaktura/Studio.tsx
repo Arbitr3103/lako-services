@@ -897,7 +897,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                     </div>
                   </>
                 )}
-                <div className={invoice.documentType === 'otpremnica' ? 'col-span-2' : 'col-span-2'}>
+                <div className="col-span-2">
                   <label className={labelClass}>{t.notes}</label>
                   <textarea className={inputClass + ' h-20 resize-none'} value={invoice.notes || ''}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'notes', value: e.target.value })} />
