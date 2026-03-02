@@ -52,6 +52,13 @@ export interface InvoiceData {
   vehicleRegistration?: string;
   transportInfo?: string;
   warehouseFrom?: string;
+  // Otpremnica logistics fields
+  loadingPlace?: string;
+  unloadingPlace?: string;
+  loadingDateTime?: string;
+  transportPurpose?: string;
+  handoverName?: string;
+  receiverName?: string;
 }
 
 export interface InvoiceLineItem extends InvoiceItem {

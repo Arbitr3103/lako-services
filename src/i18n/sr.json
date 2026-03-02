@@ -1304,19 +1304,19 @@
       "description": "Kako štitimo vaše poslovne podatke — enkripcija, bekapi, GDPR usklađenost i kontrola pristupa."
     },
     "efaktura": {
-      "title": "e-Faktura Studio — Besplatno kreiranje e-faktura za male firme | Lako Services",
-      "description": "Kreirajte SEF-kompatibilne e-fakture za 2 minuta. PDF + UBL XML. Besplatno za 3 fakture mesečno."
+      "title": "e-Faktura Studio — Besplatno kreiranje e-faktura i otpremnica | Lako Services",
+      "description": "Kreirajte SEF-kompatibilne e-fakture i otpremnice za 2 minuta. PDF + UBL XML + QR kod za inspekciju. Besplatno za 3 dokumenta mesečno."
     }
   },
   "efaktura": {
     "seo": {
       "title": "e-Faktura Studio — Besplatno kreiranje e-faktura za male firme",
-      "description": "Kreirajte SEF-kompatibilne e-fakture za 2 minuta. PDF + UBL XML. Besplatno za 3 fakture mesečno."
+      "description": "Kreirajte SEF-kompatibilne e-fakture i otpremnice za 2 minuta. PDF + UBL XML + QR kod za inspekciju. Besplatno za 3 dokumenta mesečno."
     },
     "hero": {
       "badge": "Besplatno za male firme",
       "title": "e-Faktura Studio",
-      "subtitle": "Kreirajte profesionalne fakture za 2 minuta. PDF + UBL XML — spremno za SEF portal.",
+      "subtitle": "Kreirajte profesionalne fakture i otpremnice za 2 minuta. PDF + UBL XML — spremno za SEF portal i inspekciju.",
       "cta": "Napravi fakturu",
       "ctaSecondary": "Kako radi?"
     },
@@ -1355,6 +1355,11 @@
           "icon": "download",
           "title": "PDF + XML jednim klikom",
           "description": "Generišite SEF-kompatibilan XML i profesionalan PDF — preuzmite i pošaljite."
+        },
+        {
+          "icon": "qr",
+          "title": "Otpremnica sa QR kodom",
+          "description": "Dokument spreman za inspekciju na putu. QR kod sadrži ključne podatke za brzu proveru."
         }
       ]
     },
@@ -1465,12 +1470,20 @@
         {
           "question": "Da li su moji podaci bezbedni?",
           "answer": "Lozinke su zaštićene jakom enkripcijom. Sva komunikacija je preko HTTPS-a. Ne delimo podatke sa trećim stranama."
+        },
+        {
+          "question": "Da li mogu da napravim otpremnicu?",
+          "answer": "Da! e-Faktura Studio podržava i fakture i otpremnice. Otpremnica uključuje podatke o transportu, mestu utovara/istovara, registraciji vozila i potpise predao/primio."
+        },
+        {
+          "question": "Da li otpremnica ima QR kod za inspekciju?",
+          "answer": "Da. Svaka otpremnica sadrži QR kod koji inspektor može skenirati na putu. QR kodira ključne podatke dokumenta: broj, PIB prodavca i kupca, datum i ukupan iznos."
         }
       ]
     },
     "seoBlock": {
       "title": "E-fakture u Srbiji — digitalizacija za svaki biznis",
-      "text": "Sistem elektronskih faktura (SEF) je obavezan za sve B2B transakcije u Srbiji. Za male firme i solo preduzetnike, ručno kreiranje UBL XML faktura često znači gubljenje vremena na portalu i rizik od grešaka. e-Faktura Studio automatizuje ovaj proces — unesete podatke, vidite pregled u realnom vremenu i preuzmete PDF za klijenta i XML za SEF portal. Besplatno za do 3 fakture mesečno, bez registracije."
+      "text": "Sistem elektronskih faktura (SEF) je obavezan za sve B2B transakcije u Srbiji. Za male firme i solo preduzetnike, ručno kreiranje UBL XML faktura i otpremnica često znači gubljenje vremena na portalu i rizik od grešaka. e-Faktura Studio automatizuje ovaj proces — unesete podatke, vidite pregled u realnom vremenu i preuzmete PDF za klijenta i XML za SEF portal. Otpremnica sa QR kodom spreman je za inspekciju na putu — u skladu sa najnovijim propisima za 2026. godinu. Zakon o prevozu tereta zahteva prateću dokumentaciju za svaku pošiljku, a Studio obezbeđuje da je uvek imate pri ruci. Besplatno za do 3 dokumenta mesečno, bez registracije."
     },
     "security": {
       "title": "Bezbednost i usklađenost",

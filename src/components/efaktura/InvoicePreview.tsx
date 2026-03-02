@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import type { InvoiceData } from './types';
 import { computeTotals } from './types';
 
@@ -36,6 +37,24 @@ export default function InvoicePreview({ data, locale }: Props) {
 
   const isOtpremnica = data.documentType === 'otpremnica';
 
+  const qrData = useMemo(() => {
+    const parts: string[] = [];
+    const docLabel = isOtpremnica ? 'OTPREMNICA' : 'FAKTURA';
+    parts.push(`${docLabel}: ${data.invoiceNumber || '---'}`);
+    if (data.seller.pib) parts.push(`PIB: ${data.seller.pib}`);
+    if (data.buyer.pib) parts.push(`KUPAC PIB: ${data.buyer.pib}`);
+    if (data.issueDate) parts.push(`DATUM: ${fmtDate(data.issueDate)}`);
+    parts.push(`UKUPNO: ${fmtPrice(grandTotal)} ${data.currency}`);
+    if (isOtpremnica && data.vehicleRegistration) parts.push(`REG: ${data.vehicleRegistration}`);
+    return parts.join('\n');
+  }, [data, isOtpremnica, grandTotal]);
+
+  const fmtDateTime = (dt: string) => {
+    if (!dt) return '';
+    const [date, time] = dt.split('T');
+    return `${fmtDate(date)}${time ? ' ' + time : ''}`;
+  };
+
   return (
     <div className="bg-white text-gray-900 p-8 font-serif text-[11px] leading-tight min-h-[297mm] w-full relative"
          style={{ fontFamily: "'Roboto', 'Helvetica', sans-serif" }}>
@@ -44,9 +63,18 @@ export default function InvoicePreview({ data, locale }: Props) {
         <span className="text-[120px] font-bold text-gray-400 -rotate-45">PREVIEW</span>
       </div>
 
-      {/* Header */}
-      <h1 className="text-center text-xl font-bold mb-1">{isOtpremnica ? 'OTPREMNICA' : 'FAKTURA'}</h1>
-      <p className="text-center text-sm font-bold mb-4">Br. {data.invoiceNumber || '___'}</p>
+      {/* Header + QR */}
+      <div className="relative mb-4">
+        <h1 className="text-center text-xl font-bold mb-1">{isOtpremnica ? 'OTPREMNICA' : 'FAKTURA'}</h1>
+        <p className="text-center text-sm font-bold">Br. {data.invoiceNumber || '___'}</p>
+        {/* QR Code — right-aligned */}
+        <div className="absolute top-0 right-0 flex flex-col items-center">
+          <QRCodeSVG value={qrData} size={80} level="M" bgColor="#ffffff" fgColor="#000000" />
+          <span className="text-[7px] text-gray-500 mt-0.5">
+            {isOtpremnica ? 'PROVERA DOKUMENTA' : 'QR KOD'}
+          </span>
+        </div>
+      </div>
 
       {/* Seller / Buyer */}
       <div className="flex gap-4 mb-3">
@@ -75,7 +103,11 @@ export default function InvoicePreview({ data, locale }: Props) {
           {data.deliveryDate && <p>Datum isporuke: {fmtDate(data.deliveryDate)}</p>}
           {data.vehicleRegistration && <p className="font-bold">Reg. vozila: {data.vehicleRegistration}</p>}
           {data.transportInfo && <p>Transport: {data.transportInfo}</p>}
-          {data.warehouseFrom && <p>Skladi\u0161te: {data.warehouseFrom}</p>}
+          {data.warehouseFrom && <p>Skladi{'\u0161'}te: {data.warehouseFrom}</p>}
+          {data.loadingPlace && <p>Mesto utovara: {data.loadingPlace}</p>}
+          {data.unloadingPlace && <p>Mesto istovara: {data.unloadingPlace}</p>}
+          {data.loadingDateTime && <p>Datum utovara: {fmtDateTime(data.loadingDateTime)}</p>}
+          {data.transportPurpose && <p>Svrha prevoza: {data.transportPurpose}</p>}
         </div>
       ) : (
         <>
@@ -158,11 +190,15 @@ export default function InvoicePreview({ data, locale }: Props) {
         {isOtpremnica ? (
           <>
             <div className="w-1/2">
-              <p className="mb-6">{(SIG_LABELS_OTP[locale] || SIG_LABELS_OTP.sr).handedOver}</p>
+              <p className="mb-1">{(SIG_LABELS_OTP[locale] || SIG_LABELS_OTP.sr).handedOver}</p>
+              {data.handoverName && <p className="text-[8px] text-gray-500 mb-4">{data.handoverName}</p>}
+              {!data.handoverName && <div className="mb-5" />}
               <div className="border-t border-gray-400 mx-4"></div>
             </div>
             <div className="w-1/2">
-              <p className="mb-6">{(SIG_LABELS_OTP[locale] || SIG_LABELS_OTP.sr).received}</p>
+              <p className="mb-1">{(SIG_LABELS_OTP[locale] || SIG_LABELS_OTP.sr).received}</p>
+              {data.receiverName && <p className="text-[8px] text-gray-500 mb-4">{data.receiverName}</p>}
+              {!data.receiverName && <div className="mb-5" />}
               <div className="border-t border-gray-400 mx-4"></div>
             </div>
           </>

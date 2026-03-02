@@ -1303,19 +1303,19 @@
       "description": "How we protect your business data — encryption, backups, GDPR compliance and access control."
     },
     "efaktura": {
-      "title": "e-Faktura Studio — Free e-Invoice Generator for Small Business | Lako Services",
-      "description": "Create SEF-compliant e-invoices in 2 minutes. PDF + UBL XML. Free for 3 invoices per month."
+      "title": "e-Faktura Studio — Free e-Invoice & Delivery Note Generator | Lako Services",
+      "description": "Create SEF-compliant e-invoices and delivery notes in 2 minutes. PDF + UBL XML + QR code for inspection. Free for 3 documents per month."
     }
   },
   "efaktura": {
     "seo": {
       "title": "e-Faktura Studio — Free e-Invoice Generator for Small Business",
-      "description": "Create SEF-compliant e-invoices in 2 minutes. PDF + UBL XML. Free for 3 invoices per month."
+      "description": "Create SEF-compliant e-invoices and delivery notes in 2 minutes. PDF + UBL XML + QR code for inspection. Free for 3 documents per month."
     },
     "hero": {
       "badge": "Free for small business",
       "title": "e-Faktura Studio",
-      "subtitle": "Create professional invoices in 2 minutes. PDF + UBL XML — ready for the SEF portal.",
+      "subtitle": "Create professional invoices and delivery notes in 2 minutes. PDF + UBL XML — ready for the SEF portal and road inspection.",
       "cta": "Create invoice",
       "ctaSecondary": "How it works?"
     },
@@ -1354,6 +1354,11 @@
           "icon": "download",
           "title": "PDF + XML in one click",
           "description": "Generate SEF-compliant XML and professional PDF — download and send."
+        },
+        {
+          "icon": "qr",
+          "title": "Delivery note with QR code",
+          "description": "Document ready for road inspection. QR code contains key data for quick verification."
         }
       ]
     },
@@ -1464,12 +1469,20 @@
         {
           "question": "Is my data secure?",
           "answer": "Passwords are protected with strong encryption. All communication is over HTTPS. We don't share data with third parties."
+        },
+        {
+          "question": "Can I create a delivery note (otpremnica)?",
+          "answer": "Yes! e-Faktura Studio supports both invoices and delivery notes. Delivery notes include transport data, loading/unloading places, vehicle registration, and handover/receiver signatures."
+        },
+        {
+          "question": "Does the delivery note have a QR code for inspection?",
+          "answer": "Yes. Every delivery note contains a QR code that an inspector can scan on the road. The QR encodes key document data: number, seller and buyer PIB, date, and total amount."
         }
       ]
     },
     "seoBlock": {
       "title": "E-invoicing in Serbia — digitization for every business",
-      "text": "The Electronic Invoice System (SEF) is mandatory for all B2B transactions in Serbia. For small businesses and solo entrepreneurs, manually creating UBL XML invoices often means wasting time on the portal and risking errors. e-Faktura Studio automates this process — enter the data, see a real-time preview, and download the PDF for your client and XML for the SEF portal. Free for up to 3 invoices per month, no registration required."
+      "text": "The Electronic Invoice System (SEF) is mandatory for all B2B transactions in Serbia. For small businesses and solo entrepreneurs, manually creating UBL XML invoices and delivery notes often means wasting time on the portal and risking errors. e-Faktura Studio automates this process — enter the data, see a real-time preview, and download the PDF for your client and XML for the SEF portal. Delivery notes with QR codes are ready for road inspection — compliant with the latest 2026 regulations. Free for up to 3 documents per month, no registration required."
     },
     "security": {
       "title": "Security & Compliance",

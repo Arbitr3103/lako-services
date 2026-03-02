@@ -47,6 +47,18 @@ const translations: Record<string, Record<string, string>> = {
     vehiclePlaceholder: 'BG-123-AB',
     transportPlaceholder: 'Ime vozača, detalji',
     warehousePlaceholder: 'Magacin Beograd',
+    loadingPlace: 'Mesto utovara',
+    unloadingPlace: 'Mesto istovara',
+    loadingDateTime: 'Datum i vreme utovara',
+    transportPurpose: 'Svrha prevoza',
+    handoverName: 'Ime predaoca',
+    receiverName: 'Ime primaoca',
+    signatures: 'Potpisi',
+    loadingPlaceholder: 'Adresa utovara',
+    unloadingPlaceholder: 'Adresa istovara',
+    purposePlaceholder: 'npr. Prevoz robe za klijenta',
+    copyFromSeller: 'Iz prodavca',
+    copyFromBuyer: 'Iz kupca',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
@@ -86,6 +98,18 @@ const translations: Record<string, Record<string, string>> = {
     vehiclePlaceholder: 'BG-123-AB',
     transportPlaceholder: 'Driver name, details',
     warehousePlaceholder: 'Warehouse Belgrade',
+    loadingPlace: 'Loading place',
+    unloadingPlace: 'Unloading place',
+    loadingDateTime: 'Loading date & time',
+    transportPurpose: 'Transport purpose',
+    handoverName: 'Handover name',
+    receiverName: 'Receiver name',
+    signatures: 'Signatures',
+    loadingPlaceholder: 'Loading address',
+    unloadingPlaceholder: 'Unloading address',
+    purposePlaceholder: 'e.g. Goods transport for client',
+    copyFromSeller: 'From seller',
+    copyFromBuyer: 'From buyer',
   },
   ru: {
     seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
@@ -125,6 +149,18 @@ const translations: Record<string, Record<string, string>> = {
     vehiclePlaceholder: 'BG-123-AB',
     transportPlaceholder: 'Имя водителя, детали',
     warehousePlaceholder: 'Склад Белград',
+    loadingPlace: 'Место погрузки',
+    unloadingPlace: 'Место разгрузки',
+    loadingDateTime: 'Дата и время погрузки',
+    transportPurpose: 'Цель перевозки',
+    handoverName: 'Имя передающего',
+    receiverName: 'Имя принимающего',
+    signatures: 'Подписи',
+    loadingPlaceholder: 'Адрес погрузки',
+    unloadingPlaceholder: 'Адрес разгрузки',
+    purposePlaceholder: 'напр. Перевозка товара для клиента',
+    copyFromSeller: 'Из продавца',
+    copyFromBuyer: 'Из покупателя',
   },
 };
 
@@ -739,6 +775,70 @@ export default function Studio({ locale, apiUrl }: Props) {
                   <input className={inputClass} value={invoice.warehouseFrom || ''}
                     placeholder={t.warehousePlaceholder}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'warehouseFrom', value: e.target.value })} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t.loadingPlace}</label>
+                  <div className="flex gap-1">
+                    <input className={inputClass} value={invoice.loadingPlace || ''}
+                      placeholder={t.loadingPlaceholder}
+                      onChange={e => dispatch({ type: 'SET_FIELD', path: 'loadingPlace', value: e.target.value })} />
+                    <button
+                      type="button"
+                      title={t.copyFromSeller}
+                      onClick={() => dispatch({ type: 'SET_FIELD', path: 'loadingPlace', value: [invoice.seller.address, invoice.seller.city].filter(Boolean).join(', ') })}
+                      className="px-2 text-text-muted hover:text-primary transition-colors shrink-0"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label className={labelClass}>{t.unloadingPlace}</label>
+                  <div className="flex gap-1">
+                    <input className={inputClass} value={invoice.unloadingPlace || ''}
+                      placeholder={t.unloadingPlaceholder}
+                      onChange={e => dispatch({ type: 'SET_FIELD', path: 'unloadingPlace', value: e.target.value })} />
+                    <button
+                      type="button"
+                      title={t.copyFromBuyer}
+                      onClick={() => dispatch({ type: 'SET_FIELD', path: 'unloadingPlace', value: [invoice.buyer.address, invoice.buyer.city].filter(Boolean).join(', ') })}
+                      className="px-2 text-text-muted hover:text-primary transition-colors shrink-0"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label className={labelClass}>{t.loadingDateTime}</label>
+                  <input type="datetime-local" className={inputClass} value={invoice.loadingDateTime || ''}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'loadingDateTime', value: e.target.value })} />
+                </div>
+                <div className="col-span-2">
+                  <label className={labelClass}>{t.transportPurpose}</label>
+                  <input className={inputClass} value={invoice.transportPurpose || ''}
+                    placeholder={t.purposePlaceholder}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'transportPurpose', value: e.target.value })} />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Signatures (otpremnica only) */}
+          {invoice.documentType === 'otpremnica' && (
+            <div className={sectionClass}>
+              <h2 className="text-text font-semibold mb-3">{t.signatures}</h2>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className={labelClass}>{t.handoverName}</label>
+                  <input className={inputClass} value={invoice.handoverName || ''}
+                    placeholder={t.handoverName}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'handoverName', value: e.target.value })} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t.receiverName}</label>
+                  <input className={inputClass} value={invoice.receiverName || ''}
+                    placeholder={t.receiverName}
+                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'receiverName', value: e.target.value })} />
                 </div>
               </div>
             </div>
