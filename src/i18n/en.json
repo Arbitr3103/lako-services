@@ -1000,9 +1000,9 @@
       "subtitle": "The security of your business data is our priority. We use cutting-edge technologies and practices to protect every piece of information."
     },
     "stats": [
-      { "value": "256-bit", "label": "data encryption" },
+      { "value": "256-bit", "label": "TLS encryption" },
       { "value": "24h", "label": "backup cycle" },
-      { "value": "30 days", "label": "backup retention" },
+      { "value": "90 days", "label": "offsite backup" },
       { "value": "100%", "label": "GDPR compliant" }
     ],
     "features": {
@@ -1010,27 +1010,27 @@
       "items": [
         {
           "title": "Encryption in transit",
-          "description": "All data is encrypted using HTTPS/TLS protocols. Cloudflare SSL provides an additional layer of protection."
+          "description": "HTTPS/TLS encryption with HSTS protection — browsers always connect over a secure channel. HTTP access is automatically redirected."
         },
         {
           "title": "Database security",
-          "description": "PostgreSQL database with data encryption and parameterized queries — protection against SQL injection attacks."
+          "description": "PostgreSQL with parameterized queries against SQL injection. Passwords protected with Argon2 hashing — even we can't read them."
         },
         {
           "title": "Automatic backups",
-          "description": "Backups are created every 24 hours and retained for 30 days. Your data is always safe and available for recovery."
+          "description": "Backups every 24 hours: 30 days locally, 90 days at a remote location. Status notifications delivered via Telegram."
         },
         {
-          "title": "Access control",
-          "description": "Webhook authentication, IDOR attack protection, and restricted server access — authorized personnel only."
+          "title": "HttpOnly authentication",
+          "description": "Sessions stored in HttpOnly cookies with SameSite and CSRF protection — inaccessible to JavaScript. Rate limiting restricts requests per IP address."
         },
         {
           "title": "Infrastructure protection",
-          "description": "Cloudflare DDoS protection and WAF (Web Application Firewall). Origin server is hidden behind a proxy."
+          "description": "Cloudflare DDoS protection and WAF with scanner-blocking rules. Hidden origin server. Rate limiting on all API endpoints."
         },
         {
-          "title": "Evidence with GPS coordinates",
-          "description": "Photos and GPS coordinates are recorded only on trip status changes. Data is stored securely and available for export."
+          "title": "XSS attack protection",
+          "description": "Content Security Policy (CSP) with cryptographic hashes and nonce tokens. Strict security headers block malicious code injection."
         }
       ]
     },
@@ -1068,7 +1068,7 @@
     "recovery": {
       "title": "Recovery plan",
       "steps": [
-        { "title": "Automatic backups", "description": "Backups every 24 hours at a geographically separate location" },
+        { "title": "Automatic backups", "description": "Backups every 24 hours: 30 days locally, 90 days at a remote location" },
         { "title": "Quick recovery", "description": "System recovery within 2-4 hours of issue report" },
         { "title": "Notifications", "description": "Instant Telegram notifications about all technical issues" },
         { "title": "Local copies", "description": "All PDF documents (CMR, invoices) and Excel exports are always with you" }

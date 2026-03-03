@@ -1000,9 +1000,9 @@
       "subtitle": "Bezbednost vaših poslovnih podataka je naš prioritet. Koristimo najsavremenije tehnologije i prakse za zaštitu svake informacije."
     },
     "stats": [
-      { "value": "256-bit", "label": "enkripcija podataka" },
+      { "value": "256-bit", "label": "TLS enkripcija" },
       { "value": "24h", "label": "ciklus bekapa" },
-      { "value": "30 dana", "label": "čuvanje bekapa" },
+      { "value": "90 dana", "label": "offsite bekap" },
       { "value": "100%", "label": "GDPR usklađenost" }
     ],
     "features": {
@@ -1010,27 +1010,27 @@
       "items": [
         {
           "title": "Enkripcija u prenosu",
-          "description": "Svi podaci se šifruju pomoću HTTPS/TLS protokola. Cloudflare SSL obezbeđuje dodatni sloj zaštite."
+          "description": "HTTPS/TLS enkripcija sa HSTS zaštitom — pretraživač se uvek povezuje preko sigurne veze. HTTP pristup je automatski preusmeren."
         },
         {
           "title": "Bezbednost baze",
-          "description": "PostgreSQL baza sa šifrovanjem podataka i parametrizovanim upitima — zaštita od SQL injection napada."
+          "description": "PostgreSQL sa parametrizovanim upitima protiv SQL injection napada. Lozinke zaštićene Argon2 heširanjem — čak i mi ne možemo da ih pročitamo."
         },
         {
           "title": "Automatski bekapi",
-          "description": "Bekapi se prave svakih 24 sata i čuvaju 30 dana. Vaši podaci su uvek sigurni i dostupni za obnovu."
+          "description": "Bekapi svakih 24 sata: 30 dana lokalno, 90 dana na udaljenoj lokaciji. Obaveštenja o statusu stižu u Telegram."
         },
         {
-          "title": "Kontrola pristupa",
-          "description": "Webhook autentifikacija, zaštita od IDOR napada i ograničen pristup serverima — samo ovlašćene osobe."
+          "title": "HttpOnly autentifikacija",
+          "description": "Sesije u HttpOnly kolačićima sa SameSite i CSRF zaštitom — nepristupačni za JavaScript. Rate limiting ograničava broj zahteva po IP adresi."
         },
         {
           "title": "Zaštita infrastrukture",
-          "description": "Cloudflare DDoS zaštita i WAF (Web Application Firewall). Origin server je skriven iza proxy-ja."
+          "description": "Cloudflare DDoS zaštita i WAF sa pravilima protiv skenera. Skriveni origin server. Rate limiting na svim API endpoint-ima."
         },
         {
-          "title": "Evidencija sa GPS koordinatama",
-          "description": "Fotografije i GPS koordinate se beleže samo pri promeni statusa rejsa. Podaci se čuvaju bezbedno i dostupni su za izvoz."
+          "title": "Zaštita od XSS napada",
+          "description": "Content Security Policy (CSP) sa kriptografskim hešovima i nonce tokenima. Stroga sigurnosna zaglavlja blokiraju ubacivanje zlonamernog koda."
         }
       ]
     },
@@ -1068,7 +1068,7 @@
     "recovery": {
       "title": "Plan oporavka",
       "steps": [
-        { "title": "Automatski bekapi", "description": "Bekapi svakih 24 sata na geografski odvojenoj lokaciji" },
+        { "title": "Automatski bekapi", "description": "Bekapi svakih 24 sata: 30 dana lokalno, 90 dana na udaljenoj lokaciji" },
         { "title": "Brza obnova", "description": "Obnova sistema u roku od 2-4 sata od prijave problema" },
         { "title": "Obaveštenja", "description": "Trenutna obaveštenja putem Telegrama o svim tehničkim problemima" },
         { "title": "Lokalne kopije", "description": "Svi PDF dokumenti (CMR, fakture) i Excel eksporti su uvek kod vas" }
