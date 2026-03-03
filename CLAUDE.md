@@ -102,7 +102,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 ## Security (hardened 2026-02-27)
 
 - **CSP**: Content-Security-Policy in `src/middleware.ts` — `default-src 'self'`, script/style/font/connect allowlists, `frame-ancestors 'none'`
-- **Security headers**: X-Frame-Options SAMEORIGIN, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy (no camera/mic/geo), X-DNS-Prefetch-Control off
+- **Security headers**: X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy (no camera/mic/geo), X-DNS-Prefetch-Control off
 - **SRI**: `integrity` + `crossorigin="anonymous"` on CDN font stylesheets (Geist Sans/Mono)
 - **External links**: all `target="_blank"` links have `rel="noopener noreferrer"`
 - **API input validation**: `sanitize()` enforces string type + trim + maxLength, `sanitizeHeaderValue()` strips CR/LF for email subjects, `EMAIL_RE` format validation

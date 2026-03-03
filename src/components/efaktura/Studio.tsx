@@ -171,7 +171,17 @@ interface SavedItem { description: string; unit: string; unitPrice: number; vatR
 
 function loadSavedBuyers(): Record<string, SavedBuyer> {
   if (typeof window === 'undefined') return {};
-  try { return JSON.parse(localStorage.getItem('efaktura-buyers') || '{}'); } catch { return {}; }
+  try {
+    const parsed = JSON.parse(localStorage.getItem('efaktura-buyers') || '{}');
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+    const result: Record<string, SavedBuyer> = {};
+    for (const [key, val] of Object.entries(parsed)) {
+      if (val && typeof val === 'object' && typeof (val as any).name === 'string') {
+        result[key] = val as SavedBuyer;
+      }
+    }
+    return result;
+  } catch { return {}; }
 }
 
 function persistBuyer(pib: string, buyer: BuyerData) {
@@ -283,7 +293,13 @@ function trackEvent(event: string, data?: Record<string, any>) {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
+const ALLOWED_API_HOSTS = ['https://bot.lako.services'];
+
 export default function Studio({ locale, apiUrl }: Props) {
+  if (!ALLOWED_API_HOSTS.includes(apiUrl)) {
+    return <div>Configuration error: invalid API URL</div>;
+  }
+
   const t = translations[locale] || translations.sr;
 
   useEffect(() => { trackEvent('efaktura_studio_open', { locale }); }, []);
@@ -292,7 +308,12 @@ export default function Studio({ locale, apiUrl }: Props) {
     const saved = typeof window !== 'undefined' ? localStorage.getItem('efaktura-seller') : null;
     const empty = createEmptyInvoice();
     if (saved) {
-      try { empty.seller = JSON.parse(saved); } catch {}
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && typeof parsed.name === 'string' && typeof parsed.pib === 'string') {
+          empty.seller = parsed;
+        }
+      } catch {}
     }
     return empty;
   });
@@ -936,7 +957,8 @@ export default function Studio({ locale, apiUrl }: Props) {
                   <button
                     onClick={() => {
                       const prefix = invoice.documentType === 'otpremnica' ? 'Otpremnica' : 'Faktura';
-                      downloadFile(downloadData.pdf, `${prefix}-${invoice.invoiceNumber}.pdf`, 'application/pdf');
+                      const safeNumber = invoice.invoiceNumber.replace(/[^a-zA-Z0-9._\-]/g, '_').slice(0, 50);
+                      downloadFile(downloadData.pdf, `${prefix}-${safeNumber}.pdf`, 'application/pdf');
                     }}
                     className="flex-1 bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-medium transition-colors"
                   >
@@ -944,7 +966,10 @@ export default function Studio({ locale, apiUrl }: Props) {
                   </button>
                   {downloadData.xml && (
                     <button
-                      onClick={() => downloadFile(downloadData.xml!, `eFaktura-${invoice.invoiceNumber}.xml`, 'application/xml')}
+                      onClick={() => {
+                        const safeNumber = invoice.invoiceNumber.replace(/[^a-zA-Z0-9._\-]/g, '_').slice(0, 50);
+                        downloadFile(downloadData.xml!, `eFaktura-${safeNumber}.xml`, 'application/xml');
+                      }}
                       className="flex-1 bg-accent hover:bg-accent-dark text-white py-3 rounded-lg font-medium transition-colors"
                     >
                       {t.downloadXml}

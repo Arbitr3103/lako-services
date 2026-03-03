@@ -77,13 +77,29 @@ export const POST: APIRoute = async ({ request, locals }) => {
       );
     }
 
+    // Validate phone format (digits, spaces, dashes, plus, parentheses)
+    if (phone && !/^[\d\s\-+()]{6,20}$/.test(phone)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid phone number format' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate website URL format if provided
+    if (website && !/^https?:\/\/\S{1,450}$/.test(website)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid website URL' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Build sanitized payload for downstream API
     const sanitizedData = { businessName, category, city, address, phone, instagram, website, contactName, email };
 
     // Register in lako-bot database
     if (LAKO_BOT_API_URL && REGISTRATION_SECRET) {
       try {
-        await fetch(`${LAKO_BOT_API_URL}/api/external/register`, {
+        const regRes = await fetch(`${LAKO_BOT_API_URL}/api/external/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -91,6 +107,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
           },
           body: JSON.stringify(sanitizedData),
         });
+        if (!regRes.ok) {
+          const errBody = await regRes.text().catch(() => 'unknown');
+          console.error('lako-bot registration failed:', regRes.status, errBody);
+          return new Response(JSON.stringify({ error: 'Registracija nije uspela. Pokušajte ponovo.' }), {
+            status: 502,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
       } catch (e) {
         console.error('lako-bot registration error:', e);
       }

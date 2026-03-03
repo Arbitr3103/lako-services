@@ -66,6 +66,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
       );
     }
 
+    // Validate phone format if provided (digits, spaces, dashes, plus, parentheses)
+    if (phone && !/^[\d\s\-+()]{6,20}$/.test(phone)) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid phone number format' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Access Cloudflare Worker env bindings directly
     const cfEnv = (locals as any).runtime?.env ?? {};
     const RESEND_API_KEY = cfEnv.RESEND_API_KEY;

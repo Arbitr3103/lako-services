@@ -21,7 +21,18 @@ export default function RegisterForm({ locale }: Props) {
     setStatus('loading');
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    const data = {
+      businessName: formData.get('businessName'),
+      category: formData.get('category'),
+      city: formData.get('city'),
+      address: formData.get('address'),
+      phone: formData.get('phone'),
+      instagram: formData.get('instagram'),
+      website: formData.get('website'),
+      contactName: formData.get('contactName'),
+      email: formData.get('email'),
+      // consent intentionally excluded
+    };
 
     try {
       const res = await fetch('/api/register-business', {

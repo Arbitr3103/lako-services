@@ -56,7 +56,7 @@ class RateLimiter {
     }
 
     entry.count += 1;
-    return entry.count > this.maxRequests;
+    return entry.count >= this.maxRequests;
   }
 
   /** Remove entries whose window has expired */

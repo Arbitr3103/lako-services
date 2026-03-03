@@ -20,7 +20,14 @@ export default function ContactForm({ locale }: Props) {
     setStatus('loading');
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      businessType: formData.get('businessType'),
+      message: formData.get('message'),
+      // consent intentionally excluded
+    };
 
     try {
       const res = await fetch('/api/contact', {
