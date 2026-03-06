@@ -1,7 +1,9 @@
 import type { APIRoute } from 'astro';
 import { createRateLimiter, getClientIp } from '../../utils/rate-limit';
 
-const ALLOWED_ORIGINS = ['https://lako.services', 'http://localhost:4321'];
+const ALLOWED_ORIGINS = import.meta.env.DEV
+  ? ['https://lako.services', 'http://localhost:4321']
+  : ['https://lako.services'];
 
 // 5 requests per 5 minutes per IP
 const limiter = createRateLimiter({ windowMs: 5 * 60_000, maxRequests: 5 });
