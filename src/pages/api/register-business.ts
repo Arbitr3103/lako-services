@@ -119,6 +119,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
         }
       } catch (e) {
         console.error('lako-bot registration error:', e);
+        return new Response(JSON.stringify({ error: 'Registracija nije uspela. Pokušajte ponovo.' }), {
+          status: 502,
+          headers: { 'Content-Type': 'application/json' }
+        });
       }
     }
 

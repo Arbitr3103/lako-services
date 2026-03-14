@@ -57,19 +57,16 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css" integrity="sha384-UoVLAkO5axeZ40F8A8xhhriZNUtKgmSG4Ue6MEi7Xv2KbKdwmOTcfhkeZuf09Rwh" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css" integrity="sha384-HYhuLi8gbUIFB7qI7h6aaSkOCl4lKe5iE8iCH1sil2VkcHpWxdcf8d8FO2v+x4ZX" crossorigin="anonymous" />
 
-    {/* Cloudflare Web Analytics — loaded only if user accepted analytics cookies */}
+    {/* Cloudflare Web Analytics — loaded only after cookie consent */}
     <script>
-      (function() {
-        var consent = localStorage.getItem('cookie-consent');
-        var analytics = localStorage.getItem('cookie-analytics');
-        if (consent === 'accepted' || (consent === 'custom' && analytics === 'true')) {
-          var s = document.createElement('script');
-          s.defer = true;
-          s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-          s.setAttribute('data-cf-beacon', '{"token": "2332d731c66846b5b3d5471c5157bae1"}');
-          document.head.appendChild(s);
-        }
-      })();
+      if (localStorage.getItem('cookie-consent') === 'accepted' ||
+          (localStorage.getItem('cookie-consent') === 'custom' && localStorage.getItem('cookie-analytics') === 'true')) {
+        const s = document.createElement('script');
+        s.defer = true;
+        s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        s.setAttribute('data-cf-beacon', '{"token": "2332d731c66846b5b3d5471c5157bae1"}');
+        document.head.appendChild(s);
+      }
     </script>
   </head>
   <body class="min-h-screen flex flex-col">
