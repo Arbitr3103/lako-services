@@ -194,7 +194,17 @@ function persistBuyer(pib: string, buyer: BuyerData) {
 
 function loadSavedItems(): SavedItem[] {
   if (typeof window === 'undefined') return [];
-  try { return JSON.parse(localStorage.getItem('efaktura-items') || '[]'); } catch { return []; }
+  try {
+    const parsed = JSON.parse(localStorage.getItem('efaktura-items') || '[]');
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((item: unknown): item is SavedItem =>
+      !!item && typeof item === 'object' &&
+      typeof (item as any).description === 'string' &&
+      typeof (item as any).unit === 'string' &&
+      typeof (item as any).unitPrice === 'number' &&
+      typeof (item as any).vatRate === 'number'
+    );
+  } catch { return []; }
 }
 
 function persistItems(items: InvoiceData['items']) {
