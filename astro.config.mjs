@@ -23,6 +23,7 @@ export default defineConfig({
         "connect-src 'self' https://bot.lako.services https://static.cloudflareinsights.com https://cloudflareinsights.com",
         "base-uri 'self'",
         "form-action 'self'",
+        "object-src 'none'",
       ],
     },
   },

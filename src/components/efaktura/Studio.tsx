@@ -566,6 +566,7 @@ export default function Studio({ locale, apiUrl }: Props) {
               className={inputClass}
               placeholder={invoice.documentType === 'otpremnica' ? 'O-001/2026' : '001/2026'}
               value={invoice.invoiceNumber}
+              maxLength={50}
               onChange={e => dispatch({ type: 'SET_FIELD', path: 'invoiceNumber', value: e.target.value })}
             />
           </div>
@@ -585,7 +586,7 @@ export default function Studio({ locale, apiUrl }: Props) {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className={labelClass}>{t.companyName} *</label>
-                  <input className={inputClass} value={invoice.seller.name}
+                  <input className={inputClass} value={invoice.seller.name} maxLength={200}
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'name', value: e.target.value })} />
                 </div>
                 <div>
@@ -596,17 +597,17 @@ export default function Studio({ locale, apiUrl }: Props) {
                 </div>
                 <div>
                   <label className={labelClass}>{t.address}</label>
-                  <input className={inputClass} value={invoice.seller.address}
+                  <input className={inputClass} value={invoice.seller.address} maxLength={500}
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'address', value: e.target.value })} />
                 </div>
                 <div>
                   <label className={labelClass}>{t.city}</label>
-                  <input className={inputClass} value={invoice.seller.city}
+                  <input className={inputClass} value={invoice.seller.city} maxLength={200}
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'city', value: e.target.value })} />
                 </div>
                 <div>
                   <label className={labelClass}>{t.mb}</label>
-                  <input className={inputClass} value={invoice.seller.mb || ''}
+                  <input className={inputClass} value={invoice.seller.mb || ''} maxLength={50}
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'mb', value: e.target.value })} />
                 </div>
                 <div>
@@ -617,7 +618,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                 </div>
                 <div>
                   <label className={labelClass}>{t.bankName}</label>
-                  <input className={inputClass} value={invoice.seller.bankName || ''}
+                  <input className={inputClass} value={invoice.seller.bankName || ''} maxLength={200}
                     onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'bankName', value: e.target.value })} />
                 </div>
                 <div className="flex items-end">
@@ -668,17 +669,17 @@ export default function Studio({ locale, apiUrl }: Props) {
               </div>
               <div>
                 <label className={labelClass}>{t.companyName} *</label>
-                <input className={inputClass} value={invoice.buyer.name}
+                <input className={inputClass} value={invoice.buyer.name} maxLength={200}
                   onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'name', value: e.target.value })} />
               </div>
               <div>
                 <label className={labelClass}>{t.address}</label>
-                <input className={inputClass} value={invoice.buyer.address}
+                <input className={inputClass} value={invoice.buyer.address} maxLength={500}
                   onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'address', value: e.target.value })} />
               </div>
               <div>
                 <label className={labelClass}>{t.city}</label>
-                <input className={inputClass} value={invoice.buyer.city}
+                <input className={inputClass} value={invoice.buyer.city} maxLength={200}
                   onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'city', value: e.target.value })} />
               </div>
             </div>
@@ -704,6 +705,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                       className={inputClass}
                       placeholder={t.description}
                       value={item.description}
+                      maxLength={500}
                       onChange={e => handleItemDescriptionChange(idx, e.target.value)}
                       onFocus={() => {
                         if (item.description.trim().length >= 1) {
@@ -791,26 +793,26 @@ export default function Studio({ locale, apiUrl }: Props) {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className={labelClass}>{t.vehicleRegistration}</label>
-                  <input className={inputClass} value={invoice.vehicleRegistration || ''}
+                  <input className={inputClass} value={invoice.vehicleRegistration || ''} maxLength={200}
                     placeholder={t.vehiclePlaceholder}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'vehicleRegistration', value: e.target.value })} />
                 </div>
                 <div>
                   <label className={labelClass}>{t.transportInfo}</label>
-                  <input className={inputClass} value={invoice.transportInfo || ''}
+                  <input className={inputClass} value={invoice.transportInfo || ''} maxLength={200}
                     placeholder={t.transportPlaceholder}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'transportInfo', value: e.target.value })} />
                 </div>
                 <div className="col-span-2">
                   <label className={labelClass}>{t.warehouseFrom}</label>
-                  <input className={inputClass} value={invoice.warehouseFrom || ''}
+                  <input className={inputClass} value={invoice.warehouseFrom || ''} maxLength={200}
                     placeholder={t.warehousePlaceholder}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'warehouseFrom', value: e.target.value })} />
                 </div>
                 <div>
                   <label className={labelClass}>{t.loadingPlace}</label>
                   <div className="flex gap-1">
-                    <input className={inputClass} value={invoice.loadingPlace || ''}
+                    <input className={inputClass} value={invoice.loadingPlace || ''} maxLength={200}
                       placeholder={t.loadingPlaceholder}
                       onChange={e => dispatch({ type: 'SET_FIELD', path: 'loadingPlace', value: e.target.value })} />
                     <button
@@ -826,7 +828,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                 <div>
                   <label className={labelClass}>{t.unloadingPlace}</label>
                   <div className="flex gap-1">
-                    <input className={inputClass} value={invoice.unloadingPlace || ''}
+                    <input className={inputClass} value={invoice.unloadingPlace || ''} maxLength={200}
                       placeholder={t.unloadingPlaceholder}
                       onChange={e => dispatch({ type: 'SET_FIELD', path: 'unloadingPlace', value: e.target.value })} />
                     <button
@@ -846,7 +848,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                 </div>
                 <div className="col-span-2">
                   <label className={labelClass}>{t.transportPurpose}</label>
-                  <input className={inputClass} value={invoice.transportPurpose || ''}
+                  <input className={inputClass} value={invoice.transportPurpose || ''} maxLength={200}
                     placeholder={t.purposePlaceholder}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'transportPurpose', value: e.target.value })} />
                 </div>
@@ -861,13 +863,13 @@ export default function Studio({ locale, apiUrl }: Props) {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className={labelClass}>{t.handoverName}</label>
-                  <input className={inputClass} value={invoice.handoverName || ''}
+                  <input className={inputClass} value={invoice.handoverName || ''} maxLength={200}
                     placeholder={t.handoverName}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'handoverName', value: e.target.value })} />
                 </div>
                 <div>
                   <label className={labelClass}>{t.receiverName}</label>
-                  <input className={inputClass} value={invoice.receiverName || ''}
+                  <input className={inputClass} value={invoice.receiverName || ''} maxLength={200}
                     placeholder={t.receiverName}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'receiverName', value: e.target.value })} />
                 </div>
@@ -922,7 +924,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                     </div>
                     <div>
                       <label className={labelClass}>{t.paymentReference} <span className="text-text-muted/60">({t.paymentRefAuto})</span></label>
-                      <input className={inputClass} value={invoice.paymentReference || ''}
+                      <input className={inputClass} value={invoice.paymentReference || ''} maxLength={50}
                         placeholder={t.paymentRefAuto}
                         onChange={e => dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: e.target.value })} />
                     </div>
@@ -930,7 +932,7 @@ export default function Studio({ locale, apiUrl }: Props) {
                 )}
                 <div className="col-span-2">
                   <label className={labelClass}>{t.notes}</label>
-                  <textarea className={inputClass + ' h-20 resize-none'} value={invoice.notes || ''}
+                  <textarea className={inputClass + ' h-20 resize-none'} value={invoice.notes || ''} maxLength={2000}
                     onChange={e => dispatch({ type: 'SET_FIELD', path: 'notes', value: e.target.value })} />
                 </div>
               </div>
