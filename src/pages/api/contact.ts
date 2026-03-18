@@ -109,6 +109,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
               <p>${escapeTgHtml(message)}</p>
             `,
           }),
+          signal: AbortSignal.timeout(10000),
         });
         if (resendRes.ok) {
           emailSent = true;
@@ -146,6 +147,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
             text,
             parse_mode: 'HTML',
           }),
+          signal: AbortSignal.timeout(10000),
         });
         if (tgRes.ok) {
           telegramSent = true;

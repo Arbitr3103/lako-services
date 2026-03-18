@@ -108,6 +108,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
             'Authorization': `Bearer ${REGISTRATION_SECRET}`,
           },
           body: JSON.stringify(sanitizedData),
+          signal: AbortSignal.timeout(10000),
         });
         if (!regRes.ok) {
           const errBody = await regRes.text().catch(() => 'unknown');
@@ -152,6 +153,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
               <p><strong>Email:</strong> ${escapeTgHtml(email)}</p>
             `,
           }),
+          signal: AbortSignal.timeout(10000),
         });
       } catch (e) {
         console.error('Resend error:', e);
@@ -183,6 +185,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
             text,
             parse_mode: 'HTML',
           }),
+          signal: AbortSignal.timeout(10000),
         });
       } catch (e) {
         console.error('Telegram error:', e);
