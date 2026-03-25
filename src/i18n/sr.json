@@ -48,7 +48,7 @@
       "title": "Zaštita podataka",
       "subtitle": "Vaši poslovni podaci su zaštićeni na svakom koraku — od šifrovanja do automatskih bekapa.",
       "items": [
-        "Svi podaci se šifruju pri prenosu (HTTPS/TLS)",
+        "Svi podaci se šifruju pri prenosu (HTTPS)",
         "Automatski bekapi svakih 24 sata sa 30 dana čuvanja",
         "Pristup samo ovlašćenim korisnicima",
         "Potpuna usklađenost sa GDPR i srpskim zakonom"
@@ -199,7 +199,7 @@
         { "question": "Koliko košta?", "answer": "Solo preduzetnici: 1.490 RSD mesečno. Kompanije: 3.500 RSD mesečno. Early Adopter program: 3 meseca besplatno uz povratne informacije. Svi ostali: 30 dana probnog perioda bez obaveza." },
         { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
         { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." },
-        { "question": "Kako su moji podaci tehnički zaštićeni?", "answer": "Svi podaci se šifruju pri prenosu (HTTPS/TLS) i pri čuvanju (PostgreSQL sa šifrovanjem). Automatski bekapi se prave svakih 24 sata i čuvaju se 30 dana. Pristup serverima je ograničen na ovlašćene osobe." },
+        { "question": "Kako su moji podaci tehnički zaštićeni?", "answer": "Svi podaci se šifruju pri prenosu (HTTPS) i pri čuvanju (PostgreSQL sa šifrovanjem). Automatski bekapi se prave svakih 24 sata i čuvaju se 30 dana. Pristup serverima je ograničen na ovlašćene osobe." },
         { "question": "Ko može da vidi moje podatke?", "answer": "Samo vi i vaši zaposleni koje sami dodate u sistem. Tehnička podrška može pristupiti vašim podacima SAMO uz vašu dozvolu radi rešavanja problema. Sve akcije podrške se beleže u logu." },
         { "question": "Šta ako server padne?", "answer": "Imamo plan oporavka: automatski bekapi svakih 24 sata, obnova sistema u roku od 2-4 sata, obaveštenje o problemu putem Telegrama. Takođe, svi vaši PDF dokumenti (CMR, fakture) i Excel eksporti su uvek kod vas — ne zavisite samo od servera." }
       ]
@@ -1010,7 +1010,7 @@
       "items": [
         {
           "title": "Enkripcija u prenosu",
-          "description": "HTTPS/TLS enkripcija sa HSTS zaštitom — pretraživač se uvek povezuje preko sigurne veze. HTTP pristup je automatski preusmeren."
+          "description": "HTTPS sa HSTS — pretraživač koristi isključivo bezbednu vezu."
         },
         {
           "title": "Bezbednost baze",

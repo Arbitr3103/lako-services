@@ -48,7 +48,7 @@
       "title": "Data Protection",
       "subtitle": "Your business data is protected at every step — from encryption to automatic backups.",
       "items": [
-        "All data encrypted in transit (HTTPS/TLS)",
+        "All data encrypted in transit (HTTPS)",
         "Automatic backups every 24 hours with 30-day retention",
         "Access restricted to authorized users only",
         "Full compliance with GDPR and Serbian data protection law"
@@ -199,7 +199,7 @@
         { "question": "How much does it cost?", "answer": "Solo entrepreneurs: 1,490 RSD/month. Companies: 3,500 RSD/month. First 5 clients: 3 months free. Everyone else: 30-day free trial, no obligations." },
         { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
         { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." },
-        { "question": "How is my data technically protected?", "answer": "All data is encrypted in transit (HTTPS/TLS) and at rest (PostgreSQL with encryption). Automatic backups are made every 24 hours and stored for 30 days. Server access is restricted to authorized personnel only." },
+        { "question": "How is my data technically protected?", "answer": "All data is encrypted in transit (HTTPS) and at rest (PostgreSQL with encryption). Automatic backups are made every 24 hours and stored for 30 days. Server access is restricted to authorized personnel only." },
         { "question": "Who can see my data?", "answer": "Only you and employees you add to the system yourself. Technical support can access your data ONLY with your permission to resolve issues. All support actions are logged." },
         { "question": "What if the server goes down?", "answer": "We have a recovery plan: automatic backups every 24 hours, system restoration within 2-4 hours, and a Telegram notification about the issue. Also, all your PDF documents (CMR, invoices) and Excel exports are always with you — you don't depend on the server alone." }
       ]
@@ -1010,7 +1010,7 @@
       "items": [
         {
           "title": "Encryption in transit",
-          "description": "HTTPS/TLS encryption with HSTS protection — browsers always connect over a secure channel. HTTP access is automatically redirected."
+          "description": "HTTPS with HSTS — browsers are forced to use only secure connections."
         },
         {
           "title": "Database security",
