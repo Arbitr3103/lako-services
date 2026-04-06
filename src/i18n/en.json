@@ -15,8 +15,8 @@
     "hero": {
       "title": "Automation made easy",
       "subtitle": "Telegram bots for your business. Save time and money with smart automation.",
-      "cta": "Try it free",
-      "ctaSecondary": "How it works?"
+      "cta": "See our solutions",
+      "ctaSecondary": "Contact us"
     },
     "value": {
       "title": "Why Lako Services?",
@@ -54,6 +54,11 @@
         "Full compliance with GDPR and Serbian data protection law"
       ],
       "cta": "Learn more about protection"
+    },
+    "bottomCta": {
+      "title": "Ready to automate your business?",
+      "subtitle": "Free consultation — no obligations.",
+      "cta": "Contact us"
     }
   },
   "logistics": {

@@ -15,8 +15,8 @@
     "hero": {
       "title": "Automatizacija — lako i brzo",
       "subtitle": "Telegram botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
-      "cta": "Probajte besplatno",
-      "ctaSecondary": "Kako to radi?"
+      "cta": "Pogledajte rešenja",
+      "ctaSecondary": "Kontaktirajte nas"
     },
     "value": {
       "title": "Zašto Lako Services?",
@@ -54,6 +54,11 @@
         "Potpuna usklađenost sa GDPR i srpskim zakonom"
       ],
       "cta": "Saznajte više o zaštiti"
+    },
+    "bottomCta": {
+      "title": "Spremni da automatizujete vaš biznis?",
+      "subtitle": "Besplatna konsultacija — bez obaveza.",
+      "cta": "Kontaktirajte nas"
     }
   },
   "logistics": {

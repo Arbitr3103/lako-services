@@ -46,6 +46,15 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     <meta property="og:type" content="website" />
     {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).href} />}
 
+    {/* Twitter Card */}
+    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />}
+
+    {/* Theme color */}
+    <meta name="theme-color" content="#0B1120" />
+
     {/* Custom JSON-LD */}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 

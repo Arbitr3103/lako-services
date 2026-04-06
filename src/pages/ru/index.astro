@@ -23,10 +23,10 @@ const securityItems = tObject<string[]>(locale, 'home.security.items');
           {t(locale, 'home.hero.subtitle')}
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
+          <CTA href={getLocalizedPath('/logistics', locale)} variant="accent" size="lg">
             {t(locale, 'home.hero.cta')}
           </CTA>
-          <CTA href={getLocalizedPath('/logistics', locale)} variant="secondary" size="lg">
+          <CTA href={getLocalizedPath('/contact', locale)} variant="secondary" size="lg">
             {t(locale, 'home.hero.ctaSecondary')}
           </CTA>
         </div>
@@ -150,10 +150,10 @@ const securityItems = tObject<string[]>(locale, 'home.security.items');
   {/* Bottom CTA */}
   <section class="py-16 bg-gradient-to-r from-primary/20 to-accent/10 border-t border-border">
     <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Готовы автоматизировать ваш бизнес?</h2>
-      <p class="text-text-light mb-8 text-lg">Бесплатная консультация — без обязательств.</p>
+      <h2 class="text-3xl font-bold text-white mb-4">{t(locale, 'home.bottomCta.title')}</h2>
+      <p class="text-text-light mb-8 text-lg">{t(locale, 'home.bottomCta.subtitle')}</p>
       <CTA href={getLocalizedPath('/contact', locale)} variant="accent" size="lg">
-        {t(locale, 'home.hero.cta')}
+        {t(locale, 'home.bottomCta.cta')}
       </CTA>
     </div>
   </section>
