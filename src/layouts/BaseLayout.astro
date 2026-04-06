@@ -15,6 +15,7 @@ interface Props {
 }
 
 const { title, description, locale, noindex = false, ogImage, jsonLd } = Astro.props;
+const resolvedOgImage = ogImage || '/images/og-default.png';
 const currentPath = getPathWithoutLocale(Astro.url.pathname);
 const canonicalUrl = new URL(getLocalizedPath(currentPath, locale), Astro.site);
 
@@ -44,13 +45,13 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     <meta property="og:site_name" content="Lako Services" />
     <meta property="og:locale" content={ogLocaleMap[locale]} />
     <meta property="og:type" content="website" />
-    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).href} />}
+    <meta property="og:image" content={new URL(resolvedOgImage, Astro.site).href} />
 
     {/* Twitter Card */}
-    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />}
+    <meta name="twitter:image" content={new URL(resolvedOgImage, Astro.site).href} />
 
     {/* Theme color */}
     <meta name="theme-color" content="#0B1120" />

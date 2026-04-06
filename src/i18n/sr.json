@@ -55,6 +55,13 @@
       ],
       "cta": "Saznajte više o zaštiti"
     },
+    "showcase": {
+      "title": "Pogledajte kako to izgleda",
+      "cmrAlt": "Primer CMR dokumenta generisanog u Lako sistemu",
+      "cmrCaption": "CMR dokument — generisan za 15 sekundi",
+      "botAlt": "Telegram bot Lako Concierge — ekran dobrodošlice sa kategorijama usluga",
+      "botCaption": "Telegram bot — spreman za korišćenje odmah"
+    },
     "bottomCta": {
       "title": "Spremni da automatizujete vaš biznis?",
       "subtitle": "Besplatna konsultacija — bez obaveza.",
