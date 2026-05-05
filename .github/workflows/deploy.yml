@@ -17,6 +17,14 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run deploy
+      - run: npm run build
+
+      - run: npm run check:seo
+
+      - run: npm run deploy:worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - run: npm run check:seo
+        env:
+          SEO_BASE_URL: https://lako.services

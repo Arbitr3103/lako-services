@@ -13,6 +13,7 @@ export default function RegisterForm({ locale }: Props) {
   const form = translations.registerBusiness.form;
   const categories = form.categories;
   const cities = form.cities;
+  const privacyPolicyPath = locale === 'sr' ? '/privacy-policy/' : `/${locale}/privacy-policy/`;
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -154,7 +155,7 @@ export default function RegisterForm({ locale }: Props) {
         <label htmlFor="consent" className="text-sm text-text-muted">
           {translations.consent.text}{' '}
           <a
-            href={locale === 'sr' ? '/privacy-policy' : `/${locale}/privacy-policy`}
+            href={privacyPolicyPath}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"

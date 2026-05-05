@@ -1,0 +1,419 @@
+---
+import { getLocalizedPath, t, tObject, type Locale } from '../../i18n/utils';
+import StudioMockup from './StudioMockup.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const heroPoints = tObject<string[]>(locale, 'efaktura.hero.points');
+const problems = tObject<Array<{ title: string; description: string }>>(locale, 'efaktura.problems.items');
+const problemMetrics = tObject<Array<{ value: string; label: string }>>(locale, 'efaktura.problems.metrics');
+const solutions = tObject<Array<{ icon: string; title: string; description: string }>>(locale, 'efaktura.solutions.items');
+const steps = tObject<Array<{ number: string; title: string; description: string }>>(locale, 'efaktura.howItWorks.steps');
+const plans = tObject<Array<{ name: string; subtitle?: string; price: string; period: string; features: string[]; cta: string; popular?: boolean }>>(locale, 'efaktura.pricing.plans');
+const faqItems = tObject<Array<{ question: string; answer: string }>>(locale, 'efaktura.faq.items');
+const securityItems = tObject<string[]>(locale, 'efaktura.security.items');
+const trustItems = tObject<string[]>(locale, 'efaktura.trustBanner.items');
+const seoBlockTitle = t(locale, 'efaktura.seoBlock.title');
+const seoBlockText = t(locale, 'efaktura.seoBlock.text');
+const popularLabel = t(locale, 'efaktura.pricing.popularLabel');
+const pricingPoints = tObject<string[]>(locale, 'efaktura.pricing.points');
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const problemIcons = [
+  `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>`,
+  `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" /></svg>`,
+];
+
+const solutionIcons: Record<string, string> = {
+  split: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>`,
+  check: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>`,
+  download: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>`,
+  qr: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" /></svg>`,
+};
+
+const stepIcons = [
+  `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>`,
+  `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+  `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>`,
+];
+
+const sectionEyebrowClass = 'inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-text-muted sm:px-4 sm:text-[11px] sm:tracking-[0.24em]';
+---
+
+<section class="relative overflow-hidden border-b border-white/6 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.16),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(245,158,11,0.14),transparent_28%),linear-gradient(180deg,#08101d_0%,#0b1120_42%,#0b1120_100%)]">
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:120px_120px] opacity-[0.08]"></div>
+  <div class="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-24">
+    <div class="grid items-center gap-14 xl:grid-cols-[0.88fr_1.12fr]">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center rounded-full border border-accent/15 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent">
+          {t(locale, 'efaktura.hero.badge')}
+        </span>
+
+        <h1 class="mt-6 max-w-[10ch] text-balance text-[2.9rem] font-bold tracking-[-0.055em] leading-[0.92] text-text sm:max-w-[11ch] sm:text-5xl md:max-w-[12ch] md:text-6xl xl:max-w-none xl:text-[4.85rem] xl:leading-[0.95]">
+          {t(locale, 'efaktura.hero.title')}
+        </h1>
+
+        <p class="mt-5 max-w-[34rem] text-base leading-7 text-text-light sm:text-lg sm:leading-8 md:text-xl">
+          {t(locale, 'efaktura.hero.subtitle')}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+          <a
+            href={getLocalizedPath('/efaktura/studio', locale)}
+            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:px-7 sm:py-4"
+          >
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+            {t(locale, 'efaktura.hero.cta')}
+          </a>
+          <a
+            href="#how-it-works"
+            class="inline-flex items-center justify-center rounded-2xl border border-primary/30 bg-primary/5 px-6 py-3.5 text-base font-semibold text-text transition-colors hover:bg-primary/10 sm:px-7 sm:py-4"
+          >
+            {t(locale, 'efaktura.hero.ctaSecondary')}
+          </a>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3">
+          {heroPoints.map((point) => (
+            <div class="rounded-full border border-white/8 bg-white/[0.04] px-3.5 py-2 text-xs leading-5 text-text-light sm:px-4 sm:py-2.5 sm:text-sm">
+              {point}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mx-auto w-full max-w-[380px] xl:max-w-none xl:pl-6">
+        <StudioMockup locale={locale} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal bg-bg py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 xl:grid-cols-[0.82fr_1.18fr] xl:items-start">
+      <div class="max-w-xl">
+        <span class={sectionEyebrowClass}>{t(locale, 'efaktura.problems.eyebrow')}</span>
+        <h2 class="mt-6 max-w-[12ch] text-balance text-[2rem] font-bold tracking-[-0.04em] leading-[1] text-text sm:text-4xl md:max-w-[13ch] md:text-5xl">
+          {t(locale, 'efaktura.problems.title')}
+        </h2>
+        <p class="mt-4 text-base leading-7 text-text-light sm:mt-5 sm:text-lg sm:leading-8">
+          {t(locale, 'efaktura.problems.subtitle')}
+        </p>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          {problemMetrics.map((metric) => (
+            <div class="rounded-3xl border border-white/8 bg-bg-card/70 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.18)]">
+              <div class="text-2xl font-bold tracking-[-0.03em] text-text">{metric.value}</div>
+              <div class="mt-2 text-sm leading-6 text-text-light">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        {problems.map((item, i) => (
+          <article class="group rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.92),rgba(15,23,42,0.96))] p-7 shadow-[0_18px_50px_rgba(8,15,28,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/12 text-primary">
+              <Fragment set:html={problemIcons[i]} />
+            </div>
+            <h3 class="mt-5 text-xl font-semibold tracking-[-0.025em] text-text sm:mt-6 sm:text-2xl">{item.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-text-light sm:mt-4 sm:text-base sm:leading-7">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal bg-[linear-gradient(180deg,rgba(17,24,39,1),rgba(11,17,32,1))] py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 xl:grid-cols-[0.76fr_1.24fr]">
+      <div class="max-w-lg">
+        <span class={sectionEyebrowClass}>{t(locale, 'efaktura.solutions.eyebrow')}</span>
+        <h2 class="mt-6 max-w-[12ch] text-balance text-[2rem] font-bold tracking-[-0.04em] leading-[1] text-text sm:text-4xl md:max-w-[13ch] md:text-5xl">
+          {t(locale, 'efaktura.solutions.title')}
+        </h2>
+        <p class="mt-4 text-base leading-7 text-text-light sm:mt-5 sm:text-lg sm:leading-8">
+          {t(locale, 'efaktura.solutions.subtitle')}
+        </p>
+        <div class="mt-8 rounded-[28px] border border-white/8 bg-white/[0.04] p-6">
+          <p class="text-sm leading-7 text-text-light">{seoBlockText}</p>
+        </div>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        {solutions.map((item, index) => (
+          <article
+            class:list={[
+              'rounded-[28px] border p-7 shadow-[0_18px_50px_rgba(8,15,28,0.35)] transition-transform duration-300 hover:-translate-y-1',
+              index === 0
+                ? 'border-primary/30 bg-[linear-gradient(135deg,rgba(96,165,250,0.14),rgba(15,23,42,0.98))] md:col-span-2'
+                : 'border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.9),rgba(15,23,42,0.96))] hover:border-primary/35',
+            ]}
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/12 text-primary">
+              <Fragment set:html={solutionIcons[item.icon] || ''} />
+            </div>
+            <h3 class="mt-5 text-xl font-semibold tracking-[-0.025em] text-text sm:mt-6 sm:text-2xl">{item.title}</h3>
+            <p class="mt-3 max-w-xl text-sm leading-6 text-text-light sm:mt-4 sm:text-base sm:leading-7">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="reveal scroll-mt-8 bg-bg py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class={sectionEyebrowClass}>{t(locale, 'efaktura.howItWorks.eyebrow')}</span>
+      <h2 class="mx-auto mt-6 max-w-[12ch] text-balance text-[2rem] font-bold tracking-[-0.04em] leading-[1] text-text sm:max-w-[14ch] sm:text-4xl md:text-5xl">
+        {t(locale, 'efaktura.howItWorks.title')}
+      </h2>
+    </div>
+
+    <div class="relative mt-16">
+      <div class="absolute left-0 right-0 top-16 hidden border-t border-dashed border-primary/20 xl:block"></div>
+      <div class="grid gap-6 xl:grid-cols-3">
+        {steps.map((step, i) => (
+          <article class="relative rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(17,24,39,0.98),rgba(15,23,42,0.98))] p-8 shadow-[0_18px_50px_rgba(8,15,28,0.35)]">
+            <div class="relative z-10">
+              <div class="text-6xl font-bold tracking-[-0.06em] text-accent/20">{step.number}</div>
+              <div class="mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/12 text-primary">
+                <Fragment set:html={stepIcons[i]} />
+              </div>
+              <h3 class="mt-5 text-xl font-semibold tracking-[-0.025em] text-text sm:mt-6 sm:text-2xl">{step.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-text-light sm:mt-4 sm:text-base sm:leading-7">{step.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal bg-[linear-gradient(180deg,rgba(11,17,32,1),rgba(17,24,39,1))] py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+      <a
+        href={getLocalizedPath('/zastita-podataka', locale)}
+        class="group rounded-[30px] border border-emerald-500/18 bg-[linear-gradient(135deg,rgba(16,185,129,0.12),rgba(15,23,42,0.96))] p-8 shadow-[0_18px_50px_rgba(8,15,28,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-emerald-400/35"
+      >
+        <span class={sectionEyebrowClass}>{t(locale, 'efaktura.security.eyebrow')}</span>
+        <h2 class="mt-6 max-w-[13ch] text-balance text-[1.9rem] font-bold tracking-[-0.04em] leading-[1.02] text-text sm:text-3xl md:text-4xl">
+          {t(locale, 'efaktura.trustBanner.question')}
+        </h2>
+        <p class="mt-4 max-w-xl text-sm leading-6 text-text-light sm:text-base sm:leading-7">
+          {t(locale, 'efaktura.trustBanner.subtitle')}
+        </p>
+
+        <div class="mt-8 grid gap-3 sm:grid-cols-2">
+          {trustItems.map((item) => (
+            <div class="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.05] px-4 py-3 text-sm text-emerald-200">
+              <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <p class="mt-6 max-w-xl text-sm leading-6 text-emerald-100/75">
+          {t(locale, 'efaktura.trustBanner.note')}
+        </p>
+
+        <div class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300">
+          {t(locale, 'efaktura.trustBanner.cta')}
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </a>
+
+      <div class="rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.92),rgba(15,23,42,0.98))] p-8 shadow-[0_18px_50px_rgba(8,15,28,0.35)]">
+        <h2 class="max-w-[13ch] text-balance text-[1.9rem] font-bold tracking-[-0.04em] leading-[1.02] text-text sm:text-3xl md:text-4xl">
+          {seoBlockTitle}
+        </h2>
+        <p class="mt-5 max-w-2xl text-sm leading-6 text-text-light sm:text-base sm:leading-7">
+          {seoBlockText}
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {securityItems.map((item) => (
+            <span class="rounded-full border border-white/8 bg-white/[0.05] px-4 py-2 text-sm text-text-light">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal bg-bg py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class={sectionEyebrowClass}>{t(locale, 'efaktura.pricing.eyebrow')}</span>
+      <h2 class="mx-auto mt-6 max-w-[12ch] text-balance text-[2rem] font-bold tracking-[-0.04em] leading-[1] text-text sm:max-w-[14ch] sm:text-4xl md:text-5xl">
+        {t(locale, 'efaktura.pricing.title')}
+      </h2>
+      <p class="mx-auto mt-4 max-w-[44rem] text-sm leading-6 text-text-light sm:mt-5 sm:text-base sm:leading-7">
+        {t(locale, 'efaktura.pricing.subtitle')}
+      </p>
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+        {pricingPoints.map((point) => (
+          <span class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1.5 text-[11px] leading-5 text-text-light sm:px-3.5 sm:py-2 sm:text-xs">
+            {point}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-6 xl:grid-cols-3">
+      {plans.map((plan) => (
+        <article
+          class:list={[
+            'relative flex h-full flex-col rounded-[30px] border p-8 shadow-[0_18px_50px_rgba(8,15,28,0.35)] transition-transform duration-300 hover:-translate-y-1',
+            plan.popular
+              ? 'border-accent/45 bg-[linear-gradient(180deg,rgba(245,158,11,0.18),rgba(15,23,42,0.98))] shadow-[0_28px_80px_rgba(245,158,11,0.14)] xl:-mt-4 xl:scale-[1.03]'
+              : 'border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.88),rgba(15,23,42,0.98))] opacity-[0.96]',
+          ]}
+        >
+          {plan.popular && (
+            <span class="absolute left-8 top-0 -translate-y-1/2 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+              {popularLabel}
+            </span>
+          )}
+
+          <div class:list={[
+            'text-sm font-semibold uppercase tracking-[0.2em]',
+            plan.popular ? 'text-accent-light' : 'text-text-muted'
+          ]}>{plan.name}</div>
+          {plan.subtitle && (
+            <p class="mt-3 min-h-[3rem] text-sm leading-6 text-text-light">
+              {plan.subtitle}
+            </p>
+          )}
+          <div class="mt-5 flex items-end gap-2">
+            <span class:list={[
+              'text-5xl font-bold tracking-[-0.05em] text-text',
+              plan.popular && 'text-white'
+            ]}>{plan.price === '0' ? '0' : plan.price}</span>
+            <div class="pb-1 text-sm text-text-light">
+              {plan.price === '0' ? plan.period : `${t(locale, 'efaktura.pricing.currency')} / ${plan.period}`}
+            </div>
+          </div>
+
+          <ul class="mt-8 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3 text-sm leading-6 text-text-light">
+                <svg class="mt-1 h-4 w-4 flex-shrink-0 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={plan.price !== '0' ? 'https://app.echain.world' : getLocalizedPath('/efaktura/studio', locale)}
+            target={plan.price !== '0' ? '_blank' : undefined}
+            rel={plan.price !== '0' ? 'noopener noreferrer' : undefined}
+            class:list={[
+              'mt-8 inline-flex w-full items-center justify-center rounded-2xl px-6 py-3.5 text-base font-semibold transition-colors',
+              plan.popular ? 'bg-accent text-white hover:bg-accent/90' : 'border border-primary/30 bg-primary/6 text-text hover:bg-primary/10',
+            ]}
+          >
+            {plan.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="reveal bg-[linear-gradient(180deg,rgba(17,24,39,1),rgba(11,17,32,1))] py-24">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.6fr_1fr] lg:items-start lg:px-8 xl:gap-10">
+    <div class="max-w-md lg:pt-3">
+      <span class={sectionEyebrowClass}>{t(locale, 'efaktura.faq.eyebrow')}</span>
+      <h2 class="mt-6 max-w-[12ch] text-balance text-[2rem] font-bold tracking-[-0.04em] leading-[1] text-text sm:max-w-[14ch] sm:text-4xl md:text-5xl">
+        {t(locale, 'efaktura.faq.title')}
+      </h2>
+      <p class="mt-4 max-w-sm text-sm leading-6 text-text-light sm:mt-5 sm:text-base sm:leading-7">
+        {t(locale, 'efaktura.faq.subtitle')}
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      {faqItems.map((item) => (
+        <details class="group overflow-hidden rounded-[24px] border border-white/8 bg-white/[0.04]">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-text transition-colors hover:bg-white/[0.06] list-none sm:px-6 sm:py-5 sm:text-base [&::-webkit-details-marker]:hidden">
+            <span>{item.question}</span>
+            <svg class="h-5 w-5 flex-shrink-0 text-text-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </summary>
+          <div class="faq-content">
+            <div class="faq-inner px-5 pb-4 text-sm leading-6 text-text-light sm:px-6 sm:pb-5 sm:text-base sm:leading-7">
+              {item.answer}
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="reveal border-t border-white/6 bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.18),transparent_35%),linear-gradient(180deg,rgba(17,24,39,1),rgba(11,17,32,1))] py-24">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="rounded-[32px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] px-6 py-10 text-center shadow-[0_24px_70px_rgba(8,15,28,0.34)] sm:px-8 md:px-10 md:py-12">
+      <span class="inline-flex items-center rounded-full border border-accent/15 bg-accent/10 px-4 py-1.5 text-sm font-semibold text-accent">
+        {t(locale, 'efaktura.bottomCta.eyebrow')}
+      </span>
+      <h2 class="mx-auto mt-5 max-w-[11ch] text-balance text-[2.4rem] font-bold tracking-[-0.055em] leading-[0.94] text-text sm:max-w-[12ch] sm:text-4xl md:max-w-[13ch] md:text-[3.4rem]">
+        {t(locale, 'efaktura.bottomCta.title')}
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm leading-6 text-text-light sm:text-base sm:leading-7">
+        {t(locale, 'efaktura.bottomCta.subtitle')}
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+        <a
+          href={getLocalizedPath('/efaktura/studio', locale)}
+          class="inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-accent/90 sm:min-w-[220px]"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          {t(locale, 'efaktura.bottomCta.cta')}
+        </a>
+        <a
+          href="#how-it-works"
+          class="inline-flex items-center justify-center rounded-2xl border border-primary/30 bg-primary/6 px-7 py-4 text-sm font-semibold text-text transition-colors hover:bg-primary/10 sm:text-base"
+        >
+          {t(locale, 'efaktura.hero.ctaSecondary')}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />

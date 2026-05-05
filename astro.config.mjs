@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
+import { isSitemapIncludedPath } from './src/utils/seo-policy.js';
 
 export default defineConfig({
   site: 'https://lako.services',
@@ -33,6 +34,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
+      filter: (page) => isSitemapIncludedPath(new URL(page).pathname),
       i18n: {
         defaultLocale: 'sr',
         locales: {

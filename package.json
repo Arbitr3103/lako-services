@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check:seo": "node scripts/check-seo.mjs",
     "preview": "astro build && wrangler dev",
     "deploy": "astro build && wrangler deploy",
+    "deploy:worker": "wrangler deploy",
     "astro": "astro"
   },
   "devDependencies": {

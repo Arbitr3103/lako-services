@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t, type Locale } from '../i18n/utils';
+import FeatureGuide from './FeatureGuide.astro';
+import { isIndexableGuidePage } from '../utils/seo-policy.js';
+
+interface Props {
+  locale: Locale;
+  feature: string;
+}
+
+const { locale, feature } = Astro.props;
+---
+<BaseLayout
+  title={t(locale, `seo.logistics.guides.${feature}.title`)}
+  description={t(locale, `seo.logistics.guides.${feature}.description`)}
+  locale={locale}
+  noindex={!isIndexableGuidePage(locale, feature)}
+>
+  <FeatureGuide locale={locale} feature={feature} />
+</BaseLayout>

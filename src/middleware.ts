@@ -1,6 +1,13 @@
 import { defineMiddleware } from 'astro:middleware';
+import { shouldRedirectToTrailingSlash, toTrailingSlashPath } from './utils/url';
 
-export const onRequest = defineMiddleware(async (_context, next) => {
+export const onRequest = defineMiddleware(async (context, next) => {
+  if (shouldRedirectToTrailingSlash(context.url.pathname)) {
+    const redirectUrl = new URL(context.url);
+    redirectUrl.pathname = toTrailingSlashPath(context.url.pathname);
+    return Response.redirect(redirectUrl, 308);
+  }
+
   const response = await next();
   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   response.headers.set('X-Frame-Options', 'DENY');

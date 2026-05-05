@@ -1327,14 +1327,36 @@
     },
     "hero": {
       "badge": "Besplatno za male firme",
-      "title": "e-Faktura Studio",
-      "subtitle": "Kreirajte profesionalne fakture i otpremnice za 2 minuta. PDF + UBL XML — spremno za SEF portal i inspekciju.",
-      "cta": "Napravi fakturu",
-      "ctaSecondary": "Kako radi?"
+      "title": "Napravite SEF-spremne fakture za 2 minuta.",
+      "subtitle": "Podatke unosite jednom, a dobijate PDF za kupca, UBL XML za SEF i otpremnicu sa QR proverom.",
+      "cta": "Pokreni Studio besplatno",
+      "ctaSecondary": "Pogledaj kako radi",
+      "points": [
+        "Bez ponovnog kucanja u portal za svaki dokument",
+        "Pregled pre slanja ili štampe",
+        "Besplatno do 3 dokumenta mesečno"
+      ],
+      "modeInvoice": "Faktura",
+      "modeDeliveryNote": "Otpremnica"
     },
     "problems": {
-      "title": "Zašto vam treba e-Faktura Studio?",
-      "subtitle": "E-fakture su obavezne za B2B. Kazne idu do 2 miliona dinara.",
+      "eyebrow": "Zašto prelaze na Studio",
+      "title": "Ručni SEF proces je spor, rizičan i skup.",
+      "subtitle": "Ako i dalje kucate fakture ručno u portal, gubite sate, pravite dodatne korekcije i povećavate šansu da dokument bude odbijen.",
+      "metrics": [
+        {
+          "value": "15-20 min",
+          "label": "Tipično ručno vreme unosa jedne fakture u SEF"
+        },
+        {
+          "value": "5 dana",
+          "label": "Rok za slanje nakon datuma prometa"
+        },
+        {
+          "value": "2M RSD",
+          "label": "Moguće kazne za pogrešno e-fakturisanje"
+        }
+      ],
       "items": [
         {
           "title": "SEF portal je spor",
@@ -1351,7 +1373,9 @@
       ]
     },
     "solutions": {
-      "title": "Sve što vam treba za e-fakturu",
+      "eyebrow": "Prikaz proizvoda",
+      "title": "Vidite dokument pre nego što ga generišete.",
+      "subtitle": "Jedno mesto za unos podataka, proveru i izvoz formata koji vam zaista trebaju.",
       "items": [
         {
           "icon": "split",
@@ -1376,7 +1400,8 @@
       ]
     },
     "howItWorks": {
-      "title": "Kako radi?",
+      "eyebrow": "Tok rada",
+      "title": "Tri koraka od unosa do usklađenog dokumenta",
       "steps": [
         {
           "number": "1",
@@ -1396,11 +1421,18 @@
       ]
     },
     "pricing": {
-      "title": "Cene",
-      "subtitle": "Počnite besplatno, nadogradite kada vam zatreba",
+      "eyebrow": "Paketi",
+      "title": "Počnite besplatno. Nadogradite kada vam workflow poraste.",
+      "subtitle": "Besplatan plan je dovoljan za stvaran rad. Nadogradnja ima smisla tek kada vam trebaju obim, istorija i automatizacija.",
+      "points": [
+        "Besplatan plan radi i bez registracije",
+        "Nadogradnja tek kada vam zatrebaju istorija i obim",
+        "PDF + XML su uključeni od prvog dokumenta"
+      ],
       "plans": [
         {
           "name": "Besplatno",
+          "subtitle": "Za solo preduzetnike i povremene SEF dokumente.",
           "price": "0",
           "period": "zauvek",
           "features": [
@@ -1409,10 +1441,11 @@
             "Automatska validacija",
             "Bez naloga"
           ],
-          "cta": "Počni besplatno"
+          "cta": "Počni odmah"
         },
         {
           "name": "Pro",
+          "subtitle": "Za aktivne male firme kojima trebaju istorija i sačuvani kupci.",
           "price": "1.490",
           "period": "mesečno",
           "features": [
@@ -1422,11 +1455,12 @@
             "Više firmi",
             "Prioritetna podrška"
           ],
-          "cta": "Aktiviraj Pro",
+          "cta": "Pređi na Pro",
           "popular": true
         },
         {
           "name": "Biznis",
+          "subtitle": "Za timove kojima trebaju brending, šabloni, batch izlaz i API.",
           "price": "2.490",
           "period": "mesečno",
           "features": [
@@ -1436,68 +1470,73 @@
             "Batch generisanje",
             "API pristup"
           ],
-          "cta": "Isprobajte besplatno"
+          "cta": "Otvori Biznis plan"
         }
       ],
-      "currency": "RSD"
+      "currency": "RSD",
+      "popularLabel": "Najčešći izbor"
     },
     "trustBanner": {
       "question": "Da li su moji podaci bezbedni?",
-      "subtitle": "Vaši fakture i poslovni podaci su zaštićeni na svakom koraku — od šifrovanja do serverske bezbednosti.",
+      "subtitle": "Napravljeno za poslovno osetljive dokumente: šifrovan saobraćaj, hosting u Evropi i jasna pravila za lokalne i sačuvane podatke.",
       "items": [
         "HTTPS enkripcija",
         "Enkripcija lozinki",
         "Podaci ostaju na serveru u Evropi",
         "GDPR usklađenost"
       ],
+      "note": "Bez naloga, podaci o firmi ostaju u browseru. Sa nalogom, pristup i sačuvani podaci štite se na serverskoj strani.",
       "cta": "Detaljnije o zaštiti"
     },
     "faq": {
+      "eyebrow": "Pitanja",
       "title": "Česta pitanja",
+      "subtitle": "Ključna pitanja su validnost za SEF, bezbednost podataka i da li je Free stvarno upotrebljiv.",
       "items": [
-        {
-          "question": "Da li je e-Faktura Studio besplatan?",
-          "answer": "Da, osnovni plan je besplatan zauvek — 3 fakture mesečno sa punom funkcionalnošću."
-        },
         {
           "question": "Da li generisani XML odgovara SEF formatu?",
           "answer": "Da, generišemo UBL 2.1 XML koji je potpuno kompatibilan sa Sistemom elektronskih faktura (SEF)."
         },
         {
           "question": "Da li mogu da koristim bez registracije?",
-          "answer": "Da! Bez naloga možete generisati do 3 fakture mesečno. Podaci vaše firme se čuvaju lokalno u browseru."
+          "answer": "Da. Bez naloga možete generisati do 3 dokumenta mesečno, a podaci o firmi ostaju lokalno u browseru."
         },
         {
-          "question": "Koji podaci su potrebni za fakturu?",
-          "answer": "PIB i naziv prodavca i kupca, adrese, stavke sa cenama i PDV stopom. Sistem automatski obračunava iznose."
+          "question": "Da li su moji podaci bezbedni?",
+          "answer": "Da. Komunikacija ide preko HTTPS-a, lozinke su šifrovane, a podatke ne prodajemo niti delimo sa trećim stranama."
         },
         {
-          "question": "Da li podržavate paušalce?",
-          "answer": "Da! Ako niste u sistemu PDV, sistem automatski generiše fakturu sa oznakom oslobođenja od PDV-a."
+          "question": "Da li mogu da napravim otpremnicu?",
+          "answer": "Da. Studio podržava i fakture i otpremnice, uključujući transportne podatke, lokacije, registraciju vozila i potpise."
+        },
+        {
+          "question": "Da li otpremnica ima QR kod za inspekciju?",
+          "answer": "Da. Svaka otpremnica sadrži QR kod sa ključnim podacima za proveru na putu."
         },
         {
           "question": "Koji je rok za slanje e-fakture na SEF?",
           "answer": "E-faktura se mora poslati u roku od 5 radnih dana od datuma prometa. Studio generiše XML odmah — samo ga upload-ujete na SEF portal."
         },
         {
-          "question": "Da li su moji podaci bezbedni?",
-          "answer": "Lozinke su zaštićene jakom enkripcijom. Sva komunikacija je preko HTTPS-a. Ne delimo podatke sa trećim stranama."
+          "question": "Da li je e-Faktura Studio besplatan?",
+          "answer": "Da. Osnovni plan je besplatan zauvek: 3 dokumenta mesečno sa punim PDF i XML generisanjem."
         },
         {
-          "question": "Da li mogu da napravim otpremnicu?",
-          "answer": "Da! e-Faktura Studio podržava i fakture i otpremnice. Otpremnica uključuje podatke o transportu, mestu utovara/istovara, registraciji vozila i potpise predao/primio."
+          "question": "Da li podržavate paušalce?",
+          "answer": "Da. Ako niste u sistemu PDV, aplikacija automatski koristi odgovarajuću oznaku oslobođenja."
         },
         {
-          "question": "Da li otpremnica ima QR kod za inspekciju?",
-          "answer": "Da. Svaka otpremnica sadrži QR kod koji inspektor može skenirati na putu. QR kodira ključne podatke dokumenta: broj, PIB prodavca i kupca, datum i ukupan iznos."
+          "question": "Koji podaci su potrebni za fakturu?",
+          "answer": "Podaci o prodavcu i kupcu, PIB, adrese i stavke sa cenom i PDV stopom. Ukupni iznosi se računaju automatski."
         }
       ]
     },
     "seoBlock": {
       "title": "E-fakture u Srbiji — digitalizacija za svaki biznis",
-      "text": "Sistem elektronskih faktura (SEF) je obavezan za sve B2B transakcije u Srbiji. Za male firme i solo preduzetnike, ručno kreiranje UBL XML faktura i otpremnica često znači gubljenje vremena na portalu i rizik od grešaka. e-Faktura Studio automatizuje ovaj proces — unesete podatke, vidite pregled u realnom vremenu i preuzmete PDF za klijenta i XML za SEF portal. Otpremnica sa QR kodom spreman je za inspekciju na putu — u skladu sa najnovijim propisima za 2026. godinu. Zakon o prevozu tereta zahteva prateću dokumentaciju za svaku pošiljku, a Studio obezbeđuje da je uvek imate pri ruci. Besplatno za do 3 dokumenta mesečno, bez registracije."
+      "text": "SEF je obavezan za B2B transakcije u Srbiji. Umesto dodatnog kucanja u portal, Studio vam omogućava da podatke unesete jednom, proverite pregled i preuzmete PDF za kupca i XML za SEF. Otpremnice sa QR kodom spremne su za inspekciju, a besplatan plan pokriva do 3 dokumenta mesečno."
     },
     "security": {
+      "eyebrow": "Poverenje i usklađenost",
       "title": "Bezbednost i usklađenost",
       "items": [
         "HTTPS enkripcija",
@@ -1509,9 +1548,10 @@
       ]
     },
     "bottomCta": {
-      "title": "Spremni da napravite prvu fakturu?",
-      "subtitle": "Besplatno za male firme. Bez kartice, bez obaveza.",
-      "cta": "Kreiraj fakturu za 2 minuta"
+      "eyebrow": "Počnite odmah",
+      "title": "Otvorite Studio i napravite prvi SEF-spreman dokument.",
+      "subtitle": "Besplatno za male firme. Bez kartice i bez komplikovanog podešavanja.",
+      "cta": "Pokreni Studio besplatno"
     },
     "studio": {
       "title": "e-Faktura Studio",

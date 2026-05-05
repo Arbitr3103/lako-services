@@ -3,6 +3,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { getLocalizedPath, getPathWithoutLocale, ALL_LOCALES, type Locale } from '../i18n/utils';
+import { toTrailingSlashPath } from '../utils/url';
+import { isNoindexPath } from '../utils/seo-policy.js';
 import '../styles/global.css';
 
 interface Props {
@@ -14,10 +16,11 @@ interface Props {
   jsonLd?: Record<string, any>;
 }
 
-const { title, description, locale, noindex = false, ogImage, jsonLd } = Astro.props;
+const { title, description, locale, noindex, ogImage, jsonLd } = Astro.props;
 const resolvedOgImage = ogImage || '/images/og-default.png';
-const currentPath = getPathWithoutLocale(Astro.url.pathname);
+const currentPath = toTrailingSlashPath(getPathWithoutLocale(Astro.url.pathname));
 const canonicalUrl = new URL(getLocalizedPath(currentPath, locale), Astro.site);
+const shouldNoindex = noindex ?? isNoindexPath(Astro.url.pathname);
 
 const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_RU' };
 ---
@@ -29,7 +32,7 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {shouldNoindex && <meta name="robots" content="noindex, nofollow" />}
 
     {/* Canonical & hreflang */}
     <link rel="canonical" href={canonicalUrl.href} />

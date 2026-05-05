@@ -1,6 +1,7 @@
 import sr from './sr.json';
 import en from './en.json';
 import ru from './ru.json';
+import { shouldRedirectToTrailingSlash, toTrailingSlashPath } from '../utils/url';
 
 export type Locale = 'sr' | 'en' | 'ru';
 
@@ -45,11 +46,34 @@ export function getLocaleFromUrl(url: URL): Locale {
   return 'sr';
 }
 
+function splitPathSuffix(path: string): { pathname: string; suffix: string } {
+  const queryIndex = path.indexOf('?');
+  const hashIndex = path.indexOf('#');
+  const suffixIndexes = [queryIndex, hashIndex].filter(index => index !== -1);
+  const suffixIndex = suffixIndexes.length > 0 ? Math.min(...suffixIndexes) : -1;
+
+  if (suffixIndex === -1) {
+    return { pathname: path, suffix: '' };
+  }
+
+  return {
+    pathname: path.slice(0, suffixIndex),
+    suffix: path.slice(suffixIndex),
+  };
+}
+
+function toPagePath(pathname: string): string {
+  return shouldRedirectToTrailingSlash(pathname) ? toTrailingSlashPath(pathname) : pathname;
+}
+
 export function getLocalizedPath(path: string, locale: Locale): string {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  if (locale === 'sr') return cleanPath;
-  if (locale === 'en') return `/en${cleanPath}`;
-  return `/ru${cleanPath}`;
+  const { pathname, suffix } = splitPathSuffix(cleanPath);
+  const pagePath = `${toPagePath(pathname)}${suffix}`;
+
+  if (locale === 'sr') return pagePath;
+  if (locale === 'en') return `/en${pagePath}`;
+  return `/ru${pagePath}`;
 }
 
 export function getOtherLocales(locale: Locale): Locale[] {

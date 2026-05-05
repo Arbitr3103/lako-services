@@ -12,6 +12,7 @@ export default function ContactForm({ locale }: Props) {
   const translations = { sr, en, ru }[locale];
   const form = translations.contact.form;
   const businessTypes = form.businessTypes;
+  const privacyPolicyPath = locale === 'sr' ? '/privacy-policy/' : `/${locale}/privacy-policy/`;
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -143,7 +144,7 @@ export default function ContactForm({ locale }: Props) {
         <label htmlFor="consent" className="text-sm text-text-muted">
           {translations.consent.text}{' '}
           <a
-            href={locale === 'sr' ? '/privacy-policy' : `/${locale}/privacy-policy`}
+            href={privacyPolicyPath}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"

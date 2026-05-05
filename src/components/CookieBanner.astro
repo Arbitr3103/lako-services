@@ -60,15 +60,31 @@ const { locale } = Astro.props;
 
     <!-- Main banner -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-text-muted text-center sm:text-left">
-        {t(locale, 'cookieBanner.text')}{' '}
-        <a
-          href={getLocalizedPath('/cookie-policy', locale)}
-          class="text-primary hover:underline"
-        >
-          {t(locale, 'footer.cookiePolicy')}
-        </a>
-      </p>
+      <div class="text-center sm:text-left">
+        <p class="text-sm text-text-muted">
+          {t(locale, 'cookieBanner.text')}
+        </p>
+        <div class="mt-2 flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-sm">
+          <a
+            href={getLocalizedPath('/privacy-policy', locale)}
+            class="text-primary hover:underline"
+          >
+            {t(locale, 'footer.privacyPolicy')}
+          </a>
+          <a
+            href={getLocalizedPath('/cookie-policy', locale)}
+            class="text-primary hover:underline"
+          >
+            {t(locale, 'footer.cookiePolicy')}
+          </a>
+          <a
+            href={getLocalizedPath('/terms', locale)}
+            class="text-primary hover:underline"
+          >
+            {t(locale, 'footer.termsOfService')}
+          </a>
+        </div>
+      </div>
       <div class="flex gap-3 shrink-0">
         <button
           id="cookie-settings-btn"
