@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
+import CopyEmailButton from '../../components/CopyEmailButton.astro';
 import ContactForm from '../../components/react/ContactForm';
 import { t } from '../../i18n/utils';
 
@@ -51,11 +51,7 @@ const locale = 'en';
                   <a href={`mailto:${t(locale, 'contact.channels.email')}`} class="text-primary hover:underline">
                     {t(locale, 'contact.channels.email')}
                   </a>
-                  <button
-                    onclick="navigator.clipboard.writeText('info@lako.services').then(()=>{const b=this;b.textContent='✓';setTimeout(()=>b.textContent='📋',1500)})"
-                    class="text-sm text-text-light hover:text-primary cursor-pointer"
-                    title="Copy email"
-                  >📋</button>
+                  <CopyEmailButton email={t(locale, 'contact.channels.email')} title="Copy email" />
                 </div>
               </div>
             </div>

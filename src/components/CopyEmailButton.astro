@@ -1,0 +1,32 @@
+---
+interface Props {
+  email: string;
+  title: string;
+}
+
+const { email, title } = Astro.props;
+---
+
+<button
+  type="button"
+  data-copy-email={email}
+  class="text-sm text-text-light hover:text-primary cursor-pointer"
+  title={title}
+  aria-label={title}
+>📋</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-email]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const email = button.dataset.copyEmail;
+      if (!email) return;
+
+      const original = button.textContent || '📋';
+      await navigator.clipboard.writeText(email);
+      button.textContent = '✓';
+      window.setTimeout(() => {
+        button.textContent = original;
+      }, 1500);
+    });
+  });
+</script>

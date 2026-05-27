@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "vitest run",
+    "check:types": "astro check",
+    "check:security": "npm audit --audit-level=moderate",
     "check:seo": "node scripts/check-seo.mjs",
     "preview": "astro build && wrangler dev",
     "deploy": "astro build && wrangler deploy",
@@ -12,26 +15,28 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "wrangler": "^4.69.0"
+    "@astrojs/check": "0.9.9",
+    "typescript": "5.9.3",
+    "vitest": "4.1.7",
+    "wrangler": "4.95.0"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.3.0",
-    "@astrojs/react": "^4.2.1",
-    "@astrojs/sitemap": "^3.3.1",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "astro": "^5.17.3",
-    "motion": "^12.0.0",
-    "qrcode.react": "^4.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "resend": "^4.0.0",
-    "tailwindcss": "^4.1.18",
-    "undici": "^7.24.2"
+    "@astrojs/cloudflare": "13.5.5",
+    "@astrojs/react": "5.0.5",
+    "@astrojs/sitemap": "3.7.3",
+    "@tailwindcss/vite": "4.3.0",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
+    "astro": "6.3.8",
+    "motion": "12.40.0",
+    "qrcode.react": "4.2.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "resend": "6.12.4",
+    "tailwindcss": "4.3.0"
   },
   "overrides": {
-    "undici": "^7.24.2",
-    "wrangler": "$wrangler"
+    "postcss": "8.5.15",
+    "yaml": "2.8.3"
   }
 }

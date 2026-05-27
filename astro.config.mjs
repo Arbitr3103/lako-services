@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sessionDrivers } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
@@ -8,8 +8,15 @@ import { isSitemapIncludedPath } from './src/utils/seo-policy.js';
 export default defineConfig({
   site: 'https://lako.services',
   output: 'server',
-  adapter: cloudflare(),
-  experimental: {
+  adapter: cloudflare({
+    imageService: 'passthrough',
+  }),
+  // The app does not use server sessions. Keep deployment free of implicit KV
+  // provisioning; switch to cloudflareKVBinding before adding auth/session state.
+  session: {
+    driver: sessionDrivers.lruCache(),
+  },
+  security: {
     csp: {
       scriptDirective: {
         resources: ["'self'", "https://static.cloudflareinsights.com"],
@@ -24,6 +31,7 @@ export default defineConfig({
         "connect-src 'self' https://bot.lako.services https://static.cloudflareinsights.com https://cloudflareinsights.com",
         "base-uri 'self'",
         "form-action 'self'",
+        "frame-ancestors 'none'",
         "object-src 'none'",
       ],
     },

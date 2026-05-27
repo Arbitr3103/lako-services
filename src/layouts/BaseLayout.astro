@@ -60,7 +60,7 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     <meta name="theme-color" content="#0B1120" />
 
     {/* Custom JSON-LD */}
-    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
 
     {/* Favicon */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -109,7 +109,7 @@ const ogLocaleMap: Record<Locale, string> = { sr: 'sr_RS', en: 'en_US', ru: 'ru_
     </script>
 
     {/* LocalBusiness structured data */}
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Lako Services",

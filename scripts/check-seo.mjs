@@ -3,7 +3,10 @@ import path from 'node:path';
 
 import { isNoindexPath, isSitemapIncludedPath } from '../src/utils/seo-policy.js';
 
-const SITEMAP_PATH = path.join(process.cwd(), 'dist', 'sitemap-0.xml');
+const distRoot = path.join(process.cwd(), 'dist');
+const SITEMAP_PATH = ['sitemap-0.xml', path.join('client', 'sitemap-0.xml')]
+  .map((relativePath) => path.join(distRoot, relativePath))
+  .find((candidatePath) => fs.existsSync(candidatePath));
 const SITE_URL = 'https://lako.services';
 
 const expectedIncludedPaths = [
@@ -246,6 +249,8 @@ async function checkRuntimeSeo(baseUrl) {
 
   return stats;
 }
+
+assert(SITEMAP_PATH, 'Missing sitemap-0.xml in dist/ or dist/client/. Run npm run build first.');
 
 const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
 const sitemapPaths = new Set(extractUrls(xml));

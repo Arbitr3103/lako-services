@@ -2,7 +2,7 @@
  * Simple in-memory rate limiter for Cloudflare Workers.
  *
  * Each limiter instance tracks request counts per IP using a Map.
- * Expired entries are cleaned up automatically via setInterval.
+ * Expired entries are cleaned up opportunistically during requests.
  *
  * Note: Since Cloudflare Workers may run multiple isolates,
  * this provides per-isolate rate limiting. Cloudflare WAF
@@ -21,24 +21,15 @@ interface RateLimiterOptions {
   maxRequests: number;
 }
 
-const limiters: RateLimiter[] = [];
-
 class RateLimiter {
   private readonly hits = new Map<string, RateLimitEntry>();
   private readonly windowMs: number;
   private readonly maxRequests: number;
-  private cleanupTimer: ReturnType<typeof setInterval> | null = null;
+  private nextCleanupAt = 0;
 
   constructor({ windowMs, maxRequests }: RateLimiterOptions) {
     this.windowMs = windowMs;
     this.maxRequests = maxRequests;
-
-    // Clean expired entries every 60 seconds
-    this.cleanupTimer = setInterval(() => this.cleanup(), 60_000);
-    // Prevent the timer from keeping the process alive in Node/Workers
-    if (typeof this.cleanupTimer === 'object' && 'unref' in this.cleanupTimer) {
-      this.cleanupTimer.unref();
-    }
   }
 
   /**
@@ -47,6 +38,8 @@ class RateLimiter {
    */
   isRateLimited(ip: string): boolean {
     const now = Date.now();
+    this.cleanupIfNeeded(now);
+
     const entry = this.hits.get(ip);
 
     if (!entry || now >= entry.resetAt) {
@@ -59,9 +52,15 @@ class RateLimiter {
     return entry.count > this.maxRequests;
   }
 
+  private cleanupIfNeeded(now: number): void {
+    if (now < this.nextCleanupAt) return;
+
+    this.nextCleanupAt = now + 60_000;
+    this.cleanup(now);
+  }
+
   /** Remove entries whose window has expired */
-  private cleanup(): void {
-    const now = Date.now();
+  private cleanup(now: number): void {
     for (const [ip, entry] of this.hits) {
       if (now >= entry.resetAt) {
         this.hits.delete(ip);
@@ -83,9 +82,7 @@ class RateLimiter {
  * ```
  */
 export function createRateLimiter(opts: RateLimiterOptions): RateLimiter {
-  const limiter = new RateLimiter(opts);
-  limiters.push(limiter);
-  return limiter;
+  return new RateLimiter(opts);
 }
 
 /**

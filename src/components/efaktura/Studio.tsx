@@ -2,6 +2,18 @@ import { useReducer, useState, useEffect, useRef } from 'react';
 import InvoicePreview from './InvoicePreview';
 import type { InvoiceData, BuyerData, DocumentType } from './types';
 import { createEmptyInvoice, generatePaymentReference } from './types';
+import {
+  clearSavedEfakturaData,
+  hasStorageConsent,
+  loadSavedBuyers,
+  loadSavedItems,
+  loadSavedSeller,
+  persistBuyer,
+  persistItems,
+  persistSeller,
+  setStorageConsent,
+  type SavedItem,
+} from './storage';
 
 interface Props {
   locale: string;
@@ -59,6 +71,9 @@ const translations: Record<string, Record<string, string>> = {
     purposePlaceholder: 'npr. Prevoz robe za klijenta',
     copyFromSeller: 'Iz prodavca',
     copyFromBuyer: 'Iz kupca',
+    rememberData: 'Zapamti podatke na ovom uređaju',
+    rememberDataHint: 'Čuva firmu, kupce i stavke samo u ovom browseru.',
+    clearSavedData: 'Obriši sačuvane podatke',
   },
   en: {
     seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
@@ -110,6 +125,9 @@ const translations: Record<string, Record<string, string>> = {
     purposePlaceholder: 'e.g. Goods transport for client',
     copyFromSeller: 'From seller',
     copyFromBuyer: 'From buyer',
+    rememberData: 'Remember data on this device',
+    rememberDataHint: 'Stores company, buyers and items only in this browser.',
+    clearSavedData: 'Clear saved data',
   },
   ru: {
     seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
@@ -161,64 +179,11 @@ const translations: Record<string, Record<string, string>> = {
     purposePlaceholder: 'напр. Перевозка товара для клиента',
     copyFromSeller: 'Из продавца',
     copyFromBuyer: 'Из покупателя',
+    rememberData: 'Запомнить данные на этом устройстве',
+    rememberDataHint: 'Сохраняет компанию, покупателей и позиции только в этом браузере.',
+    clearSavedData: 'Удалить сохранённые данные',
   },
 };
-
-// ── localStorage helpers ──────────────────────────────────────────────────────
-
-interface SavedBuyer { name: string; address: string; city: string }
-interface SavedItem { description: string; unit: string; unitPrice: number; vatRate: number }
-
-function loadSavedBuyers(): Record<string, SavedBuyer> {
-  if (typeof window === 'undefined') return {};
-  try {
-    const parsed = JSON.parse(localStorage.getItem('efaktura-buyers') || '{}');
-    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
-    const result: Record<string, SavedBuyer> = {};
-    for (const [key, val] of Object.entries(parsed)) {
-      if (val && typeof val === 'object' && typeof (val as any).name === 'string') {
-        result[key] = val as SavedBuyer;
-      }
-    }
-    return result;
-  } catch { return {}; }
-}
-
-function persistBuyer(pib: string, buyer: BuyerData) {
-  try {
-    const all = loadSavedBuyers();
-    all[pib] = { name: buyer.name, address: buyer.address, city: buyer.city };
-    localStorage.setItem('efaktura-buyers', JSON.stringify(all));
-  } catch {}
-}
-
-function loadSavedItems(): SavedItem[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    const parsed = JSON.parse(localStorage.getItem('efaktura-items') || '[]');
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item: unknown): item is SavedItem =>
-      !!item && typeof item === 'object' &&
-      typeof (item as any).description === 'string' &&
-      typeof (item as any).unit === 'string' &&
-      typeof (item as any).unitPrice === 'number' &&
-      typeof (item as any).vatRate === 'number'
-    );
-  } catch { return []; }
-}
-
-function persistItems(items: InvoiceData['items']) {
-  try {
-    const saved = loadSavedItems();
-    for (const item of items) {
-      if (!item.description?.trim()) continue;
-      const entry: SavedItem = { description: item.description, unit: item.unit, unitPrice: item.unitPrice, vatRate: item.vatRate };
-      const idx = saved.findIndex(s => s.description === item.description);
-      if (idx >= 0) saved[idx] = entry; else saved.unshift(entry);
-    }
-    localStorage.setItem('efaktura-items', JSON.stringify(saved.slice(0, 50)));
-  } catch {}
-}
 
 // ── Reducer ───────────────────────────────────────────────────────────────────
 
@@ -315,25 +280,18 @@ export default function Studio({ locale, apiUrl }: Props) {
   useEffect(() => { trackEvent('efaktura_studio_open', { locale }); }, []);
 
   const [invoice, dispatch] = useReducer(reducer, null, () => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('efaktura-seller') : null;
     const empty = createEmptyInvoice();
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === 'object' && typeof parsed.name === 'string' && typeof parsed.pib === 'string') {
-          empty.seller = parsed;
-        }
-      } catch {}
-    }
+    const savedSeller = loadSavedSeller();
+    if (savedSeller) empty.seller = savedSeller;
     return empty;
   });
 
   const [genStatus, setGenStatus] = useState<'idle' | 'generating' | 'ready' | 'error' | 'limit_anon' | 'limit_free'>('idle');
-  const [invoiceId, setInvoiceId] = useState<string | null>(null);
   const [downloadData, setDownloadData] = useState<{ pdf: string; xml: string | null } | null>(null);
   const [showDetails, setShowDetails] = useState(false);
   const [mobileTab, setMobileTab] = useState<'form' | 'preview'>('form');
   const [editingSeller, setEditingSeller] = useState(false);
+  const [storageEnabled, setStorageEnabled] = useState(() => hasStorageConsent());
 
   // Buyer auto-fill flash
   const [buyerFlash, setBuyerFlash] = useState(false);
@@ -344,12 +302,12 @@ export default function Studio({ locale, apiUrl }: Props) {
 
   const { valid, total } = countValid(invoice);
 
-  // Save seller to localStorage on change
+  // Save seller locally only after explicit device-level opt-in.
   useEffect(() => {
-    if (invoice.seller.pib || invoice.seller.name) {
-      localStorage.setItem('efaktura-seller', JSON.stringify(invoice.seller));
+    if (storageEnabled && (invoice.seller.pib || invoice.seller.name)) {
+      persistSeller(invoice.seller);
     }
-  }, [invoice.seller]);
+  }, [invoice.seller, storageEnabled]);
 
   // Auto-generate payment reference (faktura only)
   useEffect(() => {
@@ -406,6 +364,21 @@ export default function Studio({ locale, apiUrl }: Props) {
     setItemSuggestions(prev => ({ ...prev, [idx]: [] }));
   }
 
+  function handleStorageToggle(enabled: boolean) {
+    setStorageConsent(enabled);
+    setStorageEnabled(enabled);
+    setItemSuggestions({});
+    if (enabled && (invoice.seller.pib || invoice.seller.name)) {
+      persistSeller(invoice.seller);
+    }
+  }
+
+  function handleClearSavedData() {
+    clearSavedEfakturaData();
+    setStorageEnabled(false);
+    setItemSuggestions({});
+  }
+
   const handleGenerate = async () => {
     setGenStatus('generating');
     trackEvent('efaktura_generate_start', { locale, items: invoice.items.length });
@@ -428,7 +401,6 @@ export default function Studio({ locale, apiUrl }: Props) {
         throw new Error(err.error || 'Failed to create invoice');
       }
       const { id } = await createRes.json();
-      setInvoiceId(id);
 
       const genRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/generate`, { method: 'POST' });
       if (!genRes.ok) {
@@ -551,6 +523,31 @@ export default function Studio({ locale, apiUrl }: Props) {
                   {t[dt]}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Local storage consent */}
+          <div className={sectionClass}>
+            <div className="flex items-start justify-between gap-3">
+              <label className="flex items-start gap-3 text-sm text-text cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={storageEnabled}
+                  onChange={e => handleStorageToggle(e.target.checked)}
+                  className="mt-0.5 rounded border-border-light text-primary focus:ring-primary"
+                />
+                <span>
+                  <span className="block font-medium">{t.rememberData}</span>
+                  <span className="block text-xs text-text-muted mt-0.5">{t.rememberDataHint}</span>
+                </span>
+              </label>
+              <button
+                type="button"
+                onClick={handleClearSavedData}
+                className="text-xs text-text-muted hover:text-red-400 transition-colors shrink-0"
+              >
+                {t.clearSavedData}
+              </button>
             </div>
           </div>
 

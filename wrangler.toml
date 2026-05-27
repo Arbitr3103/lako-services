@@ -1,6 +1,6 @@
 name = "lako-services"
-main = "./dist/_worker.js/index.js"
-compatibility_date = "2026-02-16"
+main = "@astrojs/cloudflare/entrypoints/server"
+compatibility_date = "2026-05-27"
 compatibility_flags = ["nodejs_compat"]
 
 [assets]

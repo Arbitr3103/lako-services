@@ -101,7 +101,7 @@ const serviceIcons = [
         <div class="absolute left-8 md:left-16 top-0 bottom-0 w-0.5 bg-primary/20"></div>
 
         <div class="space-y-12">
-          {ownerDaySteps.map((step, i) => (
+          {ownerDaySteps.map((step) => (
             <div class="relative flex gap-6 md:gap-8">
               {/* Time badge */}
               <div class="flex-shrink-0 w-16 md:w-32 flex items-start justify-center z-10">
@@ -573,5 +573,5 @@ const serviceIcons = [
   </section>
 
   {/* FAQ JSON-LD */}
-  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqJsonLd)} />
 </BaseLayout>

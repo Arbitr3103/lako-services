@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 
 import sr from '../../i18n/sr.json';
 import en from '../../i18n/en.json';
@@ -6,6 +6,11 @@ import ru from '../../i18n/ru.json';
 
 interface Props {
   locale: 'sr' | 'en' | 'ru';
+}
+
+interface FormSubmitEvent {
+  preventDefault(): void;
+  currentTarget: HTMLFormElement;
 }
 
 export default function RegisterForm({ locale }: Props) {
@@ -17,7 +22,7 @@ export default function RegisterForm({ locale }: Props) {
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormSubmitEvent) {
     e.preventDefault();
     setStatus('loading');
 
@@ -44,7 +49,7 @@ export default function RegisterForm({ locale }: Props) {
 
       if (res.ok) {
         setStatus('success');
-        (e.target as HTMLFormElement).reset();
+        e.currentTarget.reset();
       } else {
         setStatus('error');
       }
