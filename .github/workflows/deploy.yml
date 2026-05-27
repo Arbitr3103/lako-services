@@ -40,4 +40,4 @@ jobs:
 
       - run: npm run check:seo
         env:
-          SEO_BASE_URL: https://lako.services
+          SEO_BASE_URL: https://lako-services.bragin-arbitr.workers.dev
