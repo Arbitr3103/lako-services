@@ -1,0 +1,611 @@
+LAKO SALON - ИНТЕРВЬЮ С ВЛАДЕЛЬЦЕМ САЛОНА / INTERVJU SA VLASNIKOM SALONA
+Дата / Datum: ____________________
+Интервьюер / Intervjuer: ____________________
+Салон / Salon: ____________________
+Город / Grad: ____________________
+Контакт / Kontakt: ____________________
+
+ЦЕЛЬ / CILJ
+RU: Цель интервью - понять, как реально работает салон, как клиенты записываются,
+какие данные нужны для настройки Lako Salon, и какие функции стоит разрабатывать
+после MVP.
+SR: Cilj intervjua je da razumemo kako salon zaista radi, kako se klijenti
+zakazuju, koji podaci su potrebni za podesavanje Lako Salon sistema i koje
+funkcije treba razvijati posle MVP faze.
+
+ИНСТРУКЦИЯ ИНТЕРВЬЮЕРУ / UPUTSTVO ZA INTERVJUERA
+RU: Не продавайте продукт в начале. Сначала слушайте. Просите реальные примеры:
+"как было вчера", "что произошло в последний раз", "сколько раз в неделю".
+SR: Nemojte prodavati proizvod na pocetku. Prvo slusajte. Trazite konkretne
+primere: "kako je bilo juce", "sta se desilo poslednji put", "koliko puta
+nedeljno".
+
+RU: Отмечайте точные слова владельца, особенно про боль, страхи, деньги,
+клиентов, мастеров и хаос в записи.
+SR: Zapisujte tacne reci vlasnika, posebno kada govori o problemima, strahovima,
+novcu, klijentima, majstorima i haosu oko zakazivanja.
+
+RU: Если вопрос не подходит салону, пропустите его и отметьте почему.
+SR: Ako pitanje ne odgovara salonu, preskocite ga i zapisite zasto.
+
+============================================================
+A. ПРОФИЛЬ САЛОНА / PROFIL SALONA
+============================================================
+
+1. RU: Как правильно называется салон для публичной страницы?
+   SR: Kako se salon tacno zove za javnu stranicu?
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+2. RU: Какой тип бизнеса лучше всего описывает салон?
+   Варианты: парикмахерская, барбершоп, ногти, косметология, массаж,
+   смешанный салон, другое.
+   SR: Koji tip biznisa najbolje opisuje salon?
+   Opcije: frizerski salon, barbershop, nokti, kozmetika, masaza,
+   kombinovani salon, drugo.
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+3. RU: Адрес, район, ориентир, этаж/вход, особенности поиска салона.
+   SR: Adresa, deo grada, orijentir, sprat/ulaz, posebne napomene kako se salon nalazi.
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+4. RU: Какие контакты можно показывать клиентам публично?
+   Телефон, WhatsApp, Viber, Instagram, сайт, email.
+   SR: Koje kontakte smemo javno prikazati klijentima?
+   Telefon, WhatsApp, Viber, Instagram, sajt, email.
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+5. RU: На каких языках обычно говорят клиенты салона?
+   SR: Na kojim jezicima najcesce govore klijenti salona?
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+6. RU: Кто принимает решения по записи, ценам и расписанию?
+   SR: Ko donosi odluke o zakazivanju, cenama i rasporedu?
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+7. RU: Сколько сейчас работает мастеров/сотрудников?
+   SR: Koliko trenutno ima majstora/zaposlenih?
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+8. RU: Есть ли несколько филиалов или только одна локация?
+   SR: Da li postoji vise lokacija ili samo jedna?
+   Ответ / Odgovor:
+   ________________________________________________________________
+
+============================================================
+B. УСЛУГИ, ЦЕНЫ, ДЛИТЕЛЬНОСТЬ / USLUGE, CENE, TRAJANJE
+============================================================
+
+9. RU: Назовите 5-10 самых популярных услуг.
+   SR: Navedite 5-10 najpopularnijih usluga.
+   Ответ / Odgovor:
+   1. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   2. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   3. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   4. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   5. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   6. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   7. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   8. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   9. ____________________ Цена/Cena: ______ Длительность/Trajanje: ______
+   10. ___________________ Цена/Cena: ______ Длительность/Trajanje: ______
+
+10. RU: Какие услуги чаще всего бронируют новые клиенты?
+    SR: Koje usluge najcesce zakazuju novi klijenti?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+11. RU: Какие услуги чаще всего делают постоянные клиенты?
+    SR: Koje usluge najcesce rade stalni klijenti?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+12. RU: Есть ли услуги, которые нельзя записывать онлайн без консультации?
+    Почему?
+    SR: Postoje li usluge koje ne treba zakazivati online bez konsultacije?
+    Zasto?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+13. RU: Есть ли услуги с переменной ценой? От чего зависит цена?
+    SR: Postoje li usluge sa promenljivom cenom? Od cega zavisi cena?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+14. RU: Есть ли услуги с переменной длительностью? От чего зависит время?
+    SR: Postoje li usluge sa promenljivim trajanjem? Od cega zavisi vreme?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+15. RU: Нужен ли буфер между записями? Сколько минут?
+    SR: Da li je potreban razmak izmedju termina? Koliko minuta?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+16. RU: Какие услуги можно делать параллельно, а какие нельзя?
+    SR: Koje usluge mogu da se rade paralelno, a koje ne mogu?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+17. RU: Есть ли пакеты услуг или комбо?
+    SR: Postoje li paketi usluga ili kombinovane usluge?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+18. RU: Какие услуги стоит показывать первыми на странице салона?
+    SR: Koje usluge treba prikazati prve na stranici salona?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+C. МАСТЕРА И РАСПИСАНИЕ / MAJSTORI I RASPORED
+============================================================
+
+19. RU: Список мастеров, специализация, какие услуги каждый делает.
+    SR: Spisak majstora, specijalizacija, koje usluge svaki majstor radi.
+    Ответ / Odgovor:
+    1. Мастер/Majstor: ____________________
+       Услуги/Usluge: ______________________________________________
+       Рабочие дни/Radni dani: _____________________________________
+    2. Мастер/Majstor: ____________________
+       Услуги/Usluge: ______________________________________________
+       Рабочие дни/Radni dani: _____________________________________
+    3. Мастер/Majstor: ____________________
+       Услуги/Usluge: ______________________________________________
+       Рабочие дни/Radni dani: _____________________________________
+    4. Мастер/Majstor: ____________________
+       Услуги/Usluge: ______________________________________________
+       Рабочие дни/Radni dani: _____________________________________
+
+20. RU: Есть ли услуги, где клиент обязательно выбирает конкретного мастера?
+    SR: Postoje li usluge gde klijent obavezno bira konkretnog majstora?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+21. RU: Есть ли услуги, где можно выбрать "любой свободный мастер"?
+    SR: Postoje li usluge gde klijent moze izabrati "bilo koji slobodan majstor"?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+22. RU: Как устроен обычный график работы салона по дням недели?
+    SR: Kako izgleda uobicajeno radno vreme salona po danima?
+    Ответ / Odgovor:
+    Пн/Pon: ________ Вт/Uto: ________ Ср/Sre: ________ Чт/Cet: ________
+    Пт/Pet: ________ Сб/Sub: ________ Вс/Ned: ________
+
+23. RU: У мастеров разные графики или общий график салона?
+    SR: Da li majstori imaju razlicite rasporede ili svi prate radno vreme salona?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+24. RU: Как часто меняется расписание? Каждый день, каждую неделю, редко?
+    SR: Koliko cesto se raspored menja? Svaki dan, svake nedelje, retko?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+25. RU: Как учитываются отпуска, больничные, выходные и личные дела мастеров?
+    SR: Kako se evidentiraju odmori, bolovanja, slobodni dani i privatne obaveze majstora?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+26. RU: Есть ли обеденные перерывы или технические перерывы?
+    SR: Postoje li pauze za rucak ili tehnicke pauze?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+27. RU: За сколько времени до визита клиент может записаться?
+    Минимум и максимум.
+    SR: Koliko unapred klijent moze da zakaze termin?
+    Minimum i maksimum.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+28. RU: Можно ли записываться в тот же день?
+    SR: Da li je moguce zakazivanje za isti dan?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+D. ТЕКУЩАЯ ЗАПИСЬ КЛИЕНТОВ / TRENUTNO ZAKAZIVANJE KLIJENATA
+============================================================
+
+29. RU: Как клиенты сейчас записываются?
+    Телефон, Instagram, WhatsApp, Viber, Google, лично, другая система.
+    SR: Kako klijenti trenutno zakazuju?
+    Telefon, Instagram, WhatsApp, Viber, Google, licno, drugi sistem.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+30. RU: Где сейчас хранится расписание?
+    Бумага, Google Calendar, телефон, Excel, WhatsApp chat, память мастера.
+    SR: Gde se trenutno vodi raspored?
+    Papir, Google Calendar, telefon, Excel, WhatsApp chat, pamcenje majstora.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+31. RU: Кто отвечает клиентам и подтверждает запись?
+    SR: Ko odgovara klijentima i potvrdjuje termine?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+32. RU: Сколько примерно записей в день?
+    SR: Koliko otprilike termina imate dnevno?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+33. RU: В какие дни и часы самая высокая нагрузка?
+    SR: Kojim danima i u koje sate je najveca guzva?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+34. RU: Сколько времени в день уходит на переписку и запись клиентов?
+    SR: Koliko vremena dnevno odlazi na dopisivanje i zakazivanje klijenata?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+35. RU: Как часто бывают отмены, переносы и no-show?
+    SR: Koliko cesto se desavaju otkazivanja, pomeranja i nedolazak klijenta?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+36. RU: Как сейчас клиент отменяет или переносит запись?
+    SR: Kako klijent trenutno otkazuje ili pomera termin?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+37. RU: Бывали ли двойные записи на одно время? Как часто?
+    SR: Da li se desavalo duplo zakazivanje u isto vreme? Koliko cesto?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+38. RU: Что происходит, если клиент опаздывает?
+    SR: Sta se desava ako klijent kasni?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+39. RU: Нужны ли автоматические напоминания клиентам?
+    Если да, через какой канал: SMS, Viber, WhatsApp, email?
+    SR: Da li su potrebni automatski podsetnici klijentima?
+    Ako da, kojim kanalom: SMS, Viber, WhatsApp, email?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+E. БОЛИ ВЛАДЕЛЬЦА / PROBLEMI VLASNIKA
+============================================================
+
+40. RU: Что сейчас больше всего раздражает в записи клиентов?
+    SR: Sta vas trenutno najvise nervira kod zakazivanja klijenata?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+41. RU: Когда последний раз была ошибка в записи? Что произошло?
+    SR: Kada se poslednji put desila greska u zakazivanju? Sta se dogodilo?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+42. RU: Какая ошибка стоит салону денег?
+    SR: Koja greska salon najvise kosta?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+43. RU: Что владелец хочет видеть утром перед началом рабочего дня?
+    SR: Sta vlasnik zeli da vidi ujutru pre pocetka radnog dana?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+44. RU: Что владелец хочет видеть вечером после рабочего дня?
+    SR: Sta vlasnik zeli da vidi uvece posle radnog dana?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+45. RU: Какие данные сейчас приходится искать вручную?
+    SR: Koje podatke trenutno morate rucno da trazite?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+46. RU: Что должно измениться, чтобы вы сказали: "эта система экономит мне время"?
+    SR: Sta mora da se promeni da biste rekli: "ovaj sistem mi stedi vreme"?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+47. RU: Оцените боль записи клиентов от 1 до 10.
+    1 - не проблема, 10 - критично.
+    SR: Ocenite problem zakazivanja od 1 do 10.
+    1 - nije problem, 10 - kriticno.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+48. RU: Почему именно такая оценка?
+    SR: Zasto bas ta ocena?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+F. КЛИЕНТСКИЙ ОПЫТ / ISKUSTVO KLIJENATA
+============================================================
+
+49. RU: Что клиенты чаще всего спрашивают перед записью?
+    SR: Sta klijenti najcesce pitaju pre zakazivanja?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+50. RU: Какие данные клиент должен обязательно видеть перед записью?
+    Цена, длительность, мастер, адрес, фото, правила отмены, другое.
+    SR: Koje informacije klijent mora da vidi pre zakazivanja?
+    Cena, trajanje, majstor, adresa, fotografije, pravila otkazivanja, drugo.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+51. RU: Нужно ли клиенту выбирать мастера или лучше показывать ближайшее время?
+    SR: Da li klijent treba da bira majstora ili je bolje prikazati najblizi termin?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+52. RU: Какие клиенты не будут пользоваться онлайн-записью?
+    SR: Koji klijenti nece koristiti online zakazivanje?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+53. RU: Откуда обычно приходят новые клиенты?
+    Instagram, Google Maps, рекомендации, улица, сайт, реклама.
+    SR: Odakle najcesce dolaze novi klijenti?
+    Instagram, Google Maps, preporuke, ulica, sajt, reklama.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+54. RU: Где лучше разместить ссылку на онлайн-запись?
+    Instagram bio, Google Business, сайт, QR в салоне, WhatsApp/Viber auto-reply.
+    SR: Gde je najbolje postaviti link za online zakazivanje?
+    Instagram bio, Google Business, sajt, QR u salonu, WhatsApp/Viber auto-reply.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+G. МАТЕРИАЛЫ, СКЛАД, РАСХОДЫ / MATERIJALI, ZALIHE, TROSKOVI
+============================================================
+
+55. RU: Какие материалы расходуются каждый день?
+    SR: Koji materijali se trose svakog dana?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+56. RU: Кто следит за остатками материалов?
+    SR: Ko prati stanje materijala?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+57. RU: Как вы понимаете, что материал заканчивается?
+    SR: Kako znate da se neki materijal trosi ili nestaje?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+58. RU: Бывает ли, что запись есть, а нужного материала нет?
+    SR: Da li se desava da postoji termin, ali nema potrebnog materijala?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+59. RU: Нужно ли списывать материал по услуге?
+    Например: краска, шампунь, расходники для ногтей.
+    SR: Da li treba skidati materijal po usluzi?
+    Na primer: farba, sampon, potrosni materijal za nokte.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+60. RU: Оцените важность учета материалов от 1 до 10.
+    SR: Ocenite vaznost evidencije materijala od 1 do 10.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+H. КЛИЕНТСКАЯ БАЗА И CRM / BAZA KLIJENATA I CRM
+============================================================
+
+61. RU: Ведете ли вы базу клиентов? Где?
+    SR: Da li vodite bazu klijenata? Gde?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+62. RU: Какие данные о клиенте важно хранить?
+    Имя, телефон, день рождения, предпочтения, аллергии, история услуг, заметки.
+    SR: Koje podatke o klijentu je vazno cuvati?
+    Ime, telefon, rodjendan, preference, alergije, istorija usluga, beleske.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+63. RU: Нужно ли видеть историю посещений клиента?
+    SR: Da li je vazno videti istoriju dolazaka klijenta?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+64. RU: Делаете ли вы акции для постоянных клиентов?
+    SR: Da li imate akcije za stalne klijente?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+65. RU: Нужно ли напоминать клиенту, что пора повторить услугу?
+    Например: стрижка через 4 недели, ногти через 3 недели.
+    SR: Da li treba podsetiti klijenta da je vreme da ponovi uslugu?
+    Na primer: sisanje za 4 nedelje, nokti za 3 nedelje.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+I. ОПЛАТЫ, ДЕПОЗИТЫ, ОТЧЕТЫ / PLACANJA, DEPOZITI, IZVESTAJI
+============================================================
+
+66. RU: Как клиенты платят сейчас?
+    Наличные, карта, перевод, IPS QR, другое.
+    SR: Kako klijenti trenutno placaju?
+    Gotovina, kartica, uplata, IPS QR, drugo.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+67. RU: Нужен ли депозит при онлайн-записи?
+    Для каких услуг?
+    SR: Da li je potreban depozit kod online zakazivanja?
+    Za koje usluge?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+68. RU: Нужно ли учитывать выручку по мастерам?
+    SR: Da li treba pratiti promet po majstorima?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+69. RU: Какие отчеты владелец хочет видеть?
+    День, неделя, месяц, мастер, услуга, отмены, no-show, материалы.
+    SR: Koje izvestaje vlasnik zeli da vidi?
+    Dan, nedelja, mesec, majstor, usluga, otkazivanja, nedolazak, materijali.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+70. RU: Какие цифры владелец проверяет чаще всего?
+    SR: Koje brojke vlasnik najcesce proverava?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+J. ГОТОВНОСТЬ К ПИЛОТУ / SPREMNOST ZA PILOT
+============================================================
+
+71. RU: Готовы ли вы попробовать онлайн-запись 7-14 дней?
+    SR: Da li ste spremni da probate online zakazivanje 7-14 dana?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+72. RU: Кто будет первым пользователем кабинета владельца?
+    SR: Ko ce biti prvi korisnik vlasnickog panela?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+73. RU: На какой email отправить приглашение?
+    SR: Na koji email da posaljemo pozivnicu?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+74. RU: Через какой канал удобнее помогать во время пилота?
+    WhatsApp, Viber, телефон, email, лично.
+    SR: Kojim kanalom je najlakse pomagati tokom pilota?
+    WhatsApp, Viber, telefon, email, uzivo.
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+75. RU: Какие 3 услуги настроим первыми?
+    SR: Koje 3 usluge prvo podesavamo?
+    Ответ / Odgovor:
+    1. ____________________
+    2. ____________________
+    3. ____________________
+
+76. RU: Какого мастера и график настроим первым?
+    SR: Kog majstora i koji raspored prvo podesavamo?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+77. RU: Какую запись можно создать как тестовую?
+    SR: Koji termin mozemo napraviti kao test?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+78. RU: Что должно произойти в пилоте, чтобы вы захотели продолжить?
+    SR: Sta treba da se desi u pilotu da biste zeleli da nastavite?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+79. RU: Что может помешать пилоту?
+    SR: Sta moze da spreci pilot?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+80. RU: Готовы ли вы дать обратную связь после 48 часов использования?
+    SR: Da li ste spremni da date povratnu informaciju posle 48 sati koriscenja?
+    Ответ / Odgovor:
+    ________________________________________________________________
+
+============================================================
+K. ПРИОРИТЕТЫ БУДУЩЕЙ РАЗРАБОТКИ / PRIORITETI ZA DALJI RAZVOJ
+============================================================
+
+RU: Попросите владельца выбрать 5 самых важных функций.
+SR: Zamolite vlasnika da izabere 5 najvaznijih funkcija.
+
+[ ] RU: Онлайн-запись / SR: Online zakazivanje
+[ ] RU: Кабинет владельца / SR: Vlasnicki panel
+[ ] RU: Управление услугами и ценами / SR: Upravljanje uslugama i cenama
+[ ] RU: Расписание мастеров / SR: Raspored majstora
+[ ] RU: Уведомления клиентам / SR: Podsetnici klijentima
+[ ] RU: История клиентов / SR: Istorija klijenata
+[ ] RU: Заметки по клиентам / SR: Belske o klijentima
+[ ] RU: День рождения клиента / SR: Rodjendan klijenta
+[ ] RU: Отмена и перенос записи клиентом / SR: Otkazivanje i pomeranje termina od strane klijenta
+[ ] RU: Депозиты или предоплата / SR: Depozit ili avansno placanje
+[ ] RU: Учет материалов / SR: Evidencija materijala
+[ ] RU: Отчеты по выручке / SR: Izvestaji o prometu
+[ ] RU: Отчеты по мастерам / SR: Izvestaji po majstorima
+[ ] RU: Акции и рассылки / SR: Akcije i kampanje
+[ ] RU: Интеграция с Google Calendar / SR: Integracija sa Google Calendar
+[ ] RU: QR-код для записи в салоне / SR: QR kod za zakazivanje u salonu
+[ ] RU: Другое / SR: Drugo: ______________________________________
+
+Топ-5 / Top 5:
+1. ____________________
+2. ____________________
+3. ____________________
+4. ____________________
+5. ____________________
+
+============================================================
+L. ФИНАЛЬНЫЙ ЧЕК-ЛИСТ ДАННЫХ / FINALNA LISTA PODATAKA
+============================================================
+
+[ ] RU: Название салона подтверждено / SR: Naziv salona potvrdjen
+[ ] RU: Адрес подтвержден / SR: Adresa potvrdjena
+[ ] RU: Публичный телефон подтвержден / SR: Javni telefon potvrdjen
+[ ] RU: Instagram/сайт подтверждены / SR: Instagram/sajt potvrdjeni
+[ ] RU: Email владельца получен / SR: Email vlasnika dobijen
+[ ] RU: Основные услуги записаны / SR: Glavne usluge zapisane
+[ ] RU: Цены записаны / SR: Cene zapisane
+[ ] RU: Длительность услуг записана / SR: Trajanje usluga zapisano
+[ ] RU: Мастера записаны / SR: Majstori zapisani
+[ ] RU: Услуги по мастерам записаны / SR: Usluge po majstorima zapisane
+[ ] RU: График работы записан / SR: Radno vreme zapisano
+[ ] RU: Перерывы и выходные записаны / SR: Pauze i slobodni dani zapisani
+[ ] RU: Правила отмены/переноса записаны / SR: Pravila otkazivanja/pomeranja zapisana
+[ ] RU: Канал поддержки пилота выбран / SR: Kanal podrske za pilot izabran
+[ ] RU: Готовность к пилоту подтверждена / SR: Spremnost za pilot potvrdjena
+
+============================================================
+M. ЗАМЕТКИ ИНТЕРВЬЮЕРА / BELESKE INTERVJUERA
+============================================================
+
+RU: Самая сильная боль владельца:
+SR: Najveci problem vlasnika:
+________________________________________________________________
+________________________________________________________________
+
+RU: Самая сильная цитата:
+SR: Najjaci citat:
+________________________________________________________________
+________________________________________________________________
+
+RU: Главный риск пилота:
+SR: Glavni rizik pilota:
+________________________________________________________________
+________________________________________________________________
+
+RU: Что нужно добавить в продукт после интервью:
+SR: Sta treba dodati u proizvod posle intervjua:
+________________________________________________________________
+________________________________________________________________
+
+RU: Следующее действие:
+SR: Sledeci korak:
+________________________________________________________________
+________________________________________________________________
