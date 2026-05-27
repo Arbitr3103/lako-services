@@ -542,7 +542,7 @@ SR: Zamolite vlasnika da izabere 5 najvaznijih funkcija.
 [ ] RU: Расписание мастеров / SR: Raspored majstora
 [ ] RU: Уведомления клиентам / SR: Podsetnici klijentima
 [ ] RU: История клиентов / SR: Istorija klijenata
-[ ] RU: Заметки по клиентам / SR: Belske o klijentima
+[ ] RU: Заметки по клиентам / SR: Beleske o klijentima
 [ ] RU: День рождения клиента / SR: Rodjendan klijenta
 [ ] RU: Отмена и перенос записи клиентом / SR: Otkazivanje i pomeranje termina od strane klijenta
 [ ] RU: Депозиты или предоплата / SR: Depozit ili avansno placanje
