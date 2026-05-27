@@ -14,7 +14,7 @@
   "home": {
     "hero": {
       "title": "Automatizacija — lako i brzo",
-      "subtitle": "Telegram botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
+      "subtitle": "Web aplikacije i botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
       "cta": "Pogledajte rešenja",
       "ctaSecondary": "Kontaktirajte nas"
     },
@@ -41,7 +41,7 @@
       },
       "smallBusiness": {
         "title": "Mali biznis",
-        "description": "Savršeno za barbere, stomatologe, auto-servise i hemijske čistionice — automatsko zakazivanje, podsećanja na termine i trenutne poruke klijentima."
+        "description": "Savršeno za barbere, stomatologe, auto-servise i hemijske čistionice — web zakazivanje, vlasnički kabinet i jasna komunikacija sa klijentima."
       }
     },
     "security": {
@@ -223,7 +223,7 @@
         "badge": "Telegram Bot",
         "title": "Lako Prevoz",
         "description": "Vaš dispečerski centar u Telegramu. Kreirajte rejs​ove, generišite CMR i fakture, upravljajte vozačima i vozilima — sve na jednom mestu.",
-        "cta": "Otvori u Telegramu"
+        "cta": "Otvori web aplikaciju"
       },
       "featuresTitle": "Šta bot može",
       "groupDocs": "Dokumenti",
@@ -236,7 +236,7 @@
         { "icon": "efaktura", "slug": "efaktura", "title": "E-fakture (XML)", "description": "UBL 2.1 XML e-fakture za SEF — bez ručnog unosa." },
         { "icon": "driver", "slug": "drivers", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
-        { "icon": "customer", "slug": "customers", "title": "Baza klijenata", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
+        { "icon": "customer", "slug": "customers", "title": "Upravljanje uslugama", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
         { "icon": "stats", "slug": "stats", "title": "Statistika i Excel", "description": "Pregled performansi i eksport podataka u Excel." }
       ],
       "video": {
@@ -530,7 +530,7 @@
         ]
       },
       "customers": {
-        "title": "Baza klijenata",
+        "title": "Upravljanje uslugama",
         "description": "Uputstvo za upravljanje bazom klijenata — dodavanje, pretraga i uređivanje.",
         "steps": [
           {
@@ -611,7 +611,7 @@
     "hero": {
       "badge": "Za male biznise",
       "title": "Automatizacija za vaš salon, ordinaciju ili servis",
-      "subtitle": "Klijenti zakazuju kroz Lako Katalog — vi upravljate kroz Lako Admin.",
+      "subtitle": "Klijenti zakazuju preko web stranice — vi upravljate uslugama, majstorima i terminima u Lako kabinetu.",
       "cta": "Pogledajte kako radi",
       "ctaSecondary": "Dodaj biznis"
     },
@@ -622,22 +622,22 @@
         {
           "time": "08:00",
           "title": "Budite se, raspored vas čeka",
-          "description": "Otvarate @LakoAdminBot — vidite 6 zakazanih termina za danas. Jedan klijent je otkazao sinoć u 23h — slobodan slot je automatski ponuđen drugima."
+          "description": "Otvarate Lako Kabinet — vidite 6 zakazanih termina za danas, statuse i slobodne slotove po majstoru."
         },
         {
           "time": "08:05",
-          "title": "Alert o zalihama",
-          "description": "Bot javlja: 'Boja za kosu Loreal 7.1 — ostalo 2 komada (minimum: 5)'. Naručujete odmah, pre nego što ponestane."
+          "title": "Brza izmena rasporeda",
+          "description": "Jedan majstor danas radi kraće. Menjate radno vreme u kabinetu i novi termini se više ne nude klijentima."
         },
         {
           "time": "09:00",
           "title": "Prvi klijent dolazi",
-          "description": "Klijent je dobio podsetnik juče u 9h i danas u 7h. Dolazi na vreme. Vi otvarate nalog, birate uslugu i materijal — zalihe se automatski ažuriraju."
+          "description": "Klijent je sinoć zakazao preko web stranice. U terminu već vidite ime, telefon, uslugu, cenu i izabranog majstora."
         },
         {
           "time": "18:00",
           "title": "Kraj dana — pregled",
-          "description": "8 klijenata, 0 no-show, 3 nove rezervacije za sledeću nedelju. Jedan klijent je platio IPS QR kodom direktno na vaš račun."
+          "description": "Pregledate potvrđene i nove termine, menjate statuse i zatvarate dan bez ručnog prepisivanja rasporeda."
         }
       ]
     },
@@ -646,19 +646,19 @@
       "steps": [
         {
           "title": "Klijent vas pronalazi",
-          "description": "Vaš biznis se pojavljuje u @LakoBot. Klijent traži \"frizer Novi Sad\" i odmah vas vidi."
+          "description": "Vaš salon ima javnu web stranicu na app.lako.services. Klijent vidi adresu, kontakte, usluge i majstore."
         },
         {
           "title": "Klijent se zakazuje",
-          "description": "Bira uslugu, majstora i slobodan termin u narednih 14 dana — direktno u Telegramu. Vidi realno zauzeće svakog majstora."
+          "description": "Bira uslugu, majstora i slobodan termin u narednih 14 dana. Sistem prikazuje samo realno dostupne slotove."
         },
         {
           "title": "Automatika radi umesto vas",
-          "description": "Bot šalje podsetnike klijentima 24h i 2h pre termina. Vi dobijate obaveštenje u @LakoAdminBot o svakom novom zakazivanju."
+          "description": "Sistem proverava zauzeće i čuva termin samo ako je slot slobodan. Novi termin odmah vidite u kabinetu."
         },
         {
           "title": "Vi ste u kontroli",
-          "description": "Kroz @LakoAdminBot vidite sve termine, menjate raspored i šaljete promocije."
+          "description": "Kroz Lako Kabinet vidite sve termine, menjate raspored, usluge, cene i majstore."
         }
       ]
     },
@@ -667,22 +667,22 @@
       "items": [
         {
           "title": "Barbershops i saloni",
-          "description": "Klijenti zakazuju termine preko Telegrama 24/7, dobijaju automatska podsećanja i vaše najnovije promocije — bez telefonskih poziva. Automatsko praćenje zaliha materijala — nikad više ne ostajte bez boje ili šampona.",
+          "description": "Klijenti zakazuju termine preko web stranice 24/7, biraju tačnu uslugu, cenu, majstora i vreme — bez telefonskih poziva i bez obaveznog Telegrama.",
           "cta": "Počni za salon"
         },
         {
           "title": "Stomatološke ordinacije",
-          "description": "Pacijenti zakazuju termine automatski, dobijaju podsetnike pre posete, a vi pratite termine za svakog pacijenta — sve u skladu sa GDPR-om.",
+          "description": "Pacijenti šalju zahtev za termin preko web stranice, a vi u kabinetu pratite raspored, usluge i statuse — uz izolaciju podataka po biznisu.",
           "cta": "Počni za ordinaciju"
         },
         {
           "title": "Auto-servisi",
-          "description": "Mušterije zakazuju servis, dobijaju ažuriranja popravke u realnom vremenu i fakture odmah preko bota — bez telefonskog ping-ponga. Fotografišite vozilo pre i posle servisa — automatski PDF izveštaj za svaki nalog.",
+          "description": "Mušterije šalju zahtev za servis preko web stranice, a vi vodite termine, usluge i statuse u jednom kabinetu — bez telefonskog ping-ponga.",
           "cta": "Počni za servis"
         },
         {
           "title": "Hemijske čistionice",
-          "description": "Dva režima rada: klijent donosi odeću (dropoff) ili kurir dolazi po nju (pickup). Lifecycle narudžbine: primljeno → u procesu → gotovo → preuzeto. Foto dokumentacija pri prijemu i izdavanju odeće — pravna zaštita za vas i klijenta. Svaki dokument dobija broj DC-XXXXXX.",
+          "description": "Dva režima rada: klijent donosi odeću (dropoff) ili kurir dolazi po nju (pickup). Lifecycle narudžbine: primljeno → u procesu → gotovo → preuzeto. Siguran pristup vlasnika pri prijemu i izdavanju odeće — pravna zaštita za vas i klijenta. Svaki dokument dobija broj DC-XXXXXX.",
           "cta": "Počni za čistionicu"
         },
         {
@@ -697,43 +697,43 @@
       "items": [
         {
           "title": "Manje propuštenih poziva",
-          "description": "Vaši klijenti zakazuju termine 24/7 preko bota — čak i dok spavate ili radite sa drugim klijentima."
+          "description": "Vaši klijenti zakazuju termine 24/7 preko web stranice — čak i dok spavate ili radite sa drugim klijentima."
         },
         {
-          "title": "Automatska podsećanja",
-          "description": "Bot šalje podsetnike 24 sata i 2 sata pre termina, značajno smanjujući no-show — to znači manje praznih termina i više prihoda."
+          "title": "Tačno zauzeće termina",
+          "description": "Termin se upisuje samo ako je slot stvarno slobodan, a zauzeće majstora se proverava pre kreiranja rezervacije."
         },
         {
-          "title": "Lojalnost klijenata",
-          "description": "Automatski šaljite personalizovane rođendanske čestitke, ekskluzivne popuste i specijalne promocije — zadržite klijente da se vraćaju."
+          "title": "Usluge i cene pod kontrolom",
+          "description": "Vlasnik sam održava listu usluga, trajanja, cena i aktivnih majstora bez čekanja na developera."
         },
         {
           "title": "Ušteda vremena",
-          "description": "Uštedite 2-3 sata dnevno na telefonskim pozivima, zakazivanju i podsetnicima — provedite to vreme na poslu koji stvarno volite."
+          "description": "Uštedite 2-3 sata dnevno na telefonskim pozivima, ručnom zakazivanju i proveri rasporeda — provedite to vreme na poslu koji stvarno volite."
         },
         {
-          "title": "Besplatna obaveštenja",
-          "description": "Telegram obaveštenja umesto skupih SMS poruka — uštedite na komunikaciji sa klijentima bez gubitka kvaliteta usluge."
+          "title": "Web umesto zavisnosti od messengera",
+          "description": "Klijenti ne moraju da koriste messenger: booking radi u browseru na telefonu i desktopu."
         },
         {
-          "title": "Analitika i uvidi",
-          "description": "Pratite koliko ljudi gleda vaš profil, klikće na telefon ili Instagram — donosite odluke na osnovu podataka, ne nagađanja."
+          "title": "Višejezični interfejs",
+          "description": "SR, EN i RU ekrani su spremni za lokalne klijente i vlasnike koji rade u više jezika."
         },
         {
-          "title": "Foto dokumentacija",
-          "description": "Bot traži fotografiju pri svakoj promeni statusa. GPS, vreme i anti-fraud zaštita — automatski."
+          "title": "Siguran pristup vlasnika",
+          "description": "Vlasnici ulaze preko email/password naloga, HttpOnly cookie sesije i tenant-scoped API pristupa."
         },
         {
-          "title": "Automatski PDF akti",
-          "description": "Akt primopredaje sa fotografijama se generiše i šalje automatski — bez papira, bez gubitka vremena."
+          "title": "Statusi termina",
+          "description": "Novi, potvrđeni, završeni i otkazani termini ostaju vidljivi u jednom pregledu."
         },
         {
-          "title": "Upravljanje zalihama",
-          "description": "Pratite potrošnju materijala u realnom vremenu. Alert kada zalihe padnu ispod minimuma."
+          "title": "Spremno za rast",
+          "description": "Arhitektura ostavlja prostor za materijale, plaćanja i CRM kasnije, bez mešanja u MVP."
         },
         {
-          "title": "QR plaćanje (IPS)",
-          "description": "Klijent skenira QR kod i plaća direktno na vaš račun — bez kase, bez gotovine."
+          "title": "Jasan MVP",
+          "description": "Prva verzija se fokusira na ono što najviše boli: javni profil, online booking i vlasnički raspored."
         }
       ]
     },
@@ -763,35 +763,35 @@
       "description": "Klijent skenira QR kod u aplikaciji i plaća direktno na vaš račun. Podržano od svih banaka u Srbiji. Bez kase, bez gotovine, bez čekanja."
     },
     "bots": {
-      "title": "Dva bota — jedan sistem",
-      "subtitle": "Lako koristi dva Telegram bota koji rade zajedno: jedan za vaše klijente, drugi za vas kao vlasnika biznisa.",
+      "title": "Web aplikacija + kabinet vlasnika",
+      "subtitle": "Jedan javni web tok za klijente i jedan zaštićen kabinet za vlasnika salona. Telegram ostaje dodatni kanal, nije obavezan za klijenta.",
       "catalog": {
-        "title": "Lako Katalog",
+        "title": "Lako Web",
         "badge": "Za vaše klijente",
-        "description": "Vaši klijenti koriste ovaj bot da pronađu vaš biznis, pregledaju usluge, zakažu termin i dobiju automatske podsetnike. Vi ne morate ništa da radite — bot radi umesto vas.",
-        "cta": "Otvori u Telegramu"
+        "description": "Klijenti otvaraju javnu stranicu salona, vide adresu, usluge, cene, majstore i slobodne termine, pa šalju rezervaciju iz browsera.",
+        "cta": "Otvori web aplikaciju"
       },
       "admin": {
-        "title": "Lako Admin",
+        "title": "Lako Kabinet",
         "badge": "Za vas — vlasnika",
-        "description": "Vi koristite ovaj bot da vidite sve zakazane termine, upravljate rasporedom, pregledate bazu klijenata i šaljete promocije. Vaš kontrolni centar.",
-        "cta": "Otvori u Telegramu"
+        "description": "Vlasnik koristi zaštićen kabinet za profil salona, usluge, majstore, radno vreme i statuse termina.",
+        "cta": "Otvori web aplikaciju"
       },
       "comparison": {
         "title": "Uporedni pregled",
         "features": "Funkcija",
         "rows": [
-          { "label": "Pretraga biznisa", "catalog": true, "admin": false },
+          { "label": "Javni profil salona", "catalog": true, "admin": false },
           { "label": "Zakazivanje termina", "catalog": true, "admin": false },
-          { "label": "Podsećanja klijentima", "catalog": true, "admin": false },
+          { "label": "Pregled usluga i cena", "catalog": true, "admin": false },
           { "label": "Upravljanje rasporedom", "catalog": false, "admin": true },
-          { "label": "Baza klijenata", "catalog": false, "admin": true },
-          { "label": "Slanje promocija", "catalog": false, "admin": true },
-          { "label": "Obaveštenja o novim terminima", "catalog": false, "admin": true },
-          { "label": "Foto dokumentacija narudžbine", "catalog": false, "admin": true },
-          { "label": "PDF akt primopredaje", "catalog": false, "admin": true },
-          { "label": "Upravljanje zalihama", "catalog": false, "admin": true },
-          { "label": "QR plaćanje (IPS)", "catalog": true, "admin": true }
+          { "label": "Upravljanje uslugama", "catalog": false, "admin": true },
+          { "label": "Upravljanje majstorima", "catalog": false, "admin": true },
+          { "label": "Pregled novih termina", "catalog": false, "admin": true },
+          { "label": "Promena statusa termina", "catalog": false, "admin": true },
+          { "label": "Siguran pristup vlasnika", "catalog": false, "admin": true },
+          { "label": "Izolacija podataka po salonu", "catalog": false, "admin": true },
+          { "label": "Invite za vlasnika", "catalog": true, "admin": true }
         ]
       },
       "screenshotPlaceholder": "Primer interfejsa",
@@ -821,12 +821,12 @@
       "title": "Najčešća pitanja",
       "items": [
         {
-          "question": "Da li su mi potrebna oba bota?",
-          "answer": "Da, ali vi koristite samo Lako Admin. Lako Katalog koriste vaši klijenti za pretragu i zakazivanje."
+          "question": "Da li je Telegram potreban?",
+          "answer": "Ne za MVP web tok. Klijenti zakazuju kroz browser, a vlasnik upravlja kroz Lako Kabinet. Postojeći Telegram kanali mogu ostati kao dodatak."
         },
         {
           "question": "Koliko to košta?",
-          "answer": "Katalog — besplatno (vaš biznis u katalogu bez ograničenja). Pro (2.500 RSD mesečno) — onlajn zakazivanje 24/7, besplatna obaveštenja u Telegramu umesto skupih SMS-ova, analitika klikova. Business (3.500 RSD mesečno) — integracija sa SEF (fiskalni računi), automatizacija lojalnosti i kešbek programa. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda."
+          "answer": "Katalog — besplatno za javni profil. Pro (2.500 RSD mesečno) — online booking 24/7, kabinet vlasnika, usluge, majstori i raspored. Business (3.500 RSD mesečno) — prilagođene integracije i prioritetna podrška. Za prvih 5 klijenata: 3 meseca besplatno. Svi ostali: 30 dana probnog perioda."
         },
         {
           "question": "Koliko vremena treba za pokretanje?",
@@ -834,7 +834,7 @@
         },
         {
           "question": "Mogu li klijenti da zakazuju bez Telegrama?",
-          "answer": "Trenutno je zakazivanje dostupno samo kroz Telegram."
+          "answer": "Da. Novi MVP je web-first: klijent bira uslugu, majstora i vreme bez Telegram naloga."
         },
         {
           "question": "Da li su podaci mojih klijenata bezbedni?",
@@ -849,16 +849,16 @@
           "answer": "Trenutno Lako radi kao samostalan sistem. Za prilagođene integracije kontaktirajte nas — možemo razviti povezivanje po vašim potrebama. Pišite nam na info@lako.services."
         },
         {
-          "question": "Kako funkcioniše foto dokumentacija?",
-          "answer": "Kada majstor menja status narudžbine (npr. iz 'primljeno' u 'u procesu'), bot automatski traži fotografiju. Svaka slika dobija GPS koordinate i vremenski pečat. Sistem detektuje pokušaj slanja slike iz galerije — potrebna je originalna fotografija. Na kraju se generiše PDF akt sa svim fotografijama."
+          "question": "Šta nije u MVP-u?",
+          "answer": "Materijali, plaćanja, CRM, recenzije, mape, nalozi klijenata i automatski podsetnici su namerno ostavljeni van prve verzije da booking i vlasnički kabinet budu stabilni."
         },
         {
-          "question": "Da li klijenti mogu da plate QR kodom?",
-          "answer": "Da, klijent skenira IPS QR kod direktno u svojoj bankarskoj aplikaciji i plaća na vaš račun. Podržano od svih banaka u Srbiji — NBS IPS standard. Bez kase, bez gotovine."
+          "question": "Kako sprečavate duplo zakazivanje?",
+          "answer": "Backend proverava preklapanje termina po majstoru i čuva početak, kraj i trajanje termina; zauzet slot ne može biti rezervisan drugi put."
         },
         {
-          "question": "Kako pratim zalihe materijala?",
-          "answer": "Kroz @LakoAdminBot dodajete artikle, postavljate minimum i beležite svako trošenje. Svako jutro u 8h dobijate obaveštenje o artiklima čije su zalihe ispod minimuma."
+          "question": "Kako vlasnik dobija pristup?",
+          "answer": "Administrator kreira invite link za vlasnika. Vlasnik postavlja email/password nalog i dobija pristup samo salonima na koje je vezan."
         }
       ]
     },
@@ -887,11 +887,11 @@
           "features": [
             "Sve iz Katalog plana",
             "Onlajn zakazivanje 24/7",
-            "Automatska podsećanja",
-            "Telegram obaveštenja",
-            "Analitika klikova",
-            "Foto dokumentacija narudžbina",
-            "Automatski PDF akti primopredaje"
+            "Tačno zauzeće termina",
+            "Email/password pristup",
+            "Radno vreme majstora",
+            "Usluge i majstori",
+            "Statusi termina"
           ],
           "cta": "Počni besplatno",
           "popular": true
@@ -903,12 +903,11 @@
           "description": "Puna automatizacija",
           "features": [
             "Sve iz Pro plana",
-            "SEF integracija",
-            "Lojalnost i kešbek",
+            "Prilagođene integracije",
+            "Prošireni moduli po dogovoru",
+            "Migracija podataka i podrška",
             "Prioritetna podrška",
-            "Upravljanje zalihama + alerta",
-            "QR plaćanje (IPS standard)",
-            "Foto anti-fraud zaštita"
+            "Roadmap planiranje"
           ],
           "cta": "Kontaktirajte nas",
           "popular": false
@@ -918,7 +917,7 @@
     },
     "seoBlock": {
       "title": "Automatizacija zakazivanja za male biznise u Srbiji",
-      "text": "Lako Services pomaže salonima, ordinacijama, servisima i hemijskim čistionicama u Srbiji da automatizuju zakazivanje termina i komunikaciju sa klijentima. Umesto telefonskih poziva i ručnog vođenja rasporeda, vaši klijenti zakazuju termine 24/7 kroz Telegram — najpopularniji messenger u regionu. Dva bota rade zajedno: Lako Katalog omogućava klijentima da vas pronađu i zakažu termin, dok vam Lako Admin daje potpun pregled i kontrolu nad vašim poslovanjem."
+      "text": "Lako Services pomaže salonima, ordinacijama, servisima i hemijskim čistionicama u Srbiji da automatizuju zakazivanje termina i osnovno upravljanje rasporedom. Umesto telefonskih poziva i ručnog vođenja rasporeda, klijenti zakazuju preko web stranice, a vlasnik u Lako kabinetu upravlja profilom, uslugama, majstorima i terminima."
     },
     "register": {
       "title": "Dodajte svoj biznis u katalog",
@@ -1278,13 +1277,13 @@
         "efaktura": { "title": "E-fakture (XML) — Uputstvo | Lako Prevoz Bot", "description": "Generisanje UBL 2.1 XML e-faktura za portal efaktura.gov.rs (SEF)." },
         "drivers": { "title": "Evidencija vozača — Uputstvo | Lako Prevoz Bot", "description": "Dodavanje vozača, povezivanje Telegram naloga i upravljanje pristupom." },
         "vehicles": { "title": "Evidencija vozila — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje voznim parkom — registracije, tipovi i podsetnici za pregled." },
-        "customers": { "title": "Baza klijenata — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje bazom klijenata — dodavanje, pretraga i uređivanje kontakata." },
+        "customers": { "title": "Upravljanje uslugama — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje bazom klijenata — dodavanje, pretraga i uređivanje kontakata." },
         "stats": { "title": "Statistika i Excel — Uputstvo | Lako Prevoz Bot", "description": "Pregled performansi, aging report i eksport podataka u Excel." }
       }
     },
     "smallBusiness": {
       "title": "Mali biznis — Automatizacija zakazivanja za salone i servise | Lako Services",
-      "description": "Telegram bot za barbere, stomatologe, auto-servise. Zakazivanje, podsećanja, komunikacija sa klijentima."
+      "description": "Web aplikacija za salone i servise: javni profil, online zakazivanje, izbor usluge, majstora i termina, vlasnički kabinet."
     },
     "about": {
       "title": "O nama — Lako Services | Novi Sad",
@@ -1297,7 +1296,7 @@
     },
     "registerBusiness": {
       "title": "Dodaj svoj biznis u katalog | Lako Services",
-      "description": "Dodajte svoj salon, ordinaciju ili servis u Lako katalog besplatno. Klijenti vas pronalaze preko Telegram bota."
+      "description": "Dodajte svoj salon, ordinaciju ili servis u Lako katalog besplatno. Klijenti vas pronalaze i zakazuju preko web stranice."
     },
     "privacy": {
       "title": "Politika privatnosti | Lako Services",
