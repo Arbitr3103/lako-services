@@ -113,6 +113,11 @@ const expectedRedirectChecks = [
   { from: '/small-business', to: '/small-business/' },
 ];
 
+const expectedProductionHttpsRedirectChecks = [
+  { from: 'http://lako.services/cookie-policy', to: 'https://lako.services/cookie-policy/' },
+  { from: 'http://lako.services/cookie-policy/', to: 'https://lako.services/cookie-policy/' },
+];
+
 function assert(condition, message) {
   if (!condition) {
     throw new Error(message);
@@ -242,6 +247,16 @@ async function checkRuntimeSeo(baseUrl) {
     const location = response.headers.get('location');
     assert(location === new URL(check.to, baseUrl).href, `Unexpected redirect for ${check.from}: ${location}`);
     stats.redirectsVerified += 1;
+  }
+
+  if (new URL(baseUrl).hostname === 'lako.services') {
+    for (const check of expectedProductionHttpsRedirectChecks) {
+      const response = await fetch(check.from, { redirect: 'manual' });
+      assert(response.status === 308, `Expected ${check.from} to redirect with 308, got ${response.status}`);
+      const location = response.headers.get('location');
+      assert(location === check.to, `Unexpected HTTPS redirect for ${check.from}: ${location}`);
+      stats.redirectsVerified += 1;
+    }
   }
 
   const apiResponse = await fetch(new URL('/api/contact', baseUrl), { redirect: 'manual' });

@@ -2,9 +2,19 @@ import { defineMiddleware } from 'astro:middleware';
 import { shouldRedirectToTrailingSlash, toTrailingSlashPath } from './utils/url';
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  if (shouldRedirectToTrailingSlash(context.url.pathname)) {
-    const redirectUrl = new URL(context.url);
-    redirectUrl.pathname = toTrailingSlashPath(context.url.pathname);
+  const redirectUrl = new URL(context.url);
+  const shouldRedirectToHttps = redirectUrl.hostname === 'lako.services' && redirectUrl.protocol !== 'https:';
+  const shouldRedirectPath = shouldRedirectToTrailingSlash(context.url.pathname);
+
+  if (shouldRedirectToHttps || shouldRedirectPath) {
+    if (shouldRedirectToHttps) {
+      redirectUrl.protocol = 'https:';
+    }
+
+    if (shouldRedirectPath) {
+      redirectUrl.pathname = toTrailingSlashPath(context.url.pathname);
+    }
+
     return Response.redirect(redirectUrl, 308);
   }
 
