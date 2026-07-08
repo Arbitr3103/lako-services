@@ -47,6 +47,14 @@ const expectedIncludedPaths = [
   '/logistics/efaktura/',
   '/logistics/invoices/',
   '/logistics/trips/',
+  '/en/logistics/cmr/',
+  '/en/logistics/efaktura/',
+  '/en/logistics/invoices/',
+  '/en/logistics/trips/',
+  '/ru/logistics/cmr/',
+  '/ru/logistics/efaktura/',
+  '/ru/logistics/invoices/',
+  '/ru/logistics/trips/',
 ];
 
 const expectedExcludedPaths = [
@@ -57,21 +65,13 @@ const expectedExcludedPaths = [
   '/logistics/drivers/',
   '/logistics/stats/',
   '/logistics/vehicles/',
-  '/en/logistics/cmr/',
   '/en/logistics/customers/',
   '/en/logistics/drivers/',
-  '/en/logistics/efaktura/',
-  '/en/logistics/invoices/',
   '/en/logistics/stats/',
-  '/en/logistics/trips/',
   '/en/logistics/vehicles/',
-  '/ru/logistics/cmr/',
   '/ru/logistics/customers/',
   '/ru/logistics/drivers/',
-  '/ru/logistics/efaktura/',
-  '/ru/logistics/invoices/',
   '/ru/logistics/stats/',
-  '/ru/logistics/trips/',
   '/ru/logistics/vehicles/',
 ];
 
@@ -283,7 +283,7 @@ for (const excludedPath of expectedExcludedPaths) {
 }
 
 const includedGuides = guidePaths.filter((guidePath) => sitemapPaths.has(guidePath));
-assert(includedGuides.length === 4, `Expected 4 indexable guide pages, found ${includedGuides.length}`);
+assert(includedGuides.length === 12, `Expected 12 indexable guide pages, found ${includedGuides.length}`);
 
 const runtimeStats = process.env.SEO_BASE_URL
   ? await checkRuntimeSeo(process.env.SEO_BASE_URL)

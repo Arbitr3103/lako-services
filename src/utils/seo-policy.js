@@ -25,8 +25,8 @@ const GUIDE_PATHS = new Set([
 
 const INDEXABLE_GUIDE_FEATURES_BY_LOCALE = {
   sr: new Set(['cmr', 'efaktura', 'invoices', 'trips']),
-  en: new Set(),
-  ru: new Set(),
+  en: new Set(['cmr', 'efaktura', 'invoices', 'trips']),
+  ru: new Set(['cmr', 'efaktura', 'invoices', 'trips']),
 };
 
 function normalizePathname(pathname) {
