@@ -56,9 +56,9 @@ Astro 6 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Trust banner**: Green gradient card with shield icon + 4 security bullet points + link to `/zastita-podataka`. Present on: efaktura landing, small-business, logistics pages (all 3 locales). i18n keys: `efaktura.trustBanner.*`, `smallBusiness.trustBanner.*`.
 
-**Analytics**: Cloudflare Web Analytics (token `2332d731c66846b5b3d5471c5157bae1`) — JS snippet in `BaseLayout.astro` `<head>`. Provides: visits by country, page views, referrers, devices. Dashboard: Cloudflare → lako.services → Web Analytics. Enabled 2026-02-22. Additionally, `trackEvent()` in Studio.tsx — gtag only (sendBeacon removed Feb 2026) for e-Faktura events: `efaktura_studio_open`, `efaktura_generate_start`, `efaktura_generate_success`, `efaktura_download`. GraphQL API: `rumPageloadEventsAdaptiveGroups` (account-level, no siteTag filter needed).
+**Analytics**: Cloudflare Web Analytics (token `2332d731c66846b5b3d5471c5157bae1`) — JS snippet in `BaseLayout.astro` `<head>`. Provides: visits by country, page views, referrers, devices. Dashboard: Cloudflare → lako.services → Web Analytics. Enabled 2026-02-22. No client-side event tracking: the old gtag-based `trackEvent()` in Studio.tsx was dead code (no gtag loaded) and was removed 2026-07-12; if e-Faktura funnel events are needed, wire up GA4 (script + CSP + cookie consent) first. GraphQL API: `rumPageloadEventsAdaptiveGroups` (account-level, no siteTag filter needed).
 
-**CORS**: efaktura API routes (`/api/efaktura/*`) have origin restriction — only `lako.services` and `localhost:4321` allowed.
+**CORS**: efaktura API routes (`/api/efaktura/*`) live on the lako-bot backend (`bot.lako.services`), not in this repo; their origin restriction (only `lako.services` and `localhost:4321`) is configured there. This repo's own API routes (`/api/contact`, `/api/register-business`) enforce the same allowlist via `isAllowedOrigin()` in `src/utils/api-validation.ts`.
 
 ## Environment Variables
 
@@ -101,7 +101,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 
 ## Security (hardened 2026-05-27)
 
-- **CSP**: Content-Security-Policy in `src/middleware.ts` — `default-src 'self'`, script/style/font/connect allowlists, `frame-ancestors 'none'`
+- **CSP**: hash-based CSP via `security.csp` in `astro.config.mjs` (rendered as `<meta>` tag) — `default-src 'self'`, script/style/font/connect allowlists, `frame-ancestors 'none'`. `src/middleware.ts` sets the remaining security headers (HSTS, X-Frame-Options, etc.)
 - **Security headers**: X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy (no camera/mic/geo), X-DNS-Prefetch-Control off
 - **SRI**: `integrity` + `crossorigin="anonymous"` on CDN font stylesheets (Geist Sans/Mono)
 - **External links**: all `target="_blank"` links have `rel="noopener noreferrer"`
