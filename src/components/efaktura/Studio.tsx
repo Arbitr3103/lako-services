@@ -1,8 +1,21 @@
 import { useReducer, useState, useEffect, useRef } from 'react';
 import InvoicePreview from './InvoicePreview';
-import type { InvoiceData, BuyerData, DocumentType } from './types';
+import type { InvoiceData } from './types';
 import { createEmptyInvoice, generatePaymentReference } from './types';
 import { countValid, getMissingFields } from './validation';
+import { tObject, type Locale } from '../../i18n/utils';
+import {
+  inputClass,
+  sectionClass,
+  type Action,
+  type StudioT,
+} from './form/shared';
+import SellerSection from './form/SellerSection';
+import BuyerSection from './form/BuyerSection';
+import ItemsSection from './form/ItemsSection';
+import TransportSection from './form/TransportSection';
+import SignaturesSection from './form/SignaturesSection';
+import DetailsSection from './form/DetailsSection';
 import {
   clearSavedEfakturaData,
   hasStorageConsent,
@@ -21,183 +34,7 @@ interface Props {
   apiUrl: string;
 }
 
-const translations: Record<string, Record<string, string>> = {
-  sr: {
-    seller: 'Prodavac', buyer: 'Kupac', items: 'Stavke', details: 'Detalji',
-    preview: 'Pregled', form: 'Forma', generate: 'Generiši fakturu',
-    generateOtpremnica: 'Generiši otpremnicu',
-    downloadPdf: 'Preuzmi PDF', downloadXml: 'Preuzmi XML',
-    invoiceNumber: 'Broj fakture', documentNumber: 'Broj dokumenta',
-    issueDate: 'Datum izdavanja',
-    deliveryDate: 'Datum isporuke', dueDate: 'Rok plaćanja',
-    paymentReference: 'Poziv na broj', paymentRefAuto: 'automatski iz broja fakture', notes: 'Napomene',
-    description: 'Opis', quantity: 'Kol.', unit: 'Jed.',
-    unitPrice: 'Cena', vatRate: 'PDV %', amount: 'Iznos',
-    addItem: '+ Dodaj stavku', removeItem: 'Obriši',
-    pib: 'PIB', companyName: 'Naziv firme', address: 'Adresa',
-    city: 'Grad', bankAccount: 'Tekući račun', bankName: 'Banka',
-    vatRegistered: 'U sistemu PDV', editCompany: 'Izmeni podatke firme',
-    saveBuyer: 'Sačuvaj kupca', validFields: 'polja validno',
-    generating: 'Generisanje...', success: 'Faktura uspešno generisana!',
-    successOtpremnica: 'Otpremnica uspešno generisana!',
-    error: 'Greška pri generisanju', mb: 'Matični broj',
-    subtotal: 'Osnovica', vat: 'PDV', total: 'Ukupno',
-    days7: '7 dana', days15: '15 dana', days30: '30 dana', days60: '60 dana',
-    quickSelect: 'Brzi izbor',
-    currency: 'RSD', postalCode: 'Poštanski broj', country: 'Država',
-    buyerAutoFilled: 'Kupac pronađen iz istorije',
-    pibHint: '9 cifara', bankAccountHint: 'npr. 160-0000000000000-00',
-    proUpsell: 'Želite više mogućnosti?',
-    proFeatures: 'Bez limita \u00b7 bez žiga \u00b7 istorija \u00b7 e-Potpis',
-    proAction: 'Isprobajte Pro',
-    limitReachedAnon: 'Dostigli ste mesečni limit od 3 besplatne fakture.',
-    limitReachedFree: 'Dostigli ste mesečni limit od 10 faktura.',
-    limitCtaAnon: 'Napravite nalog za 10 faktura mesečno',
-    limitCtaPro: 'Nadogradite na Pro za neograničen broj',
-    faktura: 'Faktura', otpremnica: 'Otpremnica',
-    vehicleRegistration: 'Reg. vozila', transportInfo: 'Transport',
-    warehouseFrom: 'Skladište',
-    vehiclePlaceholder: 'BG-123-AB',
-    transportPlaceholder: 'Ime vozača, detalji',
-    warehousePlaceholder: 'Magacin Beograd',
-    loadingPlace: 'Mesto utovara',
-    unloadingPlace: 'Mesto istovara',
-    loadingDateTime: 'Datum i vreme utovara',
-    transportPurpose: 'Svrha prevoza',
-    handoverName: 'Ime predaoca',
-    receiverName: 'Ime primaoca',
-    signatures: 'Potpisi',
-    loadingPlaceholder: 'Adresa utovara',
-    unloadingPlaceholder: 'Adresa istovara',
-    purposePlaceholder: 'npr. Prevoz robe za klijenta',
-    copyFromSeller: 'Iz prodavca',
-    copyFromBuyer: 'Iz kupca',
-    rememberData: 'Zapamti podatke na ovom uređaju',
-    rememberDataHint: 'Čuva firmu, kupce i stavke samo u ovom browseru.',
-    clearSavedData: 'Obriši sačuvane podatke',
-  },
-  en: {
-    seller: 'Seller', buyer: 'Buyer', items: 'Items', details: 'Details',
-    preview: 'Preview', form: 'Form', generate: 'Generate invoice',
-    generateOtpremnica: 'Generate delivery note',
-    downloadPdf: 'Download PDF', downloadXml: 'Download XML',
-    invoiceNumber: 'Invoice number', documentNumber: 'Document number',
-    issueDate: 'Issue date',
-    deliveryDate: 'Delivery date', dueDate: 'Due date',
-    paymentReference: 'Payment reference', paymentRefAuto: 'auto-generated from invoice number', notes: 'Notes',
-    description: 'Description', quantity: 'Qty', unit: 'Unit',
-    unitPrice: 'Price', vatRate: 'VAT %', amount: 'Amount',
-    addItem: '+ Add item', removeItem: 'Remove',
-    pib: 'PIB', companyName: 'Company name', address: 'Address',
-    city: 'City', bankAccount: 'Bank account', bankName: 'Bank name',
-    vatRegistered: 'VAT registered', editCompany: 'Edit company',
-    saveBuyer: 'Save buyer', validFields: 'fields valid',
-    generating: 'Generating...', success: 'Invoice generated!',
-    successOtpremnica: 'Delivery note generated!',
-    error: 'Error generating invoice', mb: 'Registration number',
-    subtotal: 'Subtotal', vat: 'VAT', total: 'Total',
-    days7: '7 days', days15: '15 days', days30: '30 days', days60: '60 days',
-    quickSelect: 'Quick select',
-    currency: 'RSD', postalCode: 'Postal code', country: 'Country',
-    buyerAutoFilled: 'Buyer found from history',
-    pibHint: '9 digits', bankAccountHint: 'e.g. 160-0000000000000-00',
-    proUpsell: 'Want more features?',
-    proFeatures: 'No limits \u00b7 no watermark \u00b7 history \u00b7 e-Signature',
-    proAction: 'Try Pro',
-    limitReachedAnon: 'You have reached the free limit of 3 invoices per month.',
-    limitReachedFree: 'You have reached the limit of 10 invoices per month.',
-    limitCtaAnon: 'Create an account for 10 invoices per month',
-    limitCtaPro: 'Upgrade to Pro for unlimited invoices',
-    faktura: 'Invoice', otpremnica: 'Delivery note',
-    vehicleRegistration: 'Vehicle reg.', transportInfo: 'Transport',
-    warehouseFrom: 'Warehouse',
-    vehiclePlaceholder: 'BG-123-AB',
-    transportPlaceholder: 'Driver name, details',
-    warehousePlaceholder: 'Warehouse Belgrade',
-    loadingPlace: 'Loading place',
-    unloadingPlace: 'Unloading place',
-    loadingDateTime: 'Loading date & time',
-    transportPurpose: 'Transport purpose',
-    handoverName: 'Handover name',
-    receiverName: 'Receiver name',
-    signatures: 'Signatures',
-    loadingPlaceholder: 'Loading address',
-    unloadingPlaceholder: 'Unloading address',
-    purposePlaceholder: 'e.g. Goods transport for client',
-    copyFromSeller: 'From seller',
-    copyFromBuyer: 'From buyer',
-    rememberData: 'Remember data on this device',
-    rememberDataHint: 'Stores company, buyers and items only in this browser.',
-    clearSavedData: 'Clear saved data',
-  },
-  ru: {
-    seller: 'Продавец', buyer: 'Покупатель', items: 'Позиции', details: 'Детали',
-    preview: 'Предпросмотр', form: 'Форма', generate: 'Создать счёт',
-    generateOtpremnica: 'Создать накладную',
-    downloadPdf: 'Скачать PDF', downloadXml: 'Скачать XML',
-    invoiceNumber: 'Номер счёта', documentNumber: 'Номер документа',
-    issueDate: 'Дата выставления',
-    deliveryDate: 'Дата доставки', dueDate: 'Срок оплаты',
-    paymentReference: 'Основание платежа', paymentRefAuto: 'авто из номера счёта', notes: 'Примечания',
-    description: 'Описание', quantity: 'Кол.', unit: 'Ед.',
-    unitPrice: 'Цена', vatRate: 'НДС %', amount: 'Сумма',
-    addItem: '+ Добавить', removeItem: 'Удалить',
-    pib: 'ПИБ', companyName: 'Название', address: 'Адрес',
-    city: 'Город', bankAccount: 'Счёт', bankName: 'Банк',
-    vatRegistered: 'В системе НДС', editCompany: 'Изменить данные',
-    saveBuyer: 'Сохранить', validFields: 'полей заполнено',
-    generating: 'Генерация...', success: 'Счёт создан!',
-    successOtpremnica: 'Накладная создана!',
-    error: 'Ошибка', mb: 'Матичный номер',
-    subtotal: 'Основа', vat: 'НДС', total: 'Итого',
-    days7: '7 дней', days15: '15 дней', days30: '30 дней', days60: '60 дней',
-    quickSelect: 'Быстрый выбор',
-    currency: 'RSD', postalCode: 'Индекс', country: 'Страна',
-    buyerAutoFilled: 'Покупатель найден в истории',
-    pibHint: '9 цифр', bankAccountHint: 'напр. 160-0000000000000-00',
-    proUpsell: 'Хотите больше возможностей?',
-    proFeatures: 'Без лимита \u00b7 без водяного знака \u00b7 история \u00b7 э-подпись',
-    proAction: 'Попробовать Pro',
-    limitReachedAnon: 'Вы достигли бесплатного лимита — 3 счёта в месяц.',
-    limitReachedFree: 'Вы достигли лимита — 10 счетов в месяц.',
-    limitCtaAnon: 'Создайте аккаунт для 10 счетов в месяц',
-    limitCtaPro: 'Перейдите на Pro для безлимита',
-    faktura: 'Счёт-фактура', otpremnica: 'Накладная',
-    vehicleRegistration: 'Рег. номер', transportInfo: 'Транспорт',
-    warehouseFrom: 'Склад',
-    vehiclePlaceholder: 'BG-123-AB',
-    transportPlaceholder: 'Имя водителя, детали',
-    warehousePlaceholder: 'Склад Белград',
-    loadingPlace: 'Место погрузки',
-    unloadingPlace: 'Место разгрузки',
-    loadingDateTime: 'Дата и время погрузки',
-    transportPurpose: 'Цель перевозки',
-    handoverName: 'Имя передающего',
-    receiverName: 'Имя принимающего',
-    signatures: 'Подписи',
-    loadingPlaceholder: 'Адрес погрузки',
-    unloadingPlaceholder: 'Адрес разгрузки',
-    purposePlaceholder: 'напр. Перевозка товара для клиента',
-    copyFromSeller: 'Из продавца',
-    copyFromBuyer: 'Из покупателя',
-    rememberData: 'Запомнить данные на этом устройстве',
-    rememberDataHint: 'Сохраняет компанию, покупателей и позиции только в этом браузере.',
-    clearSavedData: 'Удалить сохранённые данные',
-  },
-};
-
 // ── Reducer ───────────────────────────────────────────────────────────────────
-
-type Action =
-  | { type: 'SET_FIELD'; path: string; value: any }
-  | { type: 'SET_SELLER_FIELD'; field: string; value: any }
-  | { type: 'SET_BUYER_FIELD'; field: string; value: any }
-  | { type: 'SET_BUYER'; buyer: BuyerData }
-  | { type: 'SET_ITEM_FIELD'; index: number; field: string; value: any }
-  | { type: 'ADD_ITEM' }
-  | { type: 'REMOVE_ITEM'; index: number }
-  | { type: 'LOAD'; data: InvoiceData }
-  | { type: 'SET_DOCUMENT_TYPE'; documentType: DocumentType };
 
 function reducer(state: InvoiceData, action: Action): InvoiceData {
   switch (action.type) {
@@ -236,7 +73,8 @@ const ALLOWED_API_HOSTS = ['https://bot.lako.services'];
 const API_FETCH_TIMEOUT_MS = 15_000;
 
 export default function Studio({ locale, apiUrl }: Props) {
-  const t = translations[locale] || translations.sr;
+  const safeLocale = (['sr', 'en', 'ru'].includes(locale) ? locale : 'sr') as Locale;
+  const t = tObject<StudioT>(safeLocale, 'efakturaStudio');
 
   const [invoice, dispatch] = useReducer(reducer, null, () => {
     const empty = createEmptyInvoice();
@@ -317,6 +155,16 @@ export default function Studio({ locale, apiUrl }: Props) {
       setItemSuggestions(prev => ({ ...prev, [idx]: matches }));
     } else {
       setItemSuggestions(prev => ({ ...prev, [idx]: [] }));
+    }
+  }
+
+  function handleItemDescriptionFocus(idx: number) {
+    const item = invoice.items[idx];
+    if (item && item.description.trim().length >= 1) {
+      const saved = loadSavedItems();
+      const lower = item.description.toLowerCase();
+      const matches = saved.filter(s => s.description.toLowerCase().includes(lower)).slice(0, 6);
+      setItemSuggestions(prev => ({ ...prev, [idx]: matches }));
     }
   }
 
@@ -422,33 +270,6 @@ export default function Studio({ locale, apiUrl }: Props) {
     URL.revokeObjectURL(url);
   };
 
-  const inputClass = 'w-full bg-bg-alt border border-border-light rounded px-3 py-2 text-text text-sm focus:outline-none focus:border-primary transition-colors';
-  const inputError = 'w-full bg-bg-alt border border-red-500/50 rounded px-3 py-2 text-text text-sm focus:outline-none focus:border-red-500 transition-colors';
-  const inputValid = 'w-full bg-bg-alt border border-green-500/50 rounded px-3 py-2 text-text text-sm focus:outline-none focus:border-green-500 transition-colors';
-  const labelClass = 'block text-text-muted text-xs mb-1';
-  const sectionClass = 'bg-bg-card rounded-lg p-4 mb-4';
-
-  // PIB validation helper: empty=neutral, 9 digits=valid, 1-8=error
-  function pibClass(val: string | undefined): string {
-    if (!val || val.length === 0) return inputClass;
-    return /^\d{9}$/.test(val) ? inputValid : inputError;
-  }
-
-  // Bank account: 18 digits (with or without dashes)
-  function bankClass(val: string | undefined): string {
-    if (!val || val.length === 0) return inputClass;
-    const digits = val.replace(/\D/g, '');
-    return digits.length === 18 ? inputValid : (digits.length > 0 ? inputError : inputClass);
-  }
-
-  // Format bank account with dashes: XXX-XXXXXXXXXXXXX-XX
-  function formatBankAccount(raw: string): string {
-    const digits = raw.replace(/\D/g, '');
-    if (digits.length <= 3) return digits;
-    if (digits.length <= 16) return digits.slice(0, 3) + '-' + digits.slice(3);
-    return digits.slice(0, 3) + '-' + digits.slice(3, 16) + '-' + digits.slice(16, 18);
-  }
-
   return (
     <div className="min-h-screen bg-bg">
       {/* Mobile tab bar */}
@@ -538,373 +359,48 @@ export default function Studio({ locale, apiUrl }: Props) {
             />
           </div>
 
-          {/* Seller */}
-          <div className={sectionClass}>
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-text font-semibold">{t.seller}</h2>
-              <button
-                onClick={() => setEditingSeller(!editingSeller)}
-                className="text-primary text-xs hover:underline"
-              >
-                {t.editCompany}
-              </button>
-            </div>
-            {editingSeller ? (
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className={labelClass}>{t.companyName} *</label>
-                  <input className={inputClass} value={invoice.seller.name} maxLength={200}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'name', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.pib} * <span className="text-text-muted/60">({t.pibHint})</span></label>
-                  <input className={pibClass(invoice.seller.pib)} value={invoice.seller.pib} maxLength={9}
-                    placeholder="123456789"
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'pib', value: e.target.value.replace(/\D/g, '') })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.address}</label>
-                  <input className={inputClass} value={invoice.seller.address} maxLength={500}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'address', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.city}</label>
-                  <input className={inputClass} value={invoice.seller.city} maxLength={200}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'city', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.mb}</label>
-                  <input className={inputClass} value={invoice.seller.mb || ''} maxLength={50}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'mb', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.bankAccount} <span className="text-text-muted/60">({t.bankAccountHint})</span></label>
-                  <input className={bankClass(invoice.seller.bankAccount)} value={invoice.seller.bankAccount || ''}
-                    placeholder="160-0000000000000-00" maxLength={20}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'bankAccount', value: formatBankAccount(e.target.value) })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.bankName}</label>
-                  <input className={inputClass} value={invoice.seller.bankName || ''} maxLength={200}
-                    onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'bankName', value: e.target.value })} />
-                </div>
-                <div className="flex items-end">
-                  <label className="flex items-center gap-2 text-text text-sm cursor-pointer">
-                    <input type="checkbox" checked={invoice.seller.vatRegistered}
-                      onChange={e => dispatch({ type: 'SET_SELLER_FIELD', field: 'vatRegistered', value: e.target.checked })}
-                      className="rounded" />
-                    {t.vatRegistered}
-                  </label>
-                </div>
-              </div>
-            ) : (
-              <div className="text-text-light text-sm">
-                {invoice.seller.name ? (
-                  <>
-                    <p className="font-medium text-text">{invoice.seller.name}</p>
-                    {invoice.seller.address && <p>{invoice.seller.address}, {invoice.seller.city}</p>}
-                    {invoice.seller.pib && <p>PIB: {invoice.seller.pib}</p>}
-                    {invoice.seller.bankAccount && <p>Račun: {invoice.seller.bankAccount}</p>}
-                  </>
-                ) : (
-                  <p className="text-text-muted italic">{t.editCompany}</p>
-                )}
-              </div>
-            )}
-          </div>
+          <SellerSection
+            t={t}
+            seller={invoice.seller}
+            editingSeller={editingSeller}
+            setEditingSeller={setEditingSeller}
+            dispatch={dispatch}
+          />
 
-          {/* Buyer */}
-          <div className={`${sectionClass} transition-all duration-300 ${buyerFlash ? 'ring-2 ring-green-500 ring-opacity-60' : ''}`}>
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-text font-semibold">{t.buyer}</h2>
-              {buyerFlash && (
-                <span className="text-green-400 text-xs font-medium animate-pulse">
-                  ✓ {t.buyerAutoFilled}
-                </span>
-              )}
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className={labelClass}>{t.pib} <span className="text-text-muted/60">({t.pibHint})</span></label>
-                <input
-                  className={buyerFlash ? inputValid : pibClass(invoice.buyer.pib)}
-                  value={invoice.buyer.pib || ''}
-                  maxLength={9}
-                  placeholder="123456789"
-                  onChange={e => handleBuyerPibChange(e.target.value.replace(/\D/g, ''))}
-                />
-              </div>
-              <div>
-                <label className={labelClass}>{t.companyName} *</label>
-                <input className={inputClass} value={invoice.buyer.name} maxLength={200}
-                  onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'name', value: e.target.value })} />
-              </div>
-              <div>
-                <label className={labelClass}>{t.address}</label>
-                <input className={inputClass} value={invoice.buyer.address} maxLength={500}
-                  onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'address', value: e.target.value })} />
-              </div>
-              <div>
-                <label className={labelClass}>{t.city}</label>
-                <input className={inputClass} value={invoice.buyer.city} maxLength={200}
-                  onChange={e => dispatch({ type: 'SET_BUYER_FIELD', field: 'city', value: e.target.value })} />
-              </div>
-            </div>
-          </div>
+          <BuyerSection
+            t={t}
+            buyer={invoice.buyer}
+            buyerFlash={buyerFlash}
+            onBuyerPibChange={handleBuyerPibChange}
+            dispatch={dispatch}
+          />
 
-          {/* Items */}
-          <div className={sectionClass}>
-            <h2 className="text-text font-semibold mb-3">{t.items}</h2>
-            <div className="space-y-3">
-              {invoice.items.map((item, idx) => (
-                <div key={item.id} className="bg-bg-alt rounded-lg p-3 relative">
-                  {invoice.items.length > 1 && (
-                    <button
-                      onClick={() => dispatch({ type: 'REMOVE_ITEM', index: idx })}
-                      className="absolute top-2 right-2 text-red-400 hover:text-red-300 text-xs"
-                    >
-                      ✕
-                    </button>
-                  )}
-                  {/* Description with autocomplete */}
-                  <div className="mb-2 relative" ref={el => { autocompleteRefs.current[idx] = el; }}>
-                    <input
-                      className={inputClass}
-                      placeholder={t.description}
-                      value={item.description}
-                      maxLength={500}
-                      onChange={e => handleItemDescriptionChange(idx, e.target.value)}
-                      onFocus={() => {
-                        if (item.description.trim().length >= 1) {
-                          const saved = loadSavedItems();
-                          const lower = item.description.toLowerCase();
-                          const matches = saved.filter(s => s.description.toLowerCase().includes(lower)).slice(0, 6);
-                          setItemSuggestions(prev => ({ ...prev, [idx]: matches }));
-                        }
-                      }}
-                      autoComplete="off"
-                    />
-                    {itemSuggestions[idx] && itemSuggestions[idx].length > 0 && (
-                      <div className="absolute left-0 right-0 top-full mt-1 bg-bg-card border border-border-light rounded-lg shadow-lg z-20 overflow-hidden">
-                        {itemSuggestions[idx].map((s, si) => (
-                          <button
-                            key={si}
-                            type="button"
-                            className="w-full text-left px-3 py-2 text-sm hover:bg-bg-alt transition-colors flex items-center justify-between gap-2"
-                            onMouseDown={e => { e.preventDefault(); applyItemSuggestion(idx, s); }}
-                          >
-                            <span className="text-text truncate">{s.description}</span>
-                            <span className="text-text-muted text-xs whitespace-nowrap shrink-0">
-                              {s.unitPrice.toLocaleString('sr-Latn-RS')} RSD / {s.unit}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-4 gap-2">
-                    <div>
-                      <label className={labelClass}>{t.quantity}</label>
-                      <input type="number" step="0.01" min="0" className={inputClass}
-                        value={item.quantity || ''}
-                        placeholder="1"
-                        onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'quantity', value: parseFloat(e.target.value) || 0 })}
-                        onBlur={e => { if (!e.target.value) dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'quantity', value: 1 }); }} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>{t.unit}</label>
-                      <select className={inputClass} value={item.unit}
-                        onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'unit', value: e.target.value })}>
-                        <option value="kom">kom</option>
-                        <option value="kg">kg</option>
-                        <option value="m">m</option>
-                        <option value="l">l</option>
-                        <option value="h">h</option>
-                        <option value="dan">dan</option>
-                        <option value="km">km</option>
-                        <option value="paket">paket</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className={labelClass}>{t.unitPrice}</label>
-                      <input type="number" step="0.01" min="0" className={inputClass}
-                        value={item.unitPrice || ''}
-                        placeholder="0.00"
-                        onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'unitPrice', value: parseFloat(e.target.value) || 0 })} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>{t.vatRate}</label>
-                      <select className={inputClass} value={item.vatRate}
-                        onChange={e => dispatch({ type: 'SET_ITEM_FIELD', index: idx, field: 'vatRate', value: parseInt(e.target.value) })}>
-                        <option value="20">20%</option>
-                        <option value="10">10%</option>
-                        <option value="0">0%</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={() => dispatch({ type: 'ADD_ITEM' })}
-              className="mt-3 text-primary text-sm hover:underline"
-            >
-              {t.addItem}
-            </button>
-          </div>
+          <ItemsSection
+            t={t}
+            items={invoice.items}
+            itemSuggestions={itemSuggestions}
+            autocompleteRefs={autocompleteRefs}
+            dispatch={dispatch}
+            onDescriptionChange={handleItemDescriptionChange}
+            onDescriptionFocus={handleItemDescriptionFocus}
+            applyItemSuggestion={applyItemSuggestion}
+          />
 
-          {/* Transport fields (otpremnica only) */}
+          {/* Transport + signatures (otpremnica only) */}
           {invoice.documentType === 'otpremnica' && (
-            <div className={sectionClass}>
-              <h2 className="text-text font-semibold mb-3">{t.transportInfo}</h2>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className={labelClass}>{t.vehicleRegistration}</label>
-                  <input className={inputClass} value={invoice.vehicleRegistration || ''} maxLength={200}
-                    placeholder={t.vehiclePlaceholder}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'vehicleRegistration', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.transportInfo}</label>
-                  <input className={inputClass} value={invoice.transportInfo || ''} maxLength={200}
-                    placeholder={t.transportPlaceholder}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'transportInfo', value: e.target.value })} />
-                </div>
-                <div className="col-span-2">
-                  <label className={labelClass}>{t.warehouseFrom}</label>
-                  <input className={inputClass} value={invoice.warehouseFrom || ''} maxLength={200}
-                    placeholder={t.warehousePlaceholder}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'warehouseFrom', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.loadingPlace}</label>
-                  <div className="flex gap-1">
-                    <input className={inputClass} value={invoice.loadingPlace || ''} maxLength={200}
-                      placeholder={t.loadingPlaceholder}
-                      onChange={e => dispatch({ type: 'SET_FIELD', path: 'loadingPlace', value: e.target.value })} />
-                    <button
-                      type="button"
-                      title={t.copyFromSeller}
-                      onClick={() => dispatch({ type: 'SET_FIELD', path: 'loadingPlace', value: [invoice.seller.address, invoice.seller.city].filter(Boolean).join(', ') })}
-                      className="px-2 text-text-muted hover:text-primary transition-colors shrink-0"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  <label className={labelClass}>{t.unloadingPlace}</label>
-                  <div className="flex gap-1">
-                    <input className={inputClass} value={invoice.unloadingPlace || ''} maxLength={200}
-                      placeholder={t.unloadingPlaceholder}
-                      onChange={e => dispatch({ type: 'SET_FIELD', path: 'unloadingPlace', value: e.target.value })} />
-                    <button
-                      type="button"
-                      title={t.copyFromBuyer}
-                      onClick={() => dispatch({ type: 'SET_FIELD', path: 'unloadingPlace', value: [invoice.buyer.address, invoice.buyer.city].filter(Boolean).join(', ') })}
-                      className="px-2 text-text-muted hover:text-primary transition-colors shrink-0"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  <label className={labelClass}>{t.loadingDateTime}</label>
-                  <input type="datetime-local" className={inputClass} value={invoice.loadingDateTime || ''}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'loadingDateTime', value: e.target.value })} />
-                </div>
-                <div className="col-span-2">
-                  <label className={labelClass}>{t.transportPurpose}</label>
-                  <input className={inputClass} value={invoice.transportPurpose || ''} maxLength={200}
-                    placeholder={t.purposePlaceholder}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'transportPurpose', value: e.target.value })} />
-                </div>
-              </div>
-            </div>
+            <>
+              <TransportSection t={t} invoice={invoice} dispatch={dispatch} />
+              <SignaturesSection t={t} invoice={invoice} dispatch={dispatch} />
+            </>
           )}
 
-          {/* Signatures (otpremnica only) */}
-          {invoice.documentType === 'otpremnica' && (
-            <div className={sectionClass}>
-              <h2 className="text-text font-semibold mb-3">{t.signatures}</h2>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className={labelClass}>{t.handoverName}</label>
-                  <input className={inputClass} value={invoice.handoverName || ''} maxLength={200}
-                    placeholder={t.handoverName}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'handoverName', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.receiverName}</label>
-                  <input className={inputClass} value={invoice.receiverName || ''} maxLength={200}
-                    placeholder={t.receiverName}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'receiverName', value: e.target.value })} />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Details (collapsible) */}
-          <div className={sectionClass}>
-            <button
-              onClick={() => setShowDetails(!showDetails)}
-              className="text-text font-semibold w-full text-left flex items-center justify-between"
-            >
-              <span>{t.details}</span>
-              <span className={`transform transition-transform ${showDetails ? 'rotate-180' : ''}`}>▼</span>
-            </button>
-            {showDetails && (
-              <div className="grid grid-cols-2 gap-3 mt-3">
-                <div>
-                  <label className={labelClass}>{t.issueDate}</label>
-                  <input type="date" className={inputClass} value={invoice.issueDate}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'issueDate', value: e.target.value })} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t.deliveryDate}</label>
-                  <input type="date" className={inputClass} value={invoice.deliveryDate || ''}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'deliveryDate', value: e.target.value })} />
-                </div>
-                {invoice.documentType !== 'otpremnica' && (
-                  <>
-                    <div>
-                      <label className={labelClass}>{t.dueDate}</label>
-                      <input type="date" className={inputClass} value={invoice.dueDate || ''}
-                        onChange={e => dispatch({ type: 'SET_FIELD', path: 'dueDate', value: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>{t.quickSelect}</label>
-                      <div className="flex gap-1">
-                        {[7, 15, 30, 60].map(days => (
-                          <button key={days}
-                            onClick={() => {
-                              const d = new Date(invoice.issueDate || Date.now());
-                              d.setDate(d.getDate() + days);
-                              dispatch({ type: 'SET_FIELD', path: 'dueDate', value: d.toISOString().split('T')[0] });
-                            }}
-                            className="px-2 py-1 text-xs bg-bg-alt border border-border-light rounded text-text-muted hover:text-primary hover:border-primary transition-colors"
-                          >
-                            {(t as any)[`days${days}`]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <label className={labelClass}>{t.paymentReference} <span className="text-text-muted/60">({t.paymentRefAuto})</span></label>
-                      <input className={inputClass} value={invoice.paymentReference || ''} maxLength={50}
-                        placeholder={t.paymentRefAuto}
-                        onChange={e => dispatch({ type: 'SET_FIELD', path: 'paymentReference', value: e.target.value })} />
-                    </div>
-                  </>
-                )}
-                <div className="col-span-2">
-                  <label className={labelClass}>{t.notes}</label>
-                  <textarea className={inputClass + ' h-20 resize-none'} value={invoice.notes || ''} maxLength={2000}
-                    onChange={e => dispatch({ type: 'SET_FIELD', path: 'notes', value: e.target.value })} />
-                </div>
-              </div>
-            )}
-          </div>
+          <DetailsSection
+            t={t}
+            invoice={invoice}
+            showDetails={showDetails}
+            setShowDetails={setShowDetails}
+            dispatch={dispatch}
+          />
 
           {/* Sticky footer */}
           <div className="sticky bottom-0 bg-bg border-t border-border p-4 -mx-4 md:-mx-6">
