@@ -3,7 +3,6 @@ import InvoicePreview from './InvoicePreview';
 import type { InvoiceData } from './types';
 import { createEmptyInvoice, generatePaymentReference } from './types';
 import { countValid, getMissingFields } from './validation';
-import { tObject, type Locale } from '../../i18n/utils';
 import {
   inputClass,
   sectionClass,
@@ -32,6 +31,9 @@ import {
 interface Props {
   locale: string;
   apiUrl: string;
+  /** Dictionary from i18n `efakturaStudio`, resolved server-side in the .astro page
+   * so the client island does not bundle the full site translations. */
+  translations: StudioT;
 }
 
 // ── Reducer ───────────────────────────────────────────────────────────────────
@@ -72,9 +74,7 @@ function reducer(state: InvoiceData, action: Action): InvoiceData {
 const ALLOWED_API_HOSTS = ['https://bot.lako.services'];
 const API_FETCH_TIMEOUT_MS = 15_000;
 
-export default function Studio({ locale, apiUrl }: Props) {
-  const safeLocale = (['sr', 'en', 'ru'].includes(locale) ? locale : 'sr') as Locale;
-  const t = tObject<StudioT>(safeLocale, 'efakturaStudio');
+export default function Studio({ locale, apiUrl, translations: t }: Props) {
 
   const [invoice, dispatch] = useReducer(reducer, null, () => {
     const empty = createEmptyInvoice();
