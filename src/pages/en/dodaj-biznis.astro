@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import RegisterForm from '../../components/react/RegisterForm';
-import { t, getLocalizedPath } from '../../i18n/utils';
+import RegisterForm, { type RegisterFormT, type ConsentT } from '../../components/react/RegisterForm';
+import { t, getLocalizedPath, tObject } from '../../i18n/utils';
 
 const locale = 'en';
+const formT = tObject<RegisterFormT>(locale, 'registerBusiness.form');
+const consentT = tObject<ConsentT>(locale, 'consent');
 ---
 <BaseLayout
   title={t(locale, 'seo.registerBusiness.title')}
@@ -25,7 +27,7 @@ const locale = 'en';
   {/* Form */}
   <section class="py-16 md:py-20 bg-bg">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      <RegisterForm client:load locale={locale} />
+      <RegisterForm client:load locale={locale} form={formT} consent={consentT} />
 
       <div class="mt-12 text-center text-text-light">
         <p>

@@ -1,11 +1,16 @@
 import { useState } from 'react';
 
-import sr from '../../i18n/sr.json';
-import en from '../../i18n/en.json';
-import ru from '../../i18n/ru.json';
+// Type-only references to the dictionary shape — no runtime JSON import,
+// so the island does not bundle the full site translations.
+export type RegisterFormT = typeof import('../../i18n/sr.json')['registerBusiness']['form'];
+export type ConsentT = typeof import('../../i18n/sr.json')['consent'];
 
 interface Props {
   locale: 'sr' | 'en' | 'ru';
+  /** `registerBusiness.form` slice, resolved server-side in the .astro page. */
+  form: RegisterFormT;
+  /** `consent` slice, resolved server-side in the .astro page. */
+  consent: ConsentT;
 }
 
 interface FormSubmitEvent {
@@ -13,9 +18,7 @@ interface FormSubmitEvent {
   currentTarget: HTMLFormElement;
 }
 
-export default function RegisterForm({ locale }: Props) {
-  const translations = { sr, en, ru }[locale];
-  const form = translations.registerBusiness.form;
+export default function RegisterForm({ locale, form, consent }: Props) {
   const categories = form.categories;
   const cities = form.cities;
   const privacyPolicyPath = locale === 'sr' ? '/privacy-policy/' : `/${locale}/privacy-policy/`;
@@ -160,14 +163,14 @@ export default function RegisterForm({ locale }: Props) {
           className="mt-1 h-4 w-4 rounded border-border-light text-primary focus:ring-primary"
         />
         <label htmlFor="consent" className="text-sm text-text-muted">
-          {translations.consent.text}{' '}
+          {consent.text}{' '}
           <a
             href={privacyPolicyPath}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
-            {translations.consent.linkText}
+            {consent.linkText}
           </a>
         </label>
       </div>
