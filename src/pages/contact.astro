@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CopyEmailButton from '../components/CopyEmailButton.astro';
-import ContactForm from '../components/react/ContactForm';
-import { t } from '../i18n/utils';
+import ContactForm, { type ContactFormT, type ConsentT } from '../components/react/ContactForm';
+import { t, tObject } from '../i18n/utils';
 
 const locale = 'sr';
+const formT = tObject<ContactFormT>(locale, 'contact.form');
+const consentT = tObject<ConsentT>(locale, 'consent');
 ---
 <BaseLayout
   title={t(locale, 'seo.contact.title')}
@@ -29,7 +31,7 @@ const locale = 'sr';
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         {/* Left: Contact Form */}
         <div>
-          <ContactForm client:load locale={locale} />
+          <ContactForm client:load locale={locale} form={formT} consent={consentT} />
         </div>
 
         {/* Right: Contact Channels */}
