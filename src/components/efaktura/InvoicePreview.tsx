@@ -84,9 +84,9 @@ export default function InvoicePreview({ data, locale }: Props) {
           <p>{data.seller.address || ''}</p>
           <p>PIB: {data.seller.pib || '\u2014'}</p>
           {data.seller.mb && <p>Mat. broj: {data.seller.mb}</p>}
-          {!isOtpremnica && data.seller.bankAccount && <p>Ra\u010dun: {data.seller.bankAccount}</p>}
+          {!isOtpremnica && data.seller.bankAccount && <p>Račun: {data.seller.bankAccount}</p>}
           {!isOtpremnica && data.seller.bankName && <p>Banka: {data.seller.bankName}</p>}
-          {!data.seller.vatRegistered && <p className="text-gray-500 italic">Pau\u0161alac \u2014 nije u sistemu PDV</p>}
+          {!data.seller.vatRegistered && <p className="text-gray-500 italic">Paušalac — nije u sistemu PDV</p>}
         </div>
         <div className="flex-1">
           <p className="font-bold text-xs mb-1">KUPAC:</p>
@@ -103,7 +103,7 @@ export default function InvoicePreview({ data, locale }: Props) {
           {data.deliveryDate && <p>Datum isporuke: {fmtDate(data.deliveryDate)}</p>}
           {data.vehicleRegistration && <p className="font-bold">Reg. vozila: {data.vehicleRegistration}</p>}
           {data.transportInfo && <p>Transport: {data.transportInfo}</p>}
-          {data.warehouseFrom && <p>Skladi{'\u0161'}te: {data.warehouseFrom}</p>}
+          {data.warehouseFrom && <p>Skladište: {data.warehouseFrom}</p>}
           {data.loadingPlace && <p>Mesto utovara: {data.loadingPlace}</p>}
           {data.unloadingPlace && <p>Mesto istovara: {data.unloadingPlace}</p>}
           {data.loadingDateTime && <p>Datum utovara: {fmtDateTime(data.loadingDateTime)}</p>}
@@ -173,7 +173,7 @@ export default function InvoicePreview({ data, locale }: Props) {
 
       {!data.seller.vatRegistered && (
         <p className="text-[9px] text-gray-500 mb-3">
-          PDV nije obra\u010dunat \u2014 obveznik nije u sistemu PDV (pau\u0161alno oporezivanje).
+          PDV nije obračunat — obveznik nije u sistemu PDV (paušalno oporezivanje).
         </p>
       )}
 

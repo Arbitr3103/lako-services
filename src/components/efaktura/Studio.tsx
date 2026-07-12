@@ -2,6 +2,7 @@ import { useReducer, useState, useEffect, useRef } from 'react';
 import InvoicePreview from './InvoicePreview';
 import type { InvoiceData, BuyerData, DocumentType } from './types';
 import { createEmptyInvoice, generatePaymentReference } from './types';
+import { countValid, getMissingFields } from './validation';
 import {
   clearSavedEfakturaData,
   hasStorageConsent,
@@ -155,7 +156,7 @@ const translations: Record<string, Record<string, string>> = {
     buyerAutoFilled: 'Покупатель найден в истории',
     pibHint: '9 цифр', bankAccountHint: 'напр. 160-0000000000000-00',
     proUpsell: 'Хотите больше возможностей?',
-    proFeatures: 'Без лимита \u00b7 без žiga \u00b7 история \u00b7 е-Подпис',
+    proFeatures: 'Без лимита \u00b7 без водяного знака \u00b7 история \u00b7 э-подпись',
     proAction: 'Попробовать Pro',
     limitReachedAnon: 'Вы достигли бесплатного лимита — 3 счёта в месяц.',
     limitReachedFree: 'Вы достигли лимита — 10 счетов в месяц.',
@@ -229,55 +230,13 @@ function reducer(state: InvoiceData, action: Action): InvoiceData {
   }
 }
 
-function countValid(data: InvoiceData): { valid: number; total: number } {
-  const isOtpremnica = data.documentType === 'otpremnica';
-  const total = isOtpremnica ? 6 : 8;
-  let valid = 0;
-  if (data.invoiceNumber?.trim()) valid++;
-  if (data.seller?.name?.trim()) valid++;
-  if (data.seller?.pib && /^\d{9}$/.test(data.seller.pib)) valid++;
-  if (data.buyer?.name?.trim()) valid++;
-  if (data.buyer?.pib && /^\d{9}$/.test(data.buyer.pib)) valid++;
-  if (data.issueDate) valid++;
-  if (!isOtpremnica && data.dueDate) valid++;
-  if (data.items?.length > 0 && data.items.some(i => i.description?.trim())) valid++;
-  return { valid, total };
-}
-
-function getMissingFields(data: InvoiceData, t: Record<string, string>): string[] {
-  const isOtpremnica = data.documentType === 'otpremnica';
-  const missing: string[] = [];
-  if (!data.invoiceNumber?.trim()) missing.push(isOtpremnica ? t.documentNumber : t.invoiceNumber);
-  if (!data.seller?.name?.trim()) missing.push(`${t.seller}: ${t.companyName}`);
-  if (!data.seller?.pib || !/^\d{9}$/.test(data.seller.pib)) missing.push(`${t.seller}: ${t.pib}`);
-  if (!data.buyer?.name?.trim()) missing.push(`${t.buyer}: ${t.companyName}`);
-  if (!data.buyer?.pib || !/^\d{9}$/.test(data.buyer.pib)) missing.push(`${t.buyer}: ${t.pib}`);
-  if (!data.issueDate) missing.push(t.issueDate);
-  if (!isOtpremnica && !data.dueDate) missing.push(t.dueDate);
-  if (!data.items?.length || !data.items.some(i => i.description?.trim())) missing.push(t.items);
-  return missing;
-}
-
-function trackEvent(event: string, data?: Record<string, any>) {
-  try {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', event, data);
-    }
-  } catch {}
-}
-
 // ── Component ─────────────────────────────────────────────────────────────────
 
 const ALLOWED_API_HOSTS = ['https://bot.lako.services'];
+const API_FETCH_TIMEOUT_MS = 15_000;
 
 export default function Studio({ locale, apiUrl }: Props) {
-  if (!ALLOWED_API_HOSTS.includes(apiUrl)) {
-    return <div>Configuration error: invalid API URL</div>;
-  }
-
   const t = translations[locale] || translations.sr;
-
-  useEffect(() => { trackEvent('efaktura_studio_open', { locale }); }, []);
 
   const [invoice, dispatch] = useReducer(reducer, null, () => {
     const empty = createEmptyInvoice();
@@ -330,6 +289,11 @@ export default function Studio({ locale, apiUrl }: Props) {
     return () => document.removeEventListener('mousedown', handleClick);
   }, [itemSuggestions]);
 
+  // After all hooks so the hook order never changes between renders
+  if (!ALLOWED_API_HOSTS.includes(apiUrl)) {
+    return <div>Configuration error: invalid API URL</div>;
+  }
+
   // Buyer PIB lookup
   function handleBuyerPibChange(val: string) {
     dispatch({ type: 'SET_BUYER_FIELD', field: 'pib', value: val });
@@ -381,20 +345,21 @@ export default function Studio({ locale, apiUrl }: Props) {
 
   const handleGenerate = async () => {
     setGenStatus('generating');
-    trackEvent('efaktura_generate_start', { locale, items: invoice.items.length });
     try {
       const createRes = await fetch(`${apiUrl}/api/efaktura/invoices`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(invoice),
+        signal: AbortSignal.timeout(API_FETCH_TIMEOUT_MS),
       });
       if (!createRes.ok) {
-        const err = await createRes.json();
-        if (createRes.status === 429 && err.error?.includes('3 invoices')) {
+        const err = await createRes.json().catch(() => ({}));
+        // Prefer a machine-readable code; fall back to matching the error text
+        if (createRes.status === 429 && (err.code === 'LIMIT_ANON' || err.error?.includes('3 invoices'))) {
           setGenStatus('limit_anon');
           return;
         }
-        if (createRes.status === 429 && err.error?.includes('10 invoices')) {
+        if (createRes.status === 429 && (err.code === 'LIMIT_FREE' || err.error?.includes('10 invoices'))) {
           setGenStatus('limit_free');
           return;
         }
@@ -402,23 +367,29 @@ export default function Studio({ locale, apiUrl }: Props) {
       }
       const { id } = await createRes.json();
 
-      const genRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/generate`, { method: 'POST' });
+      const genRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/generate`, {
+        method: 'POST',
+        signal: AbortSignal.timeout(API_FETCH_TIMEOUT_MS),
+      });
       if (!genRes.ok) {
-        const err = await genRes.json();
+        const err = await genRes.json().catch(() => ({}));
         throw new Error(err.error || 'Failed to generate');
       }
 
       let attempts = 0;
       while (attempts < 30) {
         await new Promise(r => setTimeout(r, 1000));
-        const statusRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/status`);
+        const statusRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/status`, {
+          signal: AbortSignal.timeout(API_FETCH_TIMEOUT_MS),
+        });
         const status = await statusRes.json();
         if (status.status === 'ready') {
-          const dlRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/download`);
+          const dlRes = await fetch(`${apiUrl}/api/efaktura/invoices/${id}/download`, {
+            signal: AbortSignal.timeout(API_FETCH_TIMEOUT_MS),
+          });
           const dlData = await dlRes.json();
           setDownloadData(dlData);
           setGenStatus('ready');
-          trackEvent('efaktura_generate_success', { locale });
           // Save buyer and items to localStorage for future auto-fill
           if (invoice.buyer.pib && /^\d{9}$/.test(invoice.buyer.pib) && invoice.buyer.name) {
             persistBuyer(invoice.buyer.pib, invoice.buyer);
@@ -439,7 +410,6 @@ export default function Studio({ locale, apiUrl }: Props) {
   };
 
   const downloadFile = (base64: string, filename: string, mime: string) => {
-    trackEvent('efaktura_download', { locale, type: mime.includes('pdf') ? 'pdf' : 'xml' });
     const binary = atob(base64);
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);

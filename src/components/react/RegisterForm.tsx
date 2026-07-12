@@ -26,7 +26,9 @@ export default function RegisterForm({ locale }: Props) {
     e.preventDefault();
     setStatus('loading');
 
-    const formData = new FormData(e.currentTarget);
+    // React nulls e.currentTarget after the synchronous part of the handler
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
     const data = {
       businessName: formData.get('businessName'),
       category: formData.get('category'),
@@ -49,7 +51,7 @@ export default function RegisterForm({ locale }: Props) {
 
       if (res.ok) {
         setStatus('success');
-        e.currentTarget.reset();
+        formEl.reset();
       } else {
         setStatus('error');
       }

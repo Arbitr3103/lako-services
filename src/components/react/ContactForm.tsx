@@ -25,7 +25,9 @@ export default function ContactForm({ locale }: Props) {
     e.preventDefault();
     setStatus('loading');
 
-    const formData = new FormData(e.currentTarget);
+    // React nulls e.currentTarget after the synchronous part of the handler
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -44,7 +46,7 @@ export default function ContactForm({ locale }: Props) {
 
       if (res.ok) {
         setStatus('success');
-        e.currentTarget.reset();
+        formEl.reset();
       } else {
         setStatus('error');
       }
