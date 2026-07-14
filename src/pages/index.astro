@@ -2,10 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import ProductTile from '../components/home/ProductTile.astro';
+import ProofFrame from '../components/home/ProofFrame.astro';
 import { t, tObject, getLocalizedPath } from '../i18n/utils';
 
 const locale = 'sr';
 const securityItems = tObject<string[]>(locale, 'home.security.items');
+const heroProofChips = tObject<string[]>(locale, 'home.hero.proofChips');
 ---
 <BaseLayout
   title={t(locale, 'seo.home.title')}
@@ -13,64 +16,138 @@ const securityItems = tObject<string[]>(locale, 'home.security.items');
   locale={locale}
 >
   {/* Hero */}
-  <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-bg to-accent/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-text">
-          {t(locale, 'home.hero.title')}
-        </h1>
-        <p class="mt-6 text-lg md:text-xl text-text-light max-w-2xl mx-auto">
-          {t(locale, 'home.hero.subtitle')}
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <CTA href={getLocalizedPath('/logistics', locale)} variant="accent" size="lg">
-            {t(locale, 'home.hero.cta')}
-          </CTA>
-          <CTA href={getLocalizedPath('/contact', locale)} variant="secondary" size="lg">
-            {t(locale, 'home.hero.ctaSecondary')}
-          </CTA>
+  <section class="relative overflow-hidden border-b border-border/70 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.16),transparent_30%),linear-gradient(180deg,#0B1120_0%,#111827_100%)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div class="grid min-w-0 gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div class="min-w-0">
+          <p class="inline-flex rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            {t(locale, 'home.hero.badge')}
+          </p>
+          <h1 class="mt-5 max-w-3xl break-words text-4xl font-bold leading-[1.05] tracking-tight text-text [text-wrap:balance] sm:text-5xl lg:text-6xl">
+            {t(locale, 'home.hero.title')}
+          </h1>
+          <p class="mt-5 max-w-2xl text-base leading-7 text-text-light sm:text-lg md:text-xl">
+            {t(locale, 'home.hero.subtitle')}
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <CTA href={getLocalizedPath('/logistics', locale)} variant="accent" size="lg" class="w-full sm:w-auto">
+              {t(locale, 'home.hero.cta')}
+            </CTA>
+            <CTA href={getLocalizedPath('/efaktura', locale)} variant="secondary" size="lg" class="w-full sm:w-auto">
+              {t(locale, 'home.hero.ctaSecondary')}
+            </CTA>
+          </div>
+          <ProofFrame
+            src="/images/photos/driver-tablet.webp"
+            alt={t(locale, 'home.hero.products.logistics.alt')}
+            width="800"
+            height="533"
+            frame="photo"
+            loading="eager"
+            class="mt-5 max-w-[16rem] lg:hidden"
+            imageClass="aspect-[4/3] w-full"
+          />
+          <div class="mt-6 flex flex-wrap gap-2">
+            {heroProofChips.map((chip: string) => (
+              <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-text-light">
+                {chip}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="min-w-0 rounded-xl border border-white/10 bg-white/[0.035] p-3 shadow-2xl shadow-black/20 sm:p-4">
+          <div class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{t(locale, 'home.hero.proofEyebrow')}</p>
+              <h2 class="mt-1 text-xl font-semibold text-text">{t(locale, 'home.hero.proofTitle')}</h2>
+            </div>
+            <p class="text-sm text-text-light">{t(locale, 'home.hero.proofMeta')}</p>
+          </div>
+          <div class="grid gap-3">
+            <ProductTile
+              href={getLocalizedPath('/logistics', locale)}
+              meta={t(locale, 'home.hero.products.logistics.meta')}
+              title={t(locale, 'home.hero.products.logistics.title')}
+              description={t(locale, 'home.hero.products.logistics.description')}
+              cta={t(locale, 'home.hero.products.logistics.cta')}
+              src="/images/photos/driver-tablet.webp"
+              alt={t(locale, 'home.hero.products.logistics.alt')}
+              width="800"
+              height="533"
+              frame="photo"
+              accent="primary"
+            />
+            <ProductTile
+              href={getLocalizedPath('/efaktura', locale)}
+              meta={t(locale, 'home.hero.products.efaktura.meta')}
+              title={t(locale, 'home.hero.products.efaktura.title')}
+              description={t(locale, 'home.hero.products.efaktura.description')}
+              cta={t(locale, 'home.hero.products.efaktura.cta')}
+              src="/images/screenshots/cmr-example.png"
+              alt={t(locale, 'home.hero.products.efaktura.alt')}
+              width="600"
+              height="848"
+              frame="document"
+              accent="green"
+            />
+            <ProductTile
+              href={getLocalizedPath('/small-business', locale)}
+              meta={t(locale, 'home.hero.products.catalog.meta')}
+              title={t(locale, 'home.hero.products.catalog.title')}
+              description={t(locale, 'home.hero.products.catalog.description')}
+              cta={t(locale, 'home.hero.products.catalog.cta')}
+              src="/images/screenshots/katalog-welcome.png"
+              alt={t(locale, 'home.hero.products.catalog.alt')}
+              width="430"
+              height="932"
+              frame="phone"
+              accent="accent"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="absolute inset-0 -z-10 overflow-hidden">
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
     </div>
   </section>
 
   {/* Product Showcase */}
   <section class="py-16 md:py-24 bg-bg">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-bold text-center text-text mb-12">
-        {t(locale, 'home.showcase.title')}
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-        <div class="flex flex-col items-center">
-          <div class="bg-white rounded-2xl shadow-lg shadow-black/10 overflow-hidden border border-border/50 p-4">
-            <img
-              src="/images/screenshots/cmr-example.png"
-              alt={t(locale, 'home.showcase.cmrAlt')}
-              class="w-full h-auto rounded-lg"
-              loading="lazy"
-              width="600"
-              height="848"
-            />
-          </div>
-          <p class="mt-4 text-sm text-text-light text-center">{t(locale, 'home.showcase.cmrCaption')}</p>
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="rounded-2xl shadow-lg shadow-black/10 overflow-hidden border border-border/50">
-            <img
-              src="/images/screenshots/katalog-welcome.png"
-              alt={t(locale, 'home.showcase.botAlt')}
-              class="w-full h-auto"
-              loading="lazy"
-              width="430"
-              height="932"
-            />
-          </div>
-          <p class="mt-4 text-sm text-text-light text-center">{t(locale, 'home.showcase.botCaption')}</p>
-        </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">{t(locale, 'home.showcase.eyebrow')}</p>
+        <h2 class="mt-3 text-2xl md:text-3xl font-bold text-text">
+          {t(locale, 'home.showcase.title')}
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr_0.85fr]">
+        <ProofFrame
+          src="/images/screenshots/cmr-example.png"
+          alt={t(locale, 'home.showcase.cmrAlt')}
+          caption={t(locale, 'home.showcase.cmrCaption')}
+          width="600"
+          height="848"
+          frame="document"
+          class="lg:row-span-2"
+          imageClass="mx-auto max-h-[520px] object-contain"
+        />
+        <ProofFrame
+          src="/images/screenshots/katalog-search.png"
+          alt={t(locale, 'home.showcase.botAlt')}
+          caption={t(locale, 'home.showcase.botCaption')}
+          width="430"
+          height="932"
+          frame="phone"
+          imageClass="mx-auto max-h-[420px] object-contain"
+        />
+        <ProofFrame
+          src="/images/photos/driver-tablet.webp"
+          alt={t(locale, 'home.showcase.driverAlt')}
+          caption={t(locale, 'home.showcase.driverCaption')}
+          width="800"
+          height="533"
+          frame="photo"
+          imageClass="aspect-[4/3] w-full"
+        />
       </div>
     </div>
   </section>

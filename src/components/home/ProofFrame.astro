@@ -1,0 +1,54 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: number | string;
+  height: number | string;
+  caption?: string;
+  frame?: 'document' | 'phone' | 'photo';
+  loading?: 'eager' | 'lazy';
+  class?: string;
+  imageClass?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  caption,
+  frame = 'photo',
+  loading = 'lazy',
+  class: className = '',
+  imageClass = '',
+} = Astro.props;
+
+const frameClasses = {
+  document: 'bg-white p-2 shadow-[0_18px_50px_rgba(2,6,23,0.24)]',
+  phone: 'bg-slate-950 p-1.5 shadow-[0_18px_50px_rgba(2,6,23,0.32)]',
+  photo: 'bg-white/[0.04] p-1 shadow-[0_18px_50px_rgba(2,6,23,0.24)]',
+};
+
+const imageClasses = {
+  document: 'rounded-md object-contain',
+  phone: 'rounded-[12px] object-cover',
+  photo: 'rounded-md object-cover',
+};
+---
+
+<figure class:list={['min-w-0 overflow-hidden rounded-lg border border-white/10', frameClasses[frame], className]}>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    class:list={['block h-auto max-w-full', imageClasses[frame], imageClass]}
+  />
+  {caption && (
+    <figcaption class="px-2 pb-2 pt-3 text-xs font-medium leading-snug text-text-light">
+      {caption}
+    </figcaption>
+  )}
+</figure>

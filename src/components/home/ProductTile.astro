@@ -1,0 +1,63 @@
+---
+import ProofFrame from './ProofFrame.astro';
+
+interface Props {
+  href: string;
+  meta: string;
+  title: string;
+  description: string;
+  cta: string;
+  src: string;
+  alt: string;
+  width: number | string;
+  height: number | string;
+  frame?: 'document' | 'phone' | 'photo';
+  accent?: 'primary' | 'accent' | 'green';
+}
+
+const {
+  href,
+  meta,
+  title,
+  description,
+  cta,
+  src,
+  alt,
+  width,
+  height,
+  frame = 'photo',
+  accent = 'primary',
+} = Astro.props;
+
+const accentClasses = {
+  primary: 'text-primary',
+  accent: 'text-accent',
+  green: 'text-emerald-300',
+};
+---
+
+<a
+  href={href}
+  class="group grid min-w-0 grid-cols-[minmax(0,1fr)_5.5rem] gap-4 rounded-lg border border-white/10 bg-white/[0.04] p-4 transition-colors hover:border-primary/60 hover:bg-white/[0.07] sm:grid-cols-[minmax(0,1fr)_7rem]"
+>
+  <div class="min-w-0">
+    <p class:list={['text-xs font-semibold uppercase tracking-[0.18em]', accentClasses[accent]]}>{meta}</p>
+    <h3 class="mt-2 text-base font-semibold leading-tight text-text">{title}</h3>
+    <p class="mt-2 text-sm leading-6 text-text-light">{description}</p>
+    <span class:list={['mt-3 inline-flex items-center text-sm font-semibold', accentClasses[accent]]}>
+      {cta}
+      <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </span>
+  </div>
+  <ProofFrame
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    frame={frame}
+    class="w-full self-start"
+    imageClass="aspect-[4/5] w-full object-cover"
+  />
+</a>

@@ -13,10 +13,43 @@
   },
   "home": {
     "hero": {
-      "title": "Automatizacija — lako i brzo",
-      "subtitle": "Web aplikacije i botovi za vaš biznis. Uštedite vreme i novac sa pametnom automatizacijom.",
-      "cta": "Pogledajte rešenja",
-      "ctaSecondary": "Kontaktirajte nas"
+      "badge": "Novi Sad / Srbija",
+      "title": "Telegram botovi za logistiku i mali biznis u Srbiji",
+      "subtitle": "CMR, otpremnica, e-Faktura, katalog i zakazivanje - u Telegramu i web aplikacijama koje rade odmah, uz lokalnu podršku iz Novog Sada.",
+      "cta": "Probajte logistički bot",
+      "ctaSecondary": "Otvorite e-Faktura Studio",
+      "proofChips": [
+        "CMR za 15 sekundi",
+        "SEF PDF/XML",
+        "Telegram botovi",
+        "Cene u RSD"
+      ],
+      "proofEyebrow": "Dokaz da radi",
+      "proofTitle": "Realni ekrani proizvoda",
+      "proofMeta": "Radi danas",
+      "products": {
+        "logistics": {
+          "meta": "Logistika",
+          "title": "CMR i otpremnica sa utovara",
+          "description": "Vozač radi u Telegramu, a dokumenti su spremni za slanje klijentu ili inspekciji.",
+          "cta": "Pogledajte logistiku",
+          "alt": "Vozač koristi Lako logistički bot na tabletu"
+        },
+        "efaktura": {
+          "meta": "e-Faktura",
+          "title": "Studio za fakturu i otpremnicu",
+          "description": "PDF pregled, UBL XML i QR provera u istom toku rada za transportne dokumente.",
+          "cta": "Otvorite Studio",
+          "alt": "Primer CMR dokumenta i e-Faktura toka rada u Lako sistemu"
+        },
+        "catalog": {
+          "meta": "Mali biznis",
+          "title": "Katalog i zakazivanje u botu",
+          "description": "Klijenti nalaze usluge, šalju zahtev i dobijaju jasnu komunikaciju bez nove aplikacije.",
+          "cta": "Pogledajte katalog",
+          "alt": "Telegram bot Lako Concierge sa kategorijama usluga"
+        }
+      }
     },
     "value": {
       "title": "Zašto Lako Services?",
@@ -56,11 +89,14 @@
       "cta": "Saznajte više o zaštiti"
     },
     "showcase": {
-      "title": "Pogledajte kako to izgleda",
+      "eyebrow": "Produktni dokaz",
+      "title": "Dokumenti, bot i rad na terenu su vidljivi pre nego što nas kontaktirate",
       "cmrAlt": "Primer CMR dokumenta generisanog u Lako sistemu",
       "cmrCaption": "CMR dokument — generisan za 15 sekundi",
-      "botAlt": "Telegram bot Lako Concierge — ekran dobrodošlice sa kategorijama usluga",
-      "botCaption": "Telegram bot — spreman za korišćenje odmah"
+      "botAlt": "Telegram bot Lako Concierge — pretraga usluga u katalogu",
+      "botCaption": "Telegram katalog — korisnik odmah vidi i bira uslugu",
+      "driverAlt": "Vozač koristi tablet tokom transportnog toka rada",
+      "driverCaption": "Terenski scenario — unos podataka tamo gde dokument nastaje"
     },
     "bottomCta": {
       "title": "Spremni da automatizujete vaš biznis?",
