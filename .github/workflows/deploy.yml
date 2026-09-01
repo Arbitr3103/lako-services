@@ -41,3 +41,9 @@ jobs:
       - run: npm run check:seo
         env:
           SEO_BASE_URL: https://lako-services.bragin-arbitr.workers.dev
+
+      - name: Verify complete identity responses
+        run: >-
+          npm run check:identity-response --
+          https://lako-services.bragin-arbitr.workers.dev/
+          https://lako.services/

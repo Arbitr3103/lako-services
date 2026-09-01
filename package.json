@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "test": "vitest run && npm run test:analytics",
+    "test": "vitest run && npm run test:analytics && npm run test:identity-response",
     "test:analytics": "node --test ops/daily-analytics/*.node-test.mjs",
+    "test:identity-response": "node --test scripts/check-response-delivery.node-test.mjs",
     "check:types": "astro check",
     "check:security": "npm audit --audit-level=moderate",
+    "check:identity-response": "node scripts/check-response-delivery.mjs",
     "check:seo": "node scripts/check-seo.mjs",
     "preview": "astro build && wrangler dev",
     "deploy": "astro build && wrangler deploy",
