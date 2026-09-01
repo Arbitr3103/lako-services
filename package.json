@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "test": "vitest run",
+    "test": "vitest run && npm run test:analytics",
+    "test:analytics": "node --test ops/daily-analytics/*.node-test.mjs",
     "check:types": "astro check",
     "check:security": "npm audit --audit-level=moderate",
     "check:seo": "node scripts/check-seo.mjs",
