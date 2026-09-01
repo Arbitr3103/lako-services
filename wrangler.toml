@@ -1,7 +1,7 @@
 name = "lako-services"
 main = "@astrojs/cloudflare/entrypoints/server"
 compatibility_date = "2026-05-27"
-compatibility_flags = ["nodejs_compat"]
+compatibility_flags = ["nodejs_compat", "disable_nodejs_process_v2"]
 
 [assets]
 directory = "./dist"

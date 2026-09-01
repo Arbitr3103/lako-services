@@ -86,6 +86,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 - **Secrets**: set via `npx wrangler secret put <NAME>` (RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, REGISTRATION_SECRET)
 - **Observability**: enabled in wrangler.toml — logs/traces in Workers dashboard
 - **Worker route**: `lako.services/*` → `lako-services` (DNS A record 192.0.2.1 proxied)
+- **Identity-response compatibility**: keep `disable_nodejs_process_v2` alongside `nodejs_compat` until Astro's Cloudflare stream issue is confirmed fixed. The deploy workflow must pass the full-body identity smoke for both `workers.dev` and `lako.services`; see `docs/cloudflare-identity-response-runbook-2026-09-01.md`.
 
 ### Pricing (small-business page)
 
