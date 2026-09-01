@@ -10,7 +10,7 @@ Business automation website (Telegram bots) for Lako Services, Novi Sad, Serbia.
 
 ## Tech Stack
 
-Astro 6 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudflare Workers.
+Astro 7 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudflare Workers.
 
 ## Architecture
 
@@ -38,7 +38,9 @@ Astro 6 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 
 **Colors**: Primary `#2563EB` (blue), Accent `#D97706` (orange CTA), Text `#1F2937`.
 
-**Cloudflare Workers env vars**: Astro 6 / `@astrojs/cloudflare` v13 removed `locals.runtime.env`. Use `import { env } from "cloudflare:workers"` through `src/utils/worker-env.ts` for CF bindings in API routes. `import.meta.env`, `astro:env/server`, `getSecret()`, and old `(locals as any).runtime.env.VAR_NAME` access do NOT work for Workers runtime secrets. `[vars]` from `wrangler.toml` and secrets are available through `cloudflare:workers`. Secrets are set via `echo "VALUE" | npx wrangler secret put KEY`. For local Worker preview use `.dev.vars`.
+**Cloudflare Workers env vars**: Astro 7 / `@astrojs/cloudflare` v14 use `import { env } from "cloudflare:workers"` through `src/utils/worker-env.ts` for CF bindings in API routes. `import.meta.env`, `astro:env/server`, `getSecret()`, and old `(locals as any).runtime.env.VAR_NAME` access do NOT work for Workers runtime secrets. `[vars]` from `wrangler.toml` and secrets are available through `cloudflare:workers`. Secrets are set via `echo "VALUE" | npx wrangler secret put KEY`. For local Worker preview use `.dev.vars`.
+
+**Astro 7 cold dev startup**: `astro.config.mjs` explicitly pre-bundles `astro/assets/services/noop` and `astro/logger/json` as a workaround for [Astro #17788](https://github.com/withastro/astro/issues/17788). Keep the workaround until the Cloudflare adapter includes both entrypoints itself; verify removal with three `astro dev --force` cold starts and a successful first request after each start.
 
 **Contact form**: React island → POST `/api/contact` → Resend email (`noreply@lako.services` → `info@lako.services`) + Telegram Bot notification. Returns error if both channels fail.
 
@@ -76,7 +78,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 - **Platform**: Cloudflare Workers (SSR via `@astrojs/cloudflare` adapter)
 - **Repo**: github.com/Arbitr3103/lako-services
 - **Domain**: lako.services (custom domain on Worker)
-- **Node**: 22 (required by Astro 6)
+- **Node**: 22 (required by Astro 7)
 - **Deploy**: `npm run deploy` (builds Astro + deploys Worker via wrangler)
 - **Preview**: `npm run preview` (builds + runs local Worker on :8787)
 - **Auto-deploy**: GitHub Actions (`.github/workflows/deploy.yml`) — push to `main` triggers build+deploy (~33s). Secret `CLOUDFLARE_API_TOKEN` set in GitHub repo settings.

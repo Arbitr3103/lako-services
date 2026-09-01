@@ -234,3 +234,27 @@ Deployment:
 - Turnstile is not implemented yet; this is acceptable only if WAF/rate limiting reduce abuse.
 - `bot.lako.services` was not audited in this repository.
 - Production deployment requires valid Cloudflare credentials and post-deploy smoke checks.
+
+## 2026-08-29 Addendum - HTTP Method Policy
+
+Security monitoring identified an ordinary page request returning `200` for
+`POST /`. Astro SSR page routes render independently of the endpoint method
+exports used by API routes, so the application now enforces a fail-closed
+method policy in middleware before canonical redirects:
+
+- ordinary pages and assets allow `GET` and `HEAD`;
+- `/api/contact` allows `POST`;
+- `/api/register-business` allows `POST`;
+- unsupported methods that reach project middleware return an empty
+  `405 Method Not Allowed` response with an exact `Allow` header and
+  `Cache-Control: no-store`.
+
+Astro's built-in cross-origin check can reject some unsafe requests earlier
+with `403 Forbidden`; both outcomes prevent page rendering. The regression
+case that originally reached the page (`application/json`) now returns `405`.
+
+Regression tests cover unsafe methods on page routes, method checks before
+trailing-slash redirects, both legitimate form endpoints, exact API paths,
+and behavior independent of request `Origin` and content type. Cloudflare WAF
+remains defense-in-depth; the repository middleware is the canonical method
+policy.

@@ -37,6 +37,12 @@ export default defineConfig({
     },
   },
   vite: {
+    // Work around Astro #17788 until the Cloudflare adapter pre-bundles these
+    // server-only entrypoints itself. Without this, the first cold dev request
+    // re-optimizes dependencies and workerd keeps stale chunk references.
+    optimizeDeps: {
+      include: ['astro/assets/services/noop', 'astro/logger/json'],
+    },
     plugins: [tailwindcss()],
   },
   integrations: [
