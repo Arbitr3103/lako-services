@@ -133,8 +133,8 @@
         },
         {
           "icon": "docs",
-          "title": "All documents on your phone",
-          "description": "CMR, waybill, invoice, e-invoice — everything in one place, always at hand."
+          "title": "Documents on your phone",
+          "description": "Work with CMR documents, waybills, invoices, and e-invoices through Telegram."
         },
         {
           "icon": "legal",
@@ -213,7 +213,7 @@
     },
     "company": {
       "title": "Have a company with drivers?",
-      "subtitle": "Lako also works for companies with a fleet — the dispatcher manages all trips.",
+      "subtitle": "Lako also works for companies with a fleet — the dispatcher assigns trips and reviews their recorded status.",
       "items": [
         {
           "icon": "dispatch",
@@ -223,7 +223,7 @@
         {
           "icon": "fleet",
           "title": "Fleet management",
-          "description": "Drivers, vehicles, clients — all in one system."
+          "description": "Manage driver, vehicle, and client records."
         },
         {
           "icon": "reports",
@@ -237,7 +237,7 @@
       "title": "Frequently asked questions",
       "items": [
         { "question": "I work alone — is Lako for me?", "answer": "Yes, Lako is built specifically for solo entrepreneurs who drive themselves and need fast documentation in the field." },
-        { "question": "Can I use it from my phone, on the road?", "answer": "Yes, everything works through Telegram — create documents right from the loading or unloading site, no computer needed." },
+        { "question": "Can I use it from my phone, on the road?", "answer": "Yes, use Telegram to create documents right from the loading or unloading site, with no computer needed." },
         { "question": "What about the SEF portal?", "answer": "The bot generates a separate XML file in UBL 2.1 format. Download and review it, then manually upload it to efaktura.gov.rs (SEF)." },
         { "question": "I do not have a dispatcher — can I use the bot?", "answer": "The bot supports company, client, and document data. Available functions depend on approved access." },
         { "question": "What is needed to begin?", "answer": "Registration requires company data. Then enter client and document data before creating the PDF." },
@@ -248,7 +248,7 @@
     },
     "bot": {
       "title": "Telegram bot for your logistics",
-      "subtitle": "Manage trips, documents and drivers — all through Telegram.",
+      "subtitle": "Manage trips, documents and drivers through Telegram.",
       "card": {
         "badge": "Telegram Bot",
         "title": "Lako Prevoz",
@@ -266,7 +266,7 @@
         { "icon": "efaktura", "slug": "efaktura", "title": "E-invoices (XML)", "description": "A separate UBL 2.1 XML file for review and manual upload to SEF." },
         { "icon": "driver", "slug": "drivers", "title": "Driver records", "description": "Add, edit and search drivers in your database." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Vehicle records", "description": "Manage your fleet — registrations, types, status." },
-        { "icon": "customer", "slug": "customers", "title": "Service management", "description": "All your clients in one place with collaboration history." },
+        { "icon": "customer", "slug": "customers", "title": "Service management", "description": "Client records with collaboration history." },
         { "icon": "stats", "slug": "stats", "title": "Statistics & Excel", "description": "Performance overview and data export to Excel." }
       ],
       "video": {
@@ -292,7 +292,7 @@
       "tip": "Tip",
       "trips": {
         "title": "Trip Management",
-        "description": "Complete guide for creating, searching and managing trips through the Telegram bot.",
+        "description": "Guide to creating, searching and managing trips through the Telegram bot.",
         "steps": [
           {
             "title": "Creating a trip",
@@ -436,7 +436,7 @@
       },
       "drivers": {
         "title": "Driver Management",
-        "description": "Complete guide for managing drivers \u2014 from adding to linking with Telegram.",
+        "description": "Guide to adding drivers and linking Telegram accounts.",
         "steps": [
           {
             "title": "Opening the Drivers section",
@@ -1251,7 +1251,7 @@
         "trips": { "title": "Trip Management — Guide | Lako Prevoz Bot", "description": "Create, search and manage trips through the Lako Prevoz Telegram bot." },
         "cmr": { "title": "CMR Documents — Guide | Lako Prevoz Bot", "description": "Generate CMR consignment notes in PDF format from the Telegram bot." },
         "invoices": { "title": "Invoices — Guide | Lako Prevoz Bot", "description": "Create professional invoices with line items, VAT and payment terms." },
-        "efaktura": { "title": "E-Invoices (XML) — Guide | Lako Prevoz Bot", "description": "Generate UBL 2.1 XML e-invoices for the efaktura.gov.rs (SEF) portal." },
+        "efaktura": { "title": "E-Invoices (XML) — Guide | Lako Prevoz Bot", "description": "Download the separate XML file in UBL 2.1 format, review it, and manually upload it to the efaktura.gov.rs (SEF) portal." },
         "drivers": { "title": "Driver Management — Guide | Lako Prevoz Bot", "description": "Add drivers, link Telegram accounts and manage access." },
         "vehicles": { "title": "Vehicle Management — Guide | Lako Prevoz Bot", "description": "Manage your fleet — registrations, types and inspection reminders." },
         "customers": { "title": "Customer Database — Guide | Lako Prevoz Bot", "description": "Manage your customer database — add, search and edit contacts." },

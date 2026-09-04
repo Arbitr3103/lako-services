@@ -133,8 +133,8 @@
         },
         {
           "icon": "docs",
-          "title": "Svi dokumenti u telefonu",
-          "description": "CMR, otpremnica, faktura, e-faktura — sve na jednom mestu, uvek pri ruci."
+          "title": "Dokumenti u telefonu",
+          "description": "Radite sa CMR-om, otpremnicama, fakturama i e-fakturama kroz Telegram."
         },
         {
           "icon": "legal",
@@ -213,7 +213,7 @@
     },
     "company": {
       "title": "Imate firmu sa vozačima?",
-      "subtitle": "Lako radi i za kompanije sa flotom — dispečer upravlja svim rejsovima.",
+      "subtitle": "Lako radi i za kompanije sa flotom — dispečer dodeljuje rejsove i pregleda njihov zabeleženi status.",
       "items": [
         {
           "icon": "dispatch",
@@ -223,7 +223,7 @@
         {
           "icon": "fleet",
           "title": "Upravljanje flotom",
-          "description": "Vozači, vozila, klijenti — sve u jednom sistemu."
+          "description": "Upravljajte evidencijom vozača, vozila i klijenata."
         },
         {
           "icon": "reports",
@@ -237,7 +237,7 @@
       "title": "Najčešća pitanja",
       "items": [
         { "question": "Radim sam — da li je Lako za mene?", "answer": "Da, Lako je napravljen upravo za solo preduzetnike kojima treba brza dokumentacija na terenu." },
-        { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, sve radi kroz Telegram — kreirate dokumente direktno sa utovara ili istovara, bez kompjutera." },
+        { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, kroz Telegram možete kreirati dokumente direktno sa utovara ili istovara, bez kompjutera." },
         { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše zaseban XML fajl u UBL 2.1 formatu. Preuzmite ga, pregledajte i ručno učitajte na portal efaktura.gov.rs (SEF)." },
         { "question": "Nemam dispečera — mogu li koristiti bot?", "answer": "Bot je namenjen radu sa podacima firme, klijenata i dokumenata. Dostupne funkcije zavise od odobrenog pristupa." },
         { "question": "Šta je potrebno za početak?", "answer": "Registracija zahteva podatke firme. Zatim unosite podatke o klijentu i dokumentu pre izrade PDF-a." },
@@ -248,7 +248,7 @@
     },
     "bot": {
       "title": "Telegram bot za vašu logistiku",
-      "subtitle": "Upravljajte vožnjama (rejsovima), dokumentima i vozačima — sve kroz Telegram.",
+      "subtitle": "Upravljajte vožnjama (rejsovima), dokumentima i vozačima kroz Telegram.",
       "card": {
         "badge": "Telegram Bot",
         "title": "Lako Prevoz",
@@ -266,7 +266,7 @@
         { "icon": "efaktura", "slug": "efaktura", "title": "E-fakture (XML)", "description": "Zaseban UBL 2.1 XML fajl za pregled i ručno učitavanje na SEF." },
         { "icon": "driver", "slug": "drivers", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
-        { "icon": "customer", "slug": "customers", "title": "Upravljanje uslugama", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
+        { "icon": "customer", "slug": "customers", "title": "Upravljanje uslugama", "description": "Evidencija klijenata sa istorijom saradnje." },
         { "icon": "stats", "slug": "stats", "title": "Statistika i Excel", "description": "Pregled performansi i eksport podataka u Excel." }
       ],
       "video": {
@@ -292,7 +292,7 @@
       "tip": "Savet",
       "trips": {
         "title": "Upravljanje rejsovima",
-        "description": "Kompletno uputstvo za kreiranje, pretragu i upravljanje rejsovima kroz Telegram bota.",
+        "description": "Uputstvo za kreiranje, pretragu i upravljanje rejsovima kroz Telegram bota.",
         "steps": [
           {
             "title": "Kreiranje rejsa",
@@ -436,7 +436,7 @@
       },
       "drivers": {
         "title": "Evidencija vozača",
-        "description": "Kompletno uputstvo za upravljanje vozačima — od dodavanja do povezivanja sa Telegramom.",
+        "description": "Uputstvo za dodavanje vozača i povezivanje sa Telegramom.",
         "steps": [
           {
             "title": "Otvaranje sekcije Vozači",
@@ -1251,7 +1251,7 @@
         "trips": { "title": "Upravljanje rejsovima — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje, pretraga i upravljanje rejsovima kroz Telegram bota Lako Prevoz." },
         "cmr": { "title": "CMR dokumenti — Uputstvo | Lako Prevoz Bot", "description": "Generisanje CMR tovarnih listova u PDF formatu iz Telegram bota." },
         "invoices": { "title": "Fakture — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje profesionalnih faktura sa pozicijama, PDV-om i rokovima plaćanja." },
-        "efaktura": { "title": "E-fakture (XML) — Uputstvo | Lako Prevoz Bot", "description": "Generisanje UBL 2.1 XML e-faktura za portal efaktura.gov.rs (SEF)." },
+        "efaktura": { "title": "E-fakture (XML) — Uputstvo | Lako Prevoz Bot", "description": "Preuzmite zaseban XML fajl u UBL 2.1 formatu, pregledajte ga i ručno učitajte na portal efaktura.gov.rs (SEF)." },
         "drivers": { "title": "Evidencija vozača — Uputstvo | Lako Prevoz Bot", "description": "Dodavanje vozača, povezivanje Telegram naloga i upravljanje pristupom." },
         "vehicles": { "title": "Evidencija vozila — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje voznim parkom — registracije, tipovi i podsetnici za pregled." },
         "customers": { "title": "Upravljanje uslugama — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje bazom klijenata — dodavanje, pretraga i uređivanje kontakata." },

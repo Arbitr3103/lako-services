@@ -43,6 +43,12 @@ const forbiddenLogisticsClaims = [
   /any Android or iPhone|svaki Android ili iPhone|любой Android или iPhone/i,
 ];
 
+const forbiddenUnboundedLogisticsClaims = [
+  /everything in one place, always at hand|all in one system|dispatcher manages all trips|everything works through Telegram|all your clients in one place|complete guide/i,
+  /sve na jednom mestu, uvek pri ruci|sve u jednom sistemu|dispečer upravlja svim rejsovima|sve radi kroz Telegram|svi vaši klijenti na jednom mestu|kompletno uputstvo/i,
+  /всё в одном месте, всегда под рукой|всё в одной системе|диспетчер управляет всеми рейсами|всё работает через Telegram|все ваши клиенты в одном месте|полная инструкция/i,
+];
+
 const requiredTruth = {
   sr: ['podatke firme', 'PDF', 'XML', 'ručno učit'],
   en: ['company data', 'PDF', 'XML', 'manually upload'],
@@ -55,20 +61,32 @@ const requiredPrivacy = {
   ru: ['идентификатор платформы Telegram', 'источник, канал, кампанию и содержание', 'агрегирован', 'запуск бота'],
 };
 
+const requiredEInvoiceSeoTruth = {
+  sr: ['zaseban XML', 'preuzmite', 'pregledajte', 'ručno učitajte', 'SEF'],
+  en: ['separate XML', 'download', 'review', 'manually upload', 'SEF'],
+  ru: ['отдельный XML', 'скачайте', 'проверьте', 'вручную загрузите', 'SEF'],
+};
+
 describe('logistics landing contract', () => {
   it.each(locales)('keeps %s rendered logistics copy and SEO free of unsupported claims', (locale) => {
     const json = readJson(locale);
     const { guides: _guides, ...renderedLogistics } = json.logistics;
-    const { guides: _seoGuides, ...renderedSeo } = json.seo.logistics;
-    const renderedCopy = text({ logistics: renderedLogistics, seo: renderedSeo });
+    const renderedCopy = text({ logistics: renderedLogistics, seo: json.seo.logistics });
 
     for (const forbidden of forbiddenLogisticsClaims) {
+      expect(renderedCopy).not.toMatch(forbidden);
+    }
+    for (const forbidden of forbiddenUnboundedLogisticsClaims) {
       expect(renderedCopy).not.toMatch(forbidden);
     }
     expect(json.logistics.bot).not.toHaveProperty('pricing');
     for (const phrase of requiredTruth[locale]) {
       expect(renderedCopy).toContain(phrase);
       expect(text(json.logistics.seoBlock)).toContain(phrase);
+    }
+    const eInvoiceSeoDescription = text(json.seo.logistics.guides.efaktura.description).toLowerCase();
+    for (const phrase of requiredEInvoiceSeoTruth[locale]) {
+      expect(eInvoiceSeoDescription).toContain(phrase.toLowerCase());
     }
   });
 
@@ -88,6 +106,9 @@ describe('logistics landing contract', () => {
     const guideCopy = text(json.logistics.guides);
 
     for (const forbidden of forbiddenLogisticsClaims) {
+      expect(guideCopy).not.toMatch(forbidden);
+    }
+    for (const forbidden of forbiddenUnboundedLogisticsClaims) {
       expect(guideCopy).not.toMatch(forbidden);
     }
     for (const phrase of requiredTruth[locale]) {
