@@ -53,14 +53,13 @@ jobs:
           https://lako-services.bragin-arbitr.workers.dev/en/small-business/
           https://lako-services.bragin-arbitr.workers.dev/efaktura/
 
-      - name: Verify or classify custom-domain identity responses
+      - name: Verify complete custom-domain identity responses
         run: >-
           npm run check:identity-response --
-          --allow-cloudflare-challenge
           https://lako.services/
           https://lako.services/small-business/
           https://lako.services/en/small-business/
           https://lako.services/efaktura/
 
-      - name: Verify or classify production edge after deploy
-        run: npm run check:production-edge -- --allow-cloudflare-challenge
+      - name: Verify production edge after deploy
+        run: npm run check:production-edge

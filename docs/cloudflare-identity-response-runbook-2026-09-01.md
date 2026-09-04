@@ -74,18 +74,20 @@ For each URL the smoke check:
 5. retries twice for bounded deploy propagation tolerance.
 
 It also attempts the same paths on `lako.services`. A complete response must
-pass every strict assertion. An exact `cf-mitigated: challenge` response is
-reported as a GitHub warning and requires the operator to repeat the strict
-custom-domain checks from a non-challenged network. Any other failure stops the
-workflow.
+pass every strict assertion. An exact `cf-mitigated: challenge` response is a
+non-`200` failure and stops the workflow, just like any other incomplete
+custom-domain response. It is not downgraded to a GitHub warning and a manual
+request from another network is not a substitute for this blocking release
+gate.
 
 The post-deploy SEO check verifies all sitemap URLs, canonical/hreflang,
 robots policy, internal links, security headers, all page redirects, and both
 API routes with harmless negative POST requests on `workers.dev`. The
-production edge check is then repeated against the custom domain with the same
-exact challenge classification. The release is not complete until strict
-custom-domain edge and identity checks pass outside the challenged runner.
-Manual deploy or rollback remains a separate production action.
+production edge check is then repeated against the custom domain without
+challenge classification. A green workflow therefore includes direct,
+successful custom-domain identity and edge checks from the CI runner; a
+Cloudflare challenge cannot make either post-deploy gate green. Manual deploy
+or rollback remains a separate production action.
 
 ## Local verification
 
