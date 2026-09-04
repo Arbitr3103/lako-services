@@ -1123,7 +1123,7 @@
         },
         "gpsTracking": {
           "title": "GPS Tracking",
-          "content": "For logistics solutions, we use GPS coordinates recorded during trip status changes (loading, unloading, completion):\n- GPS coordinates with photos on status changes\n- Location records for loading and unloading points\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer.\n\nDrivers have the right to:\n- Be informed about location recording\n- Access their location data\n- Request deletion of historical location data"
+          "content": "For logistics solutions, we process GPS coordinates only when you choose to share your location during a trip status change (loading, unloading, completion). The status flow can be completed without location:\n- GPS coordinates with photos when you share them\n- Location records for loading and unloading points when you share them\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer.\n\nDrivers have the right to:\n- Be informed about location recording\n- Access their location data\n- Request deletion of historical location data"
         },
         "purposeOfProcessing": {
           "title": "Purpose of Processing",

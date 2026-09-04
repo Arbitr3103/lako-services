@@ -61,6 +61,12 @@ const requiredPrivacy = {
   ru: ['идентификатор платформы Telegram', 'источник, канал, кампанию и содержание', 'агрегирован', 'запуск бота'],
 };
 
+const requiredGpsPrivacyTruth = {
+  sr: ['GPS koordinate obrađujemo samo kada odlučite da podelite lokaciju', 'tok promene statusa možete završiti bez lokacije'],
+  en: ['GPS coordinates only when you choose to share your location', 'status flow can be completed without location'],
+  ru: ['GPS-координаты только когда вы решите передать местоположение', 'статус можно завершить без местоположения'],
+};
+
 const requiredEInvoiceSeoTruth = {
   sr: ['zaseban XML', 'preuzmite', 'pregledajte', 'ručno učitajte', 'SEF'],
   en: ['separate XML', 'download', 'review', 'manually upload', 'SEF'],
@@ -97,6 +103,10 @@ describe('logistics landing contract', () => {
     expect(privacyCopy).not.toMatch(/booking|appointment|rezervacij|zakazivanj|бронирован/iu);
     for (const phrase of requiredPrivacy[locale]) {
       expect(privacyCopy).toContain(phrase);
+    }
+    const gpsCopy = text(json.legal.privacy.sections.gpsTracking).toLowerCase();
+    for (const phrase of requiredGpsPrivacyTruth[locale]) {
+      expect(gpsCopy).toContain(phrase.toLowerCase());
     }
     expect(privacyCopy).not.toMatch(/2 years|2 godine|2 лет|while the account is active|dok je nalog aktivan|пока аккаунт активен/iu);
   });

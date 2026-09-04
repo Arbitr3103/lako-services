@@ -1123,7 +1123,7 @@
         },
         "gpsTracking": {
           "title": "GPS praćenje",
-          "content": "Za logistička rešenja koristimo GPS koordinate koje se beleže pri promeni statusa rejsa (utovar, istovar, završetak):\n- GPS koordinate uz fotografiju pri statusnim promenama\n- Evidencija lokacije utovara i istovara\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača.\n\nVozači imaju pravo da:\n- Budu informisani o beleženju lokacije\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
+          "content": "Za logistička rešenja GPS koordinate obrađujemo samo kada odlučite da podelite lokaciju tokom promene statusa rejsa (utovar, istovar, završetak). Tok promene statusa možete završiti bez lokacije:\n- GPS koordinate uz fotografiju kada ih podelite\n- Evidencija lokacije utovara i istovara kada je podelite\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača.\n\nVozači imaju pravo da:\n- Budu informisani o beleženju lokacije\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
         },
         "purposeOfProcessing": {
           "title": "Svrha obrade",
