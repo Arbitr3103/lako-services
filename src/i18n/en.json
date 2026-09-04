@@ -107,20 +107,20 @@
   "logistics": {
     "hero": {
       "badge": "For solo entrepreneurs",
-      "title": "Driving solo? Generate a Waybill and e-Invoice in 15 seconds right from the loading dock.",
-      "subtitle": "Waybill (goods transport document), invoice and XML e-invoice for the SEF tax portal — all from your phone, no paper.",
-      "cta": "Try it free",
+      "title": "Manage transport documents from Telegram.",
+      "subtitle": "Registration requires company data. Enter company, client, and document data to create PDF documents; download XML separately, review it, and manually upload it to SEF.",
+      "cta": "Open the Telegram bot",
       "ctaSecondary": "How does it work?"
     },
     "whyTelegram": {
       "title": "Why Telegram, not a separate app?",
       "paragraphs": [
-        "Viber is for birthdays. Telegram is where business gets done. Bots, instant documents, no apps to install — Lako runs right inside it.",
-        "For solo entrepreneurs in road transport, every minute at the loading dock counts. The Telegram bot requires no installation, no separate password, and works on any phone — Android or iPhone. Photos, PDFs, and XML documents are sent directly to your chat, ready for inspection or forwarding to clients."
+        "Telegram provides a familiar place to work with the bot without a separate application.",
+        "To begin, register a company and enter company data. Then enter client and document data: the bot provides PDF documents in chat, while XML is downloaded separately for review and manual upload to SEF."
       ],
       "bullets": [
         "Photos + PDF + XML right in chat",
-        "No new password or registration"
+        "Company registration and company data for access"
       ]
     },
     "soloValue": {
@@ -129,47 +129,47 @@
         {
           "icon": "speed",
           "title": "Speed in the field",
-          "description": "Waybill and invoice in 15 seconds — while you're loading, the documents are ready."
+          "description": "Enter data once, then download PDF documents in the chat."
         },
         {
           "icon": "docs",
-          "title": "All documents on your phone",
-          "description": "CMR, waybill, invoice, e-invoice — everything in one place, always at hand."
+          "title": "Documents on your phone",
+          "description": "Work with CMR documents, waybills, invoices, and e-invoices through Telegram."
         },
         {
           "icon": "legal",
-          "title": "Legal compliance",
-          "description": "XML for SEF, QR signature, digital proof of delivery — ready for inspection."
+          "title": "PDF and XML workflow",
+          "description": "PDF documents are created from entered data; XML for SEF is downloaded separately."
         }
       ]
     },
     "howItWorks": {
       "title": "How it works in 3 steps",
       "steps": [
-        { "title": "Enter data in Telegram", "description": "The bot creates an Invoice and Waybill based on your data — no paper, no mistakes.", "duration": "15 seconds" },
-        { "title": "Show QR to the buyer", "description": "The buyer scans the QR code and signs for receipt — digital proof without a paper signature.", "duration": "10 seconds" },
-        { "title": "XML goes to SEF", "description": "The system generates an e-invoice in XML format — upload to SEF and close your tax obligations.", "duration": "Automatic" }
+        { "title": "Register and enter data", "description": "For access, enter company data, then client and document data.", "duration": "Step 1" },
+        { "title": "Download the PDF document", "description": "The bot creates a PDF document from the data you entered.", "duration": "Step 2" },
+        { "title": "Download XML separately", "description": "Download and review the XML file, then manually upload it to SEF.", "duration": "Step 3" }
       ]
     },
     "ePrijemnica": {
-      "title": "Digital signature — your proof of delivery",
-      "subtitle": "The buyer signs receipt with their finger on the screen. You get a PDF with the signature, GPS location, and timestamp — instantly in Telegram.",
+      "title": "Receipt recorded in a document",
+      "subtitle": "A recipient can sign on screen, and the PDF document with entered data is delivered to the Telegram chat.",
       "solo": {
         "badge": "Solo",
-        "title": "Protection from fines and payment guarantee",
-        "description": "The buyer signs receipt on your phone or theirs — you get a PDF with a signature that serves as proof of delivery. Inspection? Show your phone. Buyer won't pay? Send the signed document.",
-        "items": ["Finger signature on screen", "GPS delivery location", "PDF instantly in Telegram", "Proof for inspections and collections"]
+        "title": "Receipt recorded in a document",
+        "description": "A receipt signature can be included in a PDF document. Check that the process and document meet your business and legal requirements.",
+        "items": ["On-screen signature", "PDF document in Telegram", "Receipt data", "Review before use"]
       },
       "company": {
         "badge": "Company",
-        "title": "Fleet control and 72-hour faster payments",
-        "description": "Every driver sends a QR to the buyer — the signed receipt arrives to the dispatcher in real time. The invoice goes to collection the same day instead of waiting for paperwork from the cab.",
-        "items": ["Buyer signature in real time", "Dispatcher sees every delivery", "Invoice → collection same day", "No waiting for paper receipts"]
+        "title": "Document review for a team",
+        "description": "A team can work with trip and document data within approved access.",
+        "items": ["Document data", "Access for authorized users", "PDF in Telegram", "Review before further action"]
       },
       "flow": {
         "step1": "Driver sends QR",
         "step2": "Buyer signs",
-        "step3": "PDF arrives instantly"
+        "step3": "PDF document is available in chat"
       }
     },
     "compliance": {
@@ -180,19 +180,19 @@
           "icon": "inspection",
           "title": "Traffic inspection",
           "problem": "You're stopped at a checkpoint, but the waybill is at the office, illegible, or for a different trip.",
-          "solution": "Lako generates the waybill before departure — always on your phone, always accurate."
+          "solution": "Enter and review data before creating the PDF waybill."
         },
         {
           "icon": "deadline",
           "title": "SEF deadlines",
           "problem": "You've been on the road all day, and you missed the e-invoice deadline.",
-          "solution": "XML right after delivery — send to SEF the same day."
+          "solution": "Download the separate XML file, review it, and manually upload it to SEF."
         },
         {
           "icon": "proof",
           "title": "Lost confirmations",
           "problem": "The buyer says the goods never arrived, and you can't find the paper confirmation.",
-          "solution": "Digital QR signature + GPS + photo — proof that doesn't get lost."
+          "solution": "Save the PDF document and review it before using it in your process."
         }
       ]
     },
@@ -200,11 +200,10 @@
       "title": "Lako vs Manual work",
       "headers": { "feature": "Parameter", "without": "Manual", "with": "With Lako" },
       "rows": [
-        { "feature": "Risk of fine at checkpoint", "without": "High", "with": "Minimal" },
-        { "feature": "Documents on the road", "without": "Paper or nothing", "with": "Always on phone" },
-        { "feature": "SEF deadline", "without": "Easy to miss", "with": "XML instantly" },
-        { "feature": "Proof of delivery", "without": "Paper receipt", "with": "QR + GPS + photo" },
-        { "feature": "Time on documentation", "without": "30+ min", "with": "15 seconds" }
+        { "feature": "Document preparation", "without": "Manual entry", "with": "Bot entry" },
+        { "feature": "Document on the road", "without": "Paper", "with": "PDF in Telegram" },
+        { "feature": "XML for SEF", "without": "Repeat entry", "with": "Separate file for manual upload" },
+        { "feature": "Document review", "without": "Paper copy", "with": "PDF for review" }
       ]
     },
     "docPreview": {
@@ -214,17 +213,17 @@
     },
     "company": {
       "title": "Have a company with drivers?",
-      "subtitle": "Lako also works for companies with a fleet — the dispatcher manages all trips.",
+      "subtitle": "Lako also works for companies with a fleet — the dispatcher assigns trips and reviews their recorded status.",
       "items": [
         {
           "icon": "dispatch",
           "title": "Dispatch center",
-          "description": "Assign trips, track status in real time."
+          "description": "Assign trips and review their recorded status."
         },
         {
           "icon": "fleet",
           "title": "Fleet management",
-          "description": "Drivers, vehicles, clients — all in one system."
+          "description": "Manage driver, vehicle, and client records."
         },
         {
           "icon": "reports",
@@ -238,28 +237,23 @@
       "title": "Frequently asked questions",
       "items": [
         { "question": "I work alone — is Lako for me?", "answer": "Yes, Lako is built specifically for solo entrepreneurs who drive themselves and need fast documentation in the field." },
-        { "question": "Can I use it from my phone, on the road?", "answer": "Yes, everything works through Telegram — create documents right from the loading or unloading site, no computer needed." },
-        { "question": "What about the SEF portal?", "answer": "The bot generates an XML file in UBL 2.1 format. You just upload it to efaktura.gov.rs — no manual entry required." },
-        { "question": "I don't have a dispatcher — do I get all features?", "answer": "Yes, you have access to all modules — trips, CMR, invoices, e-invoices, statistics. No dispatcher needed." },
-        { "question": "How long does onboarding take?", "answer": "Sign up, enter your company details — and start working right away. All instructions are on our website." },
-        { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
+        { "question": "Can I use it from my phone, on the road?", "answer": "Yes, use Telegram to create documents right from the loading or unloading site, with no computer needed." },
+        { "question": "What about the SEF portal?", "answer": "The bot generates a separate XML file in UBL 2.1 format. Download and review it, then manually upload it to efaktura.gov.rs (SEF)." },
+        { "question": "I do not have a dispatcher — can I use the bot?", "answer": "The bot supports company, client, and document data. Available functions depend on approved access." },
+        { "question": "What is needed to begin?", "answer": "Registration requires company data. Then enter client and document data before creating the PDF." },
+        { "question": "Is a phone required?", "answer": "You need a device on which you can use Telegram. Check device and application compatibility before starting." },
         { "question": "Does Lako work with ERP systems?", "answer": "Lako works as a standalone system and does not require ERP integration (PANTHEON, SAP, etc.). Documents are generated independently." },
-        { "question": "How much does it cost?", "answer": "Solo entrepreneurs: 1,490 RSD/month. Companies: 3,500 RSD/month. First 5 clients: 3 months free. Everyone else: 30-day free trial, no obligations." },
-        { "question": "Can I try before buying?", "answer": "Yes — we offer a 30-day trial with no obligations." },
-        { "question": "Is my data safe?", "answer": "Yes. Data is stored on secure servers in Europe and is accessible only to you. We never share it with third parties. If you cancel, you get 30 days to export all data (trips, invoices, customers in Excel), after which it is permanently deleted." },
-        { "question": "How is my data technically protected?", "answer": "All data is encrypted in transit (HTTPS) and at rest (PostgreSQL with encryption). Automatic backups are made every 24 hours and stored for 30 days. Server access is restricted to authorized personnel only." },
-        { "question": "Who can see my data?", "answer": "Only you and employees you add to the system yourself. Technical support can access your data ONLY with your permission to resolve issues. All support actions are logged." },
-        { "question": "What if the server goes down?", "answer": "We have a recovery plan: automatic backups every 24 hours, system restoration within 2-4 hours, and a Telegram notification about the issue. Also, all your PDF documents (CMR, invoices) and Excel exports are always with you — you don't depend on the server alone." }
+        { "question": "How is data handled?", "answer": "Company, client, and document data are used to operate the bot and create PDF documents. See the privacy policy for details." }
       ]
     },
     "bot": {
       "title": "Telegram bot for your logistics",
-      "subtitle": "Manage trips, documents and drivers — all through Telegram.",
+      "subtitle": "Manage trips, documents and drivers through Telegram.",
       "card": {
         "badge": "Telegram Bot",
         "title": "Lako Prevoz",
-        "description": "Your dispatch center in Telegram. Create trips, generate CMR and invoices, manage drivers and vehicles — all in one place.",
-        "cta": "Open web app"
+        "description": "A workflow for company, client, and document data, with PDF documents and a separate XML file for SEF.",
+        "cta": "Open Telegram bot"
       },
       "featuresTitle": "What the bot can do",
       "groupDocs": "Documents",
@@ -267,12 +261,12 @@
       "readGuide": "Read guide →",
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Trip management", "description": "Create, track and complete trips in a few clicks." },
-        { "icon": "cmr", "slug": "cmr", "title": "CMR documents", "description": "Automatic CMR generation in PDF format — ready to print." },
-        { "icon": "invoice", "slug": "invoices", "title": "Invoices", "description": "Professional invoices in PDF with all required details." },
-        { "icon": "efaktura", "slug": "efaktura", "title": "E-invoices (XML)", "description": "UBL 2.1 XML e-invoices for SEF — no manual entry." },
+        { "icon": "cmr", "slug": "cmr", "title": "CMR documents", "description": "Create CMR documents in PDF format for review and printing." },
+        { "icon": "invoice", "slug": "invoices", "title": "Invoices", "description": "PDF invoices based on data you enter and review." },
+        { "icon": "efaktura", "slug": "efaktura", "title": "E-invoices (XML)", "description": "A separate UBL 2.1 XML file for review and manual upload to SEF." },
         { "icon": "driver", "slug": "drivers", "title": "Driver records", "description": "Add, edit and search drivers in your database." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Vehicle records", "description": "Manage your fleet — registrations, types, status." },
-        { "icon": "customer", "slug": "customers", "title": "Service management", "description": "All your clients in one place with collaboration history." },
+        { "icon": "customer", "slug": "customers", "title": "Service management", "description": "Client records with collaboration history." },
         { "icon": "stats", "slug": "stats", "title": "Statistics & Excel", "description": "Performance overview and data export to Excel." }
       ],
       "video": {
@@ -282,67 +276,14 @@
       },
       "security": {
         "question": "Is my data safe?",
-        "subtitle": "Your data is completely isolated from other companies and protected at every level.",
+        "subtitle": "We use security measures and access controls, but no measure eliminates all risk.",
         "items": [
-          "256-bit data encryption",
-          "Full company isolation",
-          "Automatic backups every 24h",
-          "GDPR & Serbian law compliant"
+          "Data-in-transit protection",
+          "Access controls",
+          "Data security procedures",
+          "Details in the privacy policy"
         ],
         "cta": "Learn more about security"
-      },
-      "pricing": {
-        "title": "Pricing",
-        "subtitle": "Try for free, pay when you're ready",
-        "currency": "RSD",
-        "earlyAdopter": {
-          "badge": "First 5 clients",
-          "text": "3 months free — help us get better, and we'll help you become the best.",
-          "note": "{{remaining}} spots left"
-        },
-        "trial": "30-day free trial for all new users",
-        "plans": [
-          {
-            "name": "Early Adopter",
-            "price": "Free",
-            "period": "3 months",
-            "subtitle": "Help us get better — and we'll help you succeed",
-            "features": [
-              "Full access to Solo or Company plan",
-              "3 months completely free",
-              "Condition: product feedback"
-            ],
-            "cta": "Become an Early Adopter",
-            "earlyAdopter": true
-          },
-          {
-            "name": "Solo",
-            "price": "1,490",
-            "period": "monthly",
-            "features": [
-              "Unlimited trips",
-              "CMR + waybill + invoice",
-              "E-invoice XML + PDF",
-              "Automatic QR signature",
-              "Priority support"
-            ],
-            "cta": "Try 30 days free",
-            "popular": true
-          },
-          {
-            "name": "Company Plan",
-            "price": "3,500",
-            "period": "monthly",
-            "features": [
-              "Everything in Solo",
-              "Dispatch center",
-              "Fleet management",
-              "Reports + Excel export",
-              "Multiple drivers & vehicles"
-            ],
-            "cta": "Try 30 days free"
-          }
-        ]
       }
     },
     "guides": {
@@ -351,7 +292,7 @@
       "tip": "Tip",
       "trips": {
         "title": "Trip Management",
-        "description": "Complete guide for creating, searching and managing trips through the Telegram bot.",
+        "description": "Guide to creating, searching and managing trips through the Telegram bot.",
         "steps": [
           {
             "title": "Creating a trip",
@@ -371,7 +312,7 @@
           {
             "title": "Trip statuses",
             "content": "Each trip goes through phases: Created → In Progress → Completed. A trip can also be cancelled. You can change the status from the trip card.",
-            "tip": "A driver with a linked Telegram account can change the status of their own trips — with photo and GPS evidence submission."
+            "tip": "A driver with a linked Telegram account can change the status of assigned trips and send photo documentation within approved access."
           },
           {
             "title": "Editing a trip",
@@ -390,7 +331,7 @@
           },
           {
             "title": "Export to Excel",
-            "content": "Export all trips or filtered by status to an .xlsx file. Available on the Early Adopter and PRO plans.",
+            "content": "Export trips or status-filtered results to an .xlsx file when export is available to your account.",
             "tip": ""
           }
         ]
@@ -428,7 +369,7 @@
       },
       "invoices": {
         "title": "Invoices",
-        "description": "Guide for creating professional invoices with all required data.",
+        "description": "Guide for creating invoices from entered data.",
         "steps": [
           {
             "title": "Creating an invoice",
@@ -495,7 +436,7 @@
       },
       "drivers": {
         "title": "Driver Management",
-        "description": "Complete guide for managing drivers \u2014 from adding to linking with Telegram.",
+        "description": "Guide to adding drivers and linking Telegram accounts.",
         "steps": [
           {
             "title": "Opening the Drivers section",
@@ -514,7 +455,7 @@
           },
           {
             "title": "What the driver sees",
-            "content": "A linked driver sees their own trip list, can change statuses (created \u2192 in progress \u2192 completed), submit photo evidence and GPS location on status changes, and download CMR and invoices.",
+            "content": "A linked driver sees assigned trips, can change status within approved access, send photo documentation, and download available CMR documents and invoices.",
             "tip": ""
           },
           {
@@ -627,20 +568,20 @@
           },
           {
             "title": "Excel export",
-            "content": "Export all trips to an .xlsx file. Available on the Early Adopter and PRO plans.",
+            "content": "Export trips to an .xlsx file when export is available to your account.",
             "tip": ""
           }
         ]
       }
     },
     "seoBlock": {
-      "title": "Digitizing road transport in Serbia",
-      "text": "Road transport in Serbia faces increasingly strict legal requirements — from mandatory waybills for every goods shipment to electronic invoicing through the Electronic Invoice System (SEF). Solo entrepreneurs and small transport companies often waste time on manual paperwork instead of focusing on driving and delivery. Lako Prevoz Bot automates this process: from creating waybills and CMR consignment notes to generating XML e-invoices for the SEF portal — all through Telegram, right from the field. Serbian transport law requires every shipment to have accompanying documentation, and Lako ensures you always have it at hand."
+      "title": "Working with documents in Telegram",
+      "text": "Lako Prevoz Bot is a workflow: during registration, enter company data, then client and document data. PDF documents are created from entered data. XML for SEF is a separate file: download it, review it, and manually upload it to SEF."
     },
     "finalCta": {
-      "title": "Heading out? Your documents are ready in 15 seconds.",
-      "subtitle": "Waybill, invoice, e-invoice — all from your phone, no paper.",
-      "cta": "Try it free"
+      "title": "Prepare documents for your next trip.",
+      "subtitle": "Enter data, download PDF documents, and download a separate XML file for manual upload to SEF.",
+      "cta": "Open the Telegram bot"
     }
   },
   "smallBusiness": {
@@ -1165,7 +1106,7 @@
   "legal": {
     "privacy": {
       "title": "Privacy Policy",
-      "lastUpdated": "Last updated: February 12, 2026.",
+      "lastUpdated": "Last updated: September 4, 2026.",
       "intro": "Lako Services d.o.o. (hereinafter \"we\", \"us\" or \"our\") is committed to protecting your personal data in accordance with the Law on Personal Data Protection of the Republic of Serbia and the General Data Protection Regulation (GDPR).",
       "sections": {
         "dataController": {
@@ -1178,15 +1119,15 @@
         },
         "botData": {
           "title": "Data Collected Through Bots",
-          "content": "When you use our Telegram bots, we collect:\n- Your platform username\n- Phone number (if you share it)\n- Messages you send to the bot\n- Booking and appointment data\n- Interaction history with the bot\n\nThis data is stored on secure servers and used exclusively for:\n- Processing your bookings and appointments\n- Sending confirmations and reminders\n- Improving service quality"
+          "content": "When you use the logistics Telegram bot, we process data needed for access and document work:\n- Telegram platform ID needed for access\n- Platform username (if Telegram provides it) and phone number (if you share it)\n- Company, client, and document data you enter\n- Messages and interaction history needed to operate the bot\n- Normalized source, medium, campaign and content when you use an approved campaign link\n\nWe use this data to provide the logistics bot, create PDF documents, deliver a separate XML file, and provide support. We measure aggregate bot start events by campaign; this event counts starts, not unique people."
         },
         "gpsTracking": {
           "title": "GPS Tracking",
-          "content": "For logistics solutions, we use GPS coordinates recorded during trip status changes (loading, unloading, completion):\n- GPS coordinates with photos on status changes\n- Location records for loading and unloading points\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer.\n\nDrivers have the right to:\n- Be informed about location recording\n- Access their location data\n- Request deletion of historical location data"
+          "content": "For logistics solutions, we process GPS coordinates only when you choose to share your location during a trip status change (loading, unloading, completion). The status flow can be completed without location:\n- GPS coordinates with photos when you share them\n- Location records for loading and unloading points when you share them\n\nThe legal basis for processing this data is the contract between Lako Services and the driver's employer.\n\nDrivers have the right to:\n- Be informed about location recording\n- Access their location data\n- Request deletion of historical location data"
         },
         "purposeOfProcessing": {
           "title": "Purpose of Processing",
-          "content": "We process your data for the following purposes:\n- Responding to your inquiries via the contact form\n- Registering your business in the Lako catalog\n- Sending registration status notifications\n- Improving website functionality"
+          "content": "We process your data for the following purposes:\n- Responding to contact-form inquiries\n- Registering a company and managing access to the logistics bot\n- Creating PDF documents from entered data and delivering a separate XML file\n- Aggregate measurement of bot start events for an approved campaign\n- Improving service functionality"
         },
         "legalBasis": {
           "title": "Legal Basis for Processing",
@@ -1198,7 +1139,7 @@
         },
         "dataRetention": {
           "title": "Data Retention",
-          "content": "We retain your data for as long as necessary to fulfill the purpose for which it was collected. Contact form data is retained for up to 2 years. Registered business data is retained while the account is active."
+          "content": "We retain data only as long as needed for the purpose for which it was collected, including operating the service, support, and applicable legal obligations."
         },
         "yourRights": {
           "title": "Your Rights",
@@ -1210,7 +1151,7 @@
         },
         "dataSecurity": {
           "title": "Data Security",
-          "content": "We implement appropriate technical and organizational measures to protect your data, including HTTPS encryption, secure hosting on Cloudflare, and restricted data access."
+          "content": "We use appropriate technical and organizational measures to reduce risk, including protection for data in transit and restricted access. No measure can eliminate all risk; contact us through this policy for information about a specific case."
         },
         "children": {
           "title": "Children",
@@ -1304,13 +1245,13 @@
       "description": "Automate your logistics, salon or service with Telegram bots. CMR, invoices, e-invoices. Local support in Novi Sad."
     },
     "logistics": {
-      "title": "Logistics for solo entrepreneurs — waybill and e-invoice in 15 seconds | Lako Services",
-      "description": "Generate waybill, invoice and e-invoice right from your phone. CMR, QR signature, XML for SEF. Try it free.",
+      "title": "Logistics in Telegram — PDF documents and XML for SEF | Lako Services",
+      "description": "Register a company, enter client and document data, then download PDFs and a separate XML file for manual upload to SEF.",
       "guides": {
         "trips": { "title": "Trip Management — Guide | Lako Prevoz Bot", "description": "Create, search and manage trips through the Lako Prevoz Telegram bot." },
         "cmr": { "title": "CMR Documents — Guide | Lako Prevoz Bot", "description": "Generate CMR consignment notes in PDF format from the Telegram bot." },
         "invoices": { "title": "Invoices — Guide | Lako Prevoz Bot", "description": "Create professional invoices with line items, VAT and payment terms." },
-        "efaktura": { "title": "E-Invoices (XML) — Guide | Lako Prevoz Bot", "description": "Generate UBL 2.1 XML e-invoices for the efaktura.gov.rs (SEF) portal." },
+        "efaktura": { "title": "E-Invoices (XML) — Guide | Lako Prevoz Bot", "description": "Download the separate XML file in UBL 2.1 format, review it, and manually upload it to the efaktura.gov.rs (SEF) portal." },
         "drivers": { "title": "Driver Management — Guide | Lako Prevoz Bot", "description": "Add drivers, link Telegram accounts and manage access." },
         "vehicles": { "title": "Vehicle Management — Guide | Lako Prevoz Bot", "description": "Manage your fleet — registrations, types and inspection reminders." },
         "customers": { "title": "Customer Database — Guide | Lako Prevoz Bot", "description": "Manage your customer database — add, search and edit contacts." },

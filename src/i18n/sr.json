@@ -107,20 +107,20 @@
   "logistics": {
     "hero": {
       "badge": "Za solo preduzetnike",
-      "title": "Sami vozite? Generišite Otpremnicu i e-Fakturu za 15 sekundi direktno sa utovara.",
-      "subtitle": "Otpremnica (dokument za prevoz robe), faktura i XML e-faktura za SEF portal — sve iz telefona, bez papira.",
-      "cta": "Probajte besplatno",
+      "title": "Vodite prevoz? Pripremite Otpremnicu, fakturu i prateće dokumente iz Telegrama.",
+      "subtitle": "Registracija zahteva podatke firme. Uneseni podaci o firmi, klijentu i dokumentu koriste se za izradu PDF dokumenata; XML je zaseban fajl koji preuzimate i ručno učitavate na SEF.",
+      "cta": "Otvorite Telegram bot",
       "ctaSecondary": "Kako funkcioniše?"
     },
     "whyTelegram": {
       "title": "Zašto Telegram, a ne aplikacija?",
       "paragraphs": [
-        "Viber je za rođendane. Telegram je za posao. Botovi, trenutni dokumenti, bez instalacije — Lako radi direktno u njemu.",
-        "Za solo preduzetnike u drumskom prevozu, svaki minut na utovaru je bitan. Telegram bot ne zahteva instalaciju, ne traži posebnu lozinku i radi na svakom telefonu — Android ili iPhone. Foto, PDF i XML dokumenti se šalju direktno u čat, spremni za inspekciju ili za slanje klijentu."
+        "Telegram pruža poznato okruženje za rad sa botom bez posebne aplikacije.",
+        "Za početak rada registrujete firmu i unosite podatke firme. Zatim unosite podatke o klijentu i dokumentu; bot šalje PDF dokumente u čet, a XML se preuzima kao zaseban fajl za ručno učitavanje na SEF."
       ],
       "bullets": [
         "Foto + PDF + XML direktno u čat",
-        "Bez nove lozinke i registracije"
+        "Registracija firme i podaci kompanije za pristup"
       ]
     },
     "soloValue": {
@@ -129,47 +129,47 @@
         {
           "icon": "speed",
           "title": "Brzina na terenu",
-          "description": "Otpremnica i faktura za 15 sekundi — dok utovarate, dokumenti su gotovi."
+          "description": "Unesite podatke jednom, a zatim preuzmite PDF dokumente u četu."
         },
         {
           "icon": "docs",
-          "title": "Svi dokumenti u telefonu",
-          "description": "CMR, otpremnica, faktura, e-faktura — sve na jednom mestu, uvek pri ruci."
+          "title": "Dokumenti u telefonu",
+          "description": "Radite sa CMR-om, otpremnicama, fakturama i e-fakturama kroz Telegram."
         },
         {
           "icon": "legal",
-          "title": "Usklađenost sa zakonom",
-          "description": "XML za SEF, QR potpis, digitalni dokaz isporuke — spremni za inspekciju."
+          "title": "PDF i XML tok",
+          "description": "PDF dokumenti se izrađuju iz unesenih podataka; XML za SEF preuzima se zasebno."
         }
       ]
     },
     "howItWorks": {
       "title": "Kako funkcioniše u 3 koraka",
       "steps": [
-        { "title": "Unesite podatke u Telegram", "description": "Bot kreira Fakturu i Otpremnicu na osnovu vaših podataka — bez papira, bez grešaka.", "duration": "15 sekundi" },
-        { "title": "Pokažite QR kupcu", "description": "Kupac skenira QR kod i potpisuje prijem robe — digitalni dokaz bez papirnog potpisa.", "duration": "10 sekundi" },
-        { "title": "XML ide na SEF", "description": "Sistem generiše e-fakturu u XML formatu — učitajte na SEF i zatvorite poreske obaveze.", "duration": "Automatski" }
+        { "title": "Registrujte firmu i unesite podatke", "description": "Za pristup unesite podatke firme, a zatim podatke o klijentu i dokumentu.", "duration": "Korak 1" },
+        { "title": "Preuzmite PDF dokument", "description": "Bot izrađuje PDF dokument na osnovu unesenih podataka.", "duration": "Korak 2" },
+        { "title": "Preuzmite XML zasebno", "description": "XML fajl preuzimate zasebno, pregledate i ručno učitavate na SEF.", "duration": "Korak 3" }
       ]
     },
     "ePrijemnica": {
-      "title": "Digitalni potpis — vaš dokaz isporuke",
-      "subtitle": "Kupac potpisuje prijem prstom na ekranu. Vi dobijate PDF sa potpisom, GPS lokacijom i vremenom — odmah u Telegram.",
+      "title": "Potvrda prijema u dokumentu",
+      "subtitle": "Kupac može potpisati prijem na ekranu, a PDF dokument sa unesenim podacima stiže u Telegram čet.",
       "solo": {
         "badge": "Solo",
-        "title": "Zaštita od kazni i garancija naplate",
-        "description": "Kupac potpisuje prijem na vašem telefonu ili svom — vi dobijate PDF sa potpisom koji važi kao dokaz isporuke. Inspekcija? Pokazujete telefon. Kupac ne plaća? Šaljete potpisan dokument.",
-        "items": ["Potpis prstom na ekranu", "GPS lokacija isporuke", "PDF odmah u Telegram", "Dokaz za inspekciju i naplatu"]
+        "title": "Evidencija prijema u dokumentu",
+        "description": "Potpis prijema može biti uključen u PDF dokument. Proverite da li postupak i dokument odgovaraju vašim poslovnim i pravnim zahtevima.",
+        "items": ["Potpis prstom na ekranu", "PDF dokument u Telegramu", "Podaci o prijemu", "Pregled pre korišćenja"]
       },
       "company": {
         "badge": "Kompanija",
-        "title": "Kontrola flote i brža naplata za 72 sata",
-        "description": "Svaki vozač šalje QR kupcu — potpisan prijem stiže dispečeru u realnom vremenu. Faktura ide na naplatu istog dana, umesto da čekate papire iz kabine.",
-        "items": ["Potpis kupca u realnom vremenu", "Dispečer vidi svaku isporuku", "Faktura → naplata istog dana", "Nema čekanja na papirnu potvrdu"]
+        "title": "Pregled dokumenata za tim",
+        "description": "Tim može koristiti dokumente i podatke o rejsu u okviru odobrenog pristupa.",
+        "items": ["Podaci o dokumentu", "Pristup za ovlašćene korisnike", "PDF u Telegramu", "Pregled pre daljih radnji"]
       },
       "flow": {
         "step1": "Vozač šalje QR",
         "step2": "Kupac potpisuje",
-        "step3": "PDF stiže odmah"
+        "step3": "PDF dokument je dostupan u četu"
       }
     },
     "compliance": {
@@ -180,19 +180,19 @@
           "icon": "inspection",
           "title": "Saobraćajna inspekcija",
           "problem": "Stojite na kontroli, a otpremnica je u kancelariji, nečitljiva ili za drugi rejs.",
-          "solution": "Lako generiše otpremnicu pre polaska — uvek u telefonu, uvek tačna."
+          "solution": "Unesite i pregledajte podatke pre izrade PDF otpremnice."
         },
         {
           "icon": "deadline",
           "title": "SEF rokovi",
-          "problem": "Ceo dan na putu, propustili ste rok za e-fakturu.",
-          "solution": "XML odmah nakon isporuke — šaljete na SEF istog dana."
+          "problem": "Potrebno je pripremiti XML za e-fakturu.",
+          "solution": "Preuzmite zaseban XML fajl, pregledajte ga i ručno ga učitajte na SEF."
         },
         {
           "icon": "proof",
           "title": "Izgubljene potvrde",
           "problem": "Kupac kaže da roba nije stigla, a papirnu potvrdu ne možete da nađete.",
-          "solution": "Digitalni potpis: QR + GPS + foto — dokaz koji se ne gubi."
+          "solution": "Sačuvajte PDF dokument i proverite ga pre korišćenja u svom procesu."
         }
       ]
     },
@@ -200,11 +200,10 @@
       "title": "Lako vs Manualni rad",
       "headers": { "feature": "Parametar", "without": "Ručno", "with": "Sa Lako" },
       "rows": [
-        { "feature": "Rizik od kazne na kontroli", "without": "Visok", "with": "Minimalan" },
-        { "feature": "Dokument na putu", "without": "Papir ili ništa", "with": "Uvek u telefonu" },
-        { "feature": "SEF rok", "without": "Rok se lako propusti", "with": "XML odmah" },
-        { "feature": "Dokaz isporuke", "without": "Papirna potvrda", "with": "QR + GPS + foto" },
-        { "feature": "Vreme na dokumentaciji", "without": "30+ min", "with": "15 sekundi" }
+        { "feature": "Priprema dokumenta", "without": "Ručni unos", "with": "Unos u bot" },
+        { "feature": "Dokument na putu", "without": "Papir", "with": "PDF u Telegramu" },
+        { "feature": "XML za SEF", "without": "Ponovni unos", "with": "Zaseban fajl za ručno učitavanje" },
+        { "feature": "Pregled dokumenta", "without": "Papirna kopija", "with": "PDF za pregled" }
       ]
     },
     "docPreview": {
@@ -214,17 +213,17 @@
     },
     "company": {
       "title": "Imate firmu sa vozačima?",
-      "subtitle": "Lako radi i za kompanije sa flotom — dispečer upravlja svim rejsovima.",
+      "subtitle": "Lako radi i za kompanije sa flotom — dispečer dodeljuje rejsove i pregleda njihov zabeleženi status.",
       "items": [
         {
           "icon": "dispatch",
           "title": "Dispečerski centar",
-          "description": "Dodeljujte rejsove, pratite status u realnom vremenu."
+          "description": "Dodeljujte rejsove i pregledajte njihov zabeleženi status."
         },
         {
           "icon": "fleet",
           "title": "Upravljanje flotom",
-          "description": "Vozači, vozila, klijenti — sve u jednom sistemu."
+          "description": "Upravljajte evidencijom vozača, vozila i klijenata."
         },
         {
           "icon": "reports",
@@ -238,28 +237,23 @@
       "title": "Najčešća pitanja",
       "items": [
         { "question": "Radim sam — da li je Lako za mene?", "answer": "Da, Lako je napravljen upravo za solo preduzetnike kojima treba brza dokumentacija na terenu." },
-        { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, sve radi kroz Telegram — kreirate dokumente direktno sa utovara ili istovara, bez kompjutera." },
-        { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše XML fajl u UBL 2.1 formatu. Vi ga samo učitate na portal efaktura.gov.rs — bez ručnog unosa." },
-        { "question": "Nemam dispečera — imam li sve funkcije?", "answer": "Da, imate pristup svim modulima — rejsovi, CMR, fakture, e-fakture, statistika. Dispečer nije potreban." },
-        { "question": "Koliko vremena treba za uvođenje?", "answer": "Registrujte se, unesite podatke firme — i počnite da radite odmah. Sva uputstva su na sajtu." },
-        { "question": "Da li vozačima treba pametan telefon?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
+        { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, kroz Telegram možete kreirati dokumente direktno sa utovara ili istovara, bez kompjutera." },
+        { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše zaseban XML fajl u UBL 2.1 formatu. Preuzmite ga, pregledajte i ručno učitajte na portal efaktura.gov.rs (SEF)." },
+        { "question": "Nemam dispečera — mogu li koristiti bot?", "answer": "Bot je namenjen radu sa podacima firme, klijenata i dokumenata. Dostupne funkcije zavise od odobrenog pristupa." },
+        { "question": "Šta je potrebno za početak?", "answer": "Registracija zahteva podatke firme. Zatim unosite podatke o klijentu i dokumentu pre izrade PDF-a." },
+        { "question": "Da li je potreban telefon?", "answer": "Za rad je potreban uređaj na kome možete koristiti Telegram. Proverite kompatibilnost uređaja i aplikacije pre početka rada." },
         { "question": "Da li Lako radi sa ERP sistemima?", "answer": "Lako radi kao samostalan sistem i ne zahteva integraciju sa ERP softverom (PANTHEON, SAP i dr.). Dokumenti se generišu nezavisno." },
-        { "question": "Koliko košta?", "answer": "Solo preduzetnici: 1.490 RSD mesečno. Kompanije: 3.500 RSD mesečno. Early Adopter program: 3 meseca besplatno uz povratne informacije. Svi ostali: 30 dana probnog perioda bez obaveza." },
-        { "question": "Da li mogu da probam pre kupovine?", "answer": "Da — nudimo 30 dana probnog perioda bez obaveza." },
-        { "question": "Da li su moji podaci bezbedni?", "answer": "Da. Podaci se čuvaju na zaštićenim serverima u Evropi i dostupni su samo vama. Ne delimo ih sa trećim licima. Ako se isključite sa servisa, imate 30 dana za izvoz svih podataka (rejsovi, fakture, klijenti u Excel), nakon čega se potpuno brišu." },
-        { "question": "Kako su moji podaci tehnički zaštićeni?", "answer": "Svi podaci se šifruju pri prenosu (HTTPS) i pri čuvanju (PostgreSQL sa šifrovanjem). Automatski bekapi se prave svakih 24 sata i čuvaju se 30 dana. Pristup serverima je ograničen na ovlašćene osobe." },
-        { "question": "Ko može da vidi moje podatke?", "answer": "Samo vi i vaši zaposleni koje sami dodate u sistem. Tehnička podrška može pristupiti vašim podacima SAMO uz vašu dozvolu radi rešavanja problema. Sve akcije podrške se beleže u logu." },
-        { "question": "Šta ako server padne?", "answer": "Imamo plan oporavka: automatski bekapi svakih 24 sata, obnova sistema u roku od 2-4 sata, obaveštenje o problemu putem Telegrama. Takođe, svi vaši PDF dokumenti (CMR, fakture) i Excel eksporti su uvek kod vas — ne zavisite samo od servera." }
+        { "question": "Kako se obrađuju podaci?", "answer": "Podaci firme, klijenta i dokumenta koriste se za rad bota i izradu PDF dokumenata. Pogledajte politiku privatnosti za detalje." }
       ]
     },
     "bot": {
       "title": "Telegram bot za vašu logistiku",
-      "subtitle": "Upravljajte vožnjama (rejsovima), dokumentima i vozačima — sve kroz Telegram.",
+      "subtitle": "Upravljajte vožnjama (rejsovima), dokumentima i vozačima kroz Telegram.",
       "card": {
         "badge": "Telegram Bot",
         "title": "Lako Prevoz",
-        "description": "Vaš dispečerski centar u Telegramu. Kreirajte rejs​ove, generišite CMR i fakture, upravljajte vozačima i vozilima — sve na jednom mestu.",
-        "cta": "Otvori web aplikaciju"
+        "description": "Radni tok za unos podataka firme, klijenta i dokumenta, uz PDF dokumente i zaseban XML fajl za SEF.",
+        "cta": "Otvori Telegram bot"
       },
       "featuresTitle": "Šta bot može",
       "groupDocs": "Dokumenti",
@@ -267,12 +261,12 @@
       "readGuide": "Uputstvo →",
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
-        { "icon": "cmr", "slug": "cmr", "title": "CMR dokumenti", "description": "Automatsko generisanje CMR u PDF formatu — spreman za štampu." },
-        { "icon": "invoice", "slug": "invoices", "title": "Fakture (Invoice)", "description": "Profesionalne fakture u PDF-u sa svim potrebnim podacima." },
-        { "icon": "efaktura", "slug": "efaktura", "title": "E-fakture (XML)", "description": "UBL 2.1 XML e-fakture za SEF — bez ručnog unosa." },
+        { "icon": "cmr", "slug": "cmr", "title": "CMR dokumenti", "description": "Izrada CMR dokumenata u PDF formatu za pregled i štampu." },
+        { "icon": "invoice", "slug": "invoices", "title": "Fakture (Invoice)", "description": "PDF fakture na osnovu podataka koje unesete i pregledate." },
+        { "icon": "efaktura", "slug": "efaktura", "title": "E-fakture (XML)", "description": "Zaseban UBL 2.1 XML fajl za pregled i ručno učitavanje na SEF." },
         { "icon": "driver", "slug": "drivers", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
-        { "icon": "customer", "slug": "customers", "title": "Upravljanje uslugama", "description": "Svi vaši klijenti na jednom mestu sa istorijom saradnje." },
+        { "icon": "customer", "slug": "customers", "title": "Upravljanje uslugama", "description": "Evidencija klijenata sa istorijom saradnje." },
         { "icon": "stats", "slug": "stats", "title": "Statistika i Excel", "description": "Pregled performansi i eksport podataka u Excel." }
       ],
       "video": {
@@ -282,67 +276,14 @@
       },
       "security": {
         "question": "Da li su moji podaci bezbedni?",
-        "subtitle": "Vaši podaci su potpuno izolovani od drugih kompanija i zaštićeni na svim nivoima.",
+        "subtitle": "Primenjujemo mere zaštite i kontrole pristupa, ali nijedna mera ne uklanja sav rizik.",
         "items": [
-          "256-bit enkripcija podataka",
-          "Potpuna izolacija kompanija",
-          "Automatski bekapi svakih 24h",
-          "GDPR i srpski zakon"
+          "Zaštita prenosa podataka",
+          "Kontrole pristupa",
+          "Postupci za bezbednost podataka",
+          "Detalji u politici privatnosti"
         ],
         "cta": "Detaljnije o zaštiti"
-      },
-      "pricing": {
-        "title": "Cene",
-        "subtitle": "Probajte besplatno, platite kad ste spremni",
-        "currency": "RSD",
-        "earlyAdopter": {
-          "badge": "Prvih 5 klijenata",
-          "text": "3 meseca besplatno — pomozite nam da postanemo bolji, a mi ćemo pomoći vama da budete najbolji.",
-          "note": "Ostalo još {{remaining}} mesta"
-        },
-        "trial": "30 dana besplatno za sve nove korisnike",
-        "plans": [
-          {
-            "name": "Early Adopter",
-            "price": "Besplatno",
-            "period": "3 meseca",
-            "subtitle": "Pomozite nam da budemo bolji — a mi ćemo pomoći vama",
-            "features": [
-              "Pun pristup Solo ili Company planu",
-              "3 meseca potpuno besplatno",
-              "Uslov: povratna informacija o proizvodu"
-            ],
-            "cta": "Postani Early Adopter",
-            "earlyAdopter": true
-          },
-          {
-            "name": "Solo",
-            "price": "1.490",
-            "period": "mesečno",
-            "features": [
-              "Neograničen broj rejsova",
-              "CMR + otpremnica + faktura",
-              "E-faktura XML + PDF",
-              "Automatski QR potpis",
-              "Prioritetna podrška"
-            ],
-            "cta": "Probaj 30 dana besplatno",
-            "popular": true
-          },
-          {
-            "name": "Kompanijski plan",
-            "price": "3.500",
-            "period": "mesečno",
-            "features": [
-              "Sve iz Solo plana",
-              "Dispečerski centar",
-              "Upravljanje flotom",
-              "Izveštaji + Excel export",
-              "Više vozača i vozila"
-            ],
-            "cta": "Probaj 30 dana besplatno"
-          }
-        ]
       }
     },
     "guides": {
@@ -351,7 +292,7 @@
       "tip": "Savet",
       "trips": {
         "title": "Upravljanje rejsovima",
-        "description": "Kompletno uputstvo za kreiranje, pretragu i upravljanje rejsovima kroz Telegram bota.",
+        "description": "Uputstvo za kreiranje, pretragu i upravljanje rejsovima kroz Telegram bota.",
         "steps": [
           {
             "title": "Kreiranje rejsa",
@@ -371,7 +312,7 @@
           {
             "title": "Statusi rejsa",
             "content": "Svaki rejs prolazi kroz faze: Kreiran → U toku → Završen. Rejs se može i otkazati. Status možete promeniti iz kartice rejsa.",
-            "tip": "Vozač sa povezanim Telegram nalogom može sam menjati status svojih rejsova — uz slanje fotografije i GPS lokacije kao dokaza."
+            "tip": "Vozač sa povezanim Telegram nalogom može menjati status svojih rejsova i slati fotodokumentaciju u skladu sa odobrenim pristupom."
           },
           {
             "title": "Uređivanje rejsa",
@@ -390,7 +331,7 @@
           },
           {
             "title": "Eksport u Excel",
-            "content": "Eksportujte sve rejsove ili filtrirane po statusu u .xlsx fajl. Dostupno na Early Adopter i PRO planu.",
+            "content": "Eksportujte rejsove ili filtrirane rezultate po statusu u .xlsx fajl kada je izvoz dostupan vašem nalogu.",
             "tip": ""
           }
         ]
@@ -428,7 +369,7 @@
       },
       "invoices": {
         "title": "Fakture (Invoice)",
-        "description": "Uputstvo za kreiranje profesionalnih faktura sa svim potrebnim podacima.",
+        "description": "Uputstvo za kreiranje faktura na osnovu unesenih podataka.",
         "steps": [
           {
             "title": "Kreiranje fakture",
@@ -495,7 +436,7 @@
       },
       "drivers": {
         "title": "Evidencija vozača",
-        "description": "Kompletno uputstvo za upravljanje vozačima — od dodavanja do povezivanja sa Telegramom.",
+        "description": "Uputstvo za dodavanje vozača i povezivanje sa Telegramom.",
         "steps": [
           {
             "title": "Otvaranje sekcije Vozači",
@@ -514,7 +455,7 @@
           },
           {
             "title": "Šta vidi vozač",
-            "content": "Povezan vozač vidi svoju listu rejsova, može menjati status (kreiran → u toku → završen), slati fotodokumentaciju i GPS lokaciju pri promeni statusa, i preuzimati CMR i fakture.",
+            "content": "Povezan vozač vidi dodeljene rejsove, može menjati status u okviru pristupa, slati fotodokumentaciju i preuzimati dostupne CMR i fakture.",
             "tip": ""
           },
           {
@@ -627,20 +568,20 @@
           },
           {
             "title": "Excel eksport",
-            "content": "Eksportujte sve rejsove u .xlsx fajl. Dostupno na Early Adopter i PRO planu.",
+            "content": "Eksportujte rejsove u .xlsx fajl kada je izvoz dostupan vašem nalogu.",
             "tip": ""
           }
         ]
       }
     },
     "seoBlock": {
-      "title": "Digitalizacija drumskog prevoza u Srbiji",
-      "text": "Drumski prevoz u Srbiji suočava se sa sve strožim zakonskim obavezama — od obavezne otpremnice za svaki prevoz robe do elektronskog fakturisanja kroz Sistem E-Faktura (SEF). Solo preduzetnici i manje transportne firme često gube vreme na ručnu dokumentaciju umesto da se fokusiraju na vožnju i isporuku. Lako Prevoz Bot automatizuje ovaj proces: od kreiranja otpremnice i CMR-a (međunarodnog tovarnog lista) do generisanja XML e-fakture za SEF portal — sve kroz Telegram, direktno sa terena. Zakon o prevozu robe zahteva da svaka pošiljka ima prateću dokumentaciju, a Lako obezbeđuje da je uvek imate pri ruci."
+      "title": "Rad sa dokumentima u Telegramu",
+      "text": "Lako Prevoz Bot je radni tok: pri registraciji unesite podatke firme, zatim podatke o klijentu i dokumentu. Na osnovu unesenih podataka izrađuju se PDF dokumenti. XML za SEF je zaseban fajl: preuzmite ga, pregledajte i ručno učitajte na SEF."
     },
     "finalCta": {
-      "title": "Krećete na rejs? Dokumenti su gotovi za 15 sekundi.",
-      "subtitle": "Otpremnica, faktura, e-faktura — sve iz telefona, bez papira.",
-      "cta": "Probajte besplatno"
+      "title": "Pripremite dokumente za sledeći rejs.",
+      "subtitle": "Unesite podatke, preuzmite PDF dokumente i zaseban XML fajl za ručno učitavanje na SEF.",
+      "cta": "Otvorite Telegram bot"
     }
   },
   "smallBusiness": {
@@ -1165,7 +1106,7 @@
   "legal": {
     "privacy": {
       "title": "Politika privatnosti",
-      "lastUpdated": "Poslednje ažuriranje: 12. februar 2026.",
+      "lastUpdated": "Poslednje ažuriranje: 4. septembar 2026.",
       "intro": "Lako Services d.o.o. (u daljem tekstu \"mi\", \"nas\" ili \"naš\") posvećen je zaštiti vaših ličnih podataka u skladu sa Zakonom o zaštiti podataka o ličnosti Republike Srbije i Opštom uredbom o zaštiti podataka (GDPR).",
       "sections": {
         "dataController": {
@@ -1178,15 +1119,15 @@
         },
         "botData": {
           "title": "Podaci prikupljeni putem botova",
-          "content": "Kada koristite naše Telegram botove, prikupljamo:\n- Korisničko ime (username) na platformi\n- Broj telefona (ako ga podelite)\n- Poruke koje šaljete botu\n- Podatke o rezervacijama i zakazivanjima\n- Istoriju interakcije sa botom\n\nOvi podaci se čuvaju na zaštićenim serverima i koriste se isključivo za:\n- Obradu vaših rezervacija i zakazivanja\n- Slanje potvrda i podsećanja\n- Poboljšanje kvaliteta usluge"
+          "content": "Kada koristite logistički Telegram bot, obrađujemo podatke potrebne za pristup i rad sa dokumentima:\n- ID Telegram platforme potreban za pristup\n- Korisničko ime (ako ga Telegram prosledi) i broj telefona (ako ga podelite)\n- Podatke firme, klijenta i dokumenta koje unesete\n- Poruke i istoriju interakcije potrebne za rad bota\n- Normalizovani izvor, medij, kampanju i sadržaj kada kliknete odobreni kampanjski link\n\nOve podatke koristimo za pružanje logističkog bota, izradu PDF dokumenata, isporuku zasebnog XML fajla i podršku. Merimo zbirno početak rada bota po kampanji; taj događaj meri startove, a ne jedinstvene osobe."
         },
         "gpsTracking": {
           "title": "GPS praćenje",
-          "content": "Za logistička rešenja koristimo GPS koordinate koje se beleže pri promeni statusa rejsa (utovar, istovar, završetak):\n- GPS koordinate uz fotografiju pri statusnim promenama\n- Evidencija lokacije utovara i istovara\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača.\n\nVozači imaju pravo da:\n- Budu informisani o beleženju lokacije\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
+          "content": "Za logistička rešenja GPS koordinate obrađujemo samo kada odlučite da podelite lokaciju tokom promene statusa rejsa (utovar, istovar, završetak). Tok promene statusa možete završiti bez lokacije:\n- GPS koordinate uz fotografiju kada ih podelite\n- Evidencija lokacije utovara i istovara kada je podelite\n\nPravni osnov za obradu ovih podataka je ugovor između Lako Services i kompanije-poslodavca vozača.\n\nVozači imaju pravo da:\n- Budu informisani o beleženju lokacije\n- Pristupe svojim podacima o lokaciji\n- Zahtevaju brisanje istorijskih podataka o lokaciji"
         },
         "purposeOfProcessing": {
           "title": "Svrha obrade",
-          "content": "Vaše podatke obrađujemo u sledeće svrhe:\n- Odgovor na vaše upite putem kontakt forme\n- Registracija vašeg biznisa u Lako katalog\n- Slanje obaveštenja o statusu registracije\n- Poboljšanje funkcionalnosti sajta"
+          "content": "Vaše podatke obrađujemo u sledeće svrhe:\n- Odgovor na upite putem kontakt forme\n- Registracija firme i upravljanje pristupom logističkom botu\n- Izrada PDF dokumenata na osnovu unesenih podataka i isporuka zasebnog XML fajla\n- Agregatno merenje početka rada bota po odobrenoj kampanji\n- Poboljšanje funkcionalnosti usluge"
         },
         "legalBasis": {
           "title": "Pravni osnov obrade",
@@ -1198,7 +1139,7 @@
         },
         "dataRetention": {
           "title": "Period čuvanja podataka",
-          "content": "Vaše podatke čuvamo onoliko dugo koliko je potrebno za ispunjenje svrhe za koju su prikupljeni. Podatke iz kontakt forme čuvamo do 2 godine. Podatke o registrovanim biznisima čuvamo dok je nalog aktivan."
+          "content": "Podatke čuvamo samo onoliko dugo koliko je potrebno za svrhu za koju su prikupljeni, uključujući rad usluge, podršku i zakonske obaveze kada su primenljive."
         },
         "yourRights": {
           "title": "Vaša prava",
@@ -1210,7 +1151,7 @@
         },
         "dataSecurity": {
           "title": "Bezbednost podataka",
-          "content": "Primenjujemo odgovarajuće tehničke i organizacione mere za zaštitu vaših podataka, uključujući HTTPS enkripciju, siguran hosting na Cloudflare platformi i ograničen pristup podacima."
+          "content": "Primenjujemo odgovarajuće tehničke i organizacione mere za smanjenje rizika, uključujući zaštitu prenosa podataka i ograničen pristup. Nijedna mera ne može ukloniti sav rizik; informacije o konkretnim slučajevima tražite preko kontakta u ovoj politici."
         },
         "children": {
           "title": "Deca",
@@ -1304,13 +1245,13 @@
       "description": "Automatizujte logistiku, salon ili servis sa Telegram botovima. CMR, fakture, e-fakture. Lokalna podrška u Novom Sadu."
     },
     "logistics": {
-      "title": "Logistika za solo preduzetnike — otpremnica i e-faktura za 15 sekundi | Lako Services",
-      "description": "Generišite otpremnicu, fakturu i e-fakturu direktno sa telefona. CMR, QR potpis, XML za SEF. Probajte besplatno.",
+      "title": "Logistika u Telegramu — PDF dokumenti i XML za SEF | Lako Services",
+      "description": "Registrujte firmu, unesite podatke o klijentu i dokumentu, preuzmite PDF i zaseban XML fajl za ručno učitavanje na SEF.",
       "guides": {
         "trips": { "title": "Upravljanje rejsovima — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje, pretraga i upravljanje rejsovima kroz Telegram bota Lako Prevoz." },
         "cmr": { "title": "CMR dokumenti — Uputstvo | Lako Prevoz Bot", "description": "Generisanje CMR tovarnih listova u PDF formatu iz Telegram bota." },
         "invoices": { "title": "Fakture — Uputstvo | Lako Prevoz Bot", "description": "Kreiranje profesionalnih faktura sa pozicijama, PDV-om i rokovima plaćanja." },
-        "efaktura": { "title": "E-fakture (XML) — Uputstvo | Lako Prevoz Bot", "description": "Generisanje UBL 2.1 XML e-faktura za portal efaktura.gov.rs (SEF)." },
+        "efaktura": { "title": "E-fakture (XML) — Uputstvo | Lako Prevoz Bot", "description": "Preuzmite zaseban XML fajl u UBL 2.1 formatu, pregledajte ga i ručno učitajte na portal efaktura.gov.rs (SEF)." },
         "drivers": { "title": "Evidencija vozača — Uputstvo | Lako Prevoz Bot", "description": "Dodavanje vozača, povezivanje Telegram naloga i upravljanje pristupom." },
         "vehicles": { "title": "Evidencija vozila — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje voznim parkom — registracije, tipovi i podsetnici za pregled." },
         "customers": { "title": "Upravljanje uslugama — Uputstvo | Lako Prevoz Bot", "description": "Upravljanje bazom klijenata — dodavanje, pretraga i uređivanje kontakata." },

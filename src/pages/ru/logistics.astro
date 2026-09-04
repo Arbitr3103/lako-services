@@ -2,8 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import { t, tObject, getLocalizedPath } from '../../i18n/utils';
+import { getLogisticsGuideUrl, getLogisticsTelegramUrl } from '../../utils/logistics-telegram-url';
 
 const locale = 'ru';
+const telegramBotUrl = getLogisticsTelegramUrl(Astro.url.searchParams);
+const getGuideUrl = (slug: string) => getLogisticsGuideUrl(getLocalizedPath(`/logistics/${slug}`, locale), Astro.url.searchParams);
 
 const soloItems = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.soloValue.items');
 const steps = tObject<Array<{title: string, description: string, duration: string}>>(locale, 'logistics.howItWorks.steps');
@@ -13,7 +16,6 @@ const comparisonRows = tObject<Array<{feature: string, without: string, with: st
 const companyItems = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.company.items');
 const faqItems = tObject<Array<{question: string, answer: string}>>(locale, 'logistics.faq.items');
 const botFeatures = tObject<Array<{icon: string, slug: string, title: string, description: string}>>(locale, 'logistics.bot.features');
-const botPricingPlans = tObject<Array<{name: string, price: string, period: string, features: string[], cta: string, popular?: boolean, earlyAdopter?: boolean, subtitle?: string}>>(locale, 'logistics.bot.pricing.plans');
 const securityItems = tObject<string[]>(locale, 'logistics.bot.security.items');
 const ePrijemnicaSoloItems = tObject<string[]>(locale, 'logistics.ePrijemnica.solo.items');
 const ePrijemnicaCompanyItems = tObject<string[]>(locale, 'logistics.ePrijemnica.company.items');
@@ -89,7 +91,7 @@ const botFeatureIcons: Record<string, string> = {
             {t(locale, 'logistics.hero.subtitle')}
           </p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4">
-            <a href="https://t.me/lakoprevoz_bot" target="_blank" rel="noopener noreferrer"
+            <a href={telegramBotUrl} target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-xl transition-colors text-lg">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               {t(locale, 'logistics.hero.cta')}
@@ -115,8 +117,8 @@ const botFeatureIcons: Record<string, string> = {
             </div>
             <div class="space-y-2">
               <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">Новая продажа → Счёт + Накладная</div>
-              <div class="bg-primary/10 rounded-xl px-4 py-3 text-sm text-primary font-medium">PDF + XML за 15 сек</div>
-              <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">QR подпись → Подтверждение доставки</div>
+              <div class="bg-primary/10 rounded-xl px-4 py-3 text-sm text-primary font-medium">PDF-документ + отдельный XML-файл</div>
+              <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">Проверьте введённые данные перед созданием документа</div>
             </div>
           </div>
           </div>
@@ -410,7 +412,7 @@ const botFeatureIcons: Record<string, string> = {
             </div>
           </div>
           <p class="text-text-light mb-6">{t(locale, 'logistics.bot.card.description')}</p>
-          <a href="https://t.me/lakoprevoz_bot" target="_blank" rel="noopener noreferrer"
+          <a href={telegramBotUrl} target="_blank" rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-6 py-3 bg-[#229ED9] hover:bg-[#1a8abf] text-white font-semibold rounded-xl transition-colors">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             {t(locale, 'logistics.bot.card.cta')}
@@ -424,7 +426,7 @@ const botFeatureIcons: Record<string, string> = {
       <h4 class="text-lg font-semibold text-text-light mb-6 max-w-5xl mx-auto">{t(locale, 'logistics.bot.groupDocs')}</h4>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-12">
         {botFeatures.slice(0, 4).map((feature) => (
-          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
+          <a href={getGuideUrl(feature.slug)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
             </div>
@@ -439,7 +441,7 @@ const botFeatureIcons: Record<string, string> = {
       <h4 class="text-lg font-semibold text-text-light mb-6 max-w-5xl mx-auto">{t(locale, 'logistics.bot.groupManage')}</h4>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
         {botFeatures.slice(4).map((feature) => (
-          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
+          <a href={getGuideUrl(feature.slug)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
             </div>
@@ -481,60 +483,6 @@ const botFeatureIcons: Record<string, string> = {
         </div>
       </a>
 
-      {/* Pricing */}
-      <h3 class="text-2xl font-bold text-center mb-2">{t(locale, 'logistics.bot.pricing.title')}</h3>
-      <p class="text-center text-lg text-text-light max-w-2xl mx-auto mb-8">
-        {t(locale, 'logistics.bot.pricing.subtitle')}
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {botPricingPlans.map((plan) => (
-          <div class:list={[
-            "bg-bg-card rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 relative",
-            plan.earlyAdopter ? "border-green-500 hover:shadow-lg hover:shadow-green-500/10" : plan.popular ? "border-accent hover:shadow-lg hover:shadow-accent/10" : "border-primary hover:shadow-lg hover:shadow-primary/5"
-          ]}>
-            <span class:list={[
-              "absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold rounded-full text-white",
-              plan.earlyAdopter ? "bg-green-500" : plan.popular ? "bg-accent" : "bg-primary"
-            ]}>
-              {plan.earlyAdopter ? "Early Adopter" : plan.popular ? "Popular" : "Pro"}
-            </span>
-            <h4 class="text-xl font-bold mb-2">{plan.name}</h4>
-            <div class="mb-4">
-              <span class:list={["text-4xl font-bold", plan.earlyAdopter && "text-green-400"]}>{plan.price}</span>
-              {!plan.earlyAdopter && <span class="text-text-light ml-1">{t(locale, 'logistics.bot.pricing.currency')}</span>}
-              <span class="text-text-light ml-1">/ {plan.period}</span>
-            </div>
-            {plan.subtitle && (
-              <p class="text-sm text-green-400/80 italic mb-4 -mt-2">{plan.subtitle}</p>
-            )}
-            <ul class="space-y-3 mb-8">
-              {plan.features.map((feature) => (
-                <li class="flex items-center gap-3">
-                  <svg class:list={["w-5 h-5 flex-shrink-0", plan.earlyAdopter ? "text-green-400" : "text-green-400"]} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span class="text-text-light text-sm">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="https://t.me/lakoprevoz_bot"
-              target="_blank"
-              rel="noopener noreferrer"
-              class:list={[
-                "block w-full text-center px-6 py-3 font-semibold rounded-xl transition-colors",
-                plan.earlyAdopter
-                  ? "bg-green-500 hover:bg-green-600 text-white"
-                  : plan.popular
-                    ? "bg-accent hover:bg-accent/90 text-white"
-                    : "bg-primary hover:bg-primary/90 text-white"
-              ]}
-            >
-              {plan.cta}
-            </a>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -587,7 +535,7 @@ const botFeatureIcons: Record<string, string> = {
       <p class="text-lg text-text-light mb-8">
         {t(locale, 'logistics.finalCta.subtitle')}
       </p>
-      <a href="https://t.me/lakoprevoz_bot" target="_blank" rel="noopener noreferrer"
+      <a href={telegramBotUrl} target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-xl transition-colors text-lg">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.492-1.302.48-.428-.012-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
         {t(locale, 'logistics.finalCta.cta')}
