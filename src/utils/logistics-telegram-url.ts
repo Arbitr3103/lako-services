@@ -15,7 +15,7 @@ const APPROVED_UTMS = {
  */
 export function getLogisticsTelegramUrl(searchParams: URLSearchParams): string {
   for (const key of searchParams.keys()) {
-    if (key.startsWith('utm_') && !(key in APPROVED_UTMS)) {
+    if (key.toLowerCase().startsWith('utm_') && !(key in APPROVED_UTMS)) {
       return PLAIN_BOT_URL;
     }
   }
@@ -28,4 +28,15 @@ export function getLogisticsTelegramUrl(searchParams: URLSearchParams): string {
   }
 
   return ATTRIBUTED_BOT_URL;
+}
+
+/** Preserves attribution between public logistics pages only when it is valid. */
+export function getLogisticsGuideUrl(path: string, searchParams: URLSearchParams): string {
+  if (getLogisticsTelegramUrl(searchParams) !== ATTRIBUTED_BOT_URL) {
+    return path;
+  }
+
+  const [pathname, hash] = path.split('#', 2);
+  const approvedSearch = new URLSearchParams(APPROVED_UTMS).toString();
+  return `${pathname}?${approvedSearch}${hash ? `#${hash}` : ''}`;
 }

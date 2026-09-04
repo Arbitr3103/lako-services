@@ -138,7 +138,7 @@
         },
         {
           "icon": "legal",
-          "title": "Usklađenost sa zakonom",
+          "title": "PDF i XML tok",
           "description": "PDF dokumenti se izrađuju iz unesenih podataka; XML za SEF preuzima se zasebno."
         }
       ]
@@ -152,7 +152,7 @@
       ]
     },
     "ePrijemnica": {
-      "title": "Digitalni potpis — vaš dokaz isporuke",
+      "title": "Potvrda prijema u dokumentu",
       "subtitle": "Kupac može potpisati prijem na ekranu, a PDF dokument sa unesenim podacima stiže u Telegram čet.",
       "solo": {
         "badge": "Solo",
@@ -169,7 +169,7 @@
       "flow": {
         "step1": "Vozač šalje QR",
         "step2": "Kupac potpisuje",
-        "step3": "PDF stiže odmah"
+        "step3": "PDF dokument je dostupan u četu"
       }
     },
     "compliance": {
@@ -218,7 +218,7 @@
         {
           "icon": "dispatch",
           "title": "Dispečerski centar",
-          "description": "Dodeljujte rejsove, pratite status u realnom vremenu."
+          "description": "Dodeljujte rejsove i pregledajte njihov zabeleženi status."
         },
         {
           "icon": "fleet",
@@ -239,9 +239,9 @@
         { "question": "Radim sam — da li je Lako za mene?", "answer": "Da, Lako je napravljen upravo za solo preduzetnike kojima treba brza dokumentacija na terenu." },
         { "question": "Da li mogu sa telefona, na putu?", "answer": "Da, sve radi kroz Telegram — kreirate dokumente direktno sa utovara ili istovara, bez kompjutera." },
         { "question": "Šta je sa SEF portalom?", "answer": "Bot generiše zaseban XML fajl u UBL 2.1 formatu. Preuzmite ga, pregledajte i ručno učitajte na portal efaktura.gov.rs (SEF)." },
-        { "question": "Nemam dispečera — imam li sve funkcije?", "answer": "Da, imate pristup svim modulima — rejsovi, CMR, fakture, e-fakture, statistika. Dispečer nije potreban." },
+        { "question": "Nemam dispečera — mogu li koristiti bot?", "answer": "Bot je namenjen radu sa podacima firme, klijenata i dokumenata. Dostupne funkcije zavise od odobrenog pristupa." },
         { "question": "Šta je potrebno za početak?", "answer": "Registracija zahteva podatke firme. Zatim unosite podatke o klijentu i dokumentu pre izrade PDF-a." },
-        { "question": "Da li vozačima treba pametan telefon?", "answer": "Da, bilo koji Android ili iPhone sa Telegramom. Većina vozača već ima telefon." },
+        { "question": "Da li je potreban telefon?", "answer": "Za rad je potreban uređaj na kome možete koristiti Telegram. Proverite kompatibilnost uređaja i aplikacije pre početka rada." },
         { "question": "Da li Lako radi sa ERP sistemima?", "answer": "Lako radi kao samostalan sistem i ne zahteva integraciju sa ERP softverom (PANTHEON, SAP i dr.). Dokumenti se generišu nezavisno." },
         { "question": "Kako se obrađuju podaci?", "answer": "Podaci firme, klijenta i dokumenta koriste se za rad bota i izradu PDF dokumenata. Pogledajte politiku privatnosti za detalje." }
       ]
@@ -262,7 +262,7 @@
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Upravljanje rejs​ovima", "description": "Kreirajte, pratite i završavajte rejs​ove u par klikova." },
         { "icon": "cmr", "slug": "cmr", "title": "CMR dokumenti", "description": "Izrada CMR dokumenata u PDF formatu za pregled i štampu." },
-        { "icon": "invoice", "slug": "invoices", "title": "Fakture (Invoice)", "description": "Profesionalne fakture u PDF-u sa svim potrebnim podacima." },
+        { "icon": "invoice", "slug": "invoices", "title": "Fakture (Invoice)", "description": "PDF fakture na osnovu podataka koje unesete i pregledate." },
         { "icon": "efaktura", "slug": "efaktura", "title": "E-fakture (XML)", "description": "Zaseban UBL 2.1 XML fajl za pregled i ručno učitavanje na SEF." },
         { "icon": "driver", "slug": "drivers", "title": "Evidencija vozača", "description": "Dodajte, menjajte i pretražujte vozače u bazi." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Evidencija vozila", "description": "Upravljajte voznim parkom — registracije, tipovi, status." },
@@ -312,7 +312,7 @@
           {
             "title": "Statusi rejsa",
             "content": "Svaki rejs prolazi kroz faze: Kreiran → U toku → Završen. Rejs se može i otkazati. Status možete promeniti iz kartice rejsa.",
-            "tip": "Vozač sa povezanim Telegram nalogom može sam menjati status svojih rejsova — uz slanje fotografije i GPS lokacije kao dokaza."
+            "tip": "Vozač sa povezanim Telegram nalogom može menjati status svojih rejsova i slati fotodokumentaciju u skladu sa odobrenim pristupom."
           },
           {
             "title": "Uređivanje rejsa",
@@ -331,7 +331,7 @@
           },
           {
             "title": "Eksport u Excel",
-            "content": "Eksportujte sve rejsove ili filtrirane po statusu u .xlsx fajl. Dostupno na Early Adopter i PRO planu.",
+            "content": "Eksportujte rejsove ili filtrirane rezultate po statusu u .xlsx fajl kada je izvoz dostupan vašem nalogu.",
             "tip": ""
           }
         ]
@@ -369,7 +369,7 @@
       },
       "invoices": {
         "title": "Fakture (Invoice)",
-        "description": "Uputstvo za kreiranje profesionalnih faktura sa svim potrebnim podacima.",
+        "description": "Uputstvo za kreiranje faktura na osnovu unesenih podataka.",
         "steps": [
           {
             "title": "Kreiranje fakture",
@@ -455,7 +455,7 @@
           },
           {
             "title": "Šta vidi vozač",
-            "content": "Povezan vozač vidi svoju listu rejsova, može menjati status (kreiran → u toku → završen), slati fotodokumentaciju i GPS lokaciju pri promeni statusa, i preuzimati CMR i fakture.",
+            "content": "Povezan vozač vidi dodeljene rejsove, može menjati status u okviru pristupa, slati fotodokumentaciju i preuzimati dostupne CMR i fakture.",
             "tip": ""
           },
           {
@@ -568,15 +568,15 @@
           },
           {
             "title": "Excel eksport",
-            "content": "Eksportujte sve rejsove u .xlsx fajl. Dostupno na Early Adopter i PRO planu.",
+            "content": "Eksportujte rejsove u .xlsx fajl kada je izvoz dostupan vašem nalogu.",
             "tip": ""
           }
         ]
       }
     },
     "seoBlock": {
-      "title": "Digitalizacija drumskog prevoza u Srbiji",
-      "text": "Drumski prevoz u Srbiji suočava se sa sve strožim zakonskim obavezama — od obavezne otpremnice za svaki prevoz robe do elektronskog fakturisanja kroz Sistem E-Faktura (SEF). Solo preduzetnici i manje transportne firme često gube vreme na ručnu dokumentaciju umesto da se fokusiraju na vožnju i isporuku. Lako Prevoz Bot automatizuje ovaj proces: od kreiranja otpremnice i CMR-a (međunarodnog tovarnog lista) do generisanja XML e-fakture za SEF portal — sve kroz Telegram, direktno sa terena. Zakon o prevozu robe zahteva da svaka pošiljka ima prateću dokumentaciju, a Lako obezbeđuje da je uvek imate pri ruci."
+      "title": "Rad sa dokumentima u Telegramu",
+      "text": "Lako Prevoz Bot je radni tok: pri registraciji unesite podatke firme, zatim podatke o klijentu i dokumentu. Na osnovu unesenih podataka izrađuju se PDF dokumenti. XML za SEF je zaseban fajl: preuzmite ga, pregledajte i ručno učitajte na SEF."
     },
     "finalCta": {
       "title": "Pripremite dokumente za sledeći rejs.",
@@ -1106,7 +1106,7 @@
   "legal": {
     "privacy": {
       "title": "Politika privatnosti",
-      "lastUpdated": "Poslednje ažuriranje: 12. februar 2026.",
+      "lastUpdated": "Poslednje ažuriranje: 4. septembar 2026.",
       "intro": "Lako Services d.o.o. (u daljem tekstu \"mi\", \"nas\" ili \"naš\") posvećen je zaštiti vaših ličnih podataka u skladu sa Zakonom o zaštiti podataka o ličnosti Republike Srbije i Opštom uredbom o zaštiti podataka (GDPR).",
       "sections": {
         "dataController": {
@@ -1139,7 +1139,7 @@
         },
         "dataRetention": {
           "title": "Period čuvanja podataka",
-          "content": "Vaše podatke čuvamo onoliko dugo koliko je potrebno za ispunjenje svrhe za koju su prikupljeni. Podatke iz kontakt forme čuvamo do 2 godine. Podatke o registrovanim biznisima čuvamo dok je nalog aktivan."
+          "content": "Podatke čuvamo samo onoliko dugo koliko je potrebno za svrhu za koju su prikupljeni, uključujući rad usluge, podršku i zakonske obaveze kada su primenljive."
         },
         "yourRights": {
           "title": "Vaša prava",

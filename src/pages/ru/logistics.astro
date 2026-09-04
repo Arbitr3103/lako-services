@@ -2,10 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import { t, tObject, getLocalizedPath } from '../../i18n/utils';
-import { getLogisticsTelegramUrl } from '../../utils/logistics-telegram-url';
+import { getLogisticsGuideUrl, getLogisticsTelegramUrl } from '../../utils/logistics-telegram-url';
 
 const locale = 'ru';
 const telegramBotUrl = getLogisticsTelegramUrl(Astro.url.searchParams);
+const getGuideUrl = (slug: string) => getLogisticsGuideUrl(getLocalizedPath(`/logistics/${slug}`, locale), Astro.url.searchParams);
 
 const soloItems = tObject<Array<{icon: string, title: string, description: string}>>(locale, 'logistics.soloValue.items');
 const steps = tObject<Array<{title: string, description: string, duration: string}>>(locale, 'logistics.howItWorks.steps');
@@ -117,7 +118,7 @@ const botFeatureIcons: Record<string, string> = {
             <div class="space-y-2">
               <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">Новая продажа → Счёт + Накладная</div>
               <div class="bg-primary/10 rounded-xl px-4 py-3 text-sm text-primary font-medium">PDF-документ + отдельный XML-файл</div>
-              <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">QR подпись → Подтверждение доставки</div>
+              <div class="bg-bg-alt rounded-xl px-4 py-3 text-sm text-text-light">Проверьте введённые данные перед созданием документа</div>
             </div>
           </div>
           </div>
@@ -425,7 +426,7 @@ const botFeatureIcons: Record<string, string> = {
       <h4 class="text-lg font-semibold text-text-light mb-6 max-w-5xl mx-auto">{t(locale, 'logistics.bot.groupDocs')}</h4>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-12">
         {botFeatures.slice(0, 4).map((feature) => (
-          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
+          <a href={getGuideUrl(feature.slug)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
             </div>
@@ -440,7 +441,7 @@ const botFeatureIcons: Record<string, string> = {
       <h4 class="text-lg font-semibold text-text-light mb-6 max-w-5xl mx-auto">{t(locale, 'logistics.bot.groupManage')}</h4>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
         {botFeatures.slice(4).map((feature) => (
-          <a href={getLocalizedPath(`/logistics/${feature.slug}`, locale)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
+          <a href={getGuideUrl(feature.slug)} class="group bg-bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 block">
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
               <Fragment set:html={botFeatureIcons[feature.icon] || ''} />
             </div>

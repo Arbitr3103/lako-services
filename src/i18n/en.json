@@ -138,7 +138,7 @@
         },
         {
           "icon": "legal",
-          "title": "Legal compliance",
+          "title": "PDF and XML workflow",
           "description": "PDF documents are created from entered data; XML for SEF is downloaded separately."
         }
       ]
@@ -152,7 +152,7 @@
       ]
     },
     "ePrijemnica": {
-      "title": "Digital signature — your proof of delivery",
+      "title": "Receipt recorded in a document",
       "subtitle": "A recipient can sign on screen, and the PDF document with entered data is delivered to the Telegram chat.",
       "solo": {
         "badge": "Solo",
@@ -169,7 +169,7 @@
       "flow": {
         "step1": "Driver sends QR",
         "step2": "Buyer signs",
-        "step3": "PDF arrives instantly"
+        "step3": "PDF document is available in chat"
       }
     },
     "compliance": {
@@ -218,7 +218,7 @@
         {
           "icon": "dispatch",
           "title": "Dispatch center",
-          "description": "Assign trips, track status in real time."
+          "description": "Assign trips and review their recorded status."
         },
         {
           "icon": "fleet",
@@ -239,9 +239,9 @@
         { "question": "I work alone — is Lako for me?", "answer": "Yes, Lako is built specifically for solo entrepreneurs who drive themselves and need fast documentation in the field." },
         { "question": "Can I use it from my phone, on the road?", "answer": "Yes, everything works through Telegram — create documents right from the loading or unloading site, no computer needed." },
         { "question": "What about the SEF portal?", "answer": "The bot generates a separate XML file in UBL 2.1 format. Download and review it, then manually upload it to efaktura.gov.rs (SEF)." },
-        { "question": "I don't have a dispatcher — do I get all features?", "answer": "Yes, you have access to all modules — trips, CMR, invoices, e-invoices, statistics. No dispatcher needed." },
+        { "question": "I do not have a dispatcher — can I use the bot?", "answer": "The bot supports company, client, and document data. Available functions depend on approved access." },
         { "question": "What is needed to begin?", "answer": "Registration requires company data. Then enter client and document data before creating the PDF." },
-        { "question": "Do drivers need smartphones?", "answer": "Yes, any Android or iPhone with Telegram. Most drivers already have a phone." },
+        { "question": "Is a phone required?", "answer": "You need a device on which you can use Telegram. Check device and application compatibility before starting." },
         { "question": "Does Lako work with ERP systems?", "answer": "Lako works as a standalone system and does not require ERP integration (PANTHEON, SAP, etc.). Documents are generated independently." },
         { "question": "How is data handled?", "answer": "Company, client, and document data are used to operate the bot and create PDF documents. See the privacy policy for details." }
       ]
@@ -262,7 +262,7 @@
       "features": [
         { "icon": "trip", "slug": "trips", "title": "Trip management", "description": "Create, track and complete trips in a few clicks." },
         { "icon": "cmr", "slug": "cmr", "title": "CMR documents", "description": "Create CMR documents in PDF format for review and printing." },
-        { "icon": "invoice", "slug": "invoices", "title": "Invoices", "description": "Professional invoices in PDF with all required details." },
+        { "icon": "invoice", "slug": "invoices", "title": "Invoices", "description": "PDF invoices based on data you enter and review." },
         { "icon": "efaktura", "slug": "efaktura", "title": "E-invoices (XML)", "description": "A separate UBL 2.1 XML file for review and manual upload to SEF." },
         { "icon": "driver", "slug": "drivers", "title": "Driver records", "description": "Add, edit and search drivers in your database." },
         { "icon": "vehicle", "slug": "vehicles", "title": "Vehicle records", "description": "Manage your fleet — registrations, types, status." },
@@ -312,7 +312,7 @@
           {
             "title": "Trip statuses",
             "content": "Each trip goes through phases: Created → In Progress → Completed. A trip can also be cancelled. You can change the status from the trip card.",
-            "tip": "A driver with a linked Telegram account can change the status of their own trips — with photo and GPS evidence submission."
+            "tip": "A driver with a linked Telegram account can change the status of assigned trips and send photo documentation within approved access."
           },
           {
             "title": "Editing a trip",
@@ -331,7 +331,7 @@
           },
           {
             "title": "Export to Excel",
-            "content": "Export all trips or filtered by status to an .xlsx file. Available on the Early Adopter and PRO plans.",
+            "content": "Export trips or status-filtered results to an .xlsx file when export is available to your account.",
             "tip": ""
           }
         ]
@@ -369,7 +369,7 @@
       },
       "invoices": {
         "title": "Invoices",
-        "description": "Guide for creating professional invoices with all required data.",
+        "description": "Guide for creating invoices from entered data.",
         "steps": [
           {
             "title": "Creating an invoice",
@@ -455,7 +455,7 @@
           },
           {
             "title": "What the driver sees",
-            "content": "A linked driver sees their own trip list, can change statuses (created \u2192 in progress \u2192 completed), submit photo evidence and GPS location on status changes, and download CMR and invoices.",
+            "content": "A linked driver sees assigned trips, can change status within approved access, send photo documentation, and download available CMR documents and invoices.",
             "tip": ""
           },
           {
@@ -568,15 +568,15 @@
           },
           {
             "title": "Excel export",
-            "content": "Export all trips to an .xlsx file. Available on the Early Adopter and PRO plans.",
+            "content": "Export trips to an .xlsx file when export is available to your account.",
             "tip": ""
           }
         ]
       }
     },
     "seoBlock": {
-      "title": "Digitizing road transport in Serbia",
-      "text": "Road transport in Serbia faces increasingly strict legal requirements — from mandatory waybills for every goods shipment to electronic invoicing through the Electronic Invoice System (SEF). Solo entrepreneurs and small transport companies often waste time on manual paperwork instead of focusing on driving and delivery. Lako Prevoz Bot automates this process: from creating waybills and CMR consignment notes to generating XML e-invoices for the SEF portal — all through Telegram, right from the field. Serbian transport law requires every shipment to have accompanying documentation, and Lako ensures you always have it at hand."
+      "title": "Working with documents in Telegram",
+      "text": "Lako Prevoz Bot is a workflow: during registration, enter company data, then client and document data. PDF documents are created from entered data. XML for SEF is a separate file: download it, review it, and manually upload it to SEF."
     },
     "finalCta": {
       "title": "Prepare documents for your next trip.",
@@ -1106,7 +1106,7 @@
   "legal": {
     "privacy": {
       "title": "Privacy Policy",
-      "lastUpdated": "Last updated: February 12, 2026.",
+      "lastUpdated": "Last updated: September 4, 2026.",
       "intro": "Lako Services d.o.o. (hereinafter \"we\", \"us\" or \"our\") is committed to protecting your personal data in accordance with the Law on Personal Data Protection of the Republic of Serbia and the General Data Protection Regulation (GDPR).",
       "sections": {
         "dataController": {
@@ -1139,7 +1139,7 @@
         },
         "dataRetention": {
           "title": "Data Retention",
-          "content": "We retain your data for as long as necessary to fulfill the purpose for which it was collected. Contact form data is retained for up to 2 years. Registered business data is retained while the account is active."
+          "content": "We retain data only as long as needed for the purpose for which it was collected, including operating the service, support, and applicable legal obligations."
         },
         "yourRights": {
           "title": "Your Rights",
