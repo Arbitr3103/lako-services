@@ -1,5 +1,6 @@
 import { pathToFileURL } from 'node:url';
 
+import { isProductionCloudflareChallenge } from './cloudflare-challenge.mjs';
 import { assertExpectedSecurityHeaders } from './http-security-headers.mjs';
 
 const HTTP_URL = 'http://lako.services/';
@@ -10,7 +11,11 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-export async function checkProductionEdge({ fetchImpl = globalThis.fetch, timeoutMs = DEFAULT_TIMEOUT_MS } = {}) {
+export async function checkProductionEdge({
+  allowCloudflareChallenge = false,
+  fetchImpl = globalThis.fetch,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+} = {}) {
   const redirectResponse = await fetchImpl(HTTP_URL, {
     redirect: 'manual',
     signal: AbortSignal.timeout(timeoutMs),
@@ -29,6 +34,15 @@ export async function checkProductionEdge({ fetchImpl = globalThis.fetch, timeou
     redirect: 'manual',
     signal: AbortSignal.timeout(timeoutMs),
   });
+
+  if (allowCloudflareChallenge && isProductionCloudflareChallenge(httpsResponse, HTTPS_URL)) {
+    return {
+      challenged: true,
+      httpsStatus: httpsResponse.status,
+      redirectStatus: redirectResponse.status,
+    };
+  }
+
   assert(httpsResponse.status === 200, `${HTTPS_URL}: expected direct 200, got ${httpsResponse.status}`);
   assertExpectedSecurityHeaders(httpsResponse, HTTPS_URL);
 
@@ -36,7 +50,17 @@ export async function checkProductionEdge({ fetchImpl = globalThis.fetch, timeou
 }
 
 async function main() {
-  const result = await checkProductionEdge();
+  const allowCloudflareChallenge = process.argv.slice(2).includes('--allow-cloudflare-challenge');
+  const result = await checkProductionEdge({ allowCloudflareChallenge });
+
+  if (result.challenged) {
+    console.warn(
+      `::warning title=Cloudflare Challenge Page::Production HTTPS verification requires an external smoke: ${HTTPS_URL} returned cf-mitigated=challenge (HTTP ${result.httpsStatus}).`,
+    );
+    console.log(`Production edge redirect passed: HTTP ${result.redirectStatus}.`);
+    return;
+  }
+
   console.log(
     `Production edge checks passed: HTTP redirect ${result.redirectStatus}, HTTPS ${result.httpsStatus}, security headers present.`,
   );

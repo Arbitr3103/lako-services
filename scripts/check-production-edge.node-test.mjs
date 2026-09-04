@@ -44,3 +44,35 @@ test('fails when the HTTPS response omits a required security header', async () 
 
   await assert.rejects(checkProductionEdge({ fetchImpl, timeoutMs: 100 }), /Unexpected x-frame-options/);
 });
+
+test('classifies an explicit Cloudflare challenge only when opted in', async () => {
+  const fetchImpl = async (url) => {
+    if (url === 'http://lako.services/') {
+      return new Response(null, { status: 301, headers: { location: 'https://lako.services/' } });
+    }
+    return new Response(null, { status: 403, headers: { 'cf-mitigated': 'challenge' } });
+  };
+
+  const result = await checkProductionEdge({
+    allowCloudflareChallenge: true,
+    fetchImpl,
+    timeoutMs: 100,
+  });
+
+  assert.deepEqual(result, { challenged: true, httpsStatus: 403, redirectStatus: 301 });
+  await assert.rejects(checkProductionEdge({ fetchImpl, timeoutMs: 100 }), /expected direct 200, got 403/);
+});
+
+test('does not hide an ordinary HTTPS 403 when challenge classification is enabled', async () => {
+  const fetchImpl = async (url) => {
+    if (url === 'http://lako.services/') {
+      return new Response(null, { status: 301, headers: { location: 'https://lako.services/' } });
+    }
+    return new Response(null, { status: 403 });
+  };
+
+  await assert.rejects(
+    checkProductionEdge({ allowCloudflareChallenge: true, fetchImpl, timeoutMs: 100 }),
+    /expected direct 200, got 403/,
+  );
+});
