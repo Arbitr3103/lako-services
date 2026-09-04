@@ -135,3 +135,87 @@ test('times out when a response starts but never finishes', async (t) => {
     /identity response timed out after 50 ms/,
   );
 });
+
+test('classifies a production Cloudflare challenge only when opted in', async () => {
+  const fetchImpl = async () =>
+    new Response('<html>challenge</html>', {
+      headers: { 'cf-mitigated': 'challenge', 'content-type': 'text/html' },
+      status: 403,
+    });
+
+  const results = await runIdentityResponseSmoke(['https://lako.services/'], {
+    allowCloudflareChallenge: true,
+    attempts: 1,
+    fetchImpl,
+    minBytes: 100,
+    timeoutMs: 100,
+  });
+
+  assert.deepEqual(results, [
+    {
+      attempt: 1,
+      challenged: true,
+      status: 403,
+      url: 'https://lako.services/',
+    },
+  ]);
+
+  await assert.rejects(
+    runIdentityResponseSmoke(['https://lako.services/'], {
+      attempts: 1,
+      fetchImpl,
+      minBytes: 100,
+      timeoutMs: 100,
+    }),
+    /expected HTTP 200, got 403/,
+  );
+});
+
+test('does not classify challenge headers from non-production hosts', async () => {
+  const fetchImpl = async () =>
+    new Response('<html>challenge</html>', {
+      headers: { 'cf-mitigated': 'challenge', 'content-type': 'text/html' },
+      status: 403,
+    });
+
+  await assert.rejects(
+    runIdentityResponseSmoke(['https://example.test/'], {
+      allowCloudflareChallenge: true,
+      attempts: 1,
+      fetchImpl,
+      minBytes: 100,
+      timeoutMs: 100,
+    }),
+    /expected HTTP 200, got 403/,
+  );
+});
+
+test('does not hide an ordinary production 403 when challenge classification is enabled', async () => {
+  const fetchImpl = async () => new Response('<html>forbidden</html>', { status: 403 });
+
+  await assert.rejects(
+    runIdentityResponseSmoke(['https://lako.services/'], {
+      allowCloudflareChallenge: true,
+      attempts: 1,
+      fetchImpl,
+      minBytes: 100,
+      timeoutMs: 100,
+    }),
+    /expected HTTP 200, got 403/,
+  );
+});
+
+test('does not classify a 200 response carrying a challenge header', async () => {
+  const fetchImpl = async () => htmlResponse(completeHtml, { 'cf-mitigated': 'challenge' });
+
+  const results = await runIdentityResponseSmoke(['https://lako.services/'], {
+    allowCloudflareChallenge: true,
+    attempts: 1,
+    fetchImpl,
+    minBytes: 100,
+    timeoutMs: 100,
+  });
+
+  assert.equal(results[0].bytes, Buffer.byteLength(completeHtml));
+  assert.equal(results[0].challenged, undefined);
+});

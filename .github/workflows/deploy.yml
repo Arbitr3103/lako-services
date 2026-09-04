@@ -34,8 +34,8 @@ jobs:
 
       - run: npm run check:seo
 
-      - name: Verify production HTTPS enforcement before deploy
-        run: npm run check:production-edge
+      - name: Verify production edge before deploy
+        run: npm run check:production-edge -- --allow-cloudflare-challenge
 
       - run: npm run deploy:worker
         env:
@@ -45,17 +45,22 @@ jobs:
         env:
           SEO_BASE_URL: https://lako-services.bragin-arbitr.workers.dev
 
-      - name: Verify complete identity responses
+      - name: Verify complete identity responses on workers.dev
         run: >-
           npm run check:identity-response --
           https://lako-services.bragin-arbitr.workers.dev/
           https://lako-services.bragin-arbitr.workers.dev/small-business/
           https://lako-services.bragin-arbitr.workers.dev/en/small-business/
           https://lako-services.bragin-arbitr.workers.dev/efaktura/
+
+      - name: Verify or classify custom-domain identity responses
+        run: >-
+          npm run check:identity-response --
+          --allow-cloudflare-challenge
           https://lako.services/
           https://lako.services/small-business/
           https://lako.services/en/small-business/
           https://lako.services/efaktura/
 
-      - name: Verify production HTTPS enforcement and headers after deploy
-        run: npm run check:production-edge
+      - name: Verify or classify production edge after deploy
+        run: npm run check:production-edge -- --allow-cloudflare-challenge

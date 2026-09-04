@@ -1,5 +1,7 @@
 import { pathToFileURL } from 'node:url';
 
+import { isProductionCloudflareChallenge } from './cloudflare-challenge.mjs';
+
 const DEFAULT_ATTEMPTS = 3;
 const DEFAULT_MIN_BYTES = 10_000;
 const DEFAULT_RETRY_DELAY_MS = 2_000;
@@ -42,6 +44,7 @@ export function validateIdentityResponse({ body, minBytes = DEFAULT_MIN_BYTES, r
 export async function checkIdentityResponse(
   url,
   {
+    allowCloudflareChallenge = false,
     fetchImpl = globalThis.fetch,
     minBytes = DEFAULT_MIN_BYTES,
     timeoutMs = DEFAULT_TIMEOUT_MS,
@@ -61,6 +64,12 @@ export async function checkIdentityResponse(
       redirect: 'manual',
       signal: controller.signal,
     });
+
+    if (allowCloudflareChallenge && isProductionCloudflareChallenge(response, target)) {
+      await response.body?.cancel();
+      return { challenged: true, status: response.status };
+    }
+
     const body = await response.text();
     return validateIdentityResponse({ body, minBytes, response, url: target });
   } catch (error) {
@@ -76,6 +85,7 @@ export async function checkIdentityResponse(
 export async function runIdentityResponseSmoke(
   urls,
   {
+    allowCloudflareChallenge = false,
     attempts = DEFAULT_ATTEMPTS,
     fetchImpl = globalThis.fetch,
     minBytes = DEFAULT_MIN_BYTES,
@@ -94,7 +104,12 @@ export async function runIdentityResponseSmoke(
 
     for (let attempt = 1; attempt <= attempts; attempt += 1) {
       try {
-        const result = await checkIdentityResponse(url, { fetchImpl, minBytes, timeoutMs });
+        const result = await checkIdentityResponse(url, {
+          allowCloudflareChallenge,
+          fetchImpl,
+          minBytes,
+          timeoutMs,
+        });
         results.push({ ...result, attempt, url: new URL(url).href });
         lastError = undefined;
         break;
@@ -118,10 +133,19 @@ export async function runIdentityResponseSmoke(
 }
 
 async function main() {
-  const urls = process.argv.slice(2);
-  const results = await runIdentityResponseSmoke(urls);
+  const args = process.argv.slice(2);
+  const allowCloudflareChallenge = args.includes('--allow-cloudflare-challenge');
+  const urls = args.filter((arg) => arg !== '--allow-cloudflare-challenge');
+  const results = await runIdentityResponseSmoke(urls, { allowCloudflareChallenge });
 
   for (const result of results) {
+    if (result.challenged) {
+      console.warn(
+        `::warning title=Cloudflare Challenge Page::Strict custom-domain identity smoke requires an external vantage: ${result.url} returned cf-mitigated=challenge (HTTP ${result.status}).`,
+      );
+      continue;
+    }
+
     console.log(`Identity response complete: ${result.url} (${result.bytes} bytes, attempt ${result.attempt}).`);
   }
 }
