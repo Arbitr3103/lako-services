@@ -5,6 +5,8 @@ import { getWorkerEnv } from '../../utils/worker-env';
 import { EMAIL_RE, PHONE_RE, escapeHtml, isAllowedOrigin, sanitize, sanitizeHeaderValue } from '../../utils/api-validation';
 import { sendResendEmail, sendTelegramMessage } from '../../utils/notifications';
 
+export const prerender = false;
+
 // 5 requests per 5 minutes per IP
 const limiter = createRateLimiter({ windowMs: 5 * 60_000, maxRequests: 5 });
 const MAX_MESSAGE_LEN = 5000;

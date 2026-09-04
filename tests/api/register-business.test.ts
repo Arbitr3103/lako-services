@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { POST } from '../../src/pages/api/register-business';
+import { POST, prerender } from '../../src/pages/api/register-business';
 
 const validRegistration = {
   businessName: 'Audit Cafe',
@@ -25,6 +25,10 @@ function request(headers: HeadersInit, body: string) {
 }
 
 describe('/api/register-business security handling', () => {
+  it('remains on-demand when marketing pages are prerendered', () => {
+    expect(prerender).toBe(false);
+  });
+
   it('rejects non-JSON requests before parsing the body', async () => {
     const response = await POST({
       request: request({ 'Content-Type': 'text/plain' }, 'not-json'),

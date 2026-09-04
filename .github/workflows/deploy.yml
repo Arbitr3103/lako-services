@@ -34,6 +34,9 @@ jobs:
 
       - run: npm run check:seo
 
+      - name: Verify production HTTPS enforcement before deploy
+        run: npm run check:production-edge
+
       - run: npm run deploy:worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -46,4 +49,13 @@ jobs:
         run: >-
           npm run check:identity-response --
           https://lako-services.bragin-arbitr.workers.dev/
+          https://lako-services.bragin-arbitr.workers.dev/small-business/
+          https://lako-services.bragin-arbitr.workers.dev/en/small-business/
+          https://lako-services.bragin-arbitr.workers.dev/efaktura/
           https://lako.services/
+          https://lako.services/small-business/
+          https://lako.services/en/small-business/
+          https://lako.services/efaktura/
+
+      - name: Verify production HTTPS enforcement and headers after deploy
+        run: npm run check:production-edge

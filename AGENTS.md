@@ -10,7 +10,7 @@ Business automation website (Telegram bots) for Lako Services, Novi Sad, Serbia.
 
 ## Tech Stack
 
-Astro 7 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudflare Workers.
+Astro 7 (prerendered marketing pages + on-demand API routes) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudflare Workers.
 
 ## Architecture
 
@@ -35,6 +35,8 @@ Astro 7 (SSR) + React islands + Tailwind CSS v4 + TypeScript, deployed on Cloudf
 **Tailwind v4**: CSS-first config via `@theme` in global.css. NOT using `@astrojs/tailwind` — uses `@tailwindcss/vite` plugin instead.
 
 **React islands**: Only for interactive components (ContactForm). Use `client:load` directive in .astro files. Framer Motion only works inside React components, not in .astro.
+
+**Rendering**: Marketing pages use Astro `output: 'static'` and are served by Cloudflare Static Assets. Only `POST /api/contact` and `POST /api/register-business` opt out with `prerender = false`. Keep `run_worker_first = false`; static security headers live in `public/_headers`, while API responses continue through middleware. Every non-root page has an explicit non-slash-to-slash `308` rule in `public/_redirects`.
 
 **Colors**: Primary `#2563EB` (blue), Accent `#D97706` (orange CTA), Text `#1F2937`.
 
@@ -75,7 +77,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 
 ## Deployment
 
-- **Platform**: Cloudflare Workers (SSR via `@astrojs/cloudflare` adapter)
+- **Platform**: Cloudflare Workers with Static Assets and two on-demand API routes via `@astrojs/cloudflare`
 - **Repo**: github.com/Arbitr3103/lako-services
 - **Domain**: lako.services (custom domain on Worker)
 - **Node**: 22 (required by Astro 7)
@@ -86,7 +88,7 @@ REGISTRATION_SECRET=xxxxx                    # shared secret with lako-bot
 - **Secrets**: set via `npx wrangler secret put <NAME>` (RESEND_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, REGISTRATION_SECRET)
 - **Observability**: enabled in wrangler.toml — logs/traces in Workers dashboard
 - **Worker route**: `lako.services/*` → `lako-services` (DNS A record 192.0.2.1 proxied)
-- **Identity-response compatibility**: keep `disable_nodejs_process_v2` alongside `nodejs_compat` until Astro's Cloudflare stream issue is confirmed fixed. The deploy workflow must pass the full-body identity smoke for both `workers.dev` and `lako.services`; see `docs/cloudflare-identity-response-runbook-2026-09-01.md`.
+- **Identity-response compatibility**: keep `disable_nodejs_process_v2` alongside `nodejs_compat` until Astro's Cloudflare stream issue is confirmed fixed for every on-demand response. The deploy workflow must pass the full-body identity smoke for four marketing paths on both `workers.dev` and `lako.services`; see `docs/cloudflare-identity-response-runbook-2026-09-01.md`.
 
 ### Pricing (small-business page)
 

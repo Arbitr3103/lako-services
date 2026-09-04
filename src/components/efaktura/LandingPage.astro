@@ -19,6 +19,7 @@ const securityItems = tObject<string[]>(locale, 'efaktura.security.items');
 const trustItems = tObject<string[]>(locale, 'efaktura.trustBanner.items');
 const seoBlockTitle = t(locale, 'efaktura.seoBlock.title');
 const seoBlockText = t(locale, 'efaktura.seoBlock.text');
+const logisticsLink = tObject<{ label: string; text: string; cta: string }>(locale, 'efaktura.logisticsLink');
 const popularLabel = t(locale, 'efaktura.pricing.popularLabel');
 const pricingPoints = tObject<string[]>(locale, 'efaktura.pricing.points');
 
@@ -257,6 +258,15 @@ const sectionEyebrowClass = 'inline-flex items-center rounded-full border border
         <p class="mt-5 max-w-2xl text-sm leading-6 text-text-light sm:text-base sm:leading-7">
           {seoBlockText}
         </p>
+        <div class="mt-6 border-t border-white/8 pt-5">
+          <p class="text-xs font-semibold uppercase tracking-wider text-accent">{logisticsLink.label}</p>
+          <p class="mt-2 text-sm leading-6 text-text-light">
+            {logisticsLink.text}{' '}
+            <a href={getLocalizedPath('/logistics/efaktura', locale)} class="font-semibold text-primary hover:underline">
+              {logisticsLink.cta}
+            </a>
+          </p>
+        </div>
         <div class="mt-8 flex flex-wrap gap-3">
           {securityItems.map((item) => (
             <span class="rounded-full border border-white/8 bg-white/[0.05] px-4 py-2 text-sm text-text-light">

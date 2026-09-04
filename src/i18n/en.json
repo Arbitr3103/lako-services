@@ -18,6 +18,11 @@
       "subtitle": "CMR, waybills, e-Invoices, catalog and booking - in Telegram and web apps that work immediately, with local support from Novi Sad.",
       "cta": "Try the logistics bot",
       "ctaSecondary": "Open e-Faktura Studio",
+      "intentLinks": {
+        "label": "Go directly to:",
+        "booking": "online appointment booking",
+        "efaktura": "SEF e-invoice generator"
+      },
       "proofChips": [
         "CMR in 15 seconds",
         "SEF PDF/XML",
@@ -491,7 +496,13 @@
             "content": "The bot generates the XML file with status Generated. Further statuses (Sent, Accepted, Rejected) are tracked on the SEF portal.",
             "tip": ""
           }
-        ]
+        ],
+        "studioLink": {
+          "label": "Different workflow",
+          "title": "Need a web generator without trip data?",
+          "text": "e-Faktura Studio is for entering and previewing an invoice or delivery note in the browser, independently of the Telegram bot.",
+          "cta": "Open the SEF e-invoice web generator"
+        }
       },
       "drivers": {
         "title": "Driver Management",
@@ -646,7 +657,7 @@
   "smallBusiness": {
     "hero": {
       "badge": "For small businesses",
-      "title": "Automation for your salon, clinic or service",
+      "title": "Online booking and appointment management for a salon, clinic or service",
       "subtitle": "Clients book on the web — you manage services, specialists and appointments in Lako Owner.",
       "cta": "See how it works",
       "ctaSecondary": "Add business"
@@ -832,6 +843,29 @@
       },
       "screenshotPlaceholder": "Interface preview",
       "adminScreenshotPlaceholder": "Business registration"
+    },
+    "durationGuide": {
+      "eyebrow": "Schedule setup",
+      "title": "How to set service duration and available appointment slots",
+      "intro": "Service duration determines which times a client can book. Set it once in Lako Owner, and the public page shows only slots that actually fit the specialist's schedule.",
+      "steps": [
+        {
+          "title": "Open the service in Lako Owner",
+          "description": "In Services, select an existing service or add a new one for your salon, clinic or repair shop."
+        },
+        {
+          "title": "Enter the price and duration in minutes",
+          "description": "The saved duration sets the appointment end time and is used to prevent overlaps in a specialist's schedule."
+        },
+        {
+          "title": "Set working hours and active specialists",
+          "description": "Lako combines service duration, working hours and existing bookings, then offers clients only available slots."
+        }
+      ],
+      "resultTitle": "What clients see in the Lako catalog",
+      "resultCaption": "Price and duration appear before the client chooses an available time.",
+      "screenshotAlt": "Lako catalog showing a salon, its services, prices and service durations",
+      "cta": "Set up your business in Lako"
     },
     "trustBanner": {
       "question": "Is my client data safe?",
@@ -1318,7 +1352,7 @@
       }
     },
     "smallBusiness": {
-      "title": "Small Business — Appointment Automation for Salons and Services | Lako Services",
+      "title": "Online Appointment Booking for Salons and Services | Lako Services",
       "description": "Web app for salons and services: public profile, online booking, service selection, specialist selection and owner dashboard."
     },
     "about": {
@@ -1356,12 +1390,12 @@
   },
   "efaktura": {
     "seo": {
-      "title": "e-Faktura Studio — Free e-Invoice Generator for Small Business",
-      "description": "Create SEF-compliant e-invoices and delivery notes in 2 minutes. PDF + UBL XML + QR code for inspection. Free for 3 documents per month."
+      "title": "Free SEF e-Invoice Generator for Serbia | Lako",
+      "description": "Create e-invoices for upload to Serbia's SEF and delivery notes in 2 minutes. PDF + UBL XML + QR code. Free for 3 documents per month."
     },
     "hero": {
       "badge": "Free for small business",
-      "title": "Create SEF-ready invoices in 2 minutes.",
+      "title": "SEF e-Invoices for Serbia: PDF and UBL XML in 2 Minutes",
       "subtitle": "Fill the data once. Export PDF for the buyer, UBL XML for SEF, and QR-ready delivery notes.",
       "cta": "Start free in Studio",
       "ctaSecondary": "See how it works",
@@ -1379,16 +1413,16 @@
       "subtitle": "If you still type invoices into the portal by hand, you lose hours, create correction loops, and increase the chance of a rejected document.",
       "metrics": [
         {
-          "value": "15-20 min",
-          "label": "Typical manual entry time for one invoice in SEF"
+          "value": "1 entry",
+          "label": "Enter document data once for both PDF and XML"
         },
         {
-          "value": "5 days",
-          "label": "Submission window after the transaction date"
+          "value": "PDF + XML",
+          "label": "Two export formats from the same document"
         },
         {
-          "value": "2M RSD",
-          "label": "Potential fines for getting e-invoicing wrong"
+          "value": "3 documents",
+          "label": "Included each month in the free plan"
         }
       ],
       "items": [
@@ -1529,7 +1563,7 @@
       "items": [
         {
           "question": "Does the generated XML match the SEF format?",
-          "answer": "Yes, we generate UBL 2.1 XML fully compatible with Serbia's Electronic Invoice System (SEF)."
+          "answer": "Studio generates UBL 2.1 XML intended for upload to Serbia's SEF. Check the document data and current technical rules on efaktura.gov.rs before submission."
         },
         {
           "question": "Can I use it without registration?",
@@ -1549,7 +1583,7 @@
         },
         {
           "question": "What is the deadline for submitting an e-invoice to SEF?",
-          "answer": "An e-invoice must be submitted within 5 business days from the transaction date. Studio generates the XML instantly — just upload it to the SEF portal."
+          "answer": "Deadlines depend on the transaction type and current SEF rules. Check the latest requirements on efaktura.gov.rs or with your accountant; Studio prepares the XML immediately."
         },
         {
           "question": "Is e-Faktura Studio free?",
@@ -1567,7 +1601,12 @@
     },
     "seoBlock": {
       "title": "E-invoicing in Serbia — digitization for every business",
-      "text": "SEF is mandatory for B2B transactions in Serbia. Instead of retyping invoices in the portal, Studio lets you enter data once, check the preview, and export PDF for the buyer plus XML for SEF. Delivery notes with QR codes are ready for inspection, and the free plan covers up to 3 documents per month."
+      "text": "SEF obligations depend on the parties' status and the transaction type. Studio lets you enter data once, check the preview, and export a buyer PDF plus UBL XML intended for SEF. The free plan covers up to 3 documents per month."
+    },
+    "logisticsLink": {
+      "label": "For carriers",
+      "text": "If the invoice starts from trip data in Telegram, see the separate workflow for Lako Prevoz Bot.",
+      "cta": "E-invoices in the logistics bot"
     },
     "security": {
       "eyebrow": "Trust & compliance",

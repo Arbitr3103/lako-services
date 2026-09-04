@@ -7,7 +7,7 @@ import { isSitemapIncludedPath } from './src/utils/seo-policy.js';
 
 export default defineConfig({
   site: 'https://lako.services',
-  output: 'server',
+  output: 'static',
   adapter: cloudflare({
     imageService: 'passthrough',
   }),

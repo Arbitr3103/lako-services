@@ -18,6 +18,11 @@
       "subtitle": "CMR, otpremnica, e-Faktura, katalog i zakazivanje - u Telegramu i web aplikacijama koje rade odmah, uz lokalnu podršku iz Novog Sada.",
       "cta": "Probajte logistički bot",
       "ctaSecondary": "Otvorite e-Faktura Studio",
+      "intentLinks": {
+        "label": "Direktno do proizvoda:",
+        "booking": "online zakazivanje termina",
+        "efaktura": "generator e-faktura za SEF"
+      },
       "proofChips": [
         "CMR za 15 sekundi",
         "SEF PDF/XML",
@@ -491,7 +496,13 @@
             "content": "Bot generiše XML fajl sa statusom Generisana. Dalji statusi (Poslata, Prihvaćena, Odbijena) prate se na portalu SEF.",
             "tip": ""
           }
-        ]
+        ],
+        "studioLink": {
+          "label": "Drugi tok rada",
+          "title": "Treba vam web generator bez podataka o rejsu?",
+          "text": "e-Faktura Studio služi za ručni unos i pregled fakture ili otpremnice u browseru, nezavisno od Telegram bota.",
+          "cta": "Otvorite web generator e-faktura za SEF"
+        }
       },
       "drivers": {
         "title": "Evidencija vozača",
@@ -646,7 +657,7 @@
   "smallBusiness": {
     "hero": {
       "badge": "Za male biznise",
-      "title": "Automatizacija za vaš salon, ordinaciju ili servis",
+      "title": "Online zakazivanje i upravljanje terminima za salon, ordinaciju ili servis",
       "subtitle": "Klijenti zakazuju preko web stranice — vi upravljate uslugama, majstorima i terminima u Lako kabinetu.",
       "cta": "Pogledajte kako radi",
       "ctaSecondary": "Dodaj biznis"
@@ -832,6 +843,29 @@
       },
       "screenshotPlaceholder": "Primer interfejsa",
       "adminScreenshotPlaceholder": "Registracija biznisa"
+    },
+    "durationGuide": {
+      "eyebrow": "Podešavanje rasporeda",
+      "title": "Kako podesiti trajanje usluge i slobodne termine",
+      "intro": "Tačno trajanje usluge određuje koje termine klijent može da izabere. U Lako Kabinetu ga podešavate jednom, a javna stranica zatim prikazuje samo slotove koji zaista mogu da stanu u raspored.",
+      "steps": [
+        {
+          "title": "Otvorite uslugu u Lako Kabinetu",
+          "description": "U delu Usluge izaberite postojeću uslugu ili dodajte novu za salon, ordinaciju ili servis."
+        },
+        {
+          "title": "Unesite cenu i trajanje u minutima",
+          "description": "Sačuvano trajanje koristi se za izračunavanje kraja termina i proveru preklapanja u rasporedu majstora."
+        },
+        {
+          "title": "Podesite radno vreme i aktivne majstore",
+          "description": "Lako kombinuje trajanje usluge sa radnim vremenom i zauzetim terminima, pa klijentu nudi samo dostupne slotove."
+        }
+      ],
+      "resultTitle": "Šta klijent vidi u Lako katalogu",
+      "resultCaption": "Cena i trajanje prikazani su pre izbora slobodnog termina.",
+      "screenshotAlt": "Lako katalog prikazuje salon, usluge, cene i trajanje svake usluge",
+      "cta": "Podesite svoj biznis u Lako"
     },
     "trustBanner": {
       "question": "Da li su podaci mojih klijenata bezbedni?",
@@ -1318,7 +1352,7 @@
       }
     },
     "smallBusiness": {
-      "title": "Mali biznis — Automatizacija zakazivanja za salone i servise | Lako Services",
+      "title": "Online zakazivanje termina za salone i servise | Lako Services",
       "description": "Web aplikacija za salone i servise: javni profil, online zakazivanje, izbor usluge, majstora i termina, vlasnički kabinet."
     },
     "about": {
@@ -1357,12 +1391,12 @@
   },
   "efaktura": {
     "seo": {
-      "title": "e-Faktura Studio — Besplatno kreiranje e-faktura za male firme",
-      "description": "Kreirajte SEF-kompatibilne e-fakture i otpremnice za 2 minuta. PDF + UBL XML + QR kod za inspekciju. Besplatno za 3 dokumenta mesečno."
+      "title": "Besplatan generator e-faktura za SEF u Srbiji | Lako",
+      "description": "Kreirajte e-fakture za učitavanje u SEF i otpremnice za 2 minuta. PDF + UBL XML + QR kod. Besplatno za 3 dokumenta mesečno."
     },
     "hero": {
       "badge": "Besplatno za male firme",
-      "title": "Napravite SEF-spremne fakture za 2 minuta.",
+      "title": "e-Faktura za SEF: PDF i UBL XML za 2 minuta",
       "subtitle": "Podatke unosite jednom, a dobijate PDF za kupca, UBL XML za SEF i otpremnicu sa QR proverom.",
       "cta": "Pokreni Studio besplatno",
       "ctaSecondary": "Pogledaj kako radi",
@@ -1380,16 +1414,16 @@
       "subtitle": "Ako i dalje kucate fakture ručno u portal, gubite sate, pravite dodatne korekcije i povećavate šansu da dokument bude odbijen.",
       "metrics": [
         {
-          "value": "15-20 min",
-          "label": "Tipično ručno vreme unosa jedne fakture u SEF"
+          "value": "1 unos",
+          "label": "Podaci za PDF i XML unose se samo jednom"
         },
         {
-          "value": "5 dana",
-          "label": "Rok za slanje nakon datuma prometa"
+          "value": "PDF + XML",
+          "label": "Dva izlazna formata iz istog dokumenta"
         },
         {
-          "value": "2M RSD",
-          "label": "Moguće kazne za pogrešno e-fakturisanje"
+          "value": "3 dokumenta",
+          "label": "Mesečno u besplatnom planu"
         }
       ],
       "items": [
@@ -1530,7 +1564,7 @@
       "items": [
         {
           "question": "Da li generisani XML odgovara SEF formatu?",
-          "answer": "Da, generišemo UBL 2.1 XML koji je potpuno kompatibilan sa Sistemom elektronskih faktura (SEF)."
+          "answer": "Studio generiše UBL 2.1 XML namenjen za učitavanje u SEF. Pre slanja proverite podatke i aktuelna tehnička pravila na efaktura.gov.rs."
         },
         {
           "question": "Da li mogu da koristim bez registracije?",
@@ -1550,7 +1584,7 @@
         },
         {
           "question": "Koji je rok za slanje e-fakture na SEF?",
-          "answer": "E-faktura se mora poslati u roku od 5 radnih dana od datuma prometa. Studio generiše XML odmah — samo ga upload-ujete na SEF portal."
+          "answer": "Rok zavisi od vrste transakcije i važećih SEF pravila. Proverite aktuelne obaveze na efaktura.gov.rs ili sa računovođom; Studio priprema XML odmah."
         },
         {
           "question": "Da li je e-Faktura Studio besplatan?",
@@ -1568,7 +1602,12 @@
     },
     "seoBlock": {
       "title": "E-fakture u Srbiji — digitalizacija za svaki biznis",
-      "text": "SEF je obavezan za B2B transakcije u Srbiji. Umesto dodatnog kucanja u portal, Studio vam omogućava da podatke unesete jednom, proverite pregled i preuzmete PDF za kupca i XML za SEF. Otpremnice sa QR kodom spremne su za inspekciju, a besplatan plan pokriva do 3 dokumenta mesečno."
+      "text": "Obaveze korišćenja SEF-a zavise od statusa učesnika i vrste transakcije. Studio vam omogućava da podatke unesete jednom, proverite pregled i preuzmete PDF za kupca i UBL XML namenjen za SEF. Besplatan plan pokriva do 3 dokumenta mesečno."
+    },
+    "logisticsLink": {
+      "label": "Za prevoznike",
+      "text": "Ako faktura nastaje iz podataka o rejsu u Telegramu, pogledajte posebno uputstvo za Lako Prevoz Bot.",
+      "cta": "E-fakture u logističkom botu"
     },
     "security": {
       "eyebrow": "Poverenje i usklađenost",
