@@ -5,6 +5,8 @@ import { getWorkerEnv } from '../../utils/worker-env';
 import { EMAIL_RE, PHONE_RE, escapeHtml, isAllowedOrigin, sanitize, sanitizeHeaderValue } from '../../utils/api-validation';
 import { sendResendEmail, sendTelegramMessage } from '../../utils/notifications';
 
+export const prerender = false;
+
 const DEFAULT_LAKO_BOT_API_URL = 'https://bot.lako.services';
 
 // 3 requests per 5 minutes per IP

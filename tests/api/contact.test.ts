@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { POST } from '../../src/pages/api/contact';
+import { POST, prerender } from '../../src/pages/api/contact';
 
 function request(headers: HeadersInit, body: string) {
   return new Request('https://lako.services/api/contact', {
@@ -13,6 +13,10 @@ function request(headers: HeadersInit, body: string) {
 }
 
 describe('/api/contact security handling', () => {
+  it('remains on-demand when marketing pages are prerendered', () => {
+    expect(prerender).toBe(false);
+  });
+
   it('rejects non-JSON requests before parsing the body', async () => {
     const response = await POST({
       request: request({ 'Content-Type': 'text/plain' }, 'not-json'),

@@ -1,0 +1,20 @@
+---
+import { getLocalizedPath, t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<nav aria-label={t(locale, 'home.hero.intentLinks.label')} class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
+  <span class="text-text-light">{t(locale, 'home.hero.intentLinks.label')}</span>
+  <a href={getLocalizedPath('/small-business', locale)} class="font-medium text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary">
+    {t(locale, 'home.hero.intentLinks.booking')}
+  </a>
+  <span aria-hidden="true" class="text-border-light">&middot;</span>
+  <a href={getLocalizedPath('/efaktura', locale)} class="font-medium text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary">
+    {t(locale, 'home.hero.intentLinks.efaktura')}
+  </a>
+</nav>

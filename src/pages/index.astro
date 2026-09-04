@@ -4,16 +4,26 @@ import CTA from '../components/CTA.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ProductTile from '../components/home/ProductTile.astro';
 import ProofFrame from '../components/home/ProofFrame.astro';
+import IntentLinks from '../components/home/IntentLinks.astro';
 import { t, tObject, getLocalizedPath } from '../i18n/utils';
 
 const locale = 'sr';
 const securityItems = tObject<string[]>(locale, 'home.security.items');
 const heroProofChips = tObject<string[]>(locale, 'home.hero.proofChips');
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Lako Services',
+  alternateName: 'Lako',
+  url: 'https://lako.services/',
+  inLanguage: 'sr',
+};
 ---
 <BaseLayout
   title={t(locale, 'seo.home.title')}
   description={t(locale, 'seo.home.description')}
   locale={locale}
+  jsonLd={websiteJsonLd}
 >
   {/* Hero */}
   <section class="relative overflow-hidden border-b border-border/70 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.16),transparent_30%),linear-gradient(180deg,#0B1120_0%,#111827_100%)]">
@@ -37,6 +47,7 @@ const heroProofChips = tObject<string[]>(locale, 'home.hero.proofChips');
               {t(locale, 'home.hero.ctaSecondary')}
             </CTA>
           </div>
+          <IntentLinks locale={locale} />
           <ProofFrame
             src="/images/photos/driver-tablet.webp"
             alt={t(locale, 'home.hero.products.logistics.alt')}

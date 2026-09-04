@@ -4,6 +4,7 @@ import CTA from '../../components/CTA.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import ProductTile from '../../components/home/ProductTile.astro';
 import ProofFrame from '../../components/home/ProofFrame.astro';
+import IntentLinks from '../../components/home/IntentLinks.astro';
 import { t, tObject, getLocalizedPath } from '../../i18n/utils';
 
 const locale = 'ru';
@@ -37,6 +38,7 @@ const heroProofChips = tObject<string[]>(locale, 'home.hero.proofChips');
               {t(locale, 'home.hero.ctaSecondary')}
             </CTA>
           </div>
+          <IntentLinks locale={locale} />
           <ProofFrame
             src="/images/photos/driver-tablet.webp"
             alt={t(locale, 'home.hero.products.logistics.alt')}

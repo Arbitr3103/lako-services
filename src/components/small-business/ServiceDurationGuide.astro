@@ -1,0 +1,70 @@
+---
+import { getLocalizedPath, t, tObject, type Locale } from '../../i18n/utils';
+
+interface Step {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const steps = tObject<Step[]>(locale, 'smallBusiness.durationGuide.steps');
+---
+
+<section id="service-duration-guide" class="reveal bg-bg-alt py-20 md:py-24">
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wider text-accent">
+        {t(locale, 'smallBusiness.durationGuide.eyebrow')}
+      </p>
+      <h2 class="mt-3 max-w-2xl text-3xl font-bold leading-tight text-text md:text-4xl">
+        {t(locale, 'smallBusiness.durationGuide.title')}
+      </h2>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-text-light md:text-lg">
+        {t(locale, 'smallBusiness.durationGuide.intro')}
+      </p>
+
+      <ol class="mt-8 border-y border-border">
+        {steps.map((step, index) => (
+          <li class="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-border py-5 last:border-b-0">
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
+              {index + 1}
+            </span>
+            <div>
+              <h3 class="font-semibold text-text">{step.title}</h3>
+              <p class="mt-1 text-sm leading-6 text-text-light">{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <a
+        href={getLocalizedPath('/dodaj-biznis', locale)}
+        class="mt-8 inline-flex items-center gap-2 font-semibold text-primary hover:underline"
+      >
+        {t(locale, 'smallBusiness.durationGuide.cta')}
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <figure class="overflow-hidden rounded-lg border border-border bg-bg-card shadow-xl shadow-black/20">
+      <div class="border-b border-border px-4 py-3">
+        <p class="text-sm font-semibold text-text">{t(locale, 'smallBusiness.durationGuide.resultTitle')}</p>
+        <p class="mt-1 text-xs text-text-light">{t(locale, 'smallBusiness.durationGuide.resultCaption')}</p>
+      </div>
+      <img
+        src="/images/screenshots/katalog-search.png"
+        alt={t(locale, 'smallBusiness.durationGuide.screenshotAlt')}
+        width="1334"
+        height="1788"
+        loading="lazy"
+        class="h-auto w-full"
+      />
+    </figure>
+  </div>
+</section>
