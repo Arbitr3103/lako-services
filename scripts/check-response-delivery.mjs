@@ -7,6 +7,12 @@ const DEFAULT_MIN_BYTES = 10_000;
 const DEFAULT_RETRY_DELAY_MS = 2_000;
 const DEFAULT_TIMEOUT_MS = 10_000;
 
+export const IDENTITY_SMOKE_HEADERS = Object.freeze({
+  accept: 'text/html',
+  'accept-encoding': 'identity',
+  'user-agent': 'lako-identity-response-smoke/1.0',
+});
+
 function assert(condition, message) {
   if (!condition) {
     throw new Error(message);
@@ -56,11 +62,7 @@ export async function checkIdentityResponse(
 
   try {
     const response = await fetchImpl(target, {
-      headers: {
-        accept: 'text/html',
-        'accept-encoding': 'identity',
-        'user-agent': 'lako-identity-response-smoke/1.0',
-      },
+      headers: IDENTITY_SMOKE_HEADERS,
       redirect: 'manual',
       signal: controller.signal,
     });

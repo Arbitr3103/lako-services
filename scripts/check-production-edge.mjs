@@ -1,6 +1,7 @@
 import { pathToFileURL } from 'node:url';
 
 import { isProductionCloudflareChallenge } from './cloudflare-challenge.mjs';
+import { IDENTITY_SMOKE_HEADERS } from './check-response-delivery.mjs';
 import { assertExpectedSecurityHeaders } from './http-security-headers.mjs';
 
 const HTTP_URL = 'http://lako.services/';
@@ -20,33 +21,43 @@ export async function checkProductionEdge({
     redirect: 'manual',
     signal: AbortSignal.timeout(timeoutMs),
   });
-  assert(
-    [301, 308].includes(redirectResponse.status),
-    `${HTTP_URL}: expected permanent HTTPS redirect, got ${redirectResponse.status}`,
-  );
-  assert(
-    redirectResponse.headers.get('location') === HTTPS_URL,
-    `${HTTP_URL}: expected Location ${HTTPS_URL}, got ${redirectResponse.headers.get('location')}`,
-  );
+  try {
+    assert(
+      [301, 308].includes(redirectResponse.status),
+      `${HTTP_URL}: expected permanent HTTPS redirect, got ${redirectResponse.status}`,
+    );
+    assert(
+      redirectResponse.headers.get('location') === HTTPS_URL,
+      `${HTTP_URL}: expected Location ${HTTPS_URL}, got ${redirectResponse.headers.get('location')}`,
+    );
+  } finally {
+    await redirectResponse.body?.cancel();
+  }
 
   const httpsResponse = await fetchImpl(HTTPS_URL, {
-    method: 'HEAD',
+    method: 'GET',
+    headers: IDENTITY_SMOKE_HEADERS,
     redirect: 'manual',
     signal: AbortSignal.timeout(timeoutMs),
   });
 
-  if (allowCloudflareChallenge && isProductionCloudflareChallenge(httpsResponse, HTTPS_URL)) {
-    return {
-      challenged: true,
-      httpsStatus: httpsResponse.status,
-      redirectStatus: redirectResponse.status,
-    };
+  try {
+    if (allowCloudflareChallenge && isProductionCloudflareChallenge(httpsResponse, HTTPS_URL)) {
+      return {
+        challenged: true,
+        httpsStatus: httpsResponse.status,
+        redirectStatus: redirectResponse.status,
+      };
+    }
+
+    assert(httpsResponse.status === 200, `${HTTPS_URL}: expected direct 200, got ${httpsResponse.status}`);
+    assertExpectedSecurityHeaders(httpsResponse, HTTPS_URL);
+
+    return { httpsStatus: httpsResponse.status, redirectStatus: redirectResponse.status };
+  } finally {
+    // Header verification does not replace the separate full-body delivery gate.
+    await httpsResponse.body?.cancel();
   }
-
-  assert(httpsResponse.status === 200, `${HTTPS_URL}: expected direct 200, got ${httpsResponse.status}`);
-  assertExpectedSecurityHeaders(httpsResponse, HTTPS_URL);
-
-  return { httpsStatus: httpsResponse.status, redirectStatus: redirectResponse.status };
 }
 
 async function main() {

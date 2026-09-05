@@ -126,6 +126,21 @@ Expected routing behavior:
 - valid POST requests still reach the two on-demand endpoints;
 - static pages and API responses both include the required security headers.
 
+## Match the edge probe to the delivery request
+
+The HTTPS edge header check uses GET and the same diagnostic headers as the full-body
+identity smoke (`Accept: text/html`, `Accept-Encoding: identity`, and
+`User-Agent: lako-identity-response-smoke/1.0`). On 2026-09-05, deployment run
+33949129007 twice passed all eight strict full-body GET checks but failed its
+separate HEAD request with HTTP 403. Different request signatures can receive
+different edge treatment; this observation does not identify a particular
+Cloudflare rule as the cause.
+
+The edge probe checks the delivered GET representation, then cancels its body.
+The separate identity gate still reads and validates the entire body. HTTP 403,
+unexpected redirects and missing security headers remain blocking after deploy.
+This does not certify HEAD delivery for every client or grant a WAF exception.
+
 ## Compatibility flag and rollback
 
 Keep `disable_nodejs_process_v2` alongside `nodejs_compat`. Static delivery
