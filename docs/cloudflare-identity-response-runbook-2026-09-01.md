@@ -137,9 +137,35 @@ different edge treatment; this observation does not identify a particular
 Cloudflare rule as the cause.
 
 The edge probe checks the delivered GET representation, then cancels its body.
-The separate identity gate still reads and validates the entire body. HTTP 403,
-unexpected redirects and missing security headers remain blocking after deploy.
+The separate identity gate still reads and validates the entire body. Ordinary
+HTTP 403, unexpected redirects and missing security headers fail immediately.
 This does not certify HEAD delivery for every client or grant a WAF exception.
+
+## Bounded retries for confirmed challenges
+
+Run 33949750476 demonstrated that matching GET signatures alone was insufficient:
+the custom-domain root returned 403, then complete HTML on its second identity
+attempt, then 403 to the separate edge probe. The identity gate already had a
+three-attempt budget; the edge probe had one. This establishes intermittent
+delivery to that runner, not which Cloudflare rule caused it.
+
+The strict HTTPS edge probe now makes at most three attempts, retrying only
+HTTP 403 with `cf-mitigated: challenge` on the fixed production URL. It releases
+each response body before a two-second retry delay and gives each new request
+a fresh timeout. Ordinary 403, other HTTP errors, redirects, network errors and
+missing security headers are not retried. A third challenge still fails the job;
+success always requires a direct 200 with every expected security header. The
+eight separate full-body checks remain mandatory and unchanged.
+
+Challenge diagnostics include attempt number and a format-validated Cloudflare
+Ray ID; missing or malformed IDs become `unavailable`, never raw log input.
+Use the final Ray ID and run timestamp for Security Events investigation if
+the budget is exhausted. Do not loop deployment reruns or add a WAF bypass.
+The explicit pre-deploy classification flag retains its one-attempt behavior;
+no post-deploy command receives that flag.
+
+Cloudflare documents the challenge response marker in
+[Detect a Challenge Page response](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/detect-response/).
 
 ## Compatibility flag and rollback
 

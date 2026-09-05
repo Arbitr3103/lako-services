@@ -1,4 +1,5 @@
 import { pathToFileURL } from 'node:url';
+import { setTimeout as delay } from 'node:timers/promises';
 
 import { isProductionCloudflareChallenge } from './cloudflare-challenge.mjs';
 import { IDENTITY_SMOKE_HEADERS } from './check-response-delivery.mjs';
@@ -7,6 +8,8 @@ import { assertExpectedSecurityHeaders } from './http-security-headers.mjs';
 const HTTP_URL = 'http://lako.services/';
 const HTTPS_URL = 'https://lako.services/';
 const DEFAULT_TIMEOUT_MS = 10_000;
+const CHALLENGE_ATTEMPTS = 3;
+const CHALLENGE_RETRY_DELAY_MS = 2_000;
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -16,6 +19,8 @@ export async function checkProductionEdge({
   allowCloudflareChallenge = false,
   fetchImpl = globalThis.fetch,
   timeoutMs = DEFAULT_TIMEOUT_MS,
+  sleep = delay,
+  log = console.warn,
 } = {}) {
   const redirectResponse = await fetchImpl(HTTP_URL, {
     redirect: 'manual',
@@ -34,30 +39,41 @@ export async function checkProductionEdge({
     await redirectResponse.body?.cancel();
   }
 
-  const httpsResponse = await fetchImpl(HTTPS_URL, {
-    method: 'GET',
-    headers: IDENTITY_SMOKE_HEADERS,
-    redirect: 'manual',
-    signal: AbortSignal.timeout(timeoutMs),
-  });
+  const attempts = allowCloudflareChallenge ? 1 : CHALLENGE_ATTEMPTS;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    const httpsResponse = await fetchImpl(HTTPS_URL, {
+      method: 'GET',
+      headers: IDENTITY_SMOKE_HEADERS,
+      redirect: 'manual',
+      signal: AbortSignal.timeout(timeoutMs),
+    });
 
-  try {
-    if (allowCloudflareChallenge && isProductionCloudflareChallenge(httpsResponse, HTTPS_URL)) {
-      return {
-        challenged: true,
-        httpsStatus: httpsResponse.status,
-        redirectStatus: redirectResponse.status,
-      };
+    try {
+      const challenged = isProductionCloudflareChallenge(httpsResponse, HTTPS_URL);
+      const rawRay = httpsResponse.headers.get('cf-ray') ?? '';
+      // Headers are untrusted log input; never emit workflow commands or arbitrary text.
+      const ray = /^[a-f0-9]{16,32}(?:-[a-z0-9]{3})?$/i.test(rawRay) ? rawRay : 'unavailable';
+      if (challenged) {
+        log(`Cloudflare challenge: ${HTTPS_URL}; attempt ${attempt}/${attempts}; HTTP ${httpsResponse.status}; Ray ID ${ray}.`);
+        if (allowCloudflareChallenge) {
+          return { challenged: true, httpsStatus: httpsResponse.status, redirectStatus: redirectResponse.status };
+        }
+      }
+
+      const retryable = challenged && httpsResponse.status === 403 && attempt < attempts;
+      if (!retryable) {
+        assert(httpsResponse.status === 200, `${HTTPS_URL}: expected direct 200, got ${httpsResponse.status}; Ray ID ${ray}`);
+        assertExpectedSecurityHeaders(httpsResponse, HTTPS_URL);
+        return { httpsStatus: httpsResponse.status, redirectStatus: redirectResponse.status };
+      }
+    } finally {
+      // Release before retrying; the independent full-body gate remains mandatory.
+      await httpsResponse.body?.cancel();
     }
 
-    assert(httpsResponse.status === 200, `${HTTPS_URL}: expected direct 200, got ${httpsResponse.status}`);
-    assertExpectedSecurityHeaders(httpsResponse, HTTPS_URL);
-
-    return { httpsStatus: httpsResponse.status, redirectStatus: redirectResponse.status };
-  } finally {
-    // Header verification does not replace the separate full-body delivery gate.
-    await httpsResponse.body?.cancel();
+    await sleep(CHALLENGE_RETRY_DELAY_MS);
   }
+  throw new Error(`${HTTPS_URL}: edge verification exhausted its attempt limit`);
 }
 
 async function main() {
