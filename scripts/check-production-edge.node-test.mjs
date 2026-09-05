@@ -22,7 +22,39 @@ test('verifies HTTPS enforcement and production security headers', async () => {
 
   assert.deepEqual(result, { httpsStatus: 200, redirectStatus: 301 });
   assert.equal(requests[0].init.redirect, 'manual');
-  assert.equal(requests[1].init.method, 'HEAD');
+  assert.equal(requests[0].init.headers, undefined);
+  assert.equal(requests[1].init.method, 'GET');
+});
+
+test('checks the same GET representation as the full-body delivery smoke', async () => {
+  const fetchImpl = async (url, init) => {
+    if (url === 'http://lako.services/') {
+      return new Response(null, { status: 301, headers: { location: 'https://lako.services/' } });
+    }
+    // The edge can classify a HEAD or a different request signature separately.
+    if (init.method !== 'GET' || init.headers?.['user-agent'] !== 'lako-identity-response-smoke/1.0'
+      || init.headers?.['accept-encoding'] !== 'identity' || init.headers?.accept !== 'text/html') {
+      return new Response(null, { status: 403, headers: { 'cf-mitigated': 'challenge' } });
+    }
+    return new Response('html fixture', { status: 200, headers: securityHeaders() });
+  };
+  assert.deepEqual(await checkProductionEdge({ fetchImpl }), { httpsStatus: 200, redirectStatus: 301 });
+});
+
+test('releases redirect and HTTPS bodies on success and rejection', async () => {
+  for (const status of [200, 403]) {
+    const cancelled = [];
+    const fetchImpl = async (url) => {
+      const body = new ReadableStream({ cancel() { cancelled.push(url); } });
+      if (url === 'http://lako.services/') {
+        return new Response(body, { status: 301, headers: { location: 'https://lako.services/' } });
+      }
+      return new Response(body, { status, headers: securityHeaders() });
+    };
+    if (status === 200) await checkProductionEdge({ fetchImpl });
+    else await assert.rejects(checkProductionEdge({ fetchImpl }), /expected direct 200, got 403/);
+    assert.deepEqual(cancelled, ['http://lako.services/', 'https://lako.services/']);
+  }
 });
 
 test('fails when HTTP is served without a permanent HTTPS redirect', async () => {
