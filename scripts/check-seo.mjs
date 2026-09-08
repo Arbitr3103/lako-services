@@ -215,6 +215,20 @@ function checkBuiltHtml(builtPagePaths) {
     assert(canonical === new URL(pathname, SITE_URL).href, `Unexpected built canonical for ${pathname}: ${canonical}`);
     assert(hasNoindex(html) === isNoindexPath(pathname), `Unexpected built robots policy for ${pathname}`);
 
+    const expectedHome = pathname.startsWith('/en/') ? '/en/' : pathname.startsWith('/ru/') ? '/ru/' : '/';
+    for (const section of ['header', 'footer']) {
+      const sectionHtml = html.match(new RegExp(`<${section}\\b[^>]*>([\\s\\S]*?)</${section}>`))?.[1] ?? '';
+      const logoLinks = [...sectionHtml.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)]
+        .filter((match) => match[2].replace(/<[^>]*>/g, '').trim() === 'Lako.');
+      assert(logoLinks.length === 1, `Expected one ${section} logo on ${pathname}`);
+      assert(logoLinks[0][1] === expectedHome, `Unexpected ${section} logo destination on ${pathname}: ${logoLinks[0][1]}`);
+    }
+
+    if (getBaseLocalePath(pathname) === '/efaktura/') {
+      const application = extractJsonLd(html).find((entry) => entry['@type'] === 'SoftwareApplication');
+      assert(application?.url === canonical, `SoftwareApplication URL must match canonical on ${pathname}: ${application?.url}`);
+    }
+
     const alternates = extractAlternates(html);
     for (const locale of ['sr', 'en', 'ru']) {
       const expectedHref = getExpectedLocalizedUrl(pathname, locale);
