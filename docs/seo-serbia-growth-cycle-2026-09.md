@@ -68,3 +68,62 @@ Primary references:
 This document records the implementation and measurement contract. Merge,
 deployment, Cloudflare setting changes, Search Console indexing requests, and
 Notion synchronization are separate actions requiring explicit approval.
+
+## Follow-up on 2026-09-08
+
+Read-only GSC inspection confirmed the four first-cycle target URLs are indexed.
+The page-indexing summary (last updated September 4) listed 36 indexed and 35
+excluded URLs. The exclusions are not 35 broken marketing pages: they include
+17 working redirects, four intentional noindex URLs, the API hostname root's
+404, one old HTTP canonical duplicate, nine discovered core pages, and three
+crawled entries (an intentional noindex guide, an old HTTP URL, and the
+indexable English e-invoice guide).
+
+Google live inspection found `/en/logistics/efaktura/` and `/ru/about/`
+eligible for indexing; `/en/logistics/stats/` was fetched successfully but
+correctly excluded by noindex. Eligibility is not proof of inclusion in the
+index. Both sitemap submissions were successful and reported 45 URLs.
+
+All eight full-body identity probes and the strict edge check passed from the
+Mac on September 8. Identity and gzip homepage probes also completed from
+both Mac and backend host. The previous partial-body failure did not reproduce;
+its cause is still unconfirmed. Do not attribute the GSC backlog to WAF or that
+network observation without crawler-specific evidence.
+
+Approved local follow-up aligns header/footer logo home links with SR/EN/RU
+and aligns each e-Faktura SoftwareApplication URL with its slash canonical.
+The build SEO gate now verifies both rendered logo links on all 60 HTML pages
+and application URLs on the three landing pages. Regression checks failed on
+the original output before these fixes. Deployment is a separate verification
+step; local validation alone does not establish production delivery.
+
+Targeted indexing requests are limited to `/en/logistics/efaktura/`,
+`/en/dodaj-biznis/`, and `/ru/about/`. Record UI acceptance separately from
+actual indexing; do not resubmit repeatedly or validate intentional exclusions.
+Notion synchronization remains pending authorization.
+
+Submission evidence on September 8:
+
+- `/en/logistics/efaktura/`: GSC confirmed the indexing request was sent and
+  the URL was added to the priority crawl queue. Actual indexing is not confirmed.
+- `/en/dodaj-biznis/`: GSC returned an indexing-submission error and asked to
+  retry later. No successful submission is claimed; no immediate retry was made.
+- `/ru/about/`: GSC confirmed the indexing request was sent and the URL was
+  added to the priority crawl queue. Actual indexing is not confirmed. Its
+  later index-view status said URL unknown, unlike the earlier discovered
+  status; the successful live eligibility test is a separate observation.
+
+Local verification: `npm test` (113 passing tests), `npm run check:types`
+(125 files, zero diagnostics), `npm run build`, `npm run check:seo` (60 pages,
+59 redirects, 45 sitemap URLs), and `git diff --check` passed. Existing build
+warnings about Shiki inline styles/CSP and Node punycode remain; they were not
+introduced or changed in this follow-up. At the local-validation checkpoint,
+no commit, push, PR, deploy, or WAF change had been made. The subsequent
+commit/push/PR/merge/deploy sequence was explicitly approved; record its exact
+merged SHA and successful postdeploy evidence in the release PR. WAF changes
+are not part of this release.
+
+Independent read-only review: GO; rendered SR/EN/RU logo destinations and
+application URLs were verified, and the static SEO check passed independently.
+Requested reviewer routing was Terra/max; the available agent listing did not
+expose runtime model/effort evidence. No reviewer writes were made.
